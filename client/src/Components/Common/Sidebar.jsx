@@ -6,6 +6,7 @@ import { sidebarItems } from './SidebarItems';
 import './Sidebar.css';
 import { IconContext } from 'react-icons';
 import * as RiIcons from 'react-icons/ri';
+import egpaf_logo from '../../Resources/Images/egpaf_logo.PNG'
 
 
 const SidebarComponent = ({ items }) => {
@@ -21,6 +22,10 @@ const SidebarComponent = ({ items }) => {
            <Link to = '#' className='menu-bars'>
                <FaIcons.FaBars onClick={showSideBar}/>
            </Link>
+       </div>
+       <h2 className='title'>Health Information System</h2>       
+       <div className='logo'>
+          <img  src={egpaf_logo} alt=''/>
        </div>
        <nav className={sidebar ? 'nav-menu active' : 'nav-menu'} >
            <ul className='nav-menu-items' onClick={showSideBar} >
