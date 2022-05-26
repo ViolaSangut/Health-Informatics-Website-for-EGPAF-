@@ -7,6 +7,8 @@ import AddTicket from './Components/Pages/Tickets/AddTicket';
 import Login from './Components/Pages/Users/Login';
 import Facilities from './Components/Pages/Facilities/Facilities';
 import Inventory from './Components/Pages/Inventory/Inventory';
+import TicketsDashboard from './Components/Pages/Tickets/TicketsDashboard';
+
 
 const SidebarLayout = () => (
   <>
@@ -26,7 +28,7 @@ function App() {
             <Route path='/home' element={<Home/>}/>
             <Route path='/facilities' element={<Facilities/>}/>
             <Route path='/inventory' element={<Inventory/>}/>
-            <Route path='/tickets' element={<Tickets/>}/>
+            <Route path='/tickets' element={<TicketsDashboard/>}/>
           </Route>
             <Route path='/' element={<Login/>}/>
         </Routes>

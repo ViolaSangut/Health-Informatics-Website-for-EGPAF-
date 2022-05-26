@@ -15,6 +15,11 @@
     margin-left: 2%;
     
   }
+  .account{
+    margin-left: auto;
+    height: 100%;
+    width: auto;
+  }
   .menu-bars {
     margin-left: 2rem;
     font-size: 2rem;

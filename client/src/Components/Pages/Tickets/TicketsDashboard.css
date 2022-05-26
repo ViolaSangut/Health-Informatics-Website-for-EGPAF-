@@ -1,0 +1,18 @@
+.tickets {
+    /* display: flex; */
+  
+  
+}
+
+.title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2%;
+}
+
+.tickets .widgets {
+    display: flex;
+    padding: 20px;
+    gap: 20px;
+}
