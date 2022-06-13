@@ -1,0 +1,29 @@
+.featured {
+    flex: 2;
+    -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
+    box-shadow: 2px 4px 10px 1px rgba(201, 201, 201, 0.47);
+    padding: 10px;
+}  
+
+.bottom {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.featuredChart {
+    width: 100px;
+    height: 100px;
+  }
+
+  .title {
+    font-weight: 500;
+    color: gray;
+  }
+
+  .amount {
+    font-size: 30px;
+  }

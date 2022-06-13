@@ -1,0 +1,47 @@
+.summary {
+    display: flex;
+    justify-content: space-between;
+    flex: 1;
+    padding: 10px;
+    -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
+    box-shadow: 2px 4px 10px 1px rgba(201, 201, 201, 0.47);
+    border-radius: 10px;
+    height: 100px;
+}
+
+.summary_items {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end; 
+
+}
+
+
+.valueUnasigned {
+    align-items: center ;
+    color:red;
+    font-weight: bold;
+    font-size: 300%;
+}
+
+.valuePending {
+    align-items: center ;
+    color:yellow;
+    font-weight: bold;
+    font-size: 300%;
+}
+
+.valueResolved{
+    align-items: center ;
+    color:skyblue;
+    font-weight: bold;
+    font-size: 300%;
+}
+
+.valueTotal {
+    align-items: center ;
+    color:blueviolet;
+    font-weight: bold;
+    font-size: 300%;
+}

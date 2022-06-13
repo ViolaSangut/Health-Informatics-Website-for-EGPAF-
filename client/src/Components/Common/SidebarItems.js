@@ -33,4 +33,11 @@ export const sidebarItems = [
         icon: <IoIcons.IoIosPaper />,
         className: 'nav-text',
     },
+
+    {
+        title: 'Users',
+        path: '/list-user',
+        icon: <MdIcons.MdPeople />,
+        className: 'nav-text',
+    },
 ]

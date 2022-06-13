@@ -12,6 +12,20 @@ module.exports = (sequelize, DataTypes) =>{
             type: DataTypes.STRING,
             allowNull: false,
         },
+        ticket_status: {
+            type: DataTypes.STRING,
+            defaultValue: "Unassigned",
+            allowNull: false
+        },
+        assignee: {
+            type: DataTypes.STRING,
+        },
+        priority: {
+            type: DataTypes.STRING,
+        },
+        due_date: {
+            type: DataTypes.DATE,
+        },
     });
     return Tickets;
 };

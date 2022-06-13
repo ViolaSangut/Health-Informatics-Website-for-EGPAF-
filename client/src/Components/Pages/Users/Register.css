@@ -1,0 +1,57 @@
+
+/* register */
+.regContainer {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 2%;
+    padding-bottom: 5%;
+    margin-bottom: 5%;
+  }
+  
+  .regContainer input,
+  button {
+    width: 50%;
+    height: 30px;
+    border-radius: 8px;
+    border: none;
+    /* margin: 100px;  */
+  }
+  
+  .regContainer button {
+    background-color: dodgerblue;
+    color: white;
+  }
+  
+  .regContainer input {
+    border: 2px solid dodgerblue;
+  }
+  
+  .regContainer h3 {
+    align-self: center;
+  }
+  
+  .App {
+    text-align: center;
+  }
+  
+  .formContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 50%;
+    height: auto;
+    padding: 20px;
+    border: 5px solid dodgerblue;
+    /* border-radius: 2px; */
+    
+  }
+
+.PageNotFound{
+    width: 100vw;
+    height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
