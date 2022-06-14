@@ -4,13 +4,15 @@ const InventoryController = require("../controllers/InventoryController");
 
 //List
 router.route("/").get(InventoryController.getInventory);
-// Add
+//Add
 router.route("/addInventory").get(InventoryController.addInventory);
-//Delete
-router.route("/delete/:id").delete(InventoryController.deleteInventory);
+//DeleteI
+router.route("/delete/:id").delete(InventoryController.deleteItem);
 
 //Find By Id
-router.route("/:id").get(InventoryController.getInventory);
+router.route("/:id").get(InventoryController.findItemById);
+//Count all Items
+router.route("/countAllItems").get(InventoryController.countAllItems);
 //update
 router.put("/:id", InventoryController.updateInventory);
 

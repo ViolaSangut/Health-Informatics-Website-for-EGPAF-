@@ -1,6 +1,7 @@
 import React,{useState, useEffect, useContext} from 'react'
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
+import { toast  } from 'react-toastify';
 import "./Inventory.css";
 
 
@@ -40,9 +41,9 @@ toggle between hiding and showing the dropdown content */
 
 
 
-    //List 
+    //List all items in the inventory
     const getAllItems = () =>{
-        axios.get("http://localhost:4000/Inventories")
+        axios.get("http://localhost:4000/Inventory")
         .then((response)=>{
             console.log(response.data)
             setItems(response.data);
@@ -51,6 +52,24 @@ toggle between hiding and showing the dropdown content */
             console.log(error);
         })
     }
+
+    //delete item from inventory
+    const deleteItem = (id) =>{
+        if(window.confirm("Are you sure you want to delete this Item?")){
+            axios.delete(`http://localhost:4000/Inventory/delete/${id}`)
+        .then((response)=>{
+            setItems(Inventory.filter((item)=>{
+                return Inventory.id !== id;
+            }));
+            toast.success("Item deleted successfully");
+            console.log(response);
+        })
+        .catch((error)=>{
+            console.log(error);
+        });
+        }
+        
+    };
   
   
 
@@ -58,7 +77,12 @@ toggle between hiding and showing the dropdown content */
 
   return (
     <div>
+    <div className="upper-section">
+      <div className="left-panel">
       <h1 className="header">Inventory</h1>
+      </div>
+      <div>
+     
       <div>
         <input
           type="text"
@@ -67,23 +91,33 @@ toggle between hiding and showing the dropdown content */
         ></input>
         
       </div>
-      <div className="dropdown">
-        <button onClick={dropDown} className="dropbtn">
+      </div>
+      </div>
+       <div className="dropdown">
+          <button onClick={dropDown} className="dropbtn">
           Select Item Type
-        </button>
-        <div id="myDropdown" className="dropdown-content">
+          </button>
+      <div id="myDropdown" className="dropdown-content">
           <a href="#">Tablet</a>
           <a href="#">CPU</a>
           <a href="#">Monitor</a>
           <a href="#">Charger</a>
-        </div>
       </div>
-   <table className="table table">
+      </div>
+
+      <br/>
+
+      <div className="table">
+   <table className="table_content">
     <thead>
-        <th>Asset Number</th>
+        <th>Serial</th>
         <th>Asset Name</th>
+        <th>Asset Number</th>
         <th>Date Registered</th> 
         <th>Asset Status</th> 
+        <th></th> 
+        <th></th> 
+
                 
 
     </thead>
@@ -95,15 +129,16 @@ toggle between hiding and showing the dropdown content */
                 <tr key = {item.id}>
 
                     <td> {item.id} </td>
-                    <td> {item.AssetNumber} </td>
                     <td> {item.AssetName} </td>
+                    <td> {item.AssetNumber} </td>
                     <td> {item.Dateregistered} </td>
                     <td> {item.AssetStatus} </td>
-
-                      
+                
                     <td>
-                       
-                       
+                            <Link to = {`/edit-item/${item.id}`} className='btn btn-info'> Update</Link>
+                            </td>
+                            <td> <Link to = '' className = "btn btn-danger" onClick = {() => deleteItem(Inventory.id)}
+                                    style = {{marginLeft:"10px"}}> Delete</Link>
                     </td>
       
 
@@ -114,6 +149,7 @@ toggle between hiding and showing the dropdown content */
     
     </tbody>
     </table>
+    </div>
     </div>
   );
 };
