@@ -1,63 +1,79 @@
-/* Login */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-.loginContainer {
+html {
+  font-family: 'Nunito', sans-serif;
+  font-size: 22px;
+  color: #fff;
+}
+
+body {
+  height: 100%;
+  background-color: #D9D9D9;
+  color: #fff;
+  /* background-image: "background.png"; */
+}
+
+.App {
   display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  flex-direction: column;
-  width: 100%;
-  height: 100vh;
-  padding-top: 20px;
-  background-color: #D9D9D9;
+  height: auto 100%;
+  padding: 1rem 0.5rem;
 }
 
-.loginContainer input {   
-  width: 200px;
-  height: 50px;
-  border-radius: 8px;
-  border: none;
-  margin: 10px;
-  font-weight: bolder;
-  color: black;
-
-}
-
-.loginContainer button {
-  width: 150px;
-  height: 50px;
-  border-radius: 8px;
-  border: none;
-  margin: 10px;
-  font-weight: bolder;
-
-}
-
-
-.loginContainer button {
-  background-color: dodgerblue;
-  color: white;
-}
-
-.loginContainer input {
-  border: 2px solid dodgerblue;
-}
-
-.loginContainer h5 {
-  align-self: center;
-}
-
-.logo {
-  background-color: #D9D9D9;
+section {
+  width: 25%;
+   display: table-cell;
+  vertical-align: middle;
+  height: 100%;
   display: flex;
-  align-items: flex-start;
   flex-direction: column;
-  height: auto;
-  position: relative;
-  margin-left: 0%;
-
+  justify-content: flex-start;
+  padding: 1rem;
+  background-color: rgba(0, 0, 0, 0.596);
+  border-radius: 20px;
+ 
   
 }
 
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  flex-grow: 1;
+  padding-bottom: 1rem;
+  margin-top: 0.6in;
 
+}
 
+a,
+a:visited {
+  color: #fff;
+}
 
+input[type="text"],
+input[type="password"],
+button,
+textarea {
+  font-family: 'Nunito', sans-serif;
+  font-size: 22px;
+  padding: 0.25rem;
+  border-radius: 0.5rem;
+}
 
+label,
+button {
+  margin-top: 1rem;
+}
+
+.button {
+  padding: 0.5rem;
+  margin-top: 1rem;
+  vertical-align: middle;
+  border-radius:0.5rem;
+}

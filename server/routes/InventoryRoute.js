@@ -10,7 +10,7 @@ router.route("/addInventory").get(InventoryController.addInventory);
 router.route("/delete/:id").delete(InventoryController.deleteItem);
 
 //Find By Id
-router.route("/:id").get(InventoryController.findItemById);
+router.route("/find/:id").get(InventoryController.findItemById);
 //Count all Items
 router.route("/countAllItems").get(InventoryController.countAllItems);
 //update

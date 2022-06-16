@@ -9,13 +9,25 @@ import { Link } from 'react-router-dom';
 
 
 
+
+
+
+
+
+
 const Login = () => {
 
   const navigate = useNavigate();
 
   const [email, setEmail] = useState("");
+
+  
   const [password, setPassword] = useState("");
+ 
+
+
   const { setAuth, auth } = useContext(AuthContext);
+
 
 
 
@@ -49,14 +61,17 @@ const Login = () => {
 
 
   return (
-    <div>
-      <div className='logo'>
-          <img  src={egpaf_logo} alt=''/>
-       </div>
-    <div className="loginContainer">
-      <div className='loginContainer'>
+    <>
+    <img  src={egpaf_logo} alt=''/>
+    <div align ="middle">
+          
+    <section >
+      <form >
         <h5>HEALTH INFORMATION SYSTEM</h5>
-        <input 
+        <label>
+          Username or Email
+        </label>
+        <input className='text'
           placeholder='Username'
           type="text"
           onChange={(event) => {
@@ -64,7 +79,10 @@ const Login = () => {
           }}
           autoComplete='off'
         />
-        <input
+        <label>
+          Password
+        </label>
+        <input 
            placeholder='Password'
           type="password"
           onChange={(event) => {
@@ -72,17 +90,19 @@ const Login = () => {
           }}
         />
        <div>
-          <button onClick={login1}> Sign in </button>
+          <button className="button" onClick={login1}> Sign in </button>
           <p>
-             Don't have account? 
+             Do Not have an account? 
             <Link to = '/add-user'   style = {{marginLeft:"30px"}}> Register</Link>
           </p>
           
        </div>
         
-        </div>
+        </form>
+    </section>
     </div>
-    </div>
+    </>
+  
   )
 }
 

@@ -1,57 +1,123 @@
 
-/* register */
-.regContainer {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    padding-top: 2%;
-    padding-bottom: 5%;
-    margin-bottom: 5%;
-  }
-  
-  .regContainer input,
-  button {
-    width: 50%;
-    height: 30px;
-    border-radius: 8px;
-    border: none;
-    /* margin: 100px;  */
-  }
-  
-  .regContainer button {
-    background-color: dodgerblue;
-    color: white;
-  }
-  
-  .regContainer input {
-    border: 2px solid dodgerblue;
-  }
-  
-  .regContainer h3 {
-    align-self: center;
-  }
-  
-  .App {
-    text-align: center;
-  }
-  
-  .formContainer {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: 50%;
-    height: auto;
-    padding: 20px;
-    border: 5px solid dodgerblue;
-    /* border-radius: 2px; */
-    
-  }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-.PageNotFound{
-    width: 100vw;
-    height: 70vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
+html {
+  font-family: 'Nunito', sans-serif;
+  font-size: 22px;
+  background-color: green;
+   color: #fff;
+}
+
+body {
+  height: 100%;
+  color: white;
+
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 1rem 0.5rem;
+}
+
+section {
+  width: 25%;
+  margin-top: 0.4in;
+  display: table-cell;
+    vertical-align: middle;
+  height: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 1rem;
+  background-color: rgba(0, 0, 0, 0.596);
+  border-radius: 20px;
+  vertical-align: middle;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  flex-grow: 1;
+  padding-bottom: 1rem;
+}
+
+a,
+a:visited {
+  color: #fff;
+}
+
+input[type="text"],
+input[type="password"],
+button,
+textarea {
+  font-family: 'Nunito', sans-serif;
+  font-size: 22px;
+  padding: 0.25rem;
+  border-radius: 0.5rem;
+}
+
+label,
+button {
+  margin-top: 1rem;
+}
+
+.button {
+  padding: 0.5rem;
+  margin-top: 1rem;
+  vertical-align: middle;
+  border-radius:0.5rem;
+}
+
+.instructions {
+  font-size: 0.75rem;
+  border-radius: 0.5rem;
+  background: rgb(238, 127, 127);
+  color: #fff;
+  padding: 0.25rem;
+  position: relative;
+  bottom: -10px;
+}
+
+.instructions>svg {
+  margin-right: 0.25rem;
+}
+
+.offscreen {
+  position: absolute;
+  left: -9999px;
+}
+
+.hide {
+  display: none;
+}
+
+.valid {
+  color: limegreen;
+  margin-left: 0.25rem;
+}
+
+.invalid {
+  color: red;
+  margin-left: 0.25rem;
+}
+
+.errmsg {
+  background-color: rgb(230, 89, 110);
+  color: firebrick;
+  font-weight: bold;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.line {
+  display: inline-block;
+}

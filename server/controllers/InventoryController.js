@@ -76,7 +76,7 @@ const findItemById = async (req, res, next) => {
     if (!findOneById) {
       res.status(404).send({
         // status: 'error',
-        message: `Ticket with id: ${id} not found`,
+        message: `Item with id: ${id} not found`,
       });
     }
     res.status(200).send({

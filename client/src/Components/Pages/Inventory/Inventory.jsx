@@ -58,11 +58,12 @@ toggle between hiding and showing the dropdown content */
         if(window.confirm("Are you sure you want to delete this Item?")){
             axios.delete(`http://localhost:4000/Inventory/delete/${id}`)
         .then((response)=>{
-            setItems(Inventory.filter((item)=>{
-                return Inventory.id !== id;
+            setItems(items.filter((item)=>{
+                return item.id !== id;
             }));
             toast.success("Item deleted successfully");
             console.log(response);
+            // navigate("/inventory")
         })
         .catch((error)=>{
             console.log(error);
@@ -83,10 +84,10 @@ toggle between hiding and showing the dropdown content */
       </div>
       <div>
      
-      <div>
+      <div >
         <input
           type="text"
-          className="search"
+          className='search'
           placeholder="Search for Inventory"
         ></input>
         
@@ -108,21 +109,27 @@ toggle between hiding and showing the dropdown content */
       <br/>
 
       <div className="table">
-   <table className="table_content">
-    <thead>
+   <table className="table-content">
+    <thead className='table-header'>
         <th>Serial</th>
         <th>Asset Name</th>
         <th>Asset Number</th>
-        <th>Date Registered</th> 
+        <th>Item Type</th> 
         <th>Asset Status</th> 
+        <th>Facility Assigned</th>
+        <th>Date Registered</th>
         <th></th> 
-        <th></th> 
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
 
                 
 
     </thead>
 
-    <tbody>
+    <tbody className="">
      {
         items.map (
             item => 
@@ -133,11 +140,12 @@ toggle between hiding and showing the dropdown content */
                     <td> {item.AssetNumber} </td>
                     <td> {item.Dateregistered} </td>
                     <td> {item.AssetStatus} </td>
+                    <td> {item.facility} </td>
                 
                     <td>
                             <Link to = {`/edit-item/${item.id}`} className='btn btn-info'> Update</Link>
                             </td>
-                            <td> <Link to = '' className = "btn btn-danger" onClick = {() => deleteItem(Inventory.id)}
+                            <td> <Link to = '' className = "btn btn-danger" onClick = {() => deleteItem(item.id)}
                                     style = {{marginLeft:"10px"}}> Delete</Link>
                     </td>
       
