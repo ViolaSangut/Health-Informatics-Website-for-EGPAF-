@@ -26,11 +26,6 @@ const AddTicketComponent = () => {
     const [priority, setPriority] = useState("");
     const [due_date, setDue_date] = useState("");
 
-    const [priority1, setPriority1] = useState("Medium");
-    const [priority2, setPriority2] = useState("Medium");
-    const [checked, setChecked] = useState(false);
-
-    const [startDate, setStartDate] = useState();
     const [minDate, setMinDate] = useState(null)
 
     const min_date  = new Date();
@@ -74,11 +69,11 @@ const AddTicketComponent = () => {
         console.log("ticket updated!");
         toast.success("ticket updated successfully")
         navigate('/tickets-list');
-    })
-    .catch((error)=>{
-      console.log(error)
-    });
-    };
+        })
+        .catch((error)=>{
+        console.log(error)
+        });
+      };
 
     const saveorUpdateTicket = (e) =>{
         e.preventDefault();

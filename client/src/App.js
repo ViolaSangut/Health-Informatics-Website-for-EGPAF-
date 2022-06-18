@@ -39,7 +39,7 @@ function App() {
             <Route path='/tickets' element={<TicketsDashboard/>}/>
             <Route path='/add-user' element={<RegisterComponent/>}/>
             <Route path='/list-user' element={<Users/>}/>
-            <Route path='/edit-user/:id' element={<Users/>}/>
+            <Route path='/edit-user/:id' element={<RegisterComponent/>}/>
 
             <Route path='/addticket' element={<AddTicketComponent/>}/>
             <Route path='/edit-ticket/:id' element={<AddTicketComponent/>}/>
