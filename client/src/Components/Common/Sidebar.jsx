@@ -5,7 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { sidebarItems } from './SidebarItems';
 import './Sidebar.css';
 import { IconContext } from 'react-icons';
-import egpaf_logo from '../../Resources/Images/egpaf_logo.PNG'
+import egpaf_logo from '../../Resources/Images/egpaf_logov2.JPG'
 import * as MdIcons from 'react-icons/md';
 import axios from 'axios';
 import AuthContext from '../context/AuthContext';
@@ -40,8 +40,8 @@ const SidebarComponent = ({ items }) => {
        </div>
        <h2 className='mainTitle'>Health Information System</h2>       
        {/* Logo */}
-       <div className='logo'>
-          <img  src={egpaf_logo} alt=''/>
+       <div >
+          <img className='logo1' src={egpaf_logo} alt=''/>
        </div>
        {/* Account */}
        

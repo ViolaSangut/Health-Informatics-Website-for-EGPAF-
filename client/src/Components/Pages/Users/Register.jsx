@@ -54,7 +54,7 @@ useEffect(() => {
     fnameRef.current.focus();
   }, []);
 useEffect(() => {
-    lnameRef.current.focus();
+    // lnameRef.current.focus();
   }, []);
 //checking the firstname and lastname
 useEffect(() => { 
@@ -337,7 +337,7 @@ const handleSubmit = async (e) => {
            disabled={!validFName || !validLName || !validPassword || !validMatch ? true : false}> Register</button>
         </form>
         <p>
-            Already registered? <br />
+            Already registered?
             <span className="line">{/* Put the router Link here */}</span>
           </p>
           <a href="http://localhost:4001/">Sign In</a>

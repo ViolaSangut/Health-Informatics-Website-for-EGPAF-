@@ -1,10 +1,22 @@
-import React, {useState, useEffect} from 'react'
-import { useNavigate, useParams, Link } from 'react-router-dom';
+import { useEffect, useState } from "react";
+import { useParams, Link, useNavigate } from "react-router-dom";
+import axios from "axios";
+
 import './AddTicket.css';
+
 import { toast } from 'react-toastify';
-import axios from 'axios';
+
+
+
+import moment from 'moment';
+
+
 
 const AddTicketComponent = () => {
+
+    const [tickets, setTickets] = useState([]);
+    const { id } = useParams();
+    const ticket = tickets.find(ticket => (ticket.id).toString() === id);
 
     const [title, setTitle] = useState("");
     const [facility, setFacility] = useState("");
@@ -14,21 +26,30 @@ const AddTicketComponent = () => {
     const [priority, setPriority] = useState("");
     const [due_date, setDue_date] = useState("");
 
+    const [priority1, setPriority1] = useState("Medium");
+    const [priority2, setPriority2] = useState("Medium");
+    const [checked, setChecked] = useState(false);
+
+    const [startDate, setStartDate] = useState();
+    const [minDate, setMinDate] = useState(null)
+
+    const min_date  = new Date();
+    
+    
+   useEffect(() => {
+    date();
+   }, [])
+
+   const date = (()=>{
+    setMinDate(moment(min_date).format('YYYY-MM-DD'));
+   })
+
+ 
+
+
     const navigate = useNavigate();
-    const { id } = useParams();
 
-    const getTicketById = ((id)=>{
-        axios.get(`http://localhost:4000/tickets/${id}`)
-        .then((response)=>{
-            setTitle(response.data.title);
-            setFacility(response.data.facility);
-            setCreator(response.data.creator);
-        })
-        .catch((error)=>{
-            console.log(error);
-        });
-    });
-
+    //Add Ticket
     const saveTicket = () =>{
         axios.post("http://localhost:4000/tickets/addticket", {
           title:title, facility:facility, creator: creator,
@@ -36,6 +57,22 @@ const AddTicketComponent = () => {
         console.log(response.data)
         console.log("ticket inserted!");
         toast.success("ticket inserted successfully")
+        navigate('/tickets-list');
+    })
+    .catch((error)=>{
+      console.log(error)
+    });
+    };
+
+      //Update Ticket
+      const updateTicket = () =>{
+        axios.put(`http://localhost:4000/tickets/${id}`, {
+          title:title, facility:facility, creator: creator, ticket_status: ticket_status, 
+          assignee: assignee, priority: priority, due_date: due_date
+        }).then((response)=>{
+        console.log(response.data)
+        console.log("ticket updated!");
+        toast.success("ticket updated successfully")
         navigate('/tickets-list');
     })
     .catch((error)=>{
@@ -53,12 +90,48 @@ const AddTicketComponent = () => {
          return;
 
         } else{
-          saveTicket();
+            if (id) {
+                updateTicket();
+            } else{
+                saveTicket();
+
+            }
+        
         }
-  
-}
-    //Adding Condition to change page title dynamically
-    const pageTitle = () =>{
+
+    }
+
+    useEffect(() => {
+        if (ticket) {
+            setTitle(ticket.title);
+            setFacility(ticket.facility);
+            setAssignee(ticket.assignee);
+            setCreator(ticket.creator);
+            setTicket_status(ticket.ticket_status);
+            setDue_date(ticket.due_date);
+            setPriority(ticket.priority);
+
+        }
+
+    }, [ticket])
+
+    useEffect(() => {   
+        getAllTickets();
+    }, [])
+    
+    const getAllTickets = () =>{
+        axios.get("http://localhost:4000/tickets")
+        .then((response)=>{
+            console.log(response.data)
+            setTickets(response.data);
+        })
+        .catch((error)=>{
+            console.log(error);
+        })
+    }
+
+     //Adding Condition to change page title dynamically
+     const pageTitle = () =>{
 
         if(id){
             return <h3 className="text-center">Update Ticket</h3>
@@ -71,17 +144,20 @@ const AddTicketComponent = () => {
     }
 
     return (
-        <div>
-                <br />
-                <div className='container'>
-                    <div className='row'>
-                        <div className='card col-md-6 offset-md-3 offset-md-3'>
-                            {
-                                pageTitle()
-                            }
-                            <div className='card-body'>
-                                <form>
-                                    <div className='form-group'>
+        <div className="container">
+            
+            <div className='row'>
+            <div className='card col-md-6 offset-md-3 offset-md-3'>
+
+            {
+                <>
+                      {
+                        pageTitle()
+                      }
+                    
+                    <div className='card-body'>
+                     <form>
+                     <div className='form-group'>
                                         <label>Title: </label>
                                         <input placeholder='title' name="title" className="form-control"
                                             value={title} 
@@ -115,6 +191,14 @@ const AddTicketComponent = () => {
                                     </div>    
 
                                     <div className='form-group'>
+                                        <label>Status: </label>
+                                        <input placeholder='status' name="status" className="form-control"
+                                            value={ticket_status} 
+                                            onChange={(e) =>setTicket_status(e.target.value)}
+                                        />
+                                    </div>   
+
+                                    <div className='form-group'>
                                         <label>Priority: </label>
                                         <input placeholder='priority' name="priority" className="form-control"
                                             value={priority} 
@@ -122,21 +206,30 @@ const AddTicketComponent = () => {
                                         />
                                     </div>   
 
-                            
 
-                                    <br/>
+                                    <div className='form-group'>
+                                        <label>Due Date: </label>
+                                        <input type="date" name="due_date" className="form-control"
+                                                value={(moment(due_date).format('YYYY-MM-DD'))} 
+                                            onChange={(e)=>{setDue_date(e.target.value)}}
+                                            min={minDate}                                            
+                                        />                                      
+                                    </div>
 
-                                    {/* <button className='btn btn-info' onClick={(e) => saveorUpdateTicket(e)}>Save</button> */}
-                                    <Link to="" className="btn btn-info" style={{marginLeft: "10px"}} onClick={(e) => saveorUpdateTicket(e)}>Save</Link>
+                                
+
+                                    <br/>                                  
+                                    <Link to="" className="btn btn-info" style={{marginLeft: "10px"}} onClick={(e) => saveorUpdateTicket(e)}>Submit</Link>
                                     <Link to="/tickets-list" className="btn btn-danger" style={{marginLeft: "10px"}}>Cancel</Link>
-                                </form>       
-                            </div>
-                        </div>
-                    </div>      
-                </div> 
+                    </form>
+                    </div>
+                </>
+            }
+           
             </div>
+            </div>
+        </div>
     )
 }
-
 
 export default AddTicketComponent

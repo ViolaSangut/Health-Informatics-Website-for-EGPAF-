@@ -17,6 +17,7 @@ import AddingMy from './Components/Pages/Tickets/AddingMy';
 
 
 
+
 const SidebarLayout = () => (
   <>
     <SidebarComponent />
@@ -41,14 +42,14 @@ function App() {
             <Route path='/edit-user/:id' element={<Users/>}/>
 
             <Route path='/addticket' element={<AddTicketComponent/>}/>
-            <Route path='/edit-tickets/:id' element={<AddTicketComponent/>}/>
+            <Route path='/edit-ticket/:id' element={<AddTicketComponent/>}/>
             <Route path='/tickets-list' element={<Tickets/>}/>
 
 
             <Route path='*' element={<PageNotFound/>}/>
           </Route>
             <Route path='/' element={<Login/>}/>
-            <Route path='/test' element={<AddingMy/>}/>
+          
         </Routes>
     </>
     </div>

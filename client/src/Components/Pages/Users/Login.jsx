@@ -3,35 +3,23 @@ import axios from "axios";
 import { useState, useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Login.css';
-import egpaf_logo from '../../../Resources/Images/egpaf_logo.PNG'
+import egpaf_logo from '../../../Resources/Images/egpaf_logov2.JPG'
 import AuthContext from '../../context/AuthContext';
 import { Link } from 'react-router-dom';
-
-
-
-
-
-
-
 
 
 const Login = () => {
 
   const navigate = useNavigate();
 
-  const [email, setEmail] = useState("");
-
-  
+  const [email, setEmail] = useState("");  
   const [password, setPassword] = useState("");
- 
-
-
   const { setAuth, auth } = useContext(AuthContext);
 
 
 
 
-  const login1 = (e) => {
+  const login = (e) => {
 
     e.preventDefault();
 
@@ -90,7 +78,7 @@ const Login = () => {
           }}
         />
        <div>
-          <button className="button" onClick={login1}> Sign in </button>
+          <button className="button" onClick={login}> Sign in </button>
           <p>
              Do Not have an account? 
             <Link to = '/add-user'   style = {{marginLeft:"30px"}}> Register</Link>
