@@ -24,7 +24,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
     },
     due_date: {
-      type: DataTypes.DATE,
+      type: DataTypes.DATEONLY,
     },
   });
   return Tickets;

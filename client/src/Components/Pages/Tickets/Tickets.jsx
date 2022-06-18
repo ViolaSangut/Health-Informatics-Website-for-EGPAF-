@@ -114,8 +114,8 @@ const Tickets = () => {
                             <td>{ticket.ticket_status}</td>
                             <td>{ticket.assignee}</td>
                             <td>{ticket.priority}</td>
-                            <td>{ticket.due_date}</td>
-                            <td>{ticket.createdAt}</td>
+                            <td>{(moment(ticket.due_date).format('DD-MM-YYYY'))}</td>
+                            <td>{(moment(ticket.createdAt).format('DD-MM-YYYY'))}</td>
                             
                             <td>
                             <Link to = {`/edit-ticket/${ticket.id}`} className='btn btn-info'> Update</Link>
