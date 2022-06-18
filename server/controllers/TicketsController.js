@@ -17,6 +17,104 @@ const getTickets = async (req, res)=>{
 
 };
 
+//Adding a Ticket
+const addTicket = async (req, res)=>{
+    const { title, facility, creator, ticket_status, assignee, priority, due_date} = req.body;
+    Tickets.create({
+        title: title,
+        facility: facility,
+        creator: creator,
+        ticket_status:ticket_status,
+        assignee: assignee,
+        priority: priority,
+        due_date: due_date
+    })
+    .then(()=>{
+        res.json("User added!")
+
+    })
+    .catch((error)=>{
+        if(error){
+            res.status(400).json({error:error});
+        }
+    });
+}
+
+//Delete
+const deleteTicket = async(req, res) =>{
+    const id = req.params.id;
+
+   await Tickets.destroy({
+        where: {
+            id: id,
+        },
+    });
+    return res.json('Ticket deleted');
+};
+
+//Find By Id
+const findTicketById = async (req, res, next) => {
+    try {
+        const { id } = req.params;
+        const findOneById = await Tickets.findByPk(id);
+        if (!findOneById) {
+            res.status(404).send({
+                // status: 'error',
+                message: `Ticket with id: ${id} not found`,
+            });
+        }
+        res.status(200).send({
+            // status: 'success',
+            data: findOneById
+        });
+
+    } catch (error) {
+        next(error);
+    }
+};
+
+//update
+const updateTicket = async (req, res, next)=>{
+    try {
+        const { id } = req.params;
+        const { title, facility, creator, ticket_status, assignee, priority, due_date} = req.body;
+        const findOneTicketById = await Tickets.findOne({
+            where:{
+                id: id,
+            }});
+            if (!findOneTicketById) {
+                res.status(404).send({
+                    status: 'error',
+                    message: `Ticket with id: ${id} not found`,
+                });
+            }
+            if(title) findOneTicketById.title = title;
+            if(facility) findOneTicketById.facility = facility;
+            if(creator) findOneTicketById.creator = creator;
+            if(ticket_status) findOneTicketById.ticket_status = ticket_status;
+            if(assignee) findOneTicketById.assignee = assignee;
+            if(priority) findOneTicketById.priority = priority;
+            if(due_date) findOneTicketById.due_date = due_date;
+            
+            const updatedTicket = await findOneTicketById.save();
+            if (!updatedTicket) {
+                res.status(404).send({
+                    status: 'error',
+                    message: `Ticket with id: ${id} not found`
+                    ,
+                });
+            }
+            res.status(200).send({
+                status: 'success',
+                data: updatedTicket
+            });  
+        } catch (error) {
+            next(error);
+        }
+
+};
+
+
 //Count of Tickets within a week
 const getNoOfWeeklyTickets = async (req, res)=>{
     db.query(
@@ -114,103 +212,6 @@ const countTodaysResolvedTickets = async (req, res)=>{
             }
         }
     )
-};
-
-//Adding a Ticket
-const addTicket = async (req, res)=>{
-    const { title, facility, creator, ticket_status, assignee, priority, due_date} = req.body;
-    Tickets.create({
-        title: title,
-        facility: facility,
-        creator: creator,
-        ticket_status:ticket_status,
-        assignee: assignee,
-        priority: priority,
-        due_date: due_date
-    })
-    .then(()=>{
-        res.json("User added!")
-
-    })
-    .catch((error)=>{
-        if(error){
-            res.status(400).json({error:error});
-        }
-    });
-}
-
-//Delete
-const deleteTicket = async(req, res) =>{
-    const id = req.params.id;
-
-   await Tickets.destroy({
-        where: {
-            id: id,
-        },
-    });
-    return res.json('Ticket deleted');
-};
-
-//Find By Id
-const findTicketById = async (req, res, next) => {
-    try {
-        const { id } = req.params;
-        const findOneById = await Tickets.findByPk(id);
-        if (!findOneById) {
-            res.status(404).send({
-                // status: 'error',
-                message: `Ticket with id: ${id} not found`,
-            });
-        }
-        res.status(200).send({
-            // status: 'success',
-            data: findOneById
-        });
-
-    } catch (error) {
-        next(error);
-    }
-};
-
-//update
-const updateTicket = async (req, res, next)=>{
-    try {
-        const { id } = req.params;
-        const { title, facility, creator, ticket_status, assignee, priority, due_date} = req.body;
-        const findOneTicketById = await Tickets.findOne({
-            where:{
-                id: id,
-            }});
-            if (!findOneTicketById) {
-                res.status(404).send({
-                    status: 'error',
-                    message: `Ticket with id: ${id} not found`,
-                });
-            }
-            if(title) findOneTicketById.title = title;
-            if(facility) findOneTicketById.facility = facility;
-            if(creator) findOneTicketById.creator = creator;
-            if(ticket_status) findOneTicketById.ticket_status = ticket_status;
-            if(assignee) findOneTicketById.assignee = assignee;
-            if(priority) findOneTicketById.priority = priority;
-            if(due_date) findOneTicketById.due_date = due_date;
-            
-            const updatedTicket = await findOneTicketById.save();
-            if (!updatedTicket) {
-                res.status(404).send({
-                    status: 'error',
-                    message: `Ticket with id: ${id} not found`
-                    ,
-                });
-            }
-            res.status(200).send({
-                status: 'success',
-                data: updatedTicket
-            });  
-        } catch (error) {
-            next(error);
-        }
-
 };
 
 
