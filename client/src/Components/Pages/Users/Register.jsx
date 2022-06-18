@@ -1,6 +1,6 @@
 import React,{ useEffect, useState, useRef} from 'react'
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import './Register.css';
 import { toast } from 'react-toastify';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -50,12 +50,20 @@ const [emailFocus, setEmailFocus]= useState(false);
 const[errMsg, setErrMsg]= useState("")
 const[success, setSuccess]= useState(false)
 
+//Users update implementation
+const { id } = useParams();
+const [users, setUsers] = useState([])
+const user = users.find(user => (user.id).toString() === id);
+
 useEffect(() => {
     fnameRef.current.focus();
+    getAllusers();
   }, []);
+
 useEffect(() => {
     // lnameRef.current.focus();
   }, []);
+
 //checking the firstname and lastname
 useEffect(() => { 
   const result = USER_REGEX.test(firstName)
@@ -95,9 +103,8 @@ useEffect(()=>{setErrMsg("")
    
 const navigate = useNavigate();
 
-  
-const handleSubmit = async (e) => {
-    e.preventDefault();
+//Saving user  
+const saveUser = async () => {
     //if button is enabled through a JS hack
     const v1 = EMAIL_REGEX.test(email);
     const v2 = PWD_REGEX.test(password);
@@ -105,7 +112,9 @@ const handleSubmit = async (e) => {
       setErrMsg("Invalid Entry");
       return;
     }
+    
     try {
+
       const response = await axios.post(
         "http://localhost:4000/users/register",
         JSON.stringify({ firstName, lastName, email, password }),
@@ -133,14 +142,108 @@ const handleSubmit = async (e) => {
     }
 
     setSuccess(true);
+  
   };
+
+
+ //Update User
+  const updateUser = async () => {
+
+    //if button is enabled through a JS hack
+    const v1 = EMAIL_REGEX.test(email);
+    const v2 = PWD_REGEX.test(password);
+    if (!v1 || !v2) {
+      setErrMsg("Invalid Entry");
+      return;
+    }
+    
+    try {
+
+      const response = await  axios.put(`http://localhost:4000/users/update/${id}`, {
+        firstName:firstName, lastName:lastName, email: email, password: password, matchPassword: matchPassword
+      });
+      
+      console.log(response.data);
+      // console.log(response.accessToken);
+      console.log(JSON.stringify(response));
+      setSuccess(true);
+      toast.success("User Updated Succesfully");
+      navigate('/list-user')
+      //clear input fields
+    } catch (err) {
+      if (!err?.response) {
+        setErrMsg("No Server Response");
+      } else if (err.response?.status === 409) {
+        setErrMsg("Username taken!");
+      } else {
+        setErrMsg("Registeration Failed");
+      }
+      errRef.current.focus();
+    }
+
+    setSuccess(true);
+  
+  };
+
+  //Getting all users
+  const getAllusers = () =>{
+    axios.get("http://localhost:4000/users")
+    .then((response)=>{
+        console.log(response.data)
+        setUsers(response.data);
+    })
+    .catch((error)=>{
+        console.log(error);
+    })
+}
+
+
+  //Filling form with data from API for update
+    useEffect(() => {
+      if (user) {
+          setFirstName(user.firstName);
+          setLastName(user.lastName);
+          setEmail(user.email);
+          setPassword(user.password);
+          setMatchPassword(user.password);
+      }
+    }, [user])
+
+    //Update or Save user
+    const submitUser = (e) =>{
+
+      e.preventDefault();
+
+      if(id){
+        updateUser();
+      } 
+      else {
+        saveUser();
+
+      }
+      
+  }
+
+
+     //Changing page title dynamically
+     const pageTitle = () =>{
+
+      if(id){
+          return <h3 className="text-center">Update User</h3>
+      } 
+      else {
+          return <h3 className="text-center">Registration</h3>
+
+      }
+      
+  }
 
     
     
   return (
     <div  align="middle" >
          <section>        
-        <form className="" onSubmit={handleSubmit}>
+        <form className="" onSubmit={submitUser}>
           <p 
           ref={errRef}
           className={errMsg?"errmsg":"offscreen"}
@@ -148,16 +251,22 @@ const handleSubmit = async (e) => {
           >
             {errMsg}
           </p>
-        <h3>Registration</h3>
+        {/* Page Title */}
+        {
+          pageTitle()
+        }
         {/* First name input */}
 
           <label>First Name 
             <span className={validFName?"valid":"hide"}>
-          <FontAwesomeIcon icon={faCheck} />
-        </span>
-        <span className={validFName || !firstName ? "hide" : "invalid"}>
-                <FontAwesomeIcon icon={faTimes} />
-        </span></label>
+              <FontAwesomeIcon icon={faCheck} 
+            />
+            </span>
+            <span className={validFName || !firstName ? "hide" : "invalid"}>
+                  <FontAwesomeIcon icon={faTimes} 
+            />
+            </span>
+          </label>
 
           <input
             autoComplete="off"
@@ -169,6 +278,8 @@ const handleSubmit = async (e) => {
             aria-describedby="firstnameid"
             onFocus={() => setUserFocus(true)}
             onBlur={() => setUserFocus(false)}
+            value={firstName}
+           
 
           />
           <p
@@ -184,15 +295,15 @@ const handleSubmit = async (e) => {
               <br />
               Only letters allowed.
             </p>
-{/* Lastname Input */}
+         {/* Lastname Input */}
           <label>Last Name 
-          <span className={validLName?"valid":"hide"}>
-          <FontAwesomeIcon icon={faCheck} />
-        </span>
-        <span className={validLName || !lastName ? "hide" : "invalid"}>
-                <FontAwesomeIcon icon={faTimes} />
-        </span>
-        </label>
+            <span className={validLName?"valid":"hide"}>
+            <FontAwesomeIcon icon={faCheck} />
+            </span>
+            <span className={validLName || !lastName ? "hide" : "invalid"}>
+                  <FontAwesomeIcon icon={faTimes} />
+            </span>
+          </label>
           <input
             autoComplete="off"
             id="lastnameid"
@@ -203,6 +314,7 @@ const handleSubmit = async (e) => {
             aria-describedby="uidnote"
             onFocus={() => setUserFocus2(true)}
             onBlur={() => setUserFocus2(false)}
+            value={lastName}
 
           />
           <p
@@ -242,6 +354,7 @@ const handleSubmit = async (e) => {
             aria-describedby="emailidnote"
             onFocus={() => setEmailFocus(true)}
             onBlur={() => setEmailFocus(false)}
+            value={email}
           />
           <p
               id="emailidnote"
@@ -271,12 +384,12 @@ const handleSubmit = async (e) => {
             name="password"
             placeholder="Password"
             onChange={(e) => setPassword(e.target.value)}
-            value={password}
             required
             aria-invalid={validPassword ? "false" : "true"}
             aria-describedby="pwdnote"
             onFocus={() => setPasswordFocus(true)}
             onBlur={() => setPasswordFocus(false)}
+            value={password}
           />
            <p
               id="pwdnote"
@@ -334,7 +447,7 @@ const handleSubmit = async (e) => {
             </p>
 
           <button className='button'
-           disabled={!validFName || !validLName || !validPassword || !validMatch ? true : false}> Register</button>
+           disabled={!validFName || !validLName || !validPassword || !validMatch ? true : false}> Submit</button>
         </form>
         <p>
             Already registered?
