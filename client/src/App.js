@@ -44,6 +44,7 @@ function App() {
             <Route path='/addticket' element={<AddTicketComponent/>}/>
             <Route path='/edit-ticket/:id' element={<AddTicketComponent/>}/>
             <Route path='/tickets-list' element={<Tickets/>}/>
+            <Route path='/test' element={<AddingMy/>}/>
 
 
             <Route path='*' element={<PageNotFound/>}/>

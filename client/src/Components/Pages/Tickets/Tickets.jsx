@@ -10,6 +10,7 @@ const Tickets = () => {
     const [tickets, setTickets] = useState([]);
     const [ticketsDateCreated, setTicketsDateCreated] = useState([]);
     const navigate = useNavigate();
+    const [searchTickets, setSearchTickets] = useState("");
 
 
     useEffect(() => {
@@ -62,9 +63,6 @@ const Tickets = () => {
         
     };
 
-    const [facilities, setFacilities] = useState([]);
-    const [loading, setLoading] = useState(true);
-    const [searchItems, setSearchItems] = useState("");
 
   return (
     <div >
@@ -79,8 +77,8 @@ const Tickets = () => {
           <label>Search</label>
           <input 
             type="text" 
-            // value={searchItems}
-            // onChange={(e)=> setSearchItems(e.target.value)}
+            value={searchTickets}
+            onChange={(e)=> setSearchTickets(e.target.value)}
           />
          
     </div>
@@ -104,7 +102,27 @@ const Tickets = () => {
 
         <tbody>
                 {
-                tickets.map (
+                tickets.filter((ticket)=>{
+                    if(searchTickets == ""){
+                        return ticket;
+                    } else if (ticket.title !== null && ticket.title.toLowerCase().includes(searchTickets.toLowerCase())) {
+                        return ticket;
+                    }else if (ticket.facility !== null && ticket.facility.toLowerCase().includes(searchTickets.toLowerCase())) {
+                        return ticket;
+                    }else if (ticket.creator !== null && ticket.creator.toLowerCase().includes(searchTickets.toLowerCase())) {
+                        return ticket;
+                    }else if (ticket.ticket_status !== null && ticket.ticket_status.toLowerCase().includes(searchTickets.toLowerCase())) {
+                        return ticket;
+                    }else if (ticket.assignee !== null && ticket.assignee.toLowerCase().includes(searchTickets.toLowerCase())) {
+                        return ticket;
+                    }else if (ticket.priority !== null && ticket.priority.toLowerCase().includes(searchTickets.toLowerCase())) {
+                        return ticket;
+                    }else if (ticket.due_date !== null && (moment(ticket.due_date).format('DD-MM-YYYY')).toString().toLowerCase().includes(searchTickets.toString().toLowerCase())) {
+                        return ticket;
+                    }else if (ticket.createdAt !== null && (moment(ticket.createdAt).format('DD-MM-YYYY')).toString().toLowerCase().includes(searchTickets.toString().toLowerCase())) {
+                        return ticket;
+                    }
+                }).map (
                     ticket => 
                         <tr key = {ticket.id}>
 
