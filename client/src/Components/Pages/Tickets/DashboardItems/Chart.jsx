@@ -8,8 +8,7 @@ import {
 
 import { Bar } from 'react-chartjs-2';
 import axios from 'axios';
-// import Chart from 'chart.js/auto';
-
+import Chart from 'chart.js/auto';
 import './Chart.css';
 
 ChartJS.register(
@@ -37,7 +36,9 @@ const [ticketsCount, setTicketsCount] = useState([]);
         setweekDays(data1.map(x => x.Day));
         setweekDate(data1.map(x => x.createdAt));
         setTicketsCount(data1.map(x => x.Tickets));
-      
+
+
+        
       })
       
     } catch (error) {
@@ -53,18 +54,17 @@ const [ticketsCount, setTicketsCount] = useState([]);
   const data = {
     labels: weekDays,
     datasets: [{
-      label: "Tickets",
+      label: `No. of Tickets`,
       data: ticketsCount,
       backgroundColor: [
-        'rgba(255, 99, 132, 0.2)',
-        'rgba(54, 162, 235, 0.2)',
-        'rgba(255, 206, 86, 0.2)',
-        'rgba(75, 192, 192, 0.2)',
-        'rgba(153, 102, 255, 0.2)',
-        'rgba(255, 159, 64, 0.2)'
+        "rgba(75,192,192,1)",
+        "#ecf0f1",
+        "#50AF95",
+        "#f3ba2f",
+        "#2a71d0",
       ],
-     
-      borderWidth: 1
+      // borderColor: "black",
+      borderWidth: 2,
     }]
   };
 
@@ -83,7 +83,7 @@ const [ticketsCount, setTicketsCount] = useState([]);
     <div className='chart'>
       <Bar
         data={data}
-        height={400}
+        height={330}
         options={options}
 
       />
