@@ -8,6 +8,7 @@ const { verifyToken } = require("./middleware/VerifyToken");
 const corsOptions = {
   origin: "http://localhost:4000",
   origin: "http://localhost:4001",
+  // origin: "http://localhost:1001",
   credentials: true, //access-control-allow-credentials:true
   optionSuccessStatus: 200,
 };

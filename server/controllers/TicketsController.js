@@ -128,7 +128,7 @@ const updateTicket = async (req, res, next)=>{
 //Count of Tickets within a week
 const getNoOfWeeklyTickets = async (req, res)=>{
     db.query(
-        " select count(*) as noOfTickets, CASE WHEN DAYOFWEEK(createdAt) = 1 THEN 'Sun' WHEN DAYOFWEEK(createdAt) = 2 THEN 'Mon' WHEN DAYOFWEEK(createdAt) = 3 THEN 'Tue' WHEN DAYOFWEEK(createdAt) = 4 THEN 'Wed' WHEN DAYOFWEEK(createdAt) = 5 THEN 'Thur'  WHEN DAYOFWEEK(createdAt) = 6 THEN 'Fri' ELSE 'Sat' END AS Day from tickets WHERE date(createdAt)!=date(now())-7 GROUP BY Day ORDER BY COUNT(*) DESC ",
+        " select DAYOFWEEK(createdAt) as weekDay, DATE_FORMAT(CURDATE(), '%d/%m/%Y') createdAt, count(*) as Tickets, CASE WHEN DAYOFWEEK(createdAt) = 1 THEN 'Sun' WHEN DAYOFWEEK(createdAt) = 2 THEN 'Mon' WHEN DAYOFWEEK(createdAt) = 3 THEN 'Tue' WHEN DAYOFWEEK(createdAt) = 4 THEN 'Wed' WHEN DAYOFWEEK(createdAt) = 5 THEN 'Thur'  WHEN DAYOFWEEK(createdAt) = 6 THEN 'Fri' ELSE 'Sat' END AS Day from tickets WHERE date(createdAt)!=date(now())-7 GROUP BY Day ORDER BY COUNT(*) DESC ",
             (err, result)=>{
                 if(err){
                     console.log(error)

@@ -1,153 +1,94 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react'
+import {
+  Chart as ChartJS,
+
+  BarElement,
+
+} from 'chart.js';
+
+import { Bar } from 'react-chartjs-2';
 import axios from 'axios';
+// import Chart from 'chart.js/auto';
+
 import './Chart.css';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+
+ChartJS.register(
+  BarElement,
+);
 
 
-const Chart = () => {
 
+const BarChart = () => {
+  const [chart, setChart] = useState({})
 
-  const week_day = [];
-  const ticket_count = [];
-
-const [weeklyTicketsCounts, setweeklyTicketsCounts] = useState([]);
+  const [weeklyTicketsCounts, setweeklyTicketsCounts] = useState([]);
 const [weekDays, setweekDays] = useState([]);
+const [weekDate, setweekDate] = useState([]);
 const [ticketsCount, setTicketsCount] = useState([]);
 
+  const countAllTickets = () =>{
+    try {
+      axios.get("http://localhost:4000/tickets/getNoOfWeeklyTickets")
+      .then((response)=>{
+        console.log(response.data);
+        setChart(response.data)
 
-useEffect(() => {
-
-  countAllTickets();
- 
-}, [])
-
-
-
-//Count of Tickets within a week
-const countAllTickets = () =>{
-  try {
-    axios.get("http://localhost:4000/tickets/getNoOfWeeklyTickets")
-    .then((response)=>{
-      console.log(response.data);
-      // setweeklyTicketsCounts(response.data);
-
-      const weeklyTicketsJson = JSON.stringify(response.data);
-      console.log(weeklyTicketsJson)
-
-      const weeklyTicketsObject = weeklyTicketsJson.substring(1, weeklyTicketsJson.length-1);
-
-      console.log(weeklyTicketsObject)
-
-     const weeklyTickets = JSON.parse(weeklyTicketsJson);
-     console.log(weeklyTickets)
-     setweeklyTicketsCounts(weeklyTickets);
-
-
-
-     const data1 = weeklyTickets
-     setweekDays(data1.map(item => item.Day));
-     setTicketsCount(data1.map(item => item.noOfTickets));
-
-     console.log(weekDays)
-     console.log(ticketsCount)
-
-  
-
-    for (const dataObj of response.data) {
-      week_day.push((dataObj.Day));
-      ticket_count.push(parseInt(dataObj.noOfTickets));
-
-      console.log(ticket_count)
+        const data1 = (response.data)
+        setweekDays(data1.map(x => x.Day));
+        setweekDate(data1.map(x => x.createdAt));
+        setTicketsCount(data1.map(x => x.Tickets));
       
-      if (week_day === "Sat") {
-        console.log(ticket_count)
-       }
-
+      })
+      
+    } catch (error) {
+      console.log(error)
     }
-  
-    console.log(week_day, ticket_count)
-
-    
-    
-      
-    })
-    
-  } catch (error) {
-    console.log(error)
   }
-}
 
+  useEffect(()=>{
+    countAllTickets();
+  }, [])
 
-const data2 = [
-  {
-    name: weekDays,
-    tickets: ticketsCount,
-  },
  
-  
-];
-// const data = [weeklyTicketsCounts]
+  const data = {
+    labels: weekDays,
+    datasets: [{
+      label: "Tickets",
+      data: ticketsCount,
+      backgroundColor: [
+        'rgba(255, 99, 132, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(255, 206, 86, 0.2)',
+        'rgba(75, 192, 192, 0.2)',
+        'rgba(153, 102, 255, 0.2)',
+        'rgba(255, 159, 64, 0.2)'
+      ],
+     
+      borderWidth: 1
+    }]
+  };
 
+  const options = {
+    maintainAspectRatio: false,
+    scales: {
+    },
+    legend: {
+      labels: {
+        fontSize: 25,
+      },
+    },
+  }
 
-
-
-
-  const data = [
-    {
-      name: 'Mon',
-      tickets: 8,
-    },
-    {
-      name: 'Tue',
-      tickets: 3,
-    },
-    {
-      name: 'Wed',
-      tickets: 6,
-    },
-    {
-      name: 'Thur',
-      tickets: 11,
-    },
-    {
-      name: 'Fri',
-      tickets: 5,
-    },
-    {
-      name: 'Sat',
-      tickets: 4,
-    },
-    {
-      name: 'Sun',
-      tickets: 2,
-    },
-    
-  ];
   return (
     <div className='chart'>
-      <div className="title">Weekly Tickets History</div>
-      <ResponsiveContainer width="100%" height="100%">
-        <LineChart
-          width={500}
-          height={300}
-          data2={data2}
-          margin={{
-            top: 5,
-            right: 30,
-            left: 20,
-            bottom: 5,
-          }}
-        >
-          {/* <CartesianGrid strokeDasharray="3 3" /> */}
-          <XAxis dataKey="name" />
-          <YAxis />
-          <Tooltip />
-          <Legend />
-          <Line type="monotone" dataKey="tickets" stroke="#8884d8" activeDot={{ r: 8 }} />
-        </LineChart>
-      </ResponsiveContainer>
+      <Bar
+        data={data}
+        height={400}
+        options={options}
+
+      />
     </div>
   )
 }
 
-export default Chart
+export default BarChart

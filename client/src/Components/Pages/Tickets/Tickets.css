@@ -1,61 +1,82 @@
 
-  .table {
+ .table {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  
+}
+
+.users-title {
     display: flex;
     justify-content: center;
     align-items: center;
-    
-    
+    margin-top: 2%;
   }
-  
-  .table h {
-    align-items: center;
-  }
-  .table_content {
-    border-collapse: collapse;
-    margin: 25px 0;
-    font-size: 18px;
-    min-width: 400px;
-    border-radius: 5px 5px 0 0;
-    overflow: hidden;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15); 
-   
-  }
-  
 
+.table h {
+  align-items: center;
+}
+.table_content {
+  border-collapse: collapse;
+  /* margin: 25px 0; */
+  margin-top: 0%;
+  font-size: 100%;
+  /* min-width: 400px; */
+  border-radius: 5px 5px 0 0;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15); 
+ 
+}
+
+.table_content thead {
+  background-color: #009879;
+  color: #ffffff;
+  text-align: left;
+  font-weight: bold;
+}
+
+.table_content th,
+.table_content td {
+  padding: 12px 15px;
+}
+
+.table_content tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+.table_content tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+
+.table_content tbody tr:last-of-type {
+  border-bottom: 2px solid #009879;
+}
+
+.table_content tbody td[data-href]{
+  cursor: pointer;
   
-  .table_content thead {
-    background-color: #009879;
-    color: #ffffff;
-    text-align: left;
-    font-weight: bold;
-  }
-  
-  .table_content th,
-  .table_content td {
-    padding: 12px 15px;
-  }
-  
-  /* .table_content tbody tr {
-    border-bottom: 1px solid #dddddd;
-  } */
-  
-  /* .table_content tbody tr:nth-of-type(even) {
-    background-color: #f3f3f3;
-  } */
-  
-  .table_content tbody tr:last-of-type {
-    border-bottom: 2px solid #009879;
-  }
-  
-  .table_content tbody td[data-href]{
-    cursor: pointer;
-    
-  }
-  
-  
-  .search_bar{
-    margin-left: 75%;
-    padding-left: 10px;
-  }
-  
-  
+}
+
+.button-info {
+  background-color: #008CBA;
+  height: 30px;
+  width: 60px;
+  border: #008CBA;
+}
+
+.button-danger {
+  background-color: red;
+  height: 30px;
+  width: 60px;
+  border: red;
+}
+.errorMessage{
+  color: red;
+}
+
+
+.search_bar{
+  margin-left: 75%;
+  padding-left: 10px;
+}
