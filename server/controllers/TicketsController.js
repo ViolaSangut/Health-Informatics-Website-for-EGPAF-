@@ -1,5 +1,6 @@
 const { Tickets } = require("../models");
 const mysql = require("mysql2");
+const sequelize = require("sequelize");
 
 //DB Configuration
 const db = mysql.createConnection({
@@ -12,7 +13,16 @@ const db = mysql.createConnection({
 
 //List
 const getTickets = async (req, res)=>{
-    const tickets = await Tickets.findAll();
+
+    const tickets = await Tickets.findAll({attributes: ["id", "title", "facility", "creator", "ticket_status", "assignee", "priority", "due_date",[
+        sequelize.fn
+        (
+          "DATE_FORMAT", 
+          sequelize.col("createdAt"), 
+          "%Y-%m-%d"
+        ),
+        "createdAt",
+      ],], });
     res.json(tickets);
 
 };

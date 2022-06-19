@@ -47,7 +47,8 @@ const AddTicketComponent = () => {
     //Add Ticket
     const saveTicket = () =>{
         axios.post("http://localhost:4000/tickets/addticket", {
-          title:title, facility:facility, creator: creator,
+            title:title, facility:facility, creator: creator, ticket_status: ticket_status, 
+            assignee: assignee, priority: priority, due_date: due_date,
         }).then((response)=>{
         console.log(response.data)
         console.log("ticket inserted!");

@@ -6,6 +6,10 @@ import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Responsi
 
 const Chart = () => {
 
+
+  const week_day = [];
+  const ticket_count = [];
+
 const [weeklyTicketsCounts, setweeklyTicketsCounts] = useState([]);
 const [weekDays, setweekDays] = useState([]);
 const [ticketsCount, setTicketsCount] = useState([]);
@@ -29,26 +33,41 @@ const countAllTickets = () =>{
 
       const weeklyTicketsJson = JSON.stringify(response.data);
       console.log(weeklyTicketsJson)
-      // setweeklyTicketsCounts(weeklyTicketsJson)
 
       const weeklyTicketsObject = weeklyTicketsJson.substring(1, weeklyTicketsJson.length-1);
 
       console.log(weeklyTicketsObject)
-      // setweeklyTicketsCounts(weeklyTicketsObject)
+
      const weeklyTickets = JSON.parse(weeklyTicketsJson);
      console.log(weeklyTickets)
      setweeklyTicketsCounts(weeklyTickets);
 
-    //  setweekDays(response.data)
-    //  console.log(response.data[1])
 
-     const data1 = (response.data)
+
+     const data1 = weeklyTickets
      setweekDays(data1.map(item => item.Day));
      setTicketsCount(data1.map(item => item.noOfTickets));
 
      console.log(weekDays)
      console.log(ticketsCount)
-    //  alert(ticketsCount)
+
+  
+
+    for (const dataObj of response.data) {
+      week_day.push((dataObj.Day));
+      ticket_count.push(parseInt(dataObj.noOfTickets));
+
+      console.log(ticket_count)
+      
+      if (week_day === "Sat") {
+        console.log(ticket_count)
+       }
+
+    }
+  
+    console.log(week_day, ticket_count)
+
+    
     
       
     })
@@ -111,7 +130,7 @@ const data2 = [
         <LineChart
           width={500}
           height={300}
-          data={data}
+          data2={data2}
           margin={{
             top: 5,
             right: 30,
