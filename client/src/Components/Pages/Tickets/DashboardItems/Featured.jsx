@@ -83,9 +83,7 @@ const Featured = () => {
         const rateOfTodaysResolvedTickets = JSON.parse(rateOfTodaysResolvedTicketsObject)
         console.log(rateOfTodaysResolvedTickets.percentageCountOfTodaysResolvedTickets);
 
-        setpercentageCountOfTodaysResolvedTickets(rateOfTodaysResolvedTickets.percentageCountOfTodaysResolvedTickets);
-
-        
+        setpercentageCountOfTodaysResolvedTickets(rateOfTodaysResolvedTickets.percentageCountOfTodaysResolvedTickets);    
       })
      
     } catch (error) {
@@ -101,7 +99,21 @@ const Featured = () => {
       <p >Percentage of today's resolved ticket(s) </p>
         
         <div className="featuredChart">
-          <CircularProgressbar value={percentageCountOfTodaysResolvedTickets} text={`${percentageCountOfTodaysResolvedTickets}%`} strokeWidth={2} />
+          { 
+          percentageCountOfTodaysResolvedTickets !== null ?  (
+          <CircularProgressbar 
+          value={percentageCountOfTodaysResolvedTickets} 
+          text={`${percentageCountOfTodaysResolvedTickets}%`} 
+          strokeWidth={2} 
+          />
+          ): (
+          <CircularProgressbar 
+          value={percentageCountOfTodaysResolvedTickets} 
+          text={`${0}%`}  
+          strokeWidth={2} 
+          />
+          )
+          }
         </div>
         <p >Total ticket(s) resolved today</p>
         <p className="amount">{todaysResolvedTicket}</p>

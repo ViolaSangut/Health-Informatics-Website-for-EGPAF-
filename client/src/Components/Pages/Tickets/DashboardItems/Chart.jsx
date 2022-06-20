@@ -36,9 +36,7 @@ const [ticketsCount, setTicketsCount] = useState([]);
         setweekDays(data1.map(x => x.Day));
         setweekDate(data1.map(x => x.createdAt));
         setTicketsCount(data1.map(x => x.Tickets));
-
-
-        
+    
       })
       
     } catch (error) {
@@ -63,7 +61,6 @@ const [ticketsCount, setTicketsCount] = useState([]);
         "#f3ba2f",
         "#2a71d0",
       ],
-      // borderColor: "black",
       borderWidth: 2,
     }]
   };

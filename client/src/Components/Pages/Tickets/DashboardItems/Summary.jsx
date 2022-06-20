@@ -128,7 +128,7 @@ const countResolvedTickets = () =>{
             <h2 className={data.valueClassName}>{data.value}</h2>
         </div>
         <div className='summary_items'>
-            <MdIcons.MdArrowDropDownCircle/>          
+            {/* <MdIcons.MdArrowDropDownCircle/>           */}
         </div>
     </div>
   )

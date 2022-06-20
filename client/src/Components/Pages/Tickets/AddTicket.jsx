@@ -140,90 +140,97 @@ const AddTicketComponent = () => {
     }
 
     return (
-        <div className="container">
+        <div align="middle">
             
-            <div className='row'>
-            <div className='card col-md-6 offset-md-3 offset-md-3'>
-
+        <section>
             {
-                <>
-                      {
-                        pageTitle()
-                      }
+        <>
+              {
+                pageTitle()
+              }
+            
+            <div className='card-body'>
+             <form>          
+                <label>Title: </label>
+                <input placeholder='title' name="title" className="form-control"
+                       value={title} 
+                        // storing form data values in the properties onChange. event.target.value retrieves / access value of whatever input it was called on.
+                        onChange={(e) =>setTitle(e.target.value)}
+                        />                
+                        <div className='form-group'>
+                        <label>Facility: </label>
+                        <input placeholder='facility' name="facility" className="form-control"
+                         value={facility} 
+                         onChange={(e) =>setFacility(e.target.value)}
+                        />
+                         </div>
+
+                        <div className='form-group'>
+                        <label>Creator: </label>
+                        <input placeholder='creator' name="creator" className="form-control"
+                         value={creator} 
+                         onChange={(e) =>setCreator(e.target.value)}
+                        />
+                         </div> 
+
+                        <div className='form-group'>
+                        <label>Asignee: </label>
+                        <input placeholder='assignee' name="assignee" className="form-control"
+                         value={assignee} 
+                         onChange={(e) =>setAssignee(e.target.value)}
+                        />
+                         </div>    
+
+                        {  id ? 
+                         (
+                          <>
+                          <div  className='form-group'>
+                          <label>Status</label>
+                          <select value={ticket_status} onChange={(e)=>{setTicket_status(e.target.value)}} >
+                              <option value="Unasigned">Unasigned</option>
+                              <option value="Pending">Pending</option>
+                              <option value="Resolved">Resolved</option>
+                          </select>
+                          </div>
+                          </>
+                        ) : (<></>)
+                        
+                        
+                        }   
+
                     
-                    <div className='card-body'>
-                     <form>
-                     <div className='form-group'>
-                                        <label>Title: </label>
-                                        <input placeholder='title' name="title" className="form-control"
-                                            value={title} 
-                                            // storing form data values in the properties onChange. event.target.value retrieves / access value of whatever input it was called on.
-                                            onChange={(e) =>setTitle(e.target.value)}
-                                        />
-                                    </div>
+ 
 
-                                    <div className='form-group'>
-                                        <label>Facility: </label>
-                                        <input placeholder='facility' name="facility" className="form-control"
-                                            value={facility} 
-                                            onChange={(e) =>setFacility(e.target.value)}
-                                        />
-                                    </div>
-
-                                    <div className='form-group'>
-                                        <label>Creator: </label>
-                                        <input placeholder='creator' name="creator" className="form-control"
-                                            value={creator} 
-                                            onChange={(e) =>setCreator(e.target.value)}
-                                        />
-                                    </div> 
-
-                                     <div className='form-group'>
-                                        <label>Asignee: </label>
-                                        <input placeholder='assignee' name="assignee" className="form-control"
-                                            value={assignee} 
-                                            onChange={(e) =>setAssignee(e.target.value)}
-                                        />
-                                    </div>    
-
-                                    <div className='form-group'>
-                                        <label>Status: </label>
-                                        <input placeholder='status' name="status" className="form-control"
-                                            value={ticket_status} 
-                                            onChange={(e) =>setTicket_status(e.target.value)}
-                                        />
-                                    </div>   
-
-                                    <div className='form-group'>
-                                        <label>Priority: </label>
-                                        <input placeholder='priority' name="priority" className="form-control"
-                                            value={priority} 
-                                            onChange={(e) =>setPriority(e.target.value)}
-                                        />
-                                    </div>   
+                     <div  className='form-group'>
+                     <label>Priority</label>
+                     <select value={priority} onChange={(e)=>{setPriority(e.target.value)}} >
+                         <option value="Low">Low</option>
+                         <option value="Medium">Medium</option>
+                         <option value="High">High</option>
+                         <option value="Urgent">Urgent</option>
+                         <option value="Critical">Critical</option>
+                     </select>
+                     </div>
 
 
-                                    <div className='form-group'>
-                                        <label>Due Date: </label>
-                                        <input type="date" name="due_date" className="form-control"
-                                                value={(moment(due_date).format('YYYY-MM-DD'))} 
-                                            onChange={(e)=>{setDue_date(e.target.value)}}
-                                            min={minDate}                                            
-                                        />                                      
-                                    </div>
-
-                                
-
-                                    <br/>                                  
-                                    <Link to="" className="btn btn-info" style={{marginLeft: "10px"}} onClick={(e) => saveorUpdateTicket(e)}>Submit</Link>
-                                    <Link to="/tickets-list" className="btn btn-danger" style={{marginLeft: "10px"}}>Cancel</Link>
-                    </form>
-                    </div>
-                </>
+                         <div className='form-group'>
+                        <label>Due Date: </label>
+                        <input type="date" name="due_date" className="form-control"
+                             value={(moment(due_date).format('YYYY-MM-DD'))} 
+                         onChange={(e)=>{setDue_date(e.target.value)}}
+                         min={minDate}                         
+                        />                           
+                         </div>
+                         <br/>                          
+                         <Link to="" className="btn btn-info" style={{width: "50%", marginLeft: "20%", marginBottom: "2%"}} onClick={(e) => saveorUpdateTicket(e)}>Submit</Link>
+                         <Link to="/tickets-list" className="btn btn-danger" style={{width: "50%", marginLeft: "20%", marginBottom: "0%"}}>Cancel</Link>
+            </form>
+            </div>
+         </>
             }
            
-            </div>
-            </div>
+        
+        </section>
         </div>
     )
 }

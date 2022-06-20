@@ -79,4 +79,6 @@
   .search_bar{
     margin-left: 75%;
     padding-left: 10px;
+    display: flex;
+    margin-right: 1%;
   }

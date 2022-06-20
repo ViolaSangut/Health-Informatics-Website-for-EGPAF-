@@ -3,10 +3,15 @@ import Summary from './DashboardItems/Summary';
 
 import Featured from './DashboardItems/Featured';
 import Chart from './DashboardItems/Chart';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const TicketsDashboard = () => {
+
+  const navigate = useNavigate();
   
+  const totalTickets = () => {
+    navigate('/tickets-list')
+  }
 
 
   return (
@@ -21,7 +26,7 @@ const TicketsDashboard = () => {
         <Summary type = "Unsigned"/>
         <Summary type = "Pending"/>
         <Summary type = "Resolved"/>
-        <Summary type = "Total"/>
+        <Summary type = "Total" onClick ={()=>{totalTickets()}}/>
       </div>
       <div className="charts">
           <Featured/>
