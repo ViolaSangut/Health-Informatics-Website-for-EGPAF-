@@ -31,16 +31,17 @@ a:visited {
 input[type="text"],
 input[type="password"],
 button,
-textarea {
+textarea, select {
   font-family: 'Nunito', sans-serif;
   font-size: 15px;
   padding: 0.25rem;
   border-radius: 0.5rem;
+  width: 100%;
 }
 
 label,
 button {
-  margin-top: 2%;
+  margin-top: 1%;
 }
 
 .button {
@@ -50,6 +51,9 @@ button {
   border-radius:0.5rem;
   background-color: teal;
   color: white;
+}
+select{
+  /* width: 80%; */
 }
 
 .instructions {

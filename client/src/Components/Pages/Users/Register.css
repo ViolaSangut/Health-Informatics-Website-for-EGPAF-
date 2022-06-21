@@ -1,4 +1,3 @@
-
 section {
   width: 30%;
   margin-top: 2%;
@@ -42,6 +41,7 @@ label,
 button {
   margin-top: 2%;
 }
+
 
 .button {
   padding: 0.5rem;
@@ -95,4 +95,4 @@ button {
 
 .line {
   display: inline-block;
-}
+} 

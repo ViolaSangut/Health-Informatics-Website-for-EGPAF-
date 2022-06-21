@@ -148,8 +148,6 @@ const Tickets = () => {
         
             </tbody>
 
-
-
         </table>
     
     </div>
