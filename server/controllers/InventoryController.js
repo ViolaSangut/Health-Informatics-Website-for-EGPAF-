@@ -14,12 +14,21 @@ const countAllItems = async (req, res) => {
 
 //Adding an item to the inventory
 const addInventory = async (req, res) => {
-  const { AssetNumber, Assetname, DateRegistered, Status } = req.body;
+  const {
+    AssetNumber,
+    AssetName,
+    DateRegistered,
+    AssetStatus,
+    facility,
+    ItemType,
+  } = req.body;
   Inventory.create({
     AssetNumber: AssetNumber,
-    Assetname: Assetname,
+    AssetName: AssetName,
     DateRegistered: DateRegistered,
-    Status: Status,
+    AssetStatus: AssetStatus,
+    facility: facility,
+    ItemType: ItemType,
   })
     .then(() => {
       res.json("Item added Succesfully!");
@@ -35,7 +44,14 @@ const addInventory = async (req, res) => {
 const updateInventory = async (req, res, next) => {
   try {
     const { id } = req.params;
-    const { AssetNumber, AssetName, DateRegistered, Status } = req.body;
+    const {
+      AssetNumber,
+      AssetName,
+      ItemType,
+      AssetStatus,
+      facility,
+      DateRegistered,
+    } = req.body;
     const findItemById = await Inventory.findOne({
       where: {
         id: id,
@@ -48,8 +64,10 @@ const updateInventory = async (req, res, next) => {
       });
     }
     if (AssetNumber) findItemById.AssetNumber = AssetNumber;
-    if (Status) findItemById.Status = Status;
+    if (AssetStatus) findItemById.AssetStatus = AssetStatus;
     if (AssetName) findItemById.AssetName = AssetName;
+    if (facility) findItemById.facility = facility;
+    if (ItemType) findItemById.ItemType = ItemType;
     if (DateRegistered) findItemById.DateRegistered;
 
     const updatedItem = await findItemById.save();

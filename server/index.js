@@ -35,6 +35,9 @@ app.use("/tickets", ticketsRouter);
 const inventoryRouter = require("./routes/InventoryRoute");
 app.use("/inventory", inventoryRouter);
 
+const simcardsRouter = require("./routes/SimcardRoute");
+app.use("/simcards", simcardsRouter);
+
 db.sequelize.sync().then(() => {
   app.listen(4000, () => {
     console.log("Server running at port 4000");

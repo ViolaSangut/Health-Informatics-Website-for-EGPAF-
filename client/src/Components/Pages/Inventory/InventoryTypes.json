@@ -1,0 +1,31 @@
+ { "InventoryType": [
+      {
+      "no": 1,
+      "name": "Tablet"
+      
+    },
+    {
+      "no": 2,
+      "name": "Facility Phone"
+      
+      
+    },
+    {
+      "no": 3,
+      "name": "Monitor"
+      
+    },
+    {
+      "no": 4,
+      "name": "CPU"
+    },
+     {
+      "no": 5,
+      "name": "Router"
+    },
+     {
+      "no": 6,
+      "name": "Signal Booster"
+    }
+]
+}
