@@ -60,9 +60,6 @@ useEffect(() => {
     getAllusers();
   }, []);
 
-useEffect(() => {
-    // lnameRef.current.focus();
-  }, []);
 
 //checking the firstname and lastname
 useEffect(() => { 

@@ -1,0 +1,1160 @@
+
+   { "Facilitynames": [
+      {
+      "no": 1,
+      "mfl": 13463,
+      "facility": "Adiedo Dispensary",
+      "sub_county": "Rachuonyo North",
+      "url": "http://192.168.1.15:8080/openmrs"
+    },
+    {
+      "no": 2,
+      "mfl": 13466,
+      "facility": "Agawo Health Centre",
+      "sub_county": "Kasipul",
+      "url": "http://192.168.1.82:8080/openmrs"
+    },
+    {
+      "no": 3,
+      "mfl": 13472,
+      "facility": "Alum Beach Dispensary",
+      "sub_county": "Rachuonyo North",
+      "url": "http://192.168.1.78:8080/openmrs"
+    },
+    {
+      "no": 4,
+      "mfl": 16768,
+      "facility": "Amoyo Dispensary",
+      "sub_county": "Ndhiwa",
+      "url": "http://192.168.1.25:8080/openmrs"
+    },
+    {
+      "no": 5,
+      "mfl": 13479,
+      "facility": "Ang’iya Dispensary",
+      "sub_county": "Mbita",
+      "url": "http://192.168.1.174:8080/openmrs"
+    },
+    {
+      "no": 6,
+      "mfl": 18610,
+      "facility": "Atela Health Centre",
+      "sub_county": "Kabondo Kasipul",
+      "url": "http://192.168.1.118:8080/openmrs"
+    },
+    {
+      "no": 7,
+      "mfl": 13489,
+      "facility": "Atemo Health Centre",
+      "sub_county": "Kabondo Kasipul",
+      "url": "http://192.168.1.111:8080/openmrs"
+    },
+    {
+      "no": 8,
+      "mfl": 13509,
+      "facility": "Bora Bora Clinic",
+      "sub_county": "Ndhiwa",
+      "url": "http://192.168.1.81:8080/openmrs"
+    },
+    {
+      "no": 9,
+      "mfl": 13529,
+      "facility": "Chuowe Dispensary",
+      "sub_county": "Rachuonyo North",
+      "url": "http://192.168.1.64:8080/openmrs"
+    },
+    {
+      "no": 10,
+      "mfl": 13530,
+      "facility": "Chuthber Dispensary",
+      "sub_county": "Rachuonyo North",
+      "url": "http://192.168.1.68:8080/openmrs"
+    },
+    {
+      "no": 11,
+      "mfl": 0,
+      "facility": "EGPAF Sync Server",
+      "sub_county": "",
+      "url": "http://192.168.1.179:8080/openmrs"
+    },
+    {
+      "no": 12,
+      "mfl": 13584,
+      "facility": "GodBer Health Center",
+      "sub_county": "Suba",
+      "url": "http://192.168.1.62:8080/openmrs"
+    },
+    {
+      "no": 13,
+      "mfl": 13585,
+      "facility": "Godbura Health Centre",
+      "sub_county": "Suba",
+      "url": "http://192.168.1.119:8080/openmrs"
+    },
+    {
+      "no": 14,
+      "mfl": 13587,
+      "facility": "Gongo Dispensary",
+      "sub_county": "Rangwe",
+      "url": "http://192.168.1.21:8080/openmrs"
+    },
+    {
+      "no": 15,
+      "mfl": 18874,
+      "facility": "Got Kamondi Dispensary",
+      "sub_county": "Kasipul",
+      "url": "http://192.168.1.105:8080/openmrs"
+    },
+    {
+      "no": 16,
+      "mfl": 13589,
+      "facility": "Got Kojowi Health Centre",
+      "sub_county": "Ndhiwa",
+      "url": "http://192.168.1.120:8080/openmrs/login.htm"
+    },
+    {
+      "no": 17,
+      "mfl": 13592,
+      "facility": "Got Oyaro Dispensary",
+      "sub_county": "Rachuonyo North",
+      "url": "http://192.168.1.39:8080/openmrs"
+    },
+    {
+      "no": 18,
+      "mfl": 13607,
+      "facility": "Homa Lime Health Centre",
+      "sub_county": "Rachuonyo North",
+      "url": "http://192.168.1.45:8080/openmrs"
+    },
+    {
+      "no": 19,
+      "mfl": 16983,
+      "facility": "Hope Compassionate (ACK) Dispensary",
+      "sub_county": "Homa Bay Township",
+      "url": "http://192.168.1.121:8080/openmrs"
+    },
+    {
+      "no": 20,
+      "mfl": 17585,
+      "facility": "Integrated Development Fund (Idf) VCT",
+      "sub_county": "Kasipul",
+      "url": "http://192.168.1.103:8080/openmrs"
+    },
+    {
+      "no": 21,
+      "mfl": 13633,
+      "facility": "Jawabu (Community) Medical Clinic",
+      "sub_county": "Kabondo Kasipul",
+      "url": "http://192.168.1.95:8080/openmrs"
+    },
+    {
+      "no": 22,
+      "mfl": 13636,
+      "facility": "Jophas Clinic",
+      "sub_county": "Rangwe",
+      "url": "http://192.168.1.116:8080/openmrs"
+    },
+    {
+      "no": 23,
+      "mfl": 13638,
+      "facility": "Kabondo Sub County Hospital",
+      "sub_county": "Kabondo Kasipul",
+      "url": "http://192.168.1.122:8080/openmrs/login.htm"
+    },
+    {
+      "no": 24,
+      "mfl": 18876,
+      "facility": "Kachuth Dispensary",
+      "sub_county": "Ndhiwa",
+      "url": "http://192.168.1.49:8080/openmrs"
+    },
+    {
+      "no": 25,
+      "mfl": 16769,
+      "facility": "Kadhola Dispensary",
+      "sub_county": "Ndhiwa",
+      "url": "http://192.168.1.58:8080/openmrs"
+    },
+    {
+      "no": 26,
+      "mfl": 13643,
+      "facility": "Kager Dispensary",
+      "sub_county": "Rangwe",
+      "url": "http://192.168.1.72:8080/openmrs"
+    },
+    {
+      "no": 27,
+      "mfl": 13646,
+      "facility": "Kajieyi Dispensary",
+      "sub_county": "Rachuonyo North",
+      "url": "http://192.168.1.60:8080/openmrs"
+    },
+    {
+      "no": 28,
+      "mfl": 13653,
+      "facility": "Kandiege SCH",
+      "sub_county": "Rachuonyo North",
+      "url": "http://192.168.1.27:8080/openmrs"
+    },
+    {
+      "no": 29,
+      "mfl": 20169,
+      "facility": "Kangir Dispensary",
+      "sub_county": "Rachuonyo North",
+      "url": "http://192.168.1.87:8080/openmrs"
+    },
+    {
+      "no": 30,
+      "mfl": 20153,
+      "facility": "Kasewe Dispensary",
+      "sub_county": "Kabondo Kasipul",
+      "url": "http://192.168.1.109:8080/openmrs"
+    },
+    {
+      "no": 31,
+      "mfl": 13658,
+      "facility": "Kauma Health Centre",
+      "sub_county": "Kabondo Kasipul",
+      "url": "http://192.168.1.22:8080/openmrs"
+    },
+    {
+      "no": 32,
+      "mfl": 13668,
+      "facility": "Kendu Sub District Hospital",
+      "sub_county": "Rachuonyo North",
+      "url": "http://192.168.1.173:8080/openmrs/login.htm"
+    },
+    {
+      "no": 33,
+      "mfl": 13686,
+      "facility": "Kiasa Dispensary",
+      "sub_county": "Ndhiwa",
+      "url": "http://192.168.1.124:8080/openmrs"
+    },
+    {
+      "no": 34,
+      "mfl": 18077,
+      "facility": "Kiembe Dispensary",
+      "sub_county": "Suba",
+      "url": "http://192.168.1.104:8080/openmrs"
+    },
+    {
+      "no": 35,
+      "mfl": 13691,
+      "facility": "Kigwa Dispensary",
+      "sub_county": "Suba",
+      "url": "http://192.168.1.23:8080/openmrs"
+    },
+    {
+      "no": 36,
+      "mfl": 16765,
+      "facility": "Kijawa Dispensary",
+      "sub_county": "Homa Bay Township",
+      "url": "http://192.168.1.125:8080/openmrs"
+    },
+    {
+      "no": 37,
+      "mfl": 13693,
+      "facility": "Kimonge Health Centre",
+      "sub_county": "Kabondo Kasipul",
+      "url": "http://192.168.1.71:8080/openmrs"
+    },
+    {
+      "no": 38,
+      "mfl": 13700,
+      "facility": "Kisaku Dispensary",
+      "sub_county": "Suba",
+      "url": "http://192.168.1.70:8080/openmrs"
+    },
+    {
+      "no": 39,
+      "mfl": 13701,
+      "facility": "Kisegi SDH",
+      "sub_county": "Suba",
+      "url": "http://192.168.1.28:8080/openmrs"
+    },
+    {
+      "no": 40,
+      "mfl": 13705,
+      "facility": "Kitare Health Centre",
+      "sub_county": "Mbita",
+      "url": "http://192.168.1.126:8080/openmrs/login.htm"
+    },
+    {
+      "no": 41,
+      "mfl": 13707,
+      "facility": "Kiwa Island Dispensary",
+      "sub_county": "Suba",
+      "url": "http://192.168.1.83:8080/openmrs"
+    },
+    {
+      "no": 42,
+      "mfl": 20241,
+      "facility": "Kobodo Dispensary",
+      "sub_county": "Ndhiwa",
+      "url": "http://192.168.1.52:8080/openmrs"
+    },
+    {
+      "no": 43,
+      "mfl": 13708,
+      "facility": "Kobuya Dispensary",
+      "sub_county": "Rachuonyo North",
+      "url": "http://192.168.1.48:8080/openmrs"
+    },
+    {
+      "no": 44,
+      "mfl": 19861,
+      "facility": "Koduogo Dispensary",
+      "sub_county": "Homa Bay Township",
+      "url": "http://192.168.1.127:8080/openmrs"
+    },
+    {
+      "no": 45,
+      "mfl": 13711,
+      "facility": "Kogweno Oriang' Dispensary",
+      "sub_county": "Rachuonyo North",
+      "url": "http://192.168.1.84:8080/openmrs"
+    },
+    {
+      "no": 46,
+      "mfl": 13712,
+      "facility": "Kokwanyo Health Centre",
+      "sub_county": "Kabondo Kasipul",
+      "url": "http://192.168.1.128:8080/openmrs"
+    },
+    {
+      "no": 47,
+      "mfl": 13642,
+      "facility": "Kolunga Dispensary",
+      "sub_county": "Mbita",
+      "url": "http://192.168.1.26:8080/openmrs"
+    },
+    {
+      "no": 48,
+      "mfl": 20347,
+      "facility": "Kome Dispensary",
+      "sub_county": "Ndhiwa",
+      "url": "http://192.168.1.96:8080/openmrs"
+    },
+    {
+      "no": 49,
+      "mfl": 13721,
+      "facility": "Kosele Dispensary",
+      "sub_county": "Rachuonyo North",
+      "url": "http://192.168.1.86:8080/openmrs"
+    },
+    {
+      "no": 50,
+      "mfl": 18531,
+      "facility": "Koywech Dispensary",
+      "sub_county": "Kabondo Kasipul",
+      "url": "http://192.168.1.74:8080/openmrs"
+    },
+    {
+      "no": 51,
+      "mfl": 13728,
+      "facility": "Kwamo Dispensary",
+      "sub_county": "Ndhiwa",
+      "url": "http://192.168.1.24:8080/openmrs"
+    },
+    {
+      "no": 52,
+      "mfl": 13731,
+      "facility": "Lambwe Dispensary",
+      "sub_county": "Mbita",
+      "url": "http://192.168.1.40:8080/openmrs"
+    },
+    {
+      "no": 53,
+      "mfl": 13732,
+      "facility": "Lambwe Forest Dispensary",
+      "sub_county": "Ndhiwa",
+      "url": "http://192.168.1.92:8080/openmrs"
+    },
+    {
+      "no": 54,
+      "mfl": 25260,
+      "facility": "Langi Kodera Disp",
+      "sub_county": "Ndhiwa",
+      "url": "http://192.168.1.129:8080/openmrs/"
+    },
+    {
+      "no": 55,
+      "mfl": 13733,
+      "facility": "Lela (Community) Dispensary",
+      "sub_county": "Rachuonyo North",
+      "url": "http://192.168.1.42:8080/openmrs"
+    },
+    {
+      "no": 56,
+      "mfl": 22476,
+      "facility": "Litare community health centre",
+      "sub_county": "Mbita",
+      "url": "http://192.168.1.130:8080/openmrs/login.htm"
+    },
+    {
+      "no": 57,
+      "mfl": 16770,
+      "facility": "Lwanda Awiti Dispensary",
+      "sub_county": "Ndhiwa",
+      "url": "http://192.168.1.59:8080/openmrs"
+    },
+    {
+      "no": 58,
+      "mfl": 13742,
+      "facility": "Lwanda Gwassi Dispendary",
+      "sub_county": "Suba",
+      "url": "http://192.168.1.131:8080/openmrs"
+    },
+    {
+      "no": 59,
+      "mfl": 20285,
+      "facility": "Lwanda Kobita Dispensary",
+      "sub_county": "Ndhiwa",
+      "url": "http://192.168.1.55:8080/openmrs"
+    },
+    {
+      "no": 60,
+      "mfl": 13751,
+      "facility": "Magina Health Centre",
+      "sub_county": "Ndhiwa",
+      "url": "http://192.168.1.132:8080/openmrs"
+    },
+    {
+      "no": 61,
+      "mfl": 13753,
+      "facility": "Magunga Health Centre",
+      "sub_county": "Suba",
+      "url": "http://192.168.1.133:8080/openmrs/login.htm"
+    },
+    {
+      "no": 62,
+      "mfl": 19858,
+      "facility": "Makongeni Health Centre",
+      "sub_county": "Homa Bay Township",
+      "url": "http://192.168.1.134:8080/openmrs"
+    },
+    {
+      "no": 63,
+      "mfl": 13761,
+      "facility": "Malela Dispensary",
+      "sub_county": "Ndhiwa",
+      "url": "http://192.168.1.29:8080/openmrs"
+    },
+    {
+      "no": 64,
+      "mfl": 20379,
+      "facility": "Malongo Dispensary",
+      "sub_county": "Suba",
+      "url": "http://192.168.1.99:8080/openmrs"
+    },
+    {
+      "no": 65,
+      "mfl": 13768,
+      "facility": "Mangima SDA Health Centre",
+      "sub_county": "Kasipul",
+      "url": "http://192.168.1.178:8080/openmrs"
+    },
+    {
+      "no": 66,
+      "mfl": 16258,
+      "facility": "Maram Dispensary",
+      "sub_county": "Ndhiwa",
+      "url": "http://192.168.1.36:8080/openmrs"
+    },
+    {
+      "no": 67,
+      "mfl": 13777,
+      "facility": "Marindi Sub County Referral Hospital",
+      "sub_county": "Homa Bay Township",
+      "url": "http://192.168.1.135:8080/openmrs/login.htm"
+    },
+    {
+      "no": 68,
+      "mfl": 13784,
+      "facility": "Masogo Dispensary",
+      "sub_county": "Kabondo Kasipul",
+      "url": "http://192.168.1.85:8080/openmrs"
+    },
+    {
+      "no": 69,
+      "mfl": 13789,
+      "facility": "Matata Nursing Hospital",
+      "sub_county": "Kasipul",
+      "url": "http://192.168.1.136:8080/openmrs/login.htm"
+    },
+    {
+      "no": 70,
+      "mfl": 13798,
+      "facility": "Mbita DH",
+      "sub_county": "Mbita",
+      "url": "http://192.168.1.137:8080/openmrs"
+    },
+    {
+      "no": 71,
+      "mfl": 16766,
+      "facility": "Miniambo Dispensary",
+      "sub_county": "Homa Bay Township",
+      "url": "http://192.168.1.138:8080/openmrs/login.htm"
+    },
+    {
+      "no": 72,
+      "mfl": 13812,
+      "facility": "Miriu Health Centre",
+      "sub_county": "Rachuonyo North",
+      "url": "http://192.168.1.139:8080/openmrs/login.htm"
+    },
+    {
+      "no": 73,
+      "mfl": 13828,
+      "facility": "Msare Health Centre",
+      "sub_county": "Suba",
+      "url": "http://192.168.1.54:8080/openmrs"
+    },
+    {
+      "no": 74,
+      "mfl": 20173,
+      "facility": "Ndere Dispensary",
+      "sub_county": "Rachuonyo North",
+      "url": "http://192.168.1.88:8080/openmrs"
+    },
+    {
+      "no": 75,
+      "mfl": 13841,
+      "facility": "Ndhiwa DH",
+      "sub_county": "Ndhiwa",
+      "url": "http://192.168.1.140:8080/openmrs"
+    },
+    {
+      "no": 76,
+      "mfl": 13842,
+      "facility": "Ndhuru Dispensary",
+      "sub_county": "Mbita",
+      "url": "http://192.168.1.35:8080/openmrs"
+    },
+    {
+      "no": 77,
+      "mfl": 13843,
+      "facility": "Ndiru Health Centre",
+      "sub_county": "Rangwe",
+      "url": "http://192.168.1.141:8080/openmrs/login.htm"
+    },
+    {
+      "no": 78,
+      "mfl": 16771,
+      "facility": "Ndisi Dispensary",
+      "sub_county": "Ndhiwa",
+      "url": "http://192.168.1.61:8080/openmrs"
+    },
+    {
+      "no": 79,
+      "mfl": 19868,
+      "facility": "Nduga Dispensary",
+      "sub_county": "Rangwe",
+      "url": "http://192.168.1.63:8080/openmrs"
+    },
+    {
+      "no": 80,
+      "mfl": 13849,
+      "facility": "Ngegu Dispensary",
+      "sub_county": "Rangwe",
+      "url": "http://192.168.1.142:8080/openmrs/login.htm"
+    },
+    {
+      "no": 81,
+      "mfl": 17711,
+      "facility": "Ngeri Dispensary",
+      "sub_county": "Suba",
+      "url": "http://192.168.1.143:8080/openmrs"
+    },
+    {
+      "no": 82,
+      "mfl": 20168,
+      "facility": "Ngeta Dispensary",
+      "sub_county": "Rachuonyo North",
+      "url": "http://192.168.1.93:8080/openmrs"
+    },
+    {
+      "no": 83,
+      "mfl": 13854,
+      "facility": "Ngodhe Island Dispensary",
+      "sub_county": "Mbita",
+      "url": "http://192.168.1.113:8080/openmrs"
+    },
+    {
+      "no": 84,
+      "mfl": 13855,
+      "facility": "Nguku Dispensary",
+      "sub_county": "Ndhiwa",
+      "url": "http://192.168.1.38:8080/openmrs"
+    },
+    {
+      "no": 85,
+      "mfl": 13863,
+      "facility": "Nyabola Dispensary",
+      "sub_county": "Kasipul",
+      "url": "http://192.168.1.144:8080/openmrs"
+    },
+    {
+      "no": 86,
+      "mfl": 13870,
+      "facility": "Nyadenda Health Centre",
+      "sub_county": "Suba",
+      "url": "http://192.168.1.66:8080/openmrs"
+    },
+    {
+      "no": 87,
+      "mfl": 13875,
+      "facility": "Nyagoro Health Center",
+      "sub_county": "Rangwe",
+      "url": "http://192.168.1.30:8080/openmrs"
+    },
+    {
+      "no": 88,
+      "mfl": 18420,
+      "facility": "Nyakweri Dispensary",
+      "sub_county": "Mbita",
+      "url": "http://192.168.1.100:8080/openmrs"
+    },
+    {
+      "no": 89,
+      "mfl": 13889,
+      "facility": "Nyalgosi Dispensary",
+      "sub_county": "Kasipul",
+      "url": "http://192.168.1.69:8080/openmrs"
+    },
+    {
+      "no": 90,
+      "mfl": 16986,
+      "facility": "Nyalkinyi (Jersey) Dispensary",
+      "sub_county": "Homa Bay Township",
+      "url": "http://192.168.1.145:8080/openmrs/login.htm"
+    },
+    {
+      "no": 91,
+      "mfl": 13902,
+      "facility": "Nyamasi Dispensary",
+      "sub_county": "Homa Bay Township",
+      "url": "http://192.168.1.12:8080/openmrs"
+    },
+    {
+      "no": 92,
+      "mfl": 19867,
+      "facility": "Nyambare Dispensary",
+      "sub_county": "Rangwe",
+      "url": "http://192.168.1.97:8080/openmrs"
+    },
+    {
+      "no": 93,
+      "mfl": 13915,
+      "facility": "Nyamrisra Health Centre",
+      "sub_county": "Suba",
+      "url": "http://192.168.1.47:8080/openmrs"
+    },
+    {
+      "no": 94,
+      "mfl": 13920,
+      "facility": "Nyandiwa Dispensary",
+      "sub_county": "Suba",
+      "url": "http://192.168.1.146:8080/openmrs/login.htm"
+    },
+    {
+      "no": 95,
+      "mfl": 20172,
+      "facility": "Nyangajo Dispensary",
+      "sub_county": "Rachuonyo North",
+      "url": "http://192.168.1.112:8080/openmrs"
+    },
+    {
+      "no": 96,
+      "mfl": 13926,
+      "facility": "Nyangiela Sub District Hospital",
+      "sub_county": "Kasipul",
+      "url": "http://192.168.1.147:8080/openmrs/login.htm"
+    },
+    {
+      "no": 97,
+      "mfl": 16876,
+      "facility": "Nyaoga Dispensary",
+      "sub_county": "Rachuonyo North",
+      "url": "http://192.168.1.19:8080/openmrs"
+    },
+    {
+      "no": 98,
+      "mfl": 19860,
+      "facility": "Nyarut Health Centre",
+      "sub_county": "Rangwe",
+      "url": "http://192.168.1.51:8080/openmrs"
+    },
+    {
+      "no": 99,
+      "mfl": 13946,
+      "facility": "Nyatoto Health Centre",
+      "sub_county": "Suba",
+      "url": "http://192.168.1.148:8080/openmrs"
+    },
+    {
+      "no": 100,
+      "mfl": 18051,
+      "facility": "Nyawango Dispensary",
+      "sub_county": "Kabondo Kasipul",
+      "url": "http://192.168.1.98:8080/openmrs"
+    },
+    {
+      "no": 101,
+      "mfl": 19863,
+      "facility": "Nyawawa Dispensary",
+      "sub_county": "Rangwe",
+      "url": "http://192.168.1.107:8080/openmrs"
+    },
+    {
+      "no": 102,
+      "mfl": 19864,
+      "facility": "Nyawita Dispensary",
+      "sub_county": "Rangwe",
+      "url": "http://192.168.1.73:8080/openmrs"
+    },
+    {
+      "no": 103,
+      "mfl": 13949,
+      "facility": "NYS Dispensary (Suba)",
+      "sub_county": "Suba",
+      "url": "http://192.168.1.106:8080/openmrs"
+    },
+    {
+      "no": 104,
+      "mfl": 13950,
+      "facility": "Obalwanda Dispensary",
+      "sub_county": "Mbita",
+      "url": "http://192.168.1.41:8080/openmrs"
+    },
+    {
+      "no": 105,
+      "mfl": 13951,
+      "facility": "Obanga Health Centre",
+      "sub_county": "Suba",
+      "url": "http://192.168.1.149:8080/openmrs/login.htm"
+    },
+    {
+      "no": 106,
+      "mfl": 13953,
+      "facility": "Ober Health Center",
+      "sub_county": "Kabondo Kasipul",
+      "url": "http://192.168.1.150:8080/openmrs/login.htm"
+    },
+    {
+      "no": 107,
+      "mfl": 13952,
+      "facility": "Ober Kabuoch Dispensary",
+      "sub_county": "Ndhiwa",
+      "url": "http://192.168.1.117:8080/openmrs/login.htm"
+    },
+    {
+      "no": 108,
+      "mfl": 13957,
+      "facility": "Obunga Dispensary",
+      "sub_county": "Rangwe",
+      "url": "http://192.168.1.151:8080/openmrs"
+    },
+    {
+      "no": 109,
+      "mfl": 19866,
+      "facility": "Obuya Dispensary",
+      "sub_county": "Rangwe",
+      "url": "http://192.168.1.46:8080/openmrs"
+    },
+    {
+      "no": 110,
+      "mfl": 13958,
+      "facility": "Obwanda Dispensary",
+      "sub_county": "Rangwe",
+      "url": "http://192.168.1.152:8080/openmrs"
+    },
+    {
+      "no": 111,
+      "mfl": 13962,
+      "facility": "Ogande Dispensary",
+      "sub_county": "Homa Bay Township",
+      "url": "http://192.168.1.153:8080/openmrs/login.htm"
+    },
+    {
+      "no": 112,
+      "mfl": 13967,
+      "facility": "Ogongo Sub County Hospital",
+      "sub_county": "Mbita",
+      "url": "http://192.168.1.154:8080/openmrs"
+    },
+    {
+      "no": 113,
+      "mfl": 13972,
+      "facility": "Okiki Amayo Health Centre",
+      "sub_county": "Rachuonyo North",
+      "url": "http://192.168.1.155:8080/openmrs"
+    },
+    {
+      "no": 114,
+      "mfl": 16259,
+      "facility": "Okok Dispensary",
+      "sub_county": "Ndhiwa",
+      "url": "http://192.168.1.156:8080/openmrs"
+    },
+    {
+      "no": 115,
+      "mfl": 13974,
+      "facility": "Olando Dispensary",
+      "sub_county": "Rachuonyo North",
+      "url": "http://192.168.1.56:8080/openmrs"
+    },
+    {
+      "no": 116,
+      "mfl": 13978,
+      "facility": "Ombek Health Centre",
+      "sub_county": "Kasipul",
+      "url": "http://192.168.1.157:8080/openmrs"
+    },
+    {
+      "no": 117,
+      "mfl": 13979,
+      "facility": "Ombo Kachieng' Dispensary",
+      "sub_county": "Ndhiwa",
+      "url": "http://192.168.1.158:8080/openmrs"
+    },
+    {
+      "no": 118,
+      "mfl": 13980,
+      "facility": "Omboga Dispensary",
+      "sub_county": "Rachuonyo North",
+      "url": "http://192.168.1.159:8080/openmrs"
+    },
+    {
+      "no": 119,
+      "mfl": 13981,
+      "facility": "Omiro Dispensary",
+      "sub_county": "Kabondo Kasipul",
+      "url": "http://192.168.1.57:8080/openmrs"
+    },
+    {
+      "no": 120,
+      "mfl": 16985,
+      "facility": "Oneno Dispensary",
+      "sub_county": "Rangwe",
+      "url": "http://192.168.1.14:8080/openmrs"
+    },
+    {
+      "no": 121,
+      "mfl": 18892,
+      "facility": "Ongamo Dispensary",
+      "sub_county": "Kasipul",
+      "url": "http://192.168.1.177:8080/openmrs"
+    },
+    {
+      "no": 122,
+      "mfl": 16284,
+      "facility": "Oriang (SDA) Health Centre",
+      "sub_county": "Rachuonyo North",
+      "url": "http://192.168.1.77:8080/openmrs"
+    },
+    {
+      "no": 123,
+      "mfl": 16767,
+      "facility": "Oridi Dispensary",
+      "sub_county": "Ndhiwa",
+      "url": "http://192.168.1.44:8080/openmrs"
+    },
+    {
+      "no": 124,
+      "mfl": 18877,
+      "facility": "Otange Dispensary",
+      "sub_county": "Ndhiwa",
+      "url": "http://192.168.1.20:8080/openmrs"
+    },
+    {
+      "no": 125,
+      "mfl": 14002,
+      "facility": "Othoro Sub District Hospital",
+      "sub_county": "Kabondo Kasipul",
+      "url": "http://192.168.1.160:8080/openmrs/login.htm"
+    },
+    {
+      "no": 126,
+      "mfl": 17852,
+      "facility": "Oyuma Dispensary (Rachuonyo)",
+      "sub_county": "Rachuonyo North",
+      "url": "http://192.168.1.108:8080/openmrs"
+    },
+    {
+      "no": 127,
+      "mfl": 14011,
+      "facility": "Pala Level4",
+      "sub_county": "Ndhiwa",
+      "url": "http://192.168.1.31:8080/openmrs"
+    },
+    {
+      "no": 128,
+      "mfl": 19859,
+      "facility": "Pala Masogo Health Center",
+      "sub_county": "Homa Bay Township",
+      "url": "http://192.168.1.34:8080/openmrs"
+    },
+    {
+      "no": 129,
+      "mfl": 14015,
+      "facility": "Ponge Dispensary - Ndhiwa",
+      "sub_county": "Ndhiwa",
+      "url": "http://192.168.1.10:8080/openmrs"
+    },
+    {
+      "no": 130,
+      "mfl": 14016,
+      "facility": "Ponge Dispensary (Mbita)",
+      "sub_county": "Mbita",
+      "url": "http://192.168.1.65:8080/openmrs"
+    },
+    {
+      "no": 131,
+      "mfl": 14022,
+      "facility": "Rachuonyo sub-county Hospital",
+      "sub_county": "Kasipul",
+      "url": "http://192.168.1.115:8080/openmrs"
+    },
+    {
+      "no": 132,
+      "mfl": 18530,
+      "facility": "Ragwe Dispensary",
+      "sub_county": "Kasipul",
+      "url": "http://192.168.1.176:8080/openmrs"
+    },
+    {
+      "no": 133,
+      "mfl": 14031,
+      "facility": "Randung Dispensary",
+      "sub_county": "Rangwe",
+      "url": "http://192.168.1.18:8080/openmrs"
+    },
+    {
+      "no": 134,
+      "mfl": 14036,
+      "facility": "Rangwe Sub-District Hospital",
+      "sub_county": "Rangwe",
+      "url": "http://192.168.1.161:8080/openmrs/login.htm"
+    },
+    {
+      "no": 135,
+      "mfl": 14038,
+      "facility": "Rariw Dispensary",
+      "sub_county": "Rangwe",
+      "url": "http://192.168.1.13:8080/openmrs"
+    },
+    {
+      "no": 136,
+      "mfl": 14039,
+      "facility": "Raruowa Health Centre",
+      "sub_county": "Rachuonyo North",
+      "url": "http://192.168.1.162:8080/openmrs/login.htm"
+    },
+    {
+      "no": 137,
+      "mfl": 17593,
+      "facility": "Remba Dispensary",
+      "sub_county": "Mbita",
+      "url": "http://192.168.1.163:8080/openmrs"
+    },
+    {
+      "no": 138,
+      "mfl": 17710,
+      "facility": "Ringiti Dispensary",
+      "sub_county": "Mbita",
+      "url": "http://192.168.1.67:8080/openmrs"
+    },
+    {
+      "no": 139,
+      "mfl": 14056,
+      "facility": "Roadblock Clinic",
+      "sub_county": "Ndhiwa",
+      "url": "http://192.168.1.79:8080/openmrs"
+    },
+    {
+      "no": 140,
+      "mfl": 17594,
+      "facility": "Rusinga Island of Hope Humanist Health Centre",
+      "sub_county": "Mbita",
+      "url": "http://192.168.1.164:8080/openmrs"
+    },
+    {
+      "no": 141,
+      "mfl": 14074,
+      "facility": "Seka Health Centre",
+      "sub_county": "Suba",
+      "url": "http://192.168.1.43:8080/openmrs"
+    },
+    {
+      "no": 142,
+      "mfl": 14075,
+      "facility": "Sena Health Centre",
+      "sub_county": "Mbita",
+      "url": "http://192.168.1.165:8080/openmrs"
+    },
+    {
+      "no": 143,
+      "mfl": 14089,
+      "facility": "Simbi Kogembo Dispensary",
+      "sub_county": "Rachuonyo North",
+      "url": "http://192.168.1.11:8080/openmrs"
+    },
+    {
+      "no": 144,
+      "mfl": 14090,
+      "facility": "Simbiri Nanbell Health Centre",
+      "sub_county": "Kasipul",
+      "url": "http://192.168.1.102:8080/openmrs"
+    },
+    {
+      "no": 145,
+      "mfl": 14092,
+      "facility": "Sino Health Centre",
+      "sub_county": "Kasipul",
+      "url": "http://192.168.1.75:8080/openmrs"
+    },
+    {
+      "no": 146,
+      "mfl": 14095,
+      "facility": "Soklo Dispensary",
+      "sub_county": "Mbita",
+      "url": "http://192.168.1.101:8080/openmrs"
+    },
+    {
+      "no": 147,
+      "mfl": 14130,
+      "facility": "Suba District Hospital",
+      "sub_county": "Suba",
+      "url": "http://192.168.1.166:8080/openmrs/login.htm"
+    },
+    {
+      "no": 148,
+      "mfl": 14138,
+      "facility": "Swindon Clinic",
+      "sub_county": "Kasipul",
+      "url": "http://192.168.1.76:8080/openmrs"
+    },
+    {
+      "no": 149,
+      "mfl": 14140,
+      "facility": "Takawiri Dispensary",
+      "sub_county": "Mbita",
+      "url": "http://192.168.1.94:8080/openmrs"
+    },
+    {
+      "no": 150,
+      "mfl": 17170,
+      "facility": "Tala Health Centre",
+      "sub_county": "Kabondo Kasipul",
+      "url": "http://192.168.1.50:8080/openmrs"
+    },
+    {
+      "no": 151,
+      "mfl": 14150,
+      "facility": "Tom Mboya Memorial SCH",
+      "sub_county": "Mbita",
+      "url": "http://192.168.1.32:8080/openmrs"
+    },
+    {
+      "no": 152,
+      "mfl": 14152,
+      "facility": "Tonga Health Centre",
+      "sub_county": "Suba",
+      "url": "http://192.168.1.89:8080/openmrs"
+    },
+    {
+      "no": 153,
+      "mfl": 14155,
+      "facility": "Ugina Health Centre",
+      "sub_county": "Mbita",
+      "url": "http://192.168.1.167:8080/openmrs"
+    },
+    {
+      "no": 154,
+      "mfl": 20242,
+      "facility": "Unga Dispensary",
+      "sub_county": "Ndhiwa",
+      "url": "http://192.168.1.16:8080/openmrs"
+    },
+    {
+      "no": 155,
+      "mfl": 14162,
+      "facility": "Usao Health Centre",
+      "sub_county": "Mbita",
+      "url": "http://192.168.1.37:8080/openmrs"
+    },
+    {
+      "no": 156,
+      "mfl": 14167,
+      "facility": "Viagenco Medical Center",
+      "sub_county": "Mbita",
+      "url": "http://192.168.1.17:8080/openmrs"
+    },
+    {
+      "no": 157,
+      "mfl": 14168,
+      "facility": "Wagwe Health Center",
+      "sub_county": "Rachuonyo North",
+      "url": "http://192.168.1.168:8080/openmrs/"
+    },
+    {
+      "no": 158,
+      "mfl": 14169,
+      "facility": "Wakula Health Centre",
+      "sub_county": "Mbita",
+      "url": "http://192.168.1.169:8080/openmrs"
+    },
+    {
+      "no": 159,
+      "mfl": 14171,
+      "facility": "Waware Dispensary",
+      "sub_county": "Mbita",
+      "url": "http://192.168.1.170:8080/openmrs"
+    },
+    {
+      "no": 160,
+      "mfl": 14172,
+      "facility": "Wiga Dispensary",
+      "sub_county": "Homa Bay Township",
+      "url": "http://192.168.1.171:8080/openmrs"
+    },
+    {
+      "no": 161,
+      "mfl": 19909,
+      "facility": "Wikondiek Dispensary",
+      "sub_county": "Rachuonyo North",
+      "url": "http://192.168.1.110:8080/openmrs"
+    },
+    {
+      "no": 162,
+      "mfl": 19865,
+      "facility": "Wikoteng Dispensary",
+      "sub_county": "Rangwe",
+      "url": "http://192.168.1.91:8080/openmrs"
+    },
+    {
+      "no": 163,
+      "mfl": 17069,
+      "facility": "Yala Dispensary",
+      "sub_county": "Kasipul",
+      "url": "http://192.168.1.80:8080/openmrs"
+    },
+    {
+      "no": 164,
+      "mfl": 14176,
+      "facility": "Yokia Dispensary",
+      "sub_county": "Mbita",
+      "url": "http://192.168.1.53:8080/openmrs"
+    },
+    {
+      "no": 165,
+      "mfl": 17690,
+      "facility": "Young Generation Centre Dispensary (Med 25)",
+      "sub_county": "Mbita",
+      "url": "http://192.168.1.172:8080/openmrs/login.htm"
+    }
+  ]
+}
+  

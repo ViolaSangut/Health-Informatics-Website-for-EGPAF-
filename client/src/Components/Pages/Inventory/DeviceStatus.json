@@ -1,0 +1,31 @@
+ { "DeviceStatus": [
+      {
+      "no": 1,
+      "status": "Active"
+      
+    },
+    {
+      "no": 2,
+      "status": "Inactive"
+      
+      
+    },
+    {
+      "no": 3,
+      "status": "Decommissioned"
+      
+    },
+    {
+      "no": 4,
+      "status": "Screen Issue"
+    },
+     {
+      "no": 5,
+      "status": "Charging Issue"
+    },
+     {
+      "no": 6,
+      "status": "Lost"
+    }
+]
+}

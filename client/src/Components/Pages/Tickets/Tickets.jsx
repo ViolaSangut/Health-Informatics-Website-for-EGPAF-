@@ -101,7 +101,7 @@ const Tickets = () => {
             <tbody>
                     {
                     tickets.filter((ticket)=>{
-                        if(searchTickets == ""){
+                        if(searchTickets === ""){
                             return ticket;
                         } else if (ticket.title !== null && ticket.title.toLowerCase().includes(searchTickets.toLowerCase())) {
                             return ticket;

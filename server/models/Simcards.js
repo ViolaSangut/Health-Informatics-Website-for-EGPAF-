@@ -1,29 +1,25 @@
 module.exports = (sequelize, DataTypes) => {
-  const Tickets = sequelize.define("Inventory", {
-    AssetName: {
-      type: DataTypes.STRING,
-      allowNull: true,
-    },
-    AssetNumber: {
+  const Simcards = sequelize.define("Simcards", {
+    PhoneNumber: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    ItemType: {
+    IMEI: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    AssetStatus: {
-      type: DataTypes.STRING,
-      default: "Active",
-    },
-    facility: {
+    PUK: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    // DateRegistered: {
-    //   type: DataTypes.DATE,
-    //   allowNull: true,
-    // },
+    PIN: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    Facility: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
   });
-  return Tickets;
+  return Simcards;
 };

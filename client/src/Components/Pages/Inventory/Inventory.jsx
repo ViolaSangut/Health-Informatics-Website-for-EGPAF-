@@ -1,6 +1,6 @@
-import React,{useState, useEffect, useContext} from 'react'
+import React,{useState, useEffect, } from 'react'
 import axios from 'axios';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate, Link, useParams } from 'react-router-dom';
 import { toast  } from 'react-toastify';
 import "./Inventory.css";
 
@@ -8,6 +8,8 @@ import "./Inventory.css";
 
 
 const Inventory = () => {
+
+
   /* When the user clicks on the button,
 toggle between hiding and showing the dropdown content */
   function dropDown() {
@@ -38,7 +40,7 @@ toggle between hiding and showing the dropdown content */
       
     }, [])
 
-
+    
 
 
     //List all items in the inventory
@@ -69,13 +71,14 @@ toggle between hiding and showing the dropdown content */
             console.log(error);
         });
         }
-        
     };
+    
+    //handleClick on Add Inventory button
+    const handleClick =()=>{
+      navigate("/addinventory");
+    }
+ 
   
-  
-
-
-
   return (
     <div>
     <div className="upper-section">
@@ -91,39 +94,33 @@ toggle between hiding and showing the dropdown content */
           placeholder="Search for Inventory"
         ></input>
         
+        
       </div>
       </div>
       </div>
-       <div className="dropdown">
-          <button onClick={dropDown} className="dropbtn">
-          Select Item Type
-          </button>
-      <div id="myDropdown" className="dropdown-content">
-          <a href="#">Tablet</a>
-          <a href="#">CPU</a>
-          <a href="#">Monitor</a>
-          <a href="#">Charger</a>
-      </div>
-      </div>
-
       <br/>
 
+      <button onClick={handleClick}
+       className= "buttonadd">
+         
+            Add Inventory
+         
+        </button>
+
       <div className="table">
-   <table className="table-content">
-    <thead className='table-header'>
+   <table className="table_content">
+    <thead className=''>
         <th>Serial</th>
-        <th>Asset Name</th>
         <th>Asset Number</th>
-        <th>Item Type</th> 
+        <th>Asset Name</th>
         <th>Asset Status</th> 
-        <th>Facility Assigned</th>
+        <th>Item Type</th>
         <th>Date Registered</th>
+        <th>Facility</th>
         <th></th> 
         <th></th>
         <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
+        
 
                 
 
@@ -136,14 +133,15 @@ toggle between hiding and showing the dropdown content */
                 <tr key = {item.id}>
 
                     <td> {item.id} </td>
-                    <td> {item.AssetName} </td>
                     <td> {item.AssetNumber} </td>
-                    <td> {item.Dateregistered} </td>
+                    <td> {item.AssetName} </td>
                     <td> {item.AssetStatus} </td>
+                    <td> {item.ItemType} </td>
+                    <td> {item.createdAt} </td>
                     <td> {item.facility} </td>
                 
                     <td>
-                            <Link to = {`/edit-item/${item.id}`} className='btn btn-info'> Update</Link>
+                            <Link to = {`/updateInventory/${item.id}`} className='btn btn-info' > Update</Link>
                             </td>
                             <td> <Link to = '' className = "btn btn-danger" onClick = {() => deleteItem(item.id)}
                                     style = {{marginLeft:"10px"}}> Delete</Link>

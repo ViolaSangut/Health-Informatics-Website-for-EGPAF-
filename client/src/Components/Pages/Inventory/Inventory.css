@@ -41,8 +41,8 @@
     position: absolute;
     width: 250px;
     height: 50px;
-    right: 10%;
-    top: 15%;
+    right: 15%;
+    top: 18.5%;
     color: rgba(46, 229, 157, 0.4);
     display: flex;
     background-color:transparent;
@@ -118,11 +118,7 @@
 .show {
     display: block;
 }
-/* .table{
-    
-    margin-top: 10%;
-    
-}*/
+
 .table-header {
     overflow: hidden;
         text-overflow: ellipsis;
@@ -137,10 +133,6 @@
     width: 100%;
 
 }
-
-/* .table_h {
-    align-items: left;
-} */
 
 .table_content {
     border-collapse: collapse;
@@ -163,7 +155,7 @@
 
 
 
-/* .table_content thead {
+.table_content thead {
     background-color: green;
     color: #ffffff;
     text-align: left;
@@ -181,4 +173,16 @@
  .table_content tbody td[data-href] {
      cursor: pointer;
 
- } */
+ }
+ 
+.buttonadd {
+    padding: 0.5rem;
+    margin-top: 0.5rem;
+    vertical-align: middle;
+    border-radius: 0.5rem;
+    background-color: teal;
+    color: white;
+    /* width: 250px;
+    height: 50px; */
+    margin-left: 85%;
+}
