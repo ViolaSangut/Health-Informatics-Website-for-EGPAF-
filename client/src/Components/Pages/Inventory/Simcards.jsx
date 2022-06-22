@@ -75,7 +75,7 @@ let PhoneNumber, IMEI,PUK, PIN, Facility
                 value={searchCard}
                 onChange={(e)=> setSearchCard(e.target.value)}
                 />
-                <button onClick={handleClick}>Add New Simcard</button>
+                <button onClick={handleClick} className="buttonadd">Add New Simcard</button>
             </div>
         <div className='table'>
             <table className="table_content">
@@ -92,7 +92,7 @@ let PhoneNumber, IMEI,PUK, PIN, Facility
                 </thead>
     <tbody className="">
      {
-       
+        
           cards.filter((card)=> {
                         if(searchCard === ""){
                            return cards;

@@ -82,3 +82,14 @@
     display: flex;
     margin-right: 1%;
   }
+    .buttonadd {
+      padding: 0.5rem;
+      margin-top: 0.5rem;
+      vertical-align: middle;
+      border-radius: 0.5rem;
+      background-color: teal;
+      color: white;
+      width: 250px;
+      height: 50px;
+      margin-left: 85%;
+    }

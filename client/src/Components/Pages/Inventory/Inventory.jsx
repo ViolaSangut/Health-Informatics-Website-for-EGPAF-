@@ -10,29 +10,11 @@ import "./Inventory.css";
 const Inventory = () => {
 
 
-  /* When the user clicks on the button,
-toggle between hiding and showing the dropdown content */
-  function dropDown() {
-    document.getElementById("myDropdown").classList.toggle("show");
-  }
-
-  // Close the dropdown menu if the user clicks outside of it
-  window.onclick = function (event) {
-    if (!event.target.matches(".dropbtn")) {
-      var dropdowns = document.getElementsByClassName("dropdown-content");
-      var i;
-      for (i = 0; i < dropdowns.length; i++) {
-        var openDropdown = dropdowns[i];
-        if (openDropdown.classList.contains("show")) {
-          openDropdown.classList.remove("show");
-        }
-      }
-    }
-  };
-
-//declaring state for the inventory list upon loading the page
+ //declaring state for the inventory list upon loading the page
   const [items, setItems] = useState([]);
-    const navigate = useNavigate();
+  const navigate = useNavigate();
+  const[searchInventory, setSearchInventory] = useState("")
+
 
     useEffect(() => {
 
@@ -90,8 +72,10 @@ toggle between hiding and showing the dropdown content */
       <div >
         <input
           type="text"
-          className='search'
-          placeholder="Search for Inventory"
+          className='buttonadd'
+          placeholder='Search for Item'
+                value={searchInventory}
+                onChange={(e)=> setSearchInventory(e.target.value)}
         ></input>
         
         
@@ -128,7 +112,23 @@ toggle between hiding and showing the dropdown content */
 
     <tbody className="">
      {
-        items.map (
+        items.filter((item)=> {
+                        if(searchInventory === ""){
+                           return items;
+                        } 
+                        else if (item.AssetNumber !== null && item.AssetNumber?.toLowerCase().includes(searchInventory?.toLowerCase())) {
+                            return item;
+                        }else if (item.AssetName !== null && item.AssetName?.toLowerCase().includes(searchInventory?.toLowerCase())) {
+                            return item;
+                        }else if (item.AssetStatus !== null && item.AssetStatus?.toLowerCase().includes(searchInventory?.toLowerCase())) {
+                            return item;
+                        }else if (item.ItemType !== null && item.ItemType?.toLowerCase().includes(searchInventory?.toLowerCase())) {
+                            return item;
+                        }else if (item.facility !== null && item.facility?.toLowerCase().includes(searchInventory?.toLowerCase())) {
+                            return item;
+                        }
+                    }
+                    ).map (
             item => 
                 <tr key = {item.id}>
 
