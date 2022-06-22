@@ -45,11 +45,10 @@ function App() {
             <Route path='/edit-ticket/:id' element={<AddTicketComponent/>}/>
             <Route path='/tickets-list' element={<Tickets/>}/>
             <Route path='/test' element={<AddingMy/>}/>
-
-
-            <Route path='*' element={<PageNotFound/>}/>
+          
           </Route>
             <Route path='/' element={<Login/>}/>
+            <Route path='*' element={<PageNotFound/>}/>
         </Routes>
     </>
     </div>
