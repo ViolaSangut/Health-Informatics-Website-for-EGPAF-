@@ -3,22 +3,21 @@ import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
 import { toast  } from 'react-toastify';
 import './AddInventory.css'
-import moment from 'moment';
 import Facilities from './Facilities.json'
 import DeviceStatus from './DeviceStatus.json';
-import InventoryTypes from './InventoryTypes.json';
-// import { addInventory } from '../../../../../server/controllers/InventoryController';
 
 
 const AddInventory = ()=> {
     
 
 const[AssetNumber, setAssetNumber]= useState("") 
-const[ItemType, setItemType]= useState("") 
+const[serialNumber, setSerialNumber]= useState("") 
 const[AssetStatus, setAssetStatus]= useState("") 
 const[AssetName, setAssetName]= useState("") 
-const[facility, setFacility]= useState("")  
-const[DateRegistered, setDateRegistered]= useState("") 
+const[facility, setFacility]= useState("")
+const[Email, setEmail]= useState("")  
+const[Passcode, setPassCode]= useState("")
+const[EmailPassword, setEmailPassword]= useState("")
 const {id} =useParams(); 
 const navigate = useNavigate();
 
@@ -32,9 +31,11 @@ const min_date  = new Date();
     setAssetNumber(item.AssetNumber)
     setAssetName(item.AssetName)
     setAssetStatus(item.AssetStatus)
-    setDateRegistered(item.DateRegistered)
     setFacility(item.facility)  
-    setItemType(item.ItemType)
+    setSerialNumber(item.serialNumber)
+    setEmail(item.Email)
+    setEmailPassword(item.EmailPassword)
+    setPassCode(item.Passcode)
    }
  
       
@@ -50,8 +51,8 @@ const min_date  = new Date();
     const addItem = () =>{
         // e.preventDefault();
         axios.post(`http://localhost:4000/inventory/addInventory`, {
-            AssetName: AssetName, AssetNumber:AssetNumber, ItemType: ItemType, AssetStatus: AssetStatus, 
-            facility: facility, DateRegistered: DateRegistered,
+            AssetName: AssetName, AssetNumber:AssetNumber, serialNumber: serialNumber, AssetStatus: AssetStatus, 
+            facility: facility, Passcode: Passcode, Email: Email, EmailPassword: EmailPassword
         }).then((response)=>{
         console.log(response.data)
         // console.log("item inserted!");
@@ -85,8 +86,8 @@ const min_date  = new Date();
     try {
 
       const response = await  axios.put(`http://localhost:4000/Inventory/${id}`, {
-        AssetName:AssetName, AssetNumber:AssetNumber, ItemType:ItemType, AssetStatus: AssetStatus,
-         facility: facility, DateRegistered: DateRegistered
+        AssetName:AssetName, AssetNumber:AssetNumber, serialNumber:serialNumber, AssetStatus: AssetStatus,
+         facility: facility, Passcode:Passcode, Email:Email, EmailPassword:EmailPassword
       });
       
       console.log(response.data);
@@ -110,6 +111,9 @@ const min_date  = new Date();
         addItem();
     }
   }
+  const onClickBack =() =>{
+    navigate("/inventory")
+  }
     
 
 
@@ -119,10 +123,13 @@ const min_date  = new Date();
 
     return  (
         <div align ="middle">
+            <button className="buttonadd" onClick={onClickBack}>Back to Inventory</button>
         <section className="section">
+            
         <form className= "">
+            <h1>Device Details</h1>
             <label>
-                Asset Name
+                Brand Name
             </label>
             <input value={AssetName} onChange ={(e) => setAssetName(e.target.value)} placeholder='Asset Name' type='text'>
             </input>
@@ -132,21 +139,16 @@ const min_date  = new Date();
             <input value={AssetNumber} onChange ={(e) => setAssetNumber(e.target.value)} placeholder='Asset Number' type='text'>
             </input>
             <label>
-                Item Type
+                Serial Number
             </label>
             
-            <select  onChange ={(e) => setItemType(e.target.value)}>
-                  <option selected disabled ="true">--Select Item Type--</option>
-                  {
-                    InventoryTypes.InventoryType.map((result) =>(<option text={result.no}>{result.name}</option>))
-                }
-                
-            </select>
+            <input value={serialNumber} onChange ={(e) => setSerialNumber(e.target.value)} placeholder='Asset Number' type='text'>
+            </input>
             <label>
-                Asset Status
+                Status
             </label>
             
-            <select  onChange ={(e) => setAssetStatus(e.target.value)}>
+            <select value={AssetStatus} onChange ={(e) => setAssetStatus(e.target.value)}>
                   <option selected disabled="true">--Select Device Status--</option>
                 {
                     DeviceStatus.DeviceStatus.map((result)=>( <option text={result.no}>{result.status}</option>))
@@ -158,22 +160,28 @@ const min_date  = new Date();
                 Facility Assigned
             </label>
             
-             <select  onChange ={(e) => setFacility(e.target.value)}>
+             <select value={facility} onChange ={(e) => setFacility(e.target.value)}>
                   <option selected disabled="true">--Select Facility Assigned--</option>
                 {
                      Facilities.Facilitynames.map((result)=>(<option text={result.no}>{result.facility}</option>))
                 }
             </select>
             
-            
-            {/* <div className='form-group'>
-               <label>Date Registered </label>
-               <input type="date" name="due_date" className="form-control"
-                    value={(moment(DateRegistered).format('YYYY-MM-DD'))} 
-                    onChange={(e)=>{setDateRegistered(e.target.value)}}
-                    min={min_date}                                            
-                                        />                                      
-             </div> */}
+             <label>
+                Passcode
+            </label>
+            <input value={Passcode} onChange ={(e) => setPassCode(e.target.value)} placeholder='Passcode' type='text'>
+            </input>
+            <label>
+                Email
+            </label>
+            <input value={Email} onChange ={(e) => setEmail(e.target.value)} placeholder='Email' type='text'>
+            </input>
+            <label>
+                Email Password
+            </label>
+            <input value={EmailPassword} onChange ={(e) => setEmailPassword(e.target.value)} placeholder='Email Password' type='text'>
+            </input>
 
             <label>
              

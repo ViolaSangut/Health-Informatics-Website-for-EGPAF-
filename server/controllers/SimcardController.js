@@ -14,12 +14,13 @@ const countAllCards = async (req, res) => {
 
 //Adding an card to the inventory
 const addCard = async (req, res) => {
-  const { PhoneNumber, IMEI, PUK, PIN, Facility } = req.body;
+  const { PhoneNumber, IMEI, PUK, PIN, PhoneAssigned, Facility } = req.body;
   Simcards.create({
     PhoneNumber: PhoneNumber,
     IMEI: IMEI,
     PUK: PUK,
     PIN: PIN,
+    PhoneAssigned,
     Facility: Facility,
   })
     .then(() => {
@@ -36,7 +37,7 @@ const addCard = async (req, res) => {
 const updateCard = async (req, res, next) => {
   try {
     const { id } = req.params;
-    const { PhoneNumber, IMEI, PUK, PIN, Facility } = req.body;
+    const { PhoneNumber, IMEI, PUK, PIN, PhoneAssigned, Facility } = req.body;
     const findCardbyID = await Simcards.findOne({
       where: {
         id: id,
@@ -54,6 +55,7 @@ const updateCard = async (req, res, next) => {
     if (PUK) findCardbyID.PUK = PUK;
     if (PIN) findCardbyID.PIN = PIN;
     if (Facility) findCardbyID.Facility = Facility;
+    if (PhoneAssigned) findCardbyID.PhoneAssigned = PhoneAssigned;
 
     const updatedCard = await findCardbyID.save();
     if (!updatedCard) {

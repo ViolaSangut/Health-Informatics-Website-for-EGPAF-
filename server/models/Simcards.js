@@ -20,6 +20,10 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
+    PhoneAssigned: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
   });
   return Simcards;
 };

@@ -1,8 +1,9 @@
-import React,{useState, useEffect, } from 'react'
+import React,{useState, useEffect, useRef} from 'react'
 import axios from 'axios';
-import { useNavigate, Link, useParams } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { toast  } from 'react-toastify';
 import "./Inventory.css";
+import Simcards from './Simcards';
 
 
 
@@ -14,13 +15,19 @@ const Inventory = () => {
   const [items, setItems] = useState([]);
   const navigate = useNavigate();
   const[searchInventory, setSearchInventory] = useState("")
+  const tableRef =useRef(null)
+  const[display, setDisplay] = useState("Tablets")
+  const[tabletsVisible, setTabletsVisible] = useState(false)
+  const[simcardsVisible, setSimcardsVisible] = useState(false)
 
 
     useEffect(() => {
-
-        getAllItems();
+        display==="Simcards"? setSimcardsVisible(true):setSimcardsVisible(false)
+        display==="Tablets"? setTabletsVisible(true):setTabletsVisible(false)
+        console.log(display)
+        getAllItems()
       
-    }, [])
+    }, [display])
 
     
 
@@ -37,6 +44,14 @@ const Inventory = () => {
         })
     }
 
+
+    //select table to display on page based on user choice on dropdown
+
+const handleChange = (e)=>{
+    setDisplay(e.target.value)
+}
+
+     
     //delete item from inventory
     const deleteItem = (id) =>{
         if(window.confirm("Are you sure you want to delete this Item?")){
@@ -55,14 +70,14 @@ const Inventory = () => {
         }
     };
     
-    //handleClick on Add Inventory button
+//handleClick on Add Inventory button
     const handleClick =()=>{
       navigate("/addinventory");
     }
- 
-  
-  return (
-    <div>
+//Tablet page component
+    const TabletPage = () => {
+        return(
+            <div>
     <div className="upper-section">
       <div className="left-panel">
       <h1 className="header">Inventory</h1>
@@ -90,18 +105,30 @@ const Inventory = () => {
             Add Inventory
          
         </button>
+        <div>
+        <select  className= "buttonadd" value={display} onChange={handleChange}>
+                  <option selected disabled ="true">--Select Item Type--</option>
+                <option value="Simcards">Simcards</option>
+                <option value="Tablets">Tablets</option>
+
+              
+        </select>
+        </div>
 
       <div className="table">
-   <table className="table_content">
+   <table className="table_content" ref={tableRef}>
     <thead className=''>
         <th>Serial</th>
-        <th>Asset Number</th>
-        <th>Asset Name</th>
-        <th>Asset Status</th> 
-        <th>Item Type</th>
+        <th>IMEI</th>
+        <th>Brand Name</th>
+        <th>Status</th> 
+        <th>Serial Number</th>
         <th>Date Registered</th>
         <th>Facility</th>
-        <th></th> 
+        <th>Passcode</th> 
+        <th>Email</th>
+        <th>Email Password</th>
+        <th></th>
         <th></th>
         <th></th>
         
@@ -112,7 +139,7 @@ const Inventory = () => {
 
     <tbody className="">
      {
-        items.filter((item)=> {
+        items.filter((item) => {
                         if(searchInventory === ""){
                            return items;
                         } 
@@ -122,13 +149,21 @@ const Inventory = () => {
                             return item;
                         }else if (item.AssetStatus !== null && item.AssetStatus?.toLowerCase().includes(searchInventory?.toLowerCase())) {
                             return item;
-                        }else if (item.ItemType !== null && item.ItemType?.toLowerCase().includes(searchInventory?.toLowerCase())) {
+                        }else if (item.serialNumber !== null && item.serialNumber?.toLowerCase().includes(searchInventory?.toLowerCase())) {
                             return item;
                         }else if (item.facility !== null && item.facility?.toLowerCase().includes(searchInventory?.toLowerCase())) {
                             return item;
+                        }else if (item.Passcode !== null && item.Passcode?.toLowerCase().includes(searchInventory?.toLowerCase())) {
+                            return item;
+                        }else if (item.Email !== null && item.Email?.toLowerCase().includes(searchInventory?.toLowerCase())) {
+                            return item;
+                        }
+                        else if (item.EmailPassword !== null && item.EmailPassword?.toLowerCase().includes(searchInventory?.toLowerCase())) {
+                            return item;
                         }
                     }
-                    ).map (
+                    )
+        .map (
             item => 
                 <tr key = {item.id}>
 
@@ -136,9 +171,12 @@ const Inventory = () => {
                     <td> {item.AssetNumber} </td>
                     <td> {item.AssetName} </td>
                     <td> {item.AssetStatus} </td>
-                    <td> {item.ItemType} </td>
+                    <td> {item.serialNumber} </td>
                     <td> {item.createdAt} </td>
                     <td> {item.facility} </td>
+                    <td> {item.Passcode} </td>
+                    <td> {item.Email} </td>
+                    <td> {item.EmailPassword} </td>
                 
                     <td>
                             <Link to = {`/updateInventory/${item.id}`} className='btn btn-info' > Update</Link>
@@ -157,9 +195,17 @@ const Inventory = () => {
     </table>
     </div>
     </div>
+        )
+    }
+ 
+  //rendering inventory page based on selection
+  return (
+    <div>
+    {tabletsVisible && <TabletPage/>}
+    {simcardsVisible && <Simcards/>}
+    </div>
   );
 };
-
 
 export default Inventory;
 

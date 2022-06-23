@@ -1,14 +1,14 @@
-const { Inventory } = require("../models");
+const { Tablets } = require("../models");
 
 //List
 const getInventory = async (req, res) => {
-  const inventory = await Inventory.findAll();
+  const inventory = await Tablets.findAll();
   res.json(inventory);
 };
 
 //Count All items in the inventory
 const countAllItems = async (req, res) => {
-  const items = await Inventory.count();
+  const items = await Tablets.count();
   res.json(items);
 };
 
@@ -17,18 +17,22 @@ const addInventory = async (req, res) => {
   const {
     AssetNumber,
     AssetName,
-    DateRegistered,
     AssetStatus,
     facility,
-    ItemType,
+    serialNumber,
+    Passcode,
+    Email,
+    EmailPassword,
   } = req.body;
-  Inventory.create({
+  Tablets.create({
     AssetNumber: AssetNumber,
     AssetName: AssetName,
-    DateRegistered: DateRegistered,
     AssetStatus: AssetStatus,
     facility: facility,
-    ItemType: ItemType,
+    serialNumber: serialNumber,
+    Passcode,
+    Email,
+    EmailPassword,
   })
     .then(() => {
       res.json("Item added Succesfully!");
@@ -47,12 +51,14 @@ const updateInventory = async (req, res, next) => {
     const {
       AssetNumber,
       AssetName,
-      ItemType,
+      serialNumber,
       AssetStatus,
       facility,
-      DateRegistered,
+      Passcode,
+      Email,
+      EmailPassword,
     } = req.body;
-    const findItemById = await Inventory.findOne({
+    const findItemById = await Tablets.findOne({
       where: {
         id: id,
       },
@@ -67,8 +73,10 @@ const updateInventory = async (req, res, next) => {
     if (AssetStatus) findItemById.AssetStatus = AssetStatus;
     if (AssetName) findItemById.AssetName = AssetName;
     if (facility) findItemById.facility = facility;
-    if (ItemType) findItemById.ItemType = ItemType;
-    if (DateRegistered) findItemById.DateRegistered;
+    if (serialNumber) findItemById.serialNumber = serialNumber;
+    if (Passcode) findItemById.Passcode = Passcode;
+    if (Email) findItemById.Email = Email;
+    if (EmailPassword) findItemById.EmailPassword = EmailPassword;
 
     const updatedItem = await findItemById.save();
     if (!updatedItem) {
@@ -90,7 +98,7 @@ const updateInventory = async (req, res, next) => {
 const findItemById = async (req, res, next) => {
   try {
     const { id } = req.params;
-    const findOneById = await Inventory.findByPk(id);
+    const findOneById = await Tablets.findByPk(id);
     if (!findOneById) {
       res.status(404).send({
         // status: 'error',
