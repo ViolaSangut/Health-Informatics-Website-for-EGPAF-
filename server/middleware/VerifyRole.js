@@ -1,12 +1,12 @@
 const verifyRole = (...allowedRoles) => {
     return (req, res, next) => {
-        // if (!req?.Roles) return res.sendStatus(401);
-        const rolesList = [...allowedRoles];
-        console.log(req.Role)
-        console.log(rolesList)
-        
-        // const result = req.role.map(oneRole => rolesList.includes(oneRole)).find(val => val === true);
-        // if (!result) return res.sendStatus(401);
+        if (!req?.roles) return res.sendStatus(401);
+        const rolesArrayList = [...allowedRoles];
+        const myRoles = [req.roles];
+        console.log(rolesArrayList)
+        console.log(myRoles)
+        const result = myRoles.map(role => rolesArrayList.includes(role)).find(val => val === true);
+        if (!result) return res.sendStatus(401);
         next();
     }
 }

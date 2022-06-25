@@ -166,7 +166,7 @@ const AddTicketComponent = () => {
                         />                
                         <label>Facility</label>
                         <select  onChange ={(e) => setFacility(e.target.value)}>
-                            <option selected disabled ="false">Search</option>
+                            <option selected disabled="true" placeholder="Search">{facility}</option>
                             {
                                 facilitiesList.Facilitynames.map((facility)=>(<option key={facility.no}text={facility.mfl}>{facility.facility}</option>))
                             }

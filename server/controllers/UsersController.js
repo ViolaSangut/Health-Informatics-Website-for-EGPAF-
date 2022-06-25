@@ -15,7 +15,7 @@ const getUsers = async (req, res) => {
 
 //Add
 const addUser = async (req, res) => {
-  const { firstName, lastName, email, password } = req.body;
+  const { firstName, lastName, email, password, RoleId } = req.body;
 
   bcrypt.hash(password, 10).then((hash) => {
     Users.create({
@@ -23,6 +23,7 @@ const addUser = async (req, res) => {
       lastName: lastName,
       email: email,
       password: hash,
+      RoleId: RoleId,
     })
       .then(() => {
         res.json("User added!");
@@ -93,7 +94,7 @@ const findUserById = async (req, res, next) => {
 const updateUser = async (req, res, next) => {
   try {
     const { id } = req.params;
-    const { firstName, lastName, email } = req.body;
+    const { firstName, lastName, email, RoleId, password } = req.body;
     //Finding user with the same id as parsed id
     const findOneUserById = await Users.findOne({
       where: {
@@ -109,7 +110,13 @@ const updateUser = async (req, res, next) => {
     if (firstName) findOneUserById.firstName = firstName;
     if (lastName) findOneUserById.lastName = lastName;
     if (email) findOneUserById.email = email;
-
+    if (RoleId) findOneUserById.RoleId = RoleId;
+    
+    if (password){    
+      bcrypt.hash(password, 10).then((hash)=>{
+      findOneUserById.password = hash;
+      })
+    }
 
     //Saving updated user with updated records
     const updatedUser = await findOneUserById.save();

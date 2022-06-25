@@ -22,8 +22,10 @@ const jwt = require("jsonwebtoken");
       (err, decoded) => {
         if (err || decoded.email !== presentUser[0].email) return res.sendStatus(403);
 
+        const roles = presentUser[0].RoleId;
+
         const accessToken = jwt.sign(
-          { "id": decoded.id, "firstName": decoded.firstName, "email": decoded.email },
+          { "id": decoded.id, "firstName": decoded.firstName, "email": decoded.email, "roles":roles},
           process.env.ACCESS_TOKEN_SECRET,
           {
             expiresIn: "50m",

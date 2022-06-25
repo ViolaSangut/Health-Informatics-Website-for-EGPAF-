@@ -32,7 +32,7 @@ const login = async (req, res) => {
            const createAccessToken = (user) =>{
                   
             const accessToken = sign(
-                {id: user.id, firstName: user.firstName, email: user.email },
+                {id: user.id, firstName: user.firstName, email: user.email, roles: roles },
                 process.env.ACCESS_TOKEN_SECRET,
                 { 
                 
@@ -51,7 +51,7 @@ const login = async (req, res) => {
       
             const refreshToken = sign(
                 {
-                    id: user.id, firstName: user.firstName, email: user.email 
+                    id: user.id, email: user.email
                 },
                 process.env.REFRESH_TOKEN_SECRET,
                 {
