@@ -81,12 +81,12 @@ const countResolvedTickets = () =>{
   let data;
 
   switch (type) {
-    case "Unsigned":
+    case "Unassigned":
       data = {
-        title: "Unsigned",
+        title: "Unassigned",
         value: unassignedTickets,
-        className: "Unsigned",
-        valueClassName:'valueUnasigned'
+        className: "Unassigned",
+        valueClassName:'valueUnassigned'
       };    
     break;
 

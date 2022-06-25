@@ -7,6 +7,7 @@ const jwt = require("jsonwebtoken");
 
     const refreshToken = cookies.refreshToken;
 
+    // const presentUser = Users.find(user => user.refresh_token === refreshToken);
     const presentUser = await Users.findAll({
       where: {
         refresh_token: refreshToken,
@@ -25,10 +26,10 @@ const jwt = require("jsonwebtoken");
           { "id": decoded.id, "firstName": decoded.firstName, "email": decoded.email },
           process.env.ACCESS_TOKEN_SECRET,
           {
-            expiresIn: "5m",
+            expiresIn: "50m",
           }
         );
-        res.json({ accessToken,  });
+        res.json({ accessToken });
       }
     );
 };

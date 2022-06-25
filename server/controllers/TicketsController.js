@@ -40,7 +40,7 @@ const addTicket = async (req, res)=>{
         due_date: due_date
     })
     .then(()=>{
-        res.json("User added!")
+        res.json("Ticket added!")
 
     })
     .catch((error)=>{
@@ -225,4 +225,4 @@ const countTodaysResolvedTickets = async (req, res)=>{
 };
 
 
-module.exports = { getTickets, addTicket, deleteTicket, findTicketById, updateTicket, countAllTickets, countUnsignedTickets, countpendingTickets, countResolvedTickets, countTodaysResolvedTickets, countTodaysTickets, percentageCountTodaysResolvedTickets, getNoOfWeeklyTickets}
+module.exports = { getTickets, addTicket, deleteTicket, findTicketById, updateTicket, countAllTickets, countUnsignedTickets, countpendingTickets, countResolvedTickets, countTodaysResolvedTickets, countTodaysTickets, percentageCountTodaysResolvedTickets, getNoOfWeeklyTickets, db}

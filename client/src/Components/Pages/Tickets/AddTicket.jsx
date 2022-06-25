@@ -11,6 +11,10 @@ import { toast } from 'react-toastify';
 import moment from 'moment';
 
 
+import facilities from '../../../Resources/facilities/facilities.json'
+
+
+
 
 const AddTicketComponent = () => {
 
@@ -21,7 +25,7 @@ const AddTicketComponent = () => {
     const [title, setTitle] = useState("");
     const [facility, setFacility] = useState("");
     const [creator, setCreator] = useState("");
-    const [ticket_status, setTicket_status] = useState("");
+    const [ticket_status, setTicket_status] = useState("Unassigned");
     const [assignee, setAssignee] = useState("");
     const [priority, setPriority] = useState("");
     const [due_date, setDue_date] = useState("");
@@ -43,6 +47,9 @@ const AddTicketComponent = () => {
 
 
     const navigate = useNavigate();
+
+    const facilitiesList = facilities;
+   
 
     //Add Ticket
     const saveTicket = () =>{
@@ -151,19 +158,19 @@ const AddTicketComponent = () => {
             
             <div className='card-body'>
              <form>          
-                <label>Title: </label>
-                <input placeholder='title' name="title" className="form-control"
+                     <label>Title: </label>
+                      <input placeholder='title' name="title" className="form-control"
                        value={title} 
                         // storing form data values in the properties onChange. event.target.value retrieves / access value of whatever input it was called on.
                         onChange={(e) =>setTitle(e.target.value)}
                         />                
-                        <div className='form-group'>
-                        <label>Facility: </label>
-                        <input placeholder='facility' name="facility" className="form-control"
-                         value={facility} 
-                         onChange={(e) =>setFacility(e.target.value)}
-                        />
-                         </div>
+                        <label>Facility</label>
+                        <select  onChange ={(e) => setFacility(e.target.value)}>
+                            <option selected disabled ="false">Search</option>
+                            {
+                                facilitiesList.Facilitynames.map((facility)=>(<option key={facility.no}text={facility.mfl}>{facility.facility}</option>))
+                            }
+                        </select>
 
                         <div className='form-group'>
                         <label>Creator: </label>
@@ -183,8 +190,8 @@ const AddTicketComponent = () => {
 
                         {  id ? 
                          (
-                          <>
-                          <div  className='form-group'>
+                          
+                          <div  className='form-group' >
                           <label>Status</label>
                           <select value={ticket_status} onChange={(e)=>{setTicket_status(e.target.value)}} >
                               <option value="Unasigned">Unasigned</option>
@@ -192,8 +199,17 @@ const AddTicketComponent = () => {
                               <option value="Resolved">Resolved</option>
                           </select>
                           </div>
-                          </>
-                        ) : (<></>)
+                          
+                        ) : (
+                          <div  className='form-group' hidden= 'true'>
+                          <label>Status</label>
+                          <select value={ticket_status} onChange={(e)=>{setTicket_status(e.target.value)}} >
+                              <option value="Unasigned">Unasigned</option>
+                              <option value="Pending">Pending</option>
+                              <option value="Resolved">Resolved</option>
+                          </select>
+                          </div>
+                        )
                         
                         
                         }   
@@ -212,7 +228,12 @@ const AddTicketComponent = () => {
                      </select>
                      </div>
 
+                     <div  className='form-group'>
+                     
+                     </div>
 
+
+                    
                          <div className='form-group'>
                         <label>Due Date: </label>
                         <input type="date" name="due_date" className="form-control"

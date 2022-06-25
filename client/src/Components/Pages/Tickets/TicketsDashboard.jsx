@@ -23,7 +23,7 @@ const TicketsDashboard = () => {
       
       <h5 className='pageTitle'>Tickets Dashboard</h5>
       <div className='summary1'>
-        <Summary type = "Unsigned"/>
+        <Summary type = "Unassigned"/>
         <Summary type = "Pending"/>
         <Summary type = "Resolved"/>
         <Summary type = "Total" onClick ={()=>{totalTickets()}}/>

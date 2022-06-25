@@ -73,7 +73,7 @@ const Users = () => {
                     <td> {user.id} </td>
                     <td> {user.firstName} </td>
                     <td> {user.lastName} </td>
-                    <td> {user.role} </td>
+                    <td> {user.Role.role} </td>
                     <td> {user.email} </td>
 
                       

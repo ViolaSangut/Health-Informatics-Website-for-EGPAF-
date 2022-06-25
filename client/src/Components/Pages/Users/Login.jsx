@@ -38,9 +38,11 @@ const Login = () => {
         email: response.data.email, 
         firstName: response.data.firstName,
         id: response.data.id, 
+        role: response.data.userRoles
         // status: true
       });
       console.log(auth);
+      // console.log(response.data)
       navigate('/home');
     }
 
