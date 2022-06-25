@@ -18,6 +18,8 @@ const PHONE_REGEX = /^[0-9]{10}$/;
 const PUK_REGEX = /^[0-9]{8}$/;
 const IMEI_REGEX = /^[0-9]{20}$/;
 const PIN_REGEX = /^[0-9]{4}$/;
+const PHONEIMEI_REGEX = /^[0-9]{15,20}$/;
+
 
 function AddSimcard (){
 
@@ -43,6 +45,10 @@ const[pukFocus, setPukFocus] = useState(false)
 const [PIN, setPIN] = useState()
 const[validPIN, setValidPIN]= useState()
 const[pinFocus, setPinFocus] = useState(false)
+
+const[PhoneAssigned, setPhoneAssigned] = useState()
+const[validPhoneImei, setValidPhoneImei] = useState()
+const[PhoneAssignedFocus, setPhoneAssignedFocus] = useState(false)
 
 
 const [cards, setCards] = useState([])
@@ -80,6 +86,13 @@ useEffect(() => {
   setValidPIN(result);
 },[PIN]);
 
+//validating phone imei
+useEffect(() => { 
+  const result = PHONEIMEI_REGEX.test(PhoneAssigned)
+  console.log(result); 
+  setValidPhoneImei(result);
+},[PhoneAssigned]);
+
 
 
  useEffect(() => {
@@ -88,7 +101,8 @@ useEffect(() => {
     setIMEI(card.IMEI)
     setPhoneNumber(card.PhoneNumber)
     setPIN(card.PIN)
-    setPUK(card.PUK)  
+    setPUK(card.PUK) 
+    setPhoneAssigned(card.PhoneAssigned) 
    }
  }, [card])
 
@@ -104,7 +118,7 @@ useEffect(() => {
         
         axios.post(`http://localhost:4000/simcards/addSimcards`, {
             PhoneNumber: PhoneNumber, IMEI:IMEI, PUK: PUK, PIN: PIN, 
-            Facility: Facility,
+            Facility: Facility, PhoneAssigned:PhoneAssigned,
         }).then((response)=>{
         console.log(response.data)
         toast.success("Card Saved Successfully")
@@ -160,12 +174,16 @@ useEffect(() => {
         addCard();
     }
   }
-    
+    const onClickBack =() =>{
+    navigate("/simcards")
+  }
 
 
 
 return(
     <div align ="middle">
+            <button className="buttonadd" onClick={onClickBack}>Back to Simcard List</button>
+
         <section>
             <form>
                 <h1>Simcard Details</h1>
@@ -300,8 +318,41 @@ return(
                         Facilities.Facilitynames.map((result)=>(<option key={result.no}text={result.mfl}>{result.facility}</option>))
                     }
                 </select>
+                <label>IMEI of Assigned Phone
+                    <span className={validPIN ? "valid" : "hide"}>
+                        <FontAwesomeIcon icon={faCheck} />
+                    </span>
+                    <span className={validPIN || !PIN ? "hide" : "invalid"}>
+                        <FontAwesomeIcon icon={faTimes} />
+                    </span>
+                </label>
+                <input 
+                placeholder='Phone IMEI' 
+                type='text'
+                value={PhoneAssigned} 
+                onChange={(e)=>setPhoneAssigned(e.target.value)}
+                 required
+                aria-invalid={validPIN ? "false" : "true"}
+                aria-describedby="pinid"
+                onFocus={() => setPhoneAssignedFocus(true)}
+                onBlur={() => setPhoneAssignedFocus(false)}/>
+                <p
+                    id="pinid"
+                    className={
+                        PhoneAssignedFocus && PhoneAssigned && !validPhoneImei
+                        ? "instructions"
+                        : "offscreen"
+                    }
+                    >
+                    <FontAwesomeIcon icon={faInfoCircle} />
+                    <br />
+                    Has to be more than 15 digits long
+                    </p>
                 <br/>
-                <button onClick={handleSubmit}>Submit</button>
+                <button onClick={handleSubmit} disabled={
+                    !validIMEI || !validPhoneImei || !validPUK || !validPIN || !validPhone ? true : false
+                    }
+                >Submit</button>
             </form>
         </section>
 

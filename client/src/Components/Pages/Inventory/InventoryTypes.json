@@ -1,4 +1,8 @@
  { "InventoryType": [
+    {
+      "no": 7,
+      "name": ""
+     },
       {
       "no": 1,
       "name": "Tablet"
@@ -26,6 +30,10 @@
      {
       "no": 6,
       "name": "Signal Booster"
+    },
+     {
+      "no": 8,
+      "name": "Simcard"
     }
-]
+  ]
 }

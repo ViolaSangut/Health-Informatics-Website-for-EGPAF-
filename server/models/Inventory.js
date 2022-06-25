@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-  const Tickets = sequelize.define("Inventory", {
+  const Tablets = sequelize.define("Tablets", {
     AssetName: {
       type: DataTypes.STRING,
       allowNull: true,
@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    ItemType: {
+    serialNumber: {
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -19,11 +19,21 @@ module.exports = (sequelize, DataTypes) => {
     facility: {
       type: DataTypes.STRING,
       allowNull: false,
+      default: null,
     },
-    // DateRegistered: {
-    //   type: DataTypes.DATE,
-    //   allowNull: true,
-    // },
+    Passcode: {
+      type: DataTypes.STRING,
+      allowNull: true,
+      default: null,
+    },
+    Email: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    EmailPassword: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
   });
-  return Tickets;
+  return Tablets;
 };

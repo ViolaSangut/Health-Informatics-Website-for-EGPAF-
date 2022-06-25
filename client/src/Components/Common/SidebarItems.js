@@ -25,12 +25,6 @@ export const sidebarItems = [
     className: "nav-text",
   },
   {
-    title: "Simcards",
-    path: "/Simcards",
-    icon: <MdIcons.MdSdCard />,
-    className: "nav-text",
-  },
-  {
     title: "Tickets",
     path: "/tickets",
     icon: <IoIcons.IoIosPaper />,
