@@ -46,7 +46,7 @@ function App() {
             <Route path="/facilities" element={<Facilities />} />
             <Route path="/inventory" element={<Inventory />} />
             
-            <Route element={<CheckAuth/>}>
+            <Route element={<CheckAuth allowedRoles={[3,4]}/>}>
             <Route path="/add-user" element={<RegisterComponent />} />
             <Route path="/list-user" element={<Users />} />
             <Route path="/edit-user/:id" element={<RegisterComponent />} />
