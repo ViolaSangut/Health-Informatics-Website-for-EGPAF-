@@ -28,7 +28,7 @@ const jwt = require("jsonwebtoken");
           { "id": decoded.id, "firstName": decoded.firstName, "email": decoded.email, "roles":roles},
           process.env.ACCESS_TOKEN_SECRET,
           {
-            expiresIn: "10s",
+            expiresIn: "5s",
           }
         );
         res.json({ accessToken });

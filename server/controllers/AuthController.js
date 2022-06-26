@@ -36,7 +36,7 @@ const login = async (req, res) => {
                 process.env.ACCESS_TOKEN_SECRET,
                 { 
                 
-                expiresIn: "10s",
+                expiresIn: "5s",
                 }
             );
             return accessToken;
@@ -56,7 +56,7 @@ const login = async (req, res) => {
                 process.env.REFRESH_TOKEN_SECRET,
                 {
                   
-                  expiresIn: "20s",
+                  expiresIn: "10s",
                 }
               );
             return refreshToken;
@@ -79,7 +79,7 @@ const login = async (req, res) => {
             httpOnly: true,
             sameSite: "None",
             secure: true,
-            maxAge: 24 * 60 * 60 * 1000,
+            maxAge: 	24 * 60 * 60 * 1000,
           });
           res.json({ accessToken, id, email, firstName, lastName, roles });
         }

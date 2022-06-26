@@ -1,35 +1,52 @@
 import React,{useState, useEffect, useContext} from 'react'
-import axios from 'axios';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation} from 'react-router-dom';
 import './Users.css';
 import { toast  } from 'react-toastify';
+import usePrivateAxios from '../../hooks/usePrivateAxios';
 
 const Users = () => {
     const [users, setUsers] = useState([]);
     const navigate = useNavigate();
+    const location = useLocation();
+    const privateAxios = usePrivateAxios();
+
+    const [error, setError] = useState('');
+   
 
     useEffect(() => {
-
+        // let isMounted = true;
+        const controller = new AbortController();   
+        
+        //List 
+        const getAllUsers = () =>{
+            privateAxios.get('/users', {
+                signal: controller.signal
+            })
+            .then((response)=>{
+                console.log(response.data)
+            setUsers(response.data);
+            setError("");
+            })
+            .catch((error)=>{
+                console.log(error);
+                setError(error.message);
+                console.log(error.message)
+                // navigate('/', { state: { from: location }, replace: true });
+            })
+        }
         getAllUsers();
+
+        return () =>{
+            controller.abort();
+        }
       
     }, [])
 
-    //List 
-    const getAllUsers = () =>{
-        axios.get("http://localhost:4000/users")
-        .then((response)=>{
-            console.log(response.data)
-            setUsers(response.data);
-        })
-        .catch((error)=>{
-            console.log(error);
-        })
-    }
     
     //delete
     const deleteUser = (id) =>{
         if(window.confirm("Are you sure you want to delete the user?")){
-            axios.delete(`http://localhost:4000/users/delete/${id}`)
+            privateAxios.delete(`/users/delete/${id}`)
         .then((response)=>{
             setUsers(users.filter((user)=>{
                 return user.id != id;
