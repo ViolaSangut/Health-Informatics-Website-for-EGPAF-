@@ -1,4 +1,4 @@
-import React, {useState, useContext} from 'react'
+import React, {useState} from 'react'
 import * as FaIcons from 'react-icons/fa';  
 import * as AIIcons from 'react-icons/ai';
 import { Link, useNavigate } from 'react-router-dom';
@@ -8,14 +8,14 @@ import { IconContext } from 'react-icons';
 import egpaf_logo from '../../Resources/Images/egpaf_logov2.JPG'
 import * as MdIcons from 'react-icons/md';
 import axios from 'axios';
-import AuthContext from '../context/AuthContext';
+import UseAuth from '../context/UseAuth';
 
 const SidebarComponent = ({ items }) => {
     const [sidebar, setSidebar] = useState(false);
 
     const showSideBar = () => setSidebar(!sidebar);
     const navigate = useNavigate();
-    const { setAuth, auth } = useContext(AuthContext);
+    const { setAuth, auth } = UseAuth();
 
 
 

@@ -2,6 +2,10 @@ const express = require("express");
 const router = express.Router();
 const TicketsController = require("../controllers/TicketsController");
 
+const verifyToken = require("../middleware/VerifyToken");
+const verifyRole = require("../middleware/VerifyRole");
+const ROLES_LIST = require("../config/roles");
+
 //List
 router.route('/').get(TicketsController.getTickets);
 

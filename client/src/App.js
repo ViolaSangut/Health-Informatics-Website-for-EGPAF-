@@ -23,6 +23,8 @@ import AddingMy from "./Components/Pages/Tickets/AddingMy";
 import AddInventory from "./Components/Pages/Inventory/AddInventory";
 import AddSimcards from "./Components/Pages/Inventory/AddSimcard";
 import Simcards from "./Components/Pages/Inventory/Simcards";
+import CheckAuth from "./Components/context/CheckAuth";
+import Unauthorized from "./Components/Common/Unauthorized";
 
 const SidebarLayout = () => (
   <>
@@ -38,17 +40,24 @@ function App() {
         <ToastContainer position="top-center" />
         <Routes>
           <Route element={<SidebarLayout />}>
+
+            
             <Route path="/home" element={<Home />} />
             <Route path="/facilities" element={<Facilities />} />
             <Route path="/inventory" element={<Inventory />} />
-            <Route path="/tickets" element={<TicketsDashboard />} />
+            
+            <Route element={<CheckAuth/>}>
             <Route path="/add-user" element={<RegisterComponent />} />
             <Route path="/list-user" element={<Users />} />
             <Route path="/edit-user/:id" element={<RegisterComponent />} />
-
+            </Route>
+         
+            <Route path="/tickets" element={<TicketsDashboard />} />
             <Route path="/addticket" element={<AddTicketComponent />} />
             <Route path="/edit-ticket/:id" element={<AddTicketComponent />} />
             <Route path="/tickets-list" element={<Tickets />} />
+            
+
             <Route path="/test" element={<AddingMy />} />
             <Route path="/AddInventory" element={<AddInventory />} />
             <Route path="/UpdateInventory/:id" element={<AddInventory />} />
@@ -56,10 +65,13 @@ function App() {
             <Route path="/AddSimcards/:id" element={<AddSimcards />} />
             <Route path="/simcards" element={<Simcards />} />
 
-            <Route path="*" element={<PageNotFound />} />
+
+            
           </Route>
           <Route path="/" element={<Login />} />
           <Route path="/" element={<Login />} />
+          <Route path="/unauthorized" element={<Unauthorized />} />
+          <Route path="*" element={<PageNotFound />} />
         </Routes>
       </>
     </div>
