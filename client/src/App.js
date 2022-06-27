@@ -25,6 +25,7 @@ import AddSimcards from "./Components/Pages/Inventory/AddSimcard";
 import Simcards from "./Components/Pages/Inventory/Simcards";
 import CheckAuth from "./Components/context/CheckAuth";
 import Unauthorized from "./Components/Common/Unauthorized";
+import PersistLoging from "./Components/hooks/PersistLoging";
 
 const SidebarLayout = () => (
   <>
@@ -40,6 +41,7 @@ function App() {
         <ToastContainer position="top-center" />
         <Routes>
           <Route element={<SidebarLayout />}>
+            {/* <Route element={<PersistLoging/>}> */}
 
             {/* Home */}
             <Route element={<CheckAuth allowedRoles={[1,2,3,4]}/>}>
@@ -64,7 +66,7 @@ function App() {
             <Route path="/addticket" element={<AddTicketComponent />} />
             <Route path="/edit-ticket/:id" element={<AddTicketComponent />} />
             <Route path="/tickets-list" element={<Tickets />} />
-            <Route path="/test" element={<AddingMy />} />
+          
             </Route>
             
             {/* Inventory */}
@@ -76,11 +78,12 @@ function App() {
             <Route path="/AddSimcards/:id" element={<AddSimcards />} />
             <Route path="/simcards" element={<Simcards />} />
             </Route>
-
+            {/* </Route> */}
           </Route>
           <Route path="/add-user" element={<RegisterComponent />} />
           <Route path="/" element={<Login />} />
           <Route path="/unauthorized" element={<Unauthorized />} />
+          <Route path="/test" element={<AddingMy />} />
           <Route path="*" element={<PageNotFound />} />
         </Routes>
       </>

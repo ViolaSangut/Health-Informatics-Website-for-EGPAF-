@@ -1,48 +1,40 @@
 import React,{useState, useEffect, useContext} from 'react'
 import axios from 'axios';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { toast  } from 'react-toastify';
 import './Tickets';
 import moment from 'moment';
+import usePrivateAxios from '../../hooks/usePrivateAxios';
 
 const Tickets = () => {
     const [tickets, setTickets] = useState([]);
     const [ticketsDateCreated, setTicketsDateCreated] = useState([]);
     const navigate = useNavigate();
+    const location = useLocation();
     const [searchTickets, setSearchTickets] = useState("");
+    const privateAxios = usePrivateAxios();
 
 
     useEffect(() => {
+ 
+        //List 
+        const getAllTickets = () =>{
+            privateAxios.get("/tickets"
+            )
+            .then((response)=>{
+                console.log(response.data)
+                setTickets(response.data);
+            })
+            .catch((error)=>{
+                console.log(error);
+                navigate('/', { state: { from: location }, replace: true });
+            })
+        }
 
         getAllTickets();
-        test();
+
     }, [])
 
-    const test = () =>{
-        axios.get("http://localhost:4000/tickets")
-        .then((response)=>{
-            console.log(response.data)
-            setTicketsDateCreated(response.data)
-            
-          
-        })
-        .catch((error)=>{
-            console.log(error);
-        })
-
-    }
-
-    //List 
-    const getAllTickets = () =>{
-        axios.get("http://localhost:4000/tickets")
-        .then((response)=>{
-            console.log(response.data)
-            setTickets(response.data);
-        })
-        .catch((error)=>{
-            console.log(error);
-        })
-    }
     
     //delete
     const deleteTicket = (id) =>{
@@ -84,7 +76,7 @@ const Tickets = () => {
     <div className='table'>
         <table className='table_content'>
             <thead>
-        
+            <tr>
             <th>Title </th>
             <th>Facility</th> 
             <th>Creator</th> 
@@ -95,7 +87,7 @@ const Tickets = () => {
             <th>Date Created</th> 
             <th> update</th>  
             <th> Remove</th>      
-
+            </tr>
             </thead>
 
             <tbody>

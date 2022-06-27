@@ -14,14 +14,12 @@ const Users = () => {
    
 
     useEffect(() => {
-        // let isMounted = true;
-        const controller = new AbortController();   
+     
+        // const controller = new AbortController();   
         
         //List 
         const getAllUsers = () =>{
-            privateAxios.get('/users', {
-                signal: controller.signal
-            })
+            privateAxios.get('/users')
             .then((response)=>{
                 console.log(response.data)
             setUsers(response.data);
@@ -31,14 +29,14 @@ const Users = () => {
                 console.log(error);
                 setError(error.message);
                 console.log(error.message)
-                // navigate('/', { state: { from: location }, replace: true });
+                navigate('/', { state: { from: location }, replace: true });
             })
         }
         getAllUsers();
 
-        return () =>{
-            controller.abort();
-        }
+        // return () =>{
+        //     controller.abort();
+        // }
       
     }, [])
 
@@ -72,13 +70,14 @@ const Users = () => {
     <div className='table'>
     <table className='table_content'>
     <thead>
+     <tr>
         <th>User ID </th>
         <th>First Name</th>
         <th>Last Name</th> 
         <th>Role</th> 
         <th>Email</th> 
         <th> Actions</th>         
-
+     </tr>
     </thead>
 
     <tbody>

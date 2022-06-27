@@ -9,7 +9,7 @@ const ROLES_LIST = require("../config/roles");
 
 
 //List
-router.route('/').get(UsersController.getUsers);
+router.route('/').get(verifyToken,UsersController.getUsers);
 // router.route('/').get(verifyRole(ROLES_LIST.Admin, ROLES_LIST.User, ROLES_LIST.Manager, ROLES_LIST.Super_User), UsersController.getUsers);
 //verifyRole(ROLES_LIST.User),
 // Add

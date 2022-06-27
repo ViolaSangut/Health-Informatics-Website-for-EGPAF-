@@ -32,7 +32,7 @@ app.use(cors(corsOptions));
 const db = require("./models");
 
 //Routes
-//User
+//Users
 const usersRouter = require("./routes/UsersRoute");
 app.use("/users", usersRouter);
 

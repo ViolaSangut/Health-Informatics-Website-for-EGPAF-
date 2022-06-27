@@ -21,8 +21,11 @@ const SidebarComponent = ({ items }) => {
 
     //Logout
     const logout = async () => {
+        setAuth({});
         try {
-          await axios.delete("http://localhost:4000/users/logout");
+          await axios.delete("http://localhost:4000/users/logout", {
+            withCredentials: true
+          });
           navigate("/");
         } catch (error) {
           console.log(error);

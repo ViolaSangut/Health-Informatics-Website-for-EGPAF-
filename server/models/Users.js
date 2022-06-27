@@ -1,6 +1,3 @@
-// const Roles = require("../models/Roles");
-
-
 module.exports = (sequelize, DataTypes) => {
   const Users = sequelize.define("Users", {
     firstName: {
@@ -16,11 +13,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       unique: true,
     },
-    // role: {
-    //   type: DataTypes.STRING,
-    //   defaultValue: "User",
-    //   allowNull: false,
-    // },
+  
     password: {
       type: DataTypes.STRING,
       allowNull: false,

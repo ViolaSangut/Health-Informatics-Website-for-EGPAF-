@@ -10,6 +10,8 @@ import { Bar } from 'react-chartjs-2';
 import axios from 'axios';
 import Chart from 'chart.js/auto';
 import './Chart.css';
+import { Link, useNavigate, useLocation} from 'react-router-dom';
+import usePrivateAxios from '../../../hooks/usePrivateAxios';
 
 ChartJS.register(
   BarElement,
@@ -21,13 +23,17 @@ const BarChart = () => {
   const [chart, setChart] = useState({})
 
   const [weeklyTicketsCounts, setweeklyTicketsCounts] = useState([]);
-const [weekDays, setweekDays] = useState([]);
-const [weekDate, setweekDate] = useState([]);
-const [ticketsCount, setTicketsCount] = useState([]);
+  const [weekDays, setweekDays] = useState([]);
+  const [weekDate, setweekDate] = useState([]);
+  const [ticketsCount, setTicketsCount] = useState([]);
+
+  const location = useLocation();
+  const navigate = useNavigate();
+  const privateAxios = usePrivateAxios();
 
   const countAllTickets = () =>{
     try {
-      axios.get("http://localhost:4000/tickets/getNoOfWeeklyTickets")
+      privateAxios.get("/tickets/getNoOfWeeklyTickets")
       .then((response)=>{
         console.log(response.data);
         setChart(response.data)
@@ -41,6 +47,7 @@ const [ticketsCount, setTicketsCount] = useState([]);
       
     } catch (error) {
       console.log(error)
+      navigate('/', { state: { from: location }, replace: true });
     }
   }
 

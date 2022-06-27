@@ -26,7 +26,7 @@ const login = async (req, res) => {
           const email = user.email;
           const firstName = user.firstName;
           const lastName = user.lastName;
-          const roles = user.RoleId;
+          const roles = [user.RoleId];
   
            //Creating accessToken
            const createAccessToken = (user) =>{
@@ -51,12 +51,12 @@ const login = async (req, res) => {
       
             const refreshToken = sign(
                 {
-                    id: user.id, email: user.email
+                    id: user.id, email: user.email, roles: roles
                 },
                 process.env.REFRESH_TOKEN_SECRET,
                 {
                   
-                  expiresIn: "10s",
+                  expiresIn: "15s",
                 }
               );
             return refreshToken;
@@ -98,6 +98,7 @@ const logout = async (req, res) => {
     });
     if (!user[0]) return res.sendStatus(204);
     const userId = user[0].id;
+    //Removing refreshToken
     await Users.update(
       { refresh_token: null },
       {
@@ -106,6 +107,7 @@ const logout = async (req, res) => {
         },
       }
     );
+    //Deleting cookie
     res.clearCookie("refreshToken", {httpOnly: true, sameSite: "None", secure: true,});
     return res.sendStatus(200);
   };
