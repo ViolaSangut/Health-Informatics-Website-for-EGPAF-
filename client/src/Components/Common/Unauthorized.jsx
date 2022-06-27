@@ -6,7 +6,7 @@ const Unauthorized = () => {
   return (
     <div className='pageNotFound'>
         <h2>Unauthorized!</h2>
-        <h3>Kindly try this link:  <Link className='button' to = '/'>Home</Link></h3>
+        <h3>Kindly try this link:  <Link className='button' to = '/home'>Home</Link></h3>
     </div>
   )
 }
