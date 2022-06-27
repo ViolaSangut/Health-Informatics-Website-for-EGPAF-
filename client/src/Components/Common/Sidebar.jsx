@@ -46,7 +46,7 @@ const SidebarComponent = ({ items }) => {
        {/* Account */}
        
        < MdIcons.MdAccountCircle className='account' />
-       <h4 className='name'> Hi, {auth.firstName}</h4>
+       <h4 className='name'> Hi, {auth.firstName} {auth.lastName} </h4>
        
        {/* Logout */}
        <AIIcons.AiOutlineLogout className='logout' />

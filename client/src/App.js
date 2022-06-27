@@ -48,7 +48,7 @@ function App() {
 
             {/* User Management - accessed by only Admin and Super_User */}
             <Route element={<CheckAuth allowedRoles={[3,4]}/>}>
-            <Route path="/add-user" element={<RegisterComponent />} />
+    
             <Route path="/list-user" element={<Users />} />
             <Route path="/edit-user/:id" element={<RegisterComponent />} />
             </Route>
@@ -78,6 +78,7 @@ function App() {
             </Route>
 
           </Route>
+          <Route path="/add-user" element={<RegisterComponent />} />
           <Route path="/" element={<Login />} />
           <Route path="/unauthorized" element={<Unauthorized />} />
           <Route path="*" element={<PageNotFound />} />
