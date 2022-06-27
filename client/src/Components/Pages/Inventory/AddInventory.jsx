@@ -23,7 +23,6 @@ const navigate = useNavigate();
 
 const [items, setItems] = useState([])
 const item = items.find(item => (item.id).toString() === id);
-const min_date  = new Date();
 
 
  useEffect(() => {
@@ -62,6 +61,7 @@ const min_date  = new Date();
 
     .catch((error)=>{
       console.log(error)
+      alert("Error: " + error.message);
     });
     };
 
@@ -70,11 +70,12 @@ const min_date  = new Date();
         const getAllItems = () =>{
             axios.get("http://localhost:4000/Inventory")
             .then((response)=>{
-                console.log(response.data)
+                // console.log(response.data)
                 setItems(response.data);
             })
             .catch((error)=>{
                 console.log(error);
+                alert("Error: " + error.message);
             })
         }
 
@@ -98,6 +99,7 @@ const min_date  = new Date();
       navigate('/Inventory')
       //clear input fields
     } catch (err) {
+       console.log(err);
        
   };
   }

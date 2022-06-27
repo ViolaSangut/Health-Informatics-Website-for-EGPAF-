@@ -4,6 +4,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import { toast  } from 'react-toastify';
 import "./Inventory.css";
 import Simcards from './Simcards';
+// import ReactSearchBox from "react-search-box"
 
 
 
@@ -17,7 +18,7 @@ const Inventory = () => {
   const[searchInventory, setSearchInventory] = useState("")
   const tableRef =useRef(null)
   const[display, setDisplay] = useState("Tablets")
-  const[tabletsVisible, setTabletsVisible] = useState(false)
+  const[tabletsVisible, setTabletsVisible] = useState(true)
   const[simcardsVisible, setSimcardsVisible] = useState(false)
 
 
@@ -85,24 +86,25 @@ const handleChange = (e)=>{
       <div>
      
       <div >
-        <input
-          type="text"
-          className='buttonadd'
-          placeholder='Search for Item'
-                value={searchInventory}
-                onChange={(e)=> setSearchInventory(e.target.value)}
-        ></input>
+        
         
         
       </div>
       </div>
       </div>
       <br/>
+      <input
+          type="text"
+          className='searchbox'
+          placeholder='Search for Item'
+                value={searchInventory}
+                onChange={(e)=> setSearchInventory(e.target.value)}
+        ></input>
 
       <button onClick={handleClick}
        className= "buttonadd">
          
-            Add Inventory
+            Add Tablet to Inventory
          
         </button>
         <div>
@@ -113,6 +115,12 @@ const handleChange = (e)=>{
 
               
         </select>
+        {/* <ReactSearchBox
+        placeholder="Placeholder"
+        value=""
+        data={items}
+        callback={(items) => console.log(items)}
+        /> */}
         </div>
 
       <div className="table">
@@ -203,6 +211,7 @@ const handleChange = (e)=>{
     <div>
     {tabletsVisible && <TabletPage/>}
     {simcardsVisible && <Simcards/>}
+
     </div>
   );
 };

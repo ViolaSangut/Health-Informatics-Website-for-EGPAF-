@@ -120,9 +120,9 @@ const saveUser = async () => {
           withCredentials: true,
         }
       );
-      console.log(response.data);
+      // console.log(response.data);
       // console.log(response.accessToken);
-      console.log(JSON.stringify(response));
+      // console.log(JSON.stringify(response));
       setSuccess(true);
       toast.success("User Registered Succesfully");
       navigate('/')
@@ -130,7 +130,7 @@ const saveUser = async () => {
     } catch (err) {
       if (!err?.response) {
         setErrMsg("No Server Response");
-      } else if (err.response?.status === 409) {
+      } else if (err.response?.status === "ERR_CONNECTION_REFUSED") {
         setErrMsg("Username taken!");
       } else {
         setErrMsg("Registeration Failed");

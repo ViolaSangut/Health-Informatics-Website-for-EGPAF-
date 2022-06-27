@@ -319,10 +319,10 @@ return(
                     }
                 </select>
                 <label>IMEI of Assigned Phone
-                    <span className={validPIN ? "valid" : "hide"}>
+                    <span className={validPhoneImei ? "valid" : "hide"}>
                         <FontAwesomeIcon icon={faCheck} />
                     </span>
-                    <span className={validPIN || !PIN ? "hide" : "invalid"}>
+                    <span className={validPhoneImei || !PhoneAssigned ? "hide" : "invalid"}>
                         <FontAwesomeIcon icon={faTimes} />
                     </span>
                 </label>
@@ -333,11 +333,11 @@ return(
                 onChange={(e)=>setPhoneAssigned(e.target.value)}
                  required
                 aria-invalid={validPIN ? "false" : "true"}
-                aria-describedby="pinid"
+                aria-describedby="phonimeiid"
                 onFocus={() => setPhoneAssignedFocus(true)}
                 onBlur={() => setPhoneAssignedFocus(false)}/>
                 <p
-                    id="pinid"
+                    id="phoneimeiid"
                     className={
                         PhoneAssignedFocus && PhoneAssigned && !validPhoneImei
                         ? "instructions"
