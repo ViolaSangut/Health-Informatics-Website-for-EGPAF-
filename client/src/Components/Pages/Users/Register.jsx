@@ -55,6 +55,11 @@ const { id } = useParams();
 const [users, setUsers] = useState([])
 const user = users.find(user => (user.id).toString() === id);
 
+//Roles
+const[roles, setRoles] = useState([]);
+const [RoleId, setRoleId] = useState(1);
+const [userRoles, setUserRoles] = useState("");
+
 useEffect(() => {
     fnameRef.current.focus();
     getAllusers();
@@ -114,7 +119,7 @@ const saveUser = async () => {
 
       const response = await axios.post(
         "http://localhost:4000/users/register",
-        JSON.stringify({ firstName, lastName, email, password }),
+        JSON.stringify({ firstName, lastName, email, password, RoleId}),
         {
           headers: { "Content-type": "application/json" },
           withCredentials: true,
@@ -157,7 +162,7 @@ const saveUser = async () => {
     try {
 
       const response = await  axios.put(`http://localhost:4000/users/update/${id}`, {
-        firstName:firstName, lastName:lastName, email: email, password: password, matchPassword: matchPassword
+        firstName:firstName, lastName:lastName, email: email, password: password, matchPassword: matchPassword, RoleId: RoleId
       });
       
       console.log(response.data);
@@ -235,6 +240,22 @@ const saveUser = async () => {
       
   }
 
+  //Getting roles
+  const getRoles = () =>{
+    axios.get("http://localhost:4000/roles")
+    .then((response)=>{
+        console.log(response.data)
+        setRoles(response.data);
+        setUserRoles(response.data.role);
+    })
+    .catch((error)=>{
+        console.log(error);
+    })
+}
+
+useEffect(()=>{
+  getRoles();
+}, [])
     
     
   return (
@@ -328,6 +349,21 @@ const saveUser = async () => {
               Only letters allowed.
             </p>
 
+            {/* Roles */}
+            {id && (
+              <>
+                <label>Roles</label>
+                        <select  onChange ={(e) => setRoleId(e.target.value)}>
+                            <option selected disabled="true" >{userRoles}</option>
+                            {
+                                roles.map((role)=>(<option key={role.id}value={role.id}>
+                                  {role.role}
+                                </option>))
+                            }
+                        </select>
+              </>
+            )}
+
           
         {/* Email input */}
           <label>Email 
@@ -365,7 +401,8 @@ const saveUser = async () => {
               <br />
               Must be a Valid email address!
             </p>
-        {/* password input */}
+     
+           {/* password input */}
           <label>Password 
             <span className={validPassword ? "valid" : "hide"}>
                 <FontAwesomeIcon icon={faCheck} />
@@ -442,9 +479,11 @@ const saveUser = async () => {
               <FontAwesomeIcon icon={faInfoCircle} />
               Must match the first password input field.
             </p>
-
+            
+      
           <button className='button'
-           disabled={!validFName || !validLName || !validPassword || !validMatch ? true : false}> Submit</button>
+           disabled={!validFName || !validLName || !validPassword || !validMatch ? true : false}> Submit
+           </button>
         </form>
         <p>
             Already registered?
