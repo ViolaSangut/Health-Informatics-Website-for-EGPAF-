@@ -24,6 +24,7 @@ const jwt = require("jsonwebtoken");
 
         const roles = [presentUser[0].RoleId];
         const firstName = presentUser[0].firstName;
+        const lastName = presentUser[0].lastName;
 
         const accessToken = jwt.sign(
           { "id": decoded.id, "firstName": decoded.firstName, "email": decoded.email, "roles":roles},
@@ -32,7 +33,7 @@ const jwt = require("jsonwebtoken");
             expiresIn: "10m",
           }
         );
-        res.json({ accessToken, roles, firstName });
+        res.json({ accessToken, roles, firstName, lastName });
       }
     );
 };

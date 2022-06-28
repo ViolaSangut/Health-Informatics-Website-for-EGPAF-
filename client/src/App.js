@@ -25,7 +25,7 @@ import AddSimcards from "./Components/Pages/Inventory/AddSimcard";
 import Simcards from "./Components/Pages/Inventory/Simcards";
 import CheckAuth from "./Components/context/CheckAuth";
 import Unauthorized from "./Components/Common/Unauthorized";
-import PersistLoging from "./Components/hooks/PersistLoging";
+import PersistLogin from "./Components/hooks/PersistLogin";
 
 const SidebarLayout = () => (
   <>
@@ -40,7 +40,7 @@ function App() {
       <>
         <ToastContainer position="top-center" />
         <Routes>
-        <Route element={<PersistLoging/>}>
+        <Route element={<PersistLogin/>}>
           <Route element={<SidebarLayout />}>
        
 

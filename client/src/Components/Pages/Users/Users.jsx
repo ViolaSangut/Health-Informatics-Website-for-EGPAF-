@@ -29,7 +29,11 @@ const Users = () => {
                 console.log(error);
                 setError(error.message);
                 console.log(error.message)
+                if(error.message === "Request failed with status code 401"){
+                    navigate('/unauthorized', { state: { from: location }, replace: true });
+                } else{
                 navigate('/', { state: { from: location }, replace: true });
+                }
             })
         }
         getAllUsers();

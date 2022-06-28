@@ -5,7 +5,7 @@ import UseAuth from "../context/UseAuth";
 
 import React from 'react'
 
-const PersistLoging = () => {
+const PersistLogin = () => {
   const { auth } = UseAuth();
   const [isLoading, setIsLoading] = useState(true);
   const refresh = useRefreshToken();
@@ -21,20 +21,15 @@ const PersistLoging = () => {
             console.error(err);
         }
         finally {
-       setIsLoading(false);
+          isMounted && setIsLoading(false);
         }
     }
-
+    //Getting new accessToken using RefreshToken if it's absent or has expired
     !auth?.accessToken ? verifyRefreshToken() : setIsLoading(false);
 
     return () => isMounted = false;
 }, [])
 
-    useEffect(() => {
-        console.log(`isLoading: ${isLoading}`)
-        console.log(`authToken: ${JSON.stringify(auth?.accessToken)}`)
-    }, [isLoading])
- 
     return (
         <>
             {isLoading
@@ -46,4 +41,4 @@ const PersistLoging = () => {
     
 }
 
-export default PersistLoging
+export default PersistLogin
