@@ -8,7 +8,7 @@ const login = async (req, res) => {
     const { email, password } = req.body;
   
     const user = await Users.findOne({
-      where: {
+      where: { 
         email: email,
       },
     });
@@ -36,7 +36,7 @@ const login = async (req, res) => {
                 process.env.ACCESS_TOKEN_SECRET,
                 { 
                 
-                expiresIn: "5s",
+                expiresIn: "10m",
                 }
             );
             return accessToken;
@@ -56,7 +56,7 @@ const login = async (req, res) => {
                 process.env.REFRESH_TOKEN_SECRET,
                 {
                   
-                  expiresIn: "15s",
+                  expiresIn: "1h",
                 }
               );
             return refreshToken;

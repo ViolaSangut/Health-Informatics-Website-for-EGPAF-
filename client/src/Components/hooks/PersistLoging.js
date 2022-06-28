@@ -11,7 +11,7 @@ const PersistLoging = () => {
   const refresh = useRefreshToken();
 
   useEffect(() => {
-    // let isMounted = true;
+    let isMounted = true;
 
     const verifyRefreshToken = async () => {
         try {
@@ -27,10 +27,23 @@ const PersistLoging = () => {
 
     !auth?.accessToken ? verifyRefreshToken() : setIsLoading(false);
 
-    // return () => isMounted = false;
+    return () => isMounted = false;
 }, [])
 
+    useEffect(() => {
+        console.log(`isLoading: ${isLoading}`)
+        console.log(`authToken: ${JSON.stringify(auth?.accessToken)}`)
+    }, [isLoading])
  
+    return (
+        <>
+            {isLoading
+                    ? <p>Loading...</p>
+                    : <Outlet />
+            }
+        </>
+    )
+    
 }
 
 export default PersistLoging

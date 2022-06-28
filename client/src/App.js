@@ -40,8 +40,9 @@ function App() {
       <>
         <ToastContainer position="top-center" />
         <Routes>
+        <Route element={<PersistLoging/>}>
           <Route element={<SidebarLayout />}>
-            {/* <Route element={<PersistLoging/>}> */}
+       
 
             {/* Home */}
             <Route element={<CheckAuth allowedRoles={[1,2,3,4]}/>}>
@@ -78,7 +79,8 @@ function App() {
             <Route path="/AddSimcards/:id" element={<AddSimcards />} />
             <Route path="/simcards" element={<Simcards />} />
             </Route>
-            {/* </Route> */}
+          
+          </Route>
           </Route>
           <Route path="/add-user" element={<RegisterComponent />} />
           <Route path="/" element={<Login />} />
