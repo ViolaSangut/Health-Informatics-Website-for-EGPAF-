@@ -123,3 +123,12 @@
     height: 50px; */
     margin-left: 85%;
 }
+.searchbox{
+    margin-right: 15%;
+    padding: 0.5rem;
+        margin-top: 0.5rem;
+        vertical-align: middle;
+            border-radius: 0.5rem;
+            width: 30%;
+            
+}
