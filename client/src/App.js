@@ -19,6 +19,7 @@ import PageNotFound from "./Components/Common/PageNotFound";
 import Users from "./Components/Pages/Users/Users";
 import RegisterComponent from "./Components/Pages/Users/Register";
 import AddTicketComponent from "./Components/Pages/Tickets/AddTicket";
+import AddFacilityComponent from "./Components/Pages/Facilities/AddFacilities";
 import AddingMy from "./Components/Pages/Tickets/AddingMy";
 import AddInventory from "./Components/Pages/Inventory/AddInventory";
 import AddSimcards from "./Components/Pages/Inventory/AddSimcard";
@@ -38,11 +39,22 @@ function App() {
   return (
     <div>
       <>
-        <ToastContainer position="top-center" />
-        <Routes>
-        <Route element={<PersistLogin/>}>
-          <Route element={<SidebarLayout />}>
-       
+      <ToastContainer position='top-center'/>
+        <Routes>        
+          <Route  element = {<SidebarLayout/>}>
+            <Route path='/home' element={<Home/>}/>
+            <Route path='/facilities' element={<Facilities/>}/>
+            <Route path='/inventory' element={<Inventory/>}/>
+            <Route path='/tickets' element={<TicketsDashboard/>}/>
+            <Route path='/add-user' element={<RegisterComponent/>}/>
+            <Route path='/list-user' element={<Users/>}/>
+            <Route path='/edit-user/:id' element={<RegisterComponent/>}/>
+            <Route path='/addfacility' element={<AddFacilityComponent/>}/>
+            <Route path='/addticket' element={<AddTicketComponent/>}/>
+            <Route path='/edit-ticket/:id' element={<AddTicketComponent/>}/>
+            <Route path='/edit-facility/:id' element={<AddFacilityComponent/>}/>
+            <Route path='/tickets-list' element={<Tickets/>}/>
+            <Route path='/test' element={<AddingMy/>}/>
 
             {/* Home */}
             <Route element={<CheckAuth allowedRoles={[1,2,3,4]}/>}>
@@ -81,7 +93,7 @@ function App() {
             </Route>
           
           </Route>
-          </Route>
+          
           <Route path="/add-user" element={<RegisterComponent />} />
           <Route path="/" element={<Login />} />
           <Route path="/unauthorized" element={<Unauthorized />} />

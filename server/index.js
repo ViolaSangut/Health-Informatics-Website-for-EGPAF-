@@ -11,8 +11,8 @@ const mysql = require("mysql2");
 const db1 = mysql.createConnection({
   user: "root",
   host: "localhost",
-  password: "root",
-  database: "hbhis",
+  password: "123456789",
+  database: "healthinformatics",
   multipleStatements: true
 });
 

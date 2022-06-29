@@ -6,8 +6,8 @@ const sequelize = require("sequelize");
 const db = mysql.createConnection({
     user: "root",
     host: "localhost",
-    password: "root",
-    database: "hbhis",
+    password: "123456789",
+    database: "healthinformatics",
     multipleStatements: true
 });
 
