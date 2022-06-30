@@ -22,8 +22,9 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.TEXT,
     },
   });
-
+  
   Users.associate = (models) =>{
+    //Creating relationship btw user & roles
     Users.belongsTo(models.Roles, {
       foreignKey: {
         allowNull: false,

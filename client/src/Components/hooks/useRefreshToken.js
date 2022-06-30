@@ -1,23 +1,22 @@
 import axios from "axios"
 import UseAuth from "../context/UseAuth"
+import { useState } from "react";
 
 const useRefreshToken = () => {
     const { setAuth } = UseAuth();
 
+    //Getting new accessToken from refreshtoken
     const refresh = async () => {
+     
         const response = await axios.get("http://localhost:4000/refresh",  {
             headers: { 'Content-Type': 'application/json' },
             withCredentials: true
         });
         setAuth(prevState => {
-            console.log(JSON.stringify(prevState));
-            console.log(response.data.accessToken);
+
             return { 
                 ...prevState,
-                roles: response.data.roles, 
-                firstName: response.data.firstName,
-                lastName: response.data.lastName,
-                accessToken: response.data.accessToken 
+                accessToken:response.data.accessToken 
             }
         });
         return response.data.accessToken;

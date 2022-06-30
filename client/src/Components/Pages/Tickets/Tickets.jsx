@@ -27,7 +27,11 @@ const Tickets = () => {
             })
             .catch((error)=>{
                 console.log(error);
+                if(error.message === "Request failed with status code 401"){
+                    navigate('/unauthorized', { state: { from: location }, replace: true });
+                } else{
                 navigate('/', { state: { from: location }, replace: true });
+                }
             })
         }
 
@@ -39,7 +43,7 @@ const Tickets = () => {
     //delete
     const deleteTicket = (id) =>{
         if(window.confirm("Are you sure you want to delete the Ticket?")){
-            axios.delete(`http://localhost:4000/tickets/delete/${id}`)
+            privateAxios.delete(`/tickets/delete/${id}`)
         .then((response)=>{
             setTickets(tickets.filter((ticket)=>{
                 return ticket.id != id;
@@ -118,7 +122,7 @@ const Tickets = () => {
 
                                 <td> {ticket.title} </td>
                                 <td> {ticket.facility} </td>
-                                <td> {ticket.creator} </td>
+                                <td> {ticket.creatorsFirstName} {ticket.creatorsLastName} </td>
                                 <td>{ticket.ticket_status}</td>
                                 <td>{ticket.assignee}</td>
                                 <td>{ticket.priority}</td>

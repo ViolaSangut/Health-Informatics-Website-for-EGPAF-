@@ -27,7 +27,7 @@ const jwt = require("jsonwebtoken");
         const lastName = presentUser[0].lastName;
 
         const accessToken = jwt.sign(
-          { "id": decoded.id, "firstName": decoded.firstName, "email": decoded.email, "roles":roles},
+          { "id": decoded.id, "firstName": decoded.firstName, "lastName": decoded.lastName, "email": decoded.email, "roles":roles},
           process.env.ACCESS_TOKEN_SECRET,
           {
             expiresIn: "10m",

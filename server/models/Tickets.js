@@ -8,7 +8,15 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    creator: {
+    creatorsFirstName: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    creatorsLastName: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    creatorsEmail: {
       type: DataTypes.STRING,
       allowNull: false,
     },
