@@ -1,6 +1,5 @@
 import axios from "axios"
 import UseAuth from "../context/UseAuth"
-import { useState } from "react";
 
 const useRefreshToken = () => {
     const { setAuth } = UseAuth();

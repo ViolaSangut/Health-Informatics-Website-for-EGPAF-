@@ -1,3 +1,5 @@
+const Sequelize = require("sequelize");
+
 module.exports = (sequelize, DataTypes) => {
   const Tickets = sequelize.define("Tickets", {
     title: {
@@ -21,10 +23,10 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
     },
     ticket_status: {
-      type: DataTypes.STRING,
+      type: Sequelize.ENUM("Unassigned", "Pending", "Resolved"),
       defaultValue: "Unassigned",
-      allowNull: false,
     },
+   
     assignee: {
       type: DataTypes.STRING,
     },

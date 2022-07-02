@@ -21,19 +21,22 @@ const Users = () => {
         const getAllUsers = () =>{
             privateAxios.get('/users')
             .then((response)=>{
-                // console.log(response.data)
+            //console.log(response.data)
             setUsers(response.data);
-            setError("");
+            // setError("");
             })
             .catch((error)=>{
                 console.log(error);
-                setError(error.message);
+                // setError(error.message);
                 console.log(error.message)
-                if(error.message === "Request failed with status code 401"){
-                    navigate('/unauthorized', { state: { from: location }, replace: true });
-                } else{
-                navigate('/', { state: { from: location }, replace: true });
-                }
+                // if(error.message === "Request failed with status code 401"){
+                //     navigate('/unauthorized', { state: { from: location }, replace: true });
+                // } else if (error.response.status === 401){
+                    navigate('/unauthorized');
+                // }
+                // else{
+                // navigate('/', { state: { from: location }, replace: true });
+                // }
             })
         }
         getAllUsers();

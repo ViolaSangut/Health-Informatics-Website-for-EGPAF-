@@ -32,7 +32,9 @@ const login = async (req, res) => {
            const createAccessToken = (user) =>{
                   
             const accessToken = sign(
-                {id: user.id, firstName: user.firstName, lastName: user.lastName, email: user.email, roles: roles },
+                { 
+                  id, email, firstName, lastName, roles
+                },
                 process.env.ACCESS_TOKEN_SECRET,
                 { 
                 
@@ -51,7 +53,7 @@ const login = async (req, res) => {
       
             const refreshToken = sign(
                 {
-                    id: user.id, email: user.email,firstName: user.firstName, lastName: user.lastName, roles: roles
+                  id, email, firstName, lastName, roles
                 },
                 process.env.REFRESH_TOKEN_SECRET,
                 {
@@ -81,7 +83,7 @@ const login = async (req, res) => {
             secure: true,
             maxAge: 	24 * 60 * 60 * 1000,
           });
-          res.json({ accessToken, id, email, firstName, lastName, roles });
+          res.json({ refreshToken });
         }
       });
     }

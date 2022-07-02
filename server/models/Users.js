@@ -31,6 +31,10 @@ module.exports = (sequelize, DataTypes) => {
         defaultValue: 1
       }
     })
+
+    // Users.hasMany(models.Tickets, {
+    //   onDelete: "cascade",
+    // })
   }
 
   return Users;

@@ -84,6 +84,7 @@ const Tickets = () => {
             <th>Title </th>
             <th>Facility</th> 
             <th>Creator</th> 
+            <th>Creator's Email</th> 
             <th>Status</th> 
             <th>Assignee</th> 
             <th>Priority</th> 
@@ -123,6 +124,7 @@ const Tickets = () => {
                                 <td> {ticket.title} </td>
                                 <td> {ticket.facility} </td>
                                 <td> {ticket.creatorsFirstName} {ticket.creatorsLastName} </td>
+                                <td>{ticket.creatorsEmail}</td>
                                 <td>{ticket.ticket_status}</td>
                                 <td>{ticket.assignee}</td>
                                 <td>{ticket.priority}</td>

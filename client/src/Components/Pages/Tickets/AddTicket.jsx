@@ -9,7 +9,6 @@ import facilities from '../../../Resources/facilities/facilities.json'
 import UseAuth from "../../context/UseAuth";
 import jwt_decode from "jwt-decode";
 
-
 const AddTicketComponent = () => {
     const { auth } = UseAuth();
 
@@ -132,7 +131,7 @@ const AddTicketComponent = () => {
     }, [])
     
     const getAllTickets = () =>{
-        axios.get("http://localhost:4000/tickets")
+        privateAxios.get("/tickets")
         .then((response)=>{
             console.log(response.data)
             setTickets(response.data);

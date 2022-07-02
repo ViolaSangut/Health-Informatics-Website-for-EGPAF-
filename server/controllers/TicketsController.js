@@ -30,6 +30,13 @@ const getTickets = async (req, res)=>{
 //Adding a Ticket
 const addTicket = async (req, res)=>{
     const { title, facility, creatorsEmail, creatorsFirstName, creatorsLastName, ticket_status, assignee, priority, due_date} = req.body;
+
+
+    if(!title || !facility || !creatorsEmail || !due_date ){
+        res.status(400) //Bad req
+        throw new error("Please add all mandatory fields!")
+    }
+
     Tickets.create({
         title: title,
         facility: facility,
@@ -39,7 +46,7 @@ const addTicket = async (req, res)=>{
         ticket_status:ticket_status,
         assignee: assignee,
         priority: priority,
-        due_date: due_date
+        due_date: due_date,
     })
     .then(()=>{
         res.json("Ticket added!")
