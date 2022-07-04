@@ -1,6 +1,3 @@
-// const Roles = require("../models/Roles");
-
-
 module.exports = (sequelize, DataTypes) => {
   const Users = sequelize.define("Users", {
     firstName: {
@@ -16,11 +13,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       unique: true,
     },
-    // role: {
-    //   type: DataTypes.STRING,
-    //   defaultValue: "User",
-    //   allowNull: false,
-    // },
+  
     password: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -29,14 +22,19 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.TEXT,
     },
   });
-
+  
   Users.associate = (models) =>{
+    //Creating relationship btw user & roles
     Users.belongsTo(models.Roles, {
       foreignKey: {
         allowNull: false,
         defaultValue: 1
       }
     })
+
+    // Users.hasMany(models.Tickets, {
+    //   onDelete: "cascade",
+    // })
   }
 
   return Users;

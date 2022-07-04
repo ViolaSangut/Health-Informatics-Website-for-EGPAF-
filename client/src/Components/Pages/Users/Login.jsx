@@ -5,7 +5,7 @@ import './Login.css';
 import egpaf_logo from '../../../Resources/Images/egpaf_logov2.JPG'
 import { Link, useLocation, useNavigate} from 'react-router-dom';
 import UseAuth from '../../context/UseAuth';
-import AuthContext from '../../context/AuthContext';
+
 
 
 const Login = () => {
@@ -16,11 +16,10 @@ const Login = () => {
 
   const [email, setEmail] = useState("");  
   const [password, setPassword] = useState("");
-  const { setAuth } = UseAuth();
+  const { auth, setAuth } = UseAuth();
   
-
   const [errorMessage, setErrorMessage] = useState('');
-  const [success, setSuccess] = useState(false);
+
 
   const emailRef = useRef();
   const errorRef = useRef();
@@ -28,6 +27,7 @@ const Login = () => {
 
   useEffect(() => {
     emailRef.current.focus();
+
   }, [])
 
 
@@ -35,6 +35,12 @@ const Login = () => {
    setErrorMessage('');
   }, [email, password])
 
+  //Preventing
+  useEffect(() => {
+    
+   }, [])
+ 
+ 
 
 
   const login = async (e) => {
@@ -54,16 +60,12 @@ const Login = () => {
         return
       }
       
-      console.log(JSON.stringify(response?.data));
       const accessToken = response?.data?.accessToken;
-      const roles = [response?.data?.roles];
-      const firstName = response?.data?.firstName;
-      const lastName = response?.data?.lastName;
-      setAuth({ firstName, lastName, email, password, roles, accessToken });
+
+      setAuth({email, accessToken });
       setEmail('');
       setPassword('');
-      setSuccess(true);
-      console.log(roles)
+
       navigate(from, { replace: true });
   } 
   catch (error) { 

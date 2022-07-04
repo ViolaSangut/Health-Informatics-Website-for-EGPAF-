@@ -2,15 +2,16 @@ const express = require("express");
 const router = express.Router();
 const rolesController = require('../controllers/RolesController');
 
+//Adding & Listing roles.
 router.route('/')
 .get(rolesController.getRoles)
 .post(rolesController.addRole);
 
 
-//update 
+//Update 
 router.put("/:id", rolesController.updateRole);
 
-//delete
+//Delete
 router.delete("/:id",rolesController.deleteRole);
 
 module.exports = router;

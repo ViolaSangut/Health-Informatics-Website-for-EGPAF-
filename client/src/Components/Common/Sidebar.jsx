@@ -9,6 +9,7 @@ import egpaf_logo from '../../Resources/Images/egpaf_logov2.JPG'
 import * as MdIcons from 'react-icons/md';
 import axios from 'axios';
 import UseAuth from '../context/UseAuth';
+import jwt_decode from "jwt-decode";
 
 const SidebarComponent = ({ items }) => {
     const [sidebar, setSidebar] = useState(false);
@@ -17,12 +18,23 @@ const SidebarComponent = ({ items }) => {
     const navigate = useNavigate();
     const { setAuth, auth } = UseAuth();
 
+    //Getting loggedin's user firstName & lastName from accessToken.
+    const decodedAccessToken = auth?.accessToken
+          ? jwt_decode(auth.accessToken)
+          : undefined
+
+    const usersFirstName = decodedAccessToken?.firstName || [];
+    const usersLastName = decodedAccessToken?.lastName || [];
+
 
 
     //Logout
     const logout = async () => {
+        setAuth({});
         try {
-          await axios.delete("http://localhost:4000/users/logout");
+          await axios.delete("http://localhost:4000/users/logout", {
+            withCredentials: true
+          });
           navigate("/");
         } catch (error) {
           console.log(error);
@@ -46,7 +58,7 @@ const SidebarComponent = ({ items }) => {
        {/* Account */}
        
        < MdIcons.MdAccountCircle className='account' />
-       <h4 className='name'> Hi, {auth.firstName}</h4>
+       <h4 className='name'> Hi, {usersFirstName} {usersLastName} </h4>
        
        {/* Logout */}
        <AIIcons.AiOutlineLogout className='logout' />

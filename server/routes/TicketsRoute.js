@@ -2,12 +2,12 @@ const express = require("express");
 const router = express.Router();
 const TicketsController = require("../controllers/TicketsController");
 
-const verifyToken = require("../middleware/VerifyToken");
+const { verifyToken }  = require("../middleware/VerifyToken");
 const verifyRole = require("../middleware/VerifyRole");
 const ROLES_LIST = require("../config/roles");
 
 //List
-router.route('/').get(TicketsController.getTickets);
+router.route('/').get(verifyToken , verifyRole(ROLES_LIST.Admin, ROLES_LIST.User, ROLES_LIST.Manager, ROLES_LIST.Super_User),TicketsController.getTickets);
 
 //List
 router.route('/getNoOfWeeklyTickets').get(TicketsController.getNoOfWeeklyTickets);
@@ -34,14 +34,14 @@ router.route('/percentageCountOfTodaysResolvedTickets').get(TicketsController.pe
 //No of today's resolved tickets 
 router.route('/countTodaysResolvedTickets').get(TicketsController.countTodaysResolvedTickets);
 // Add
-router.route('/addticket').post(TicketsController.addTicket);
+router.route('/addticket').post(verifyToken , verifyRole(ROLES_LIST.Admin, ROLES_LIST.User, ROLES_LIST.Manager, ROLES_LIST.Super_User),TicketsController.addTicket);
 //Delete
-router.route("/delete/:id").delete(TicketsController.deleteTicket)
+router.route("/delete/:id").delete(verifyToken , verifyRole(ROLES_LIST.Admin, ROLES_LIST.User, ROLES_LIST.Manager, ROLES_LIST.Super_User),TicketsController.deleteTicket)
 
 //Find By Id
 router.route("/:id").get(TicketsController.findTicketById);
 //update 
-router.put("/:id", TicketsController.updateTicket);
+router.put("/:id", verifyToken , verifyRole(ROLES_LIST.Admin, ROLES_LIST.User, ROLES_LIST.Manager, ROLES_LIST.Super_User),TicketsController.updateTicket);
 
 
 module.exports = router;

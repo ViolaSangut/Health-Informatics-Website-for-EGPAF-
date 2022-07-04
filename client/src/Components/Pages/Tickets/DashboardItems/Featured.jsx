@@ -3,11 +3,15 @@ import './Featured.css';
 import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import { useState, useEffect } from 'react';
-import axios from 'axios';
+import { Link, useNavigate, useLocation} from 'react-router-dom';
+import usePrivateAxios from '../../../hooks/usePrivateAxios';
 
 
 const Featured = () => {
 
+  const location = useLocation();
+  const navigate = useNavigate();
+  const privateAxios = usePrivateAxios();
   const [todaysTicket, setTodaysTicket] = useState('');
   const [todaysResolvedTicket, setTodaysResolvedTicket] = useState('');
   const [percentageCountOfTodaysResolvedTickets, setpercentageCountOfTodaysResolvedTickets] = useState('');
@@ -24,32 +28,28 @@ const Featured = () => {
   //countTodaysTickets
   const countTodaysTickets = () =>{
     try {
-      axios.get("http://localhost:4000/tickets/countTodaysTickets")
+      privateAxios.get("/tickets/countTodaysTickets")
       .then((response)=>{
-        console.log(response.data)
         const todaysTicketsJson = JSON.stringify(response.data);
         //Removing square Brackets
         const todaysTicketsObject = todaysTicketsJson.substring(1, todaysTicketsJson.length-1);
-        console.log(todaysTicketsObject);
-
+       
         const todaysTickets = JSON.parse(todaysTicketsObject);
-        console.log(todaysTickets.todays_tickets)
         
         setTodaysTicket(todaysTickets.todays_tickets)
-        console.log(todaysTicket);
-
-      
+   
       })
       
     } catch (error) {
       console.log(error)
+      navigate('/', { state: { from: location }, replace: true });
     }
   }
 
   //countTodaysResolvedTickets
   const countTodaysResolvedTickets = () =>{
     try {
-      axios.get("http://localhost:4000/tickets/countTodaysResolvedTickets")
+      privateAxios.get("/tickets/countTodaysResolvedTickets")
       .then((response)=>{
         const todaysResolvedTicketsJson = JSON.stringify(response.data);
         //Removing square Brackets
@@ -65,29 +65,28 @@ const Featured = () => {
      
     } catch (error) {
       console.log(error)
+      navigate('/', { state: { from: location }, replace: true });
     }
   }
 
    //percentageCountOfTodaysResolvedTickets
    const percentageOfTodaysResolvedTickets = () =>{
     try {
-      axios.get("http://localhost:4000/tickets/percentageCountOfTodaysResolvedTickets")
+      privateAxios.get("/tickets/percentageCountOfTodaysResolvedTickets")
       .then((response)=>{
         const rateOfTodaysResolvedTicketsJson = JSON.stringify(response.data);
-        console.log(rateOfTodaysResolvedTicketsJson)
 
         //Removing square Brackets
         const rateOfTodaysResolvedTicketsObject = rateOfTodaysResolvedTicketsJson.substring(1, rateOfTodaysResolvedTicketsJson.length-1);
-        console.log(rateOfTodaysResolvedTicketsObject)
         
         const rateOfTodaysResolvedTickets = JSON.parse(rateOfTodaysResolvedTicketsObject)
-        console.log(rateOfTodaysResolvedTickets.percentageCountOfTodaysResolvedTickets);
 
         setpercentageCountOfTodaysResolvedTickets(rateOfTodaysResolvedTickets.percentageCountOfTodaysResolvedTickets);    
       })
      
     } catch (error) {
       console.log(error)
+      navigate('/', { state: { from: location }, replace: true });
     }
   }
 

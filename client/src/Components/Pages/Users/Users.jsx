@@ -14,31 +14,36 @@ const Users = () => {
    
 
     useEffect(() => {
-        // let isMounted = true;
-        const controller = new AbortController();   
+     
+        // const controller = new AbortController();   
         
         //List 
         const getAllUsers = () =>{
-            privateAxios.get('/users', {
-                signal: controller.signal
-            })
+            privateAxios.get('/users')
             .then((response)=>{
-                console.log(response.data)
+            //console.log(response.data)
             setUsers(response.data);
-            setError("");
+            // setError("");
             })
             .catch((error)=>{
                 console.log(error);
-                setError(error.message);
+                // setError(error.message);
                 console.log(error.message)
+                // if(error.message === "Request failed with status code 401"){
+                //     navigate('/unauthorized', { state: { from: location }, replace: true });
+                // } else if (error.response.status === 401){
+                    navigate('/unauthorized');
+                // }
+                // else{
                 // navigate('/', { state: { from: location }, replace: true });
+                // }
             })
         }
         getAllUsers();
 
-        return () =>{
-            controller.abort();
-        }
+        // return () =>{
+        //     controller.abort();
+        // }
       
     }, [])
 
@@ -72,13 +77,14 @@ const Users = () => {
     <div className='table'>
     <table className='table_content'>
     <thead>
+     <tr>
         <th>User ID </th>
         <th>First Name</th>
         <th>Last Name</th> 
         <th>Role</th> 
         <th>Email</th> 
         <th> Actions</th>         
-
+     </tr>
     </thead>
 
     <tbody>
