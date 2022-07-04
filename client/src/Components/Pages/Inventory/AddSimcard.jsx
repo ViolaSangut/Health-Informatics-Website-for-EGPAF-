@@ -9,6 +9,7 @@ import {
   faInfoCircle,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import usePrivateAxios from '../../hooks/usePrivateAxios';
 
 
 
@@ -56,6 +57,7 @@ const navigate = useNavigate();
 const {id} =useParams(); 
 
 const card = cards.find(card => (card.id).toString() === id);
+const private_axios = usePrivateAxios();
 
 //validating phone number
 useEffect(() => { 
@@ -116,7 +118,7 @@ useEffect(() => {
     //Add a new card
     const addCard = () =>{
         
-        axios.post(`http://localhost:4000/simcards/addSimcards`, {
+        private_axios.post(`/simcards/addSimcards`, {
             PhoneNumber: PhoneNumber, IMEI:IMEI, PUK: PUK, PIN: PIN, 
             Facility: Facility, PhoneAssigned:PhoneAssigned,
         }).then((response)=>{
@@ -133,7 +135,7 @@ useEffect(() => {
     
     //List all cards in the inventory
         const getAllCards = () =>{
-            axios.get("http://localhost:4000/simcards")
+            private_axios.get("/simcards")
             .then((response)=>{
                 console.log(response.data)
                 setCards(response.data);
@@ -150,7 +152,7 @@ useEffect(() => {
     
     try {
 
-      const response = await  axios.put(`http://localhost:4000/Simcards/${id}`, {
+      const response = await  private_axios.put(`/Simcards/${id}`, {
         PhoneNumber:PhoneNumber, IMEI:IMEI, PIN:PIN, PUK: PUK,
          Facility: Facility, 
       });
@@ -177,6 +179,10 @@ useEffect(() => {
     const onClickBack =() =>{
     navigate("/Inventory")
   }
+
+
+
+
 
 
 
@@ -327,6 +333,10 @@ return(
                         <FontAwesomeIcon icon={faTimes} />
                     </span>
                 </label>
+
+
+
+                
                 <input 
                 placeholder='Phone IMEI' 
                 type='text'

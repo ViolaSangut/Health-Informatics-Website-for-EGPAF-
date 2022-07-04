@@ -118,7 +118,7 @@ const findItemById = async (req, res, next) => {
 const deleteItem = async (req, res) => {
   const id = req.params.id;
 
-  await Inventory.destroy({
+  await Tablets.destroy({
     where: {
       id: id,
     },

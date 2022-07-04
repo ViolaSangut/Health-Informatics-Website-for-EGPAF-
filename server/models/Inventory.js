@@ -2,7 +2,7 @@ module.exports = (sequelize, DataTypes) => {
   const Tablets = sequelize.define("Tablets", {
     AssetName: {
       type: DataTypes.STRING,
-      allowNull: true,
+      allowNull: false,
     },
     AssetNumber: {
       type: DataTypes.STRING,
@@ -23,16 +23,16 @@ module.exports = (sequelize, DataTypes) => {
     },
     Passcode: {
       type: DataTypes.STRING,
-      allowNull: true,
+      allowNull: false,
       default: null,
     },
     Email: {
       type: DataTypes.STRING,
-      allowNull: true,
+      allowNull: false,
     },
     EmailPassword: {
       type: DataTypes.STRING,
-      allowNull: true,
+      allowNull: false,
     },
   });
   return Tablets;

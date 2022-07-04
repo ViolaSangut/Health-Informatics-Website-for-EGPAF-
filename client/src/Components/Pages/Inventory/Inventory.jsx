@@ -1,8 +1,9 @@
 import React,{useState, useEffect, useRef} from 'react'
-import axios from 'axios';
-import { useNavigate, Link, useParams } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { toast  } from 'react-toastify';
 import "./Inventory.css";
+import moment from 'moment';
+import usePrivateAxios from '../../hooks/usePrivateAxios';
 // import ReactSearchBox from "react-search-box"
 
 
@@ -16,8 +17,7 @@ const Inventory = () => {
   const navigate = useNavigate();
   const[searchInventory, setSearchInventory] = useState("")
   const tableRef =useRef(null)
-  const id = useParams();
-  const [itemId, setItemId] = useState("");
+  const private_axios = usePrivateAxios();
  
 
 
@@ -29,7 +29,7 @@ const Inventory = () => {
 
     //List all items in the inventory
     const getAllItems = () =>{
-        axios.get("http://localhost:4000/Inventory")
+        private_axios.get("/Inventory")
         .then((response)=>{
             console.log(response.data)
             setItems(response.data);
@@ -43,7 +43,7 @@ const Inventory = () => {
     //delete item from inventory
     const deleteItem = (id) =>{
         if(window.confirm("Are you sure you want to delete this Item?")){
-            axios.delete(`http://localhost:4000/Inventory/delete/${id}`)
+            private_axios.delete(`/Inventory/delete/${id}`)
         .then((response)=>{
             setItems(items.filter((item)=>{
                 return item.id !== id;
@@ -63,26 +63,7 @@ const Inventory = () => {
       navigate("/addinventory");
     }
 
-//handle clicking on row     
-// PATCH request; calls handleInventoryUpdate to push changes to the page
-// let handleInventoryUpdate
-//     function handleRowClick(e) {
-//         e.preventDefault();
-//         fetch(`http://localhost:4000/updateinventory/${id}`, {
-//             method: "PATCH",
-//             headers: {
-//                 "Content-Type" : "application/json"
-//             },
-//             // body: JSON.stringify(),
-//         })
-//             .then(resp => resp.json())
-//             .then(updatedInventory => {
-//                 handleInventoryUpdate(updatedInventory)})
-//     }
 
-
-
- 
     return (
     <div>
     <div className="upper-section">
@@ -113,23 +94,7 @@ const Inventory = () => {
             Add Tablet to Inventory
          
         </button>
-        <div>
-        {/* <select  className= "buttonadd" value={display} onChange={handleChange}>
-                  <option selected disabled ="true">--Select Item Type--</option>
-                <option value="Simcards">Simcards</option>
-                <option value="Tablets">Tablets</option>
-
-              
-        </select> */}
-        {/* <ReactSearchBox
-        placeholder="Placeholder"
-        value=""
-        data={items}
-        callback={(items) => console.log(items)}
-        /> */}
-        </div>
-
-      <div className="table">
+              <div className="table">
    <table className="table_content" ref={tableRef}>
     <thead className=''>
         <th>Serial</th>
@@ -183,16 +148,15 @@ const Inventory = () => {
 
                 
         
-                // onClick={handleRowClick}
                 >
                     
 
-                    <td> {item.id} </td>
+                    <td onc> {item.id} </td>
                     <td> {item.AssetNumber} </td>
                     <td> {item.AssetName} </td>
                     <td> {item.AssetStatus} </td>
                     <td> {item.serialNumber} </td>
-                    <td> {item.createdAt} </td>
+                    <td> {(moment(item.createdAt).format('DD-MM-YYYY | HH:MM'))} </td>
                     <td> {item.facility} </td>
                     <td> {item.Passcode} </td>
                     <td> {item.Email} </td>

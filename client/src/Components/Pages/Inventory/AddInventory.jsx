@@ -1,13 +1,24 @@
 import React, {useState, useEffect} from 'react';
-import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
 import { toast  } from 'react-toastify';
 import './AddInventory.css'
 import Facilities from './Facilities.json'
 import DeviceStatus from './DeviceStatus.json';
+import usePrivateAxios from '../../hooks/usePrivateAxios';
+import {
+  faCheck,
+  faTimes,
+  faInfoCircle,
+} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
+const EMPTY_REGEX = /^(?!\s*$).+/;
 
 const AddInventory = ()=> {
+
+
+
+const [validField, setValidField] = useState("")
     
 
 const[AssetNumber, setAssetNumber]= useState("") 
@@ -23,6 +34,15 @@ const navigate = useNavigate();
 
 const [items, setItems] = useState([])
 const item = items.find(item => (item.id).toString() === id);
+const private_axios = usePrivateAxios();
+
+
+
+useEffect(() => {
+    const result = EMPTY_REGEX.test(validField)
+    console.log(result); 
+  setValidField(result);
+},[validField]);
 
 
  useEffect(() => {
@@ -49,7 +69,7 @@ const item = items.find(item => (item.id).toString() === id);
     //Add Item
     const addItem = () =>{
         // e.preventDefault();
-        axios.post(`http://localhost:4000/inventory/addInventory`, {
+        private_axios.post(`/inventory/addInventory`, {
             AssetName: AssetName, AssetNumber:AssetNumber, serialNumber: serialNumber, AssetStatus: AssetStatus, 
             facility: facility, Passcode: Passcode, Email: Email, EmailPassword: EmailPassword
         }).then((response)=>{
@@ -68,7 +88,7 @@ const item = items.find(item => (item.id).toString() === id);
     
     //List all items in the inventory
         const getAllItems = () =>{
-            axios.get("http://localhost:4000/Inventory")
+            private_axios.get("/Inventory")
             .then((response)=>{
                 // console.log(response.data)
                 setItems(response.data);
@@ -86,7 +106,7 @@ const item = items.find(item => (item.id).toString() === id);
     
     try {
 
-      const response = await  axios.put(`http://localhost:4000/Inventory/${id}`, {
+      const response = await  private_axios.put(`/Inventory/${id}`, {
         AssetName:AssetName, AssetNumber:AssetNumber, serialNumber:serialNumber, AssetStatus: AssetStatus,
          facility: facility, Passcode:Passcode, Email:Email, EmailPassword:EmailPassword
       });
@@ -131,26 +151,81 @@ const item = items.find(item => (item.id).toString() === id);
         <form className= "">
             <h1>Device Details</h1>
             <label>
+                <span className={validField ? "hide" : "invalid"}>
+                <FontAwesomeIcon icon={faTimes} />
+              </span>
+              <span className={!validField ? "valid" : "hide"}>
+                        <FontAwesomeIcon icon={faCheck} />
+                    </span>
                 Brand Name
             </label>
-            <input value={AssetName} onChange ={(e) => setAssetName(e.target.value)} placeholder='Asset Name' type='text'>
+            <input 
+            value={AssetName} 
+            onChange ={(e) => setAssetName(e.target.value)} 
+            placeholder='Asset Name' 
+            type='text'  
+            required
+                aria-invalid={validField ? "false" : "true"}
+                aria-describedby="validid"
+            >
             </input>
             <label>
+                <span className={validField ? "hide" : "invalid"}>
+                <FontAwesomeIcon icon={faTimes} />
+              </span>
+              <span className={!validField ? "valid" : "hide"}>
+                        <FontAwesomeIcon icon={faCheck} />
+                    </span>
                 Asset Number
             </label>
-            <input value={AssetNumber} onChange ={(e) => setAssetNumber(e.target.value)} placeholder='Asset Number' type='text'>
+            <input 
+            value={AssetNumber} 
+            onChange ={(e) => setAssetNumber(e.target.value)} 
+            placeholder='Asset Number' 
+            type='text'
+            required
+                aria-invalid={validField ? "false" : "true"}
+                aria-describedby="validid"
+            >
             </input>
             <label>
+                <span className={validField ? "hide" : "invalid"}>
+                <FontAwesomeIcon icon={faTimes} />
+              </span>
+              <span className={!validField ? "valid" : "hide"}>
+                        <FontAwesomeIcon icon={faCheck} />
+                    </span>
                 Serial Number
             </label>
             
-            <input value={serialNumber} onChange ={(e) => setSerialNumber(e.target.value)} placeholder='Asset Number' type='text'>
+            <input 
+            value={serialNumber} 
+            onChange ={(e) => setSerialNumber(e.target.value)} 
+            placeholder='Asset Number' 
+            type='text'
+            required
+                aria-invalid={validField ? "false" : "true"}
+                aria-describedby="validid"
+            >
+                
             </input>
             <label>
+                <span className={validField ? "hide" : "invalid"}>
+                <FontAwesomeIcon icon={faTimes} />
+              </span>
+              <span className={!validField ? "valid" : "hide"}>
+                        <FontAwesomeIcon icon={faCheck} />
+                    </span>
                 Status
             </label>
             
-            <select value={AssetStatus} onChange ={(e) => setAssetStatus(e.target.value)}>
+            <select 
+            value={AssetStatus} 
+            onChange ={(e) => setAssetStatus(e.target.value)}
+            required
+                aria-invalid={validField ? "false" : "true"}
+                aria-describedby="validid"
+            >
                   <option selected disabled="true">--Select Device Status--</option>
                 {
                     DeviceStatus.DeviceStatus.map((result)=>( <option text={result.no}>{result.status}</option>))
@@ -159,10 +234,22 @@ const item = items.find(item => (item.id).toString() === id);
             </select>
             
             <label>
+                <span className={validField ? "hide" : "invalid"}>
+                <FontAwesomeIcon icon={faTimes} />
+              </span>
+              <span className={!validField ? "valid" : "hide"}>
+                        <FontAwesomeIcon icon={faCheck} />
+                    </span>
                 Facility Assigned
             </label>
             
-             <select value={facility} onChange ={(e) => setFacility(e.target.value)}>
+             <select 
+             value={facility} 
+             onChange ={(e) => setFacility(e.target.value)}
+             required
+                aria-invalid={validField ? "false" : "true"}
+                aria-describedby="validid"
+             >
                   <option selected disabled="true">--Select Facility Assigned--</option>
                 {
                      Facilities.Facilitynames.map((result)=>(<option text={result.no}>{result.facility}</option>))
@@ -170,25 +257,64 @@ const item = items.find(item => (item.id).toString() === id);
             </select>
             
              <label>
+                 <span className={validField ? "hide" : "invalid"}>
+                <FontAwesomeIcon icon={faTimes} />
+              </span>
+              <span className={!validField ? "valid" : "hide"}>
+                        <FontAwesomeIcon icon={faCheck} />
+                    </span>
                 Passcode
             </label>
-            <input value={Passcode} onChange ={(e) => setPassCode(e.target.value)} placeholder='Passcode' type='text'>
+            <input 
+            value={Passcode} 
+            onChange ={(e) => setPassCode(e.target.value)} 
+            placeholder='Passcode' 
+            type='text'
+            required
+                aria-invalid={validField ? "false" : "true"}
+                aria-describedby="validid"
+            >
             </input>
             <label>
+                 <span className={validField ? "hide" : "invalid"}>
+                <FontAwesomeIcon icon={faTimes} />
+              </span>
+              <span className={!validField ? "valid" : "hide"}>
+                        <FontAwesomeIcon icon={faCheck} />
+                    </span>
                 Email
             </label>
-            <input value={Email} onChange ={(e) => setEmail(e.target.value)} placeholder='Email' type='text'>
+            <input 
+            value={Email} 
+            onChange ={(e) => setEmail(e.target.value)} 
+            placeholder='Email' 
+            type='text'
+            required
+                aria-invalid={validField ? "false" : "true"}
+                aria-describedby="validid"
+            >
             </input>
             <label>
+                <span className={!validField ? "valid" : "hide"}>
+                        <FontAwesomeIcon icon={faCheck} />
+                    </span>
+                 <span className={validField ? "hide" : "invalid"}>
+                <FontAwesomeIcon icon={faTimes} />
+              </span>
                 Email Password
             </label>
-            <input value={EmailPassword} onChange ={(e) => setEmailPassword(e.target.value)} placeholder='Email Password' type='text'>
+            <input 
+            value={EmailPassword} 
+            onChange ={(e) => setEmailPassword(e.target.value)} 
+            placeholder='Email Password' 
+            type='text'>
             </input>
 
             <label>
              
             </label>
-            <button onClick={handleSubmit} align="middle">
+            <button onClick={handleSubmit} align="middle" disabled={
+                    !validField ? true: false}>
                 Submit
             </button>
 

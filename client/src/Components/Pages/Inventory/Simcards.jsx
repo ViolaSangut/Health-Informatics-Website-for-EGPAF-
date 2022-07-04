@@ -1,8 +1,8 @@
 import React,{useState, useEffect, } from 'react'
-import axios from 'axios';
 import { useNavigate, Link } from 'react-router-dom';
 import { toast  } from 'react-toastify';
 import "./Inventory.css";
+import usePrivateAxios from '../../hooks/usePrivateAxios';
 
 
 const Simcards = () => {
@@ -13,6 +13,7 @@ const Simcards = () => {
     //declaring state for the inventory list upon loading the page
   const [cards, setCards] = useState([]);
   const[searchCard, setSearchCard] = useState("")
+  const private_axios = usePrivateAxios();
 
     useEffect(() => {
 
@@ -30,7 +31,7 @@ const Simcards = () => {
 
     //List all cards in the inventory
     const getAllCards = () =>{
-        axios.get("http://localhost:4000/simcards")
+        private_axios.get("/simcards")
         .then((response)=>{
             console.log(response.data)
             setCards(response.data);
@@ -43,7 +44,7 @@ const Simcards = () => {
     //delete cards from inventory
     const deleteCard = (id) =>{
         if(window.confirm("Are you sure you want to delete this card?")){
-            axios.delete(`http://localhost:4000/simcards/delete/${id}`)
+            private_axios.delete(`/simcards/delete/${id}`)
         .then((response)=>{
             setCards(cards.filter((card)=>{
                 return card.id !== id;
