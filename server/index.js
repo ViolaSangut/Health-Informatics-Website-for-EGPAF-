@@ -15,7 +15,7 @@ const db1 = mysql.createConnection({
   database: "hbhis",
   multipleStatements: true
 });
-
+//Whitelisting 
 const corsOptions = {
   origin: "http://localhost:4000",
   origin: "http://localhost:4001",
@@ -31,8 +31,8 @@ app.use(cors(corsOptions));
 
 const db = require("./models");
 
-//Routes
-//User
+//* Routes *//
+//Users
 const usersRouter = require("./routes/UsersRoute");
 app.use("/users", usersRouter);
 
@@ -78,7 +78,7 @@ const creatingRoles = async (req, res)=>{
 
 };
 
-
+//Running server
 db.sequelize.sync().then(() => {
   creatingRoles(),
   app.listen(4000, () => {

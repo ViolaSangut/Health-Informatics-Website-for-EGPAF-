@@ -1,6 +1,13 @@
 
    { "Facilitynames": [
     {
+      "no": 0,
+      "mfl": 0,
+      "facility": "None",
+      "sub_county": "",
+      "url": ""
+    },
+    {
     "no": 1,
     "mfl": 13463,
     "facility": "Adiedo Dispensary",

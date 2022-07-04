@@ -11,6 +11,7 @@ router.route("/delete/:id").delete(SimcardController.deleteCard);
 
 //Find By Id
 router.route("/find/:id").get(SimcardController.findCardbyID);
+
 //Count all Items
 router.route("/countAllCards").get(SimcardController.countAllCards);
 //update

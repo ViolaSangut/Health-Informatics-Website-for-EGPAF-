@@ -8,7 +8,7 @@ const login = async (req, res) => {
     const { email, password } = req.body;
   
     const user = await Users.findOne({
-      where: {
+      where: { 
         email: email,
       },
     });
@@ -26,17 +26,19 @@ const login = async (req, res) => {
           const email = user.email;
           const firstName = user.firstName;
           const lastName = user.lastName;
-          const roles = user.RoleId;
+          const roles = [user.RoleId];
   
            //Creating accessToken
            const createAccessToken = (user) =>{
                   
             const accessToken = sign(
-                {id: user.id, firstName: user.firstName, email: user.email, roles: roles },
+                { 
+                  id, email, firstName, lastName, roles
+                },
                 process.env.ACCESS_TOKEN_SECRET,
                 { 
                 
-                expiresIn: "5s",
+                expiresIn: "10m",
                 }
             );
             return accessToken;
@@ -51,12 +53,12 @@ const login = async (req, res) => {
       
             const refreshToken = sign(
                 {
-                    id: user.id, email: user.email
+                  id, email, firstName, lastName, roles
                 },
                 process.env.REFRESH_TOKEN_SECRET,
                 {
                   
-                  expiresIn: "10s",
+                  expiresIn: "1h",
                 }
               );
             return refreshToken;
@@ -81,7 +83,7 @@ const login = async (req, res) => {
             secure: true,
             maxAge: 	24 * 60 * 60 * 1000,
           });
-          res.json({ accessToken, id, email, firstName, lastName, roles });
+          res.json({ refreshToken });
         }
       });
     }
@@ -98,6 +100,7 @@ const logout = async (req, res) => {
     });
     if (!user[0]) return res.sendStatus(204);
     const userId = user[0].id;
+    //Removing refreshToken
     await Users.update(
       { refresh_token: null },
       {
@@ -106,6 +109,7 @@ const logout = async (req, res) => {
         },
       }
     );
+    //Deleting cookie
     res.clearCookie("refreshToken", {httpOnly: true, sameSite: "None", secure: true,});
     return res.sendStatus(200);
   };

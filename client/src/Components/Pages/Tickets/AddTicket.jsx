@@ -1,22 +1,25 @@
 import { useEffect, useState } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-
+import usePrivateAxios from "../../hooks/usePrivateAxios";
 import './AddTicket.css';
-
 import { toast } from 'react-toastify';
-
-
-
 import moment from 'moment';
-
-
 import facilities from '../../../Resources/facilities/facilities.json'
-
-
-
+import UseAuth from "../../context/UseAuth";
+import jwt_decode from "jwt-decode";
 
 const AddTicketComponent = () => {
+    const { auth } = UseAuth();
+
+    //Getting loggedin's user email, firstName & lastName from accessToken.
+    const decodedAccessToken = auth?.accessToken
+          ? jwt_decode(auth.accessToken)
+          : undefined
+    const userEmail = decodedAccessToken?.email || null;
+    const usersFirstName = decodedAccessToken?.firstName || null;
+    const usersLastName = decodedAccessToken?.lastName || null;
+    
 
     const [tickets, setTickets] = useState([]);
     const { id } = useParams();
@@ -24,7 +27,9 @@ const AddTicketComponent = () => {
 
     const [title, setTitle] = useState("");
     const [facility, setFacility] = useState("");
-    const [creator, setCreator] = useState("");
+    const [creatorsEmail, setCreatorEmail] = useState(userEmail);
+    const [creatorsFirstName, setCreatorFirstName] = useState(usersFirstName);
+    const [creatorsLastName, setCreatorsLastName] = useState(usersLastName);
     const [ticket_status, setTicket_status] = useState("Unassigned");
     const [assignee, setAssignee] = useState("");
     const [priority, setPriority] = useState("");
@@ -33,6 +38,10 @@ const AddTicketComponent = () => {
     const [minDate, setMinDate] = useState(null)
 
     const min_date  = new Date();
+    const privateAxios = usePrivateAxios();
+  
+
+    
     
     
    useEffect(() => {
@@ -53,8 +62,8 @@ const AddTicketComponent = () => {
 
     //Add Ticket
     const saveTicket = () =>{
-        axios.post("http://localhost:4000/tickets/addticket", {
-            title:title, facility:facility, creator: creator, ticket_status: ticket_status, 
+        privateAxios.post("/tickets/addticket", {
+            title:title, facility:facility, creatorsEmail: creatorsEmail, creatorsFirstName: creatorsFirstName, creatorsLastName: creatorsLastName, ticket_status: ticket_status, 
             assignee: assignee, priority: priority, due_date: due_date,
         }).then((response)=>{
         console.log(response.data)
@@ -69,8 +78,8 @@ const AddTicketComponent = () => {
 
       //Update Ticket
       const updateTicket = () =>{
-        axios.put(`http://localhost:4000/tickets/${id}`, {
-          title:title, facility:facility, creator: creator, ticket_status: ticket_status, 
+        privateAxios.put(`/tickets/${id}`, {
+          title:title, facility:facility, ticket_status: ticket_status, 
           assignee: assignee, priority: priority, due_date: due_date
         }).then((response)=>{
         console.log(response.data)
@@ -86,9 +95,9 @@ const AddTicketComponent = () => {
     const saveorUpdateTicket = (e) =>{
         e.preventDefault();
 
-        const ticket = {title, facility, creator }
+        const ticket = {title, facility, creatorsEmail, creatorsFirstName, creatorsLastName, priority, due_date, assignee  }
       //Preventing adding empty fields
-        if(ticket.title ==="" || ticket.facility ==="" || ticket.creator ===""){
+        if(ticket.title ==="" || ticket.facility ==="" ){
             alert("All the fields are mandatory!");
          return;
 
@@ -109,7 +118,6 @@ const AddTicketComponent = () => {
             setTitle(ticket.title);
             setFacility(ticket.facility);
             setAssignee(ticket.assignee);
-            setCreator(ticket.creator);
             setTicket_status(ticket.ticket_status);
             setDue_date(ticket.due_date);
             setPriority(ticket.priority);
@@ -123,7 +131,7 @@ const AddTicketComponent = () => {
     }, [])
     
     const getAllTickets = () =>{
-        axios.get("http://localhost:4000/tickets")
+        privateAxios.get("/tickets")
         .then((response)=>{
             console.log(response.data)
             setTickets(response.data);
@@ -161,24 +169,17 @@ const AddTicketComponent = () => {
                      <label>Title: </label>
                       <input placeholder='title' name="title" className="form-control"
                        value={title} 
-                        // storing form data values in the properties onChange. event.target.value retrieves / access value of whatever input it was called on.
                         onChange={(e) =>setTitle(e.target.value)}
                         />                
                         <label>Facility</label>
                         <select  onChange ={(e) => setFacility(e.target.value)}>
-                            <option selected disabled="true" placeholder="Search">{facility}</option>
+                   
+                          {/* <option >Select</option> */}
                             {
                                 facilitiesList.Facilitynames.map((facility)=>(<option key={facility.no}text={facility.mfl}>{facility.facility}</option>))
                             }
+                           
                         </select>
-
-                        <div className='form-group'>
-                        <label>Creator: </label>
-                        <input placeholder='creator' name="creator" className="form-control"
-                         value={creator} 
-                         onChange={(e) =>setCreator(e.target.value)}
-                        />
-                         </div> 
 
                         <div className='form-group'>
                         <label>Asignee: </label>

@@ -22,16 +22,18 @@ const jwt = require("jsonwebtoken");
       (err, decoded) => {
         if (err || decoded.email !== presentUser[0].email) return res.sendStatus(403);
 
-        const roles = presentUser[0].RoleId;
+        const roles = [presentUser[0].RoleId];
+        const firstName = presentUser[0].firstName;
+        const lastName = presentUser[0].lastName;
 
         const accessToken = jwt.sign(
-          { "id": decoded.id, "firstName": decoded.firstName, "email": decoded.email, "roles":roles},
+          { "id": decoded.id, "firstName": decoded.firstName, "lastName": decoded.lastName, "email": decoded.email, "roles":roles},
           process.env.ACCESS_TOKEN_SECRET,
           {
-            expiresIn: "5s",
+            expiresIn: "10m",
           }
         );
-        res.json({ accessToken });
+        res.json({ accessToken, roles, firstName, lastName });
       }
     );
 };
