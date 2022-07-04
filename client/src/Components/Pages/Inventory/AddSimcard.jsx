@@ -175,8 +175,9 @@ useEffect(() => {
     }
   }
     const onClickBack =() =>{
-    navigate("/simcards")
+    navigate("/Inventory")
   }
+
 
 
 

@@ -3,14 +3,6 @@ import axios from 'axios';
 import { useNavigate, Link } from 'react-router-dom';
 import { toast  } from 'react-toastify';
 import "./Inventory.css";
-import Inventory from './Inventory';
-
-
-
-
-
-
-
 
 
 const Simcards = () => {
@@ -21,11 +13,6 @@ const Simcards = () => {
     //declaring state for the inventory list upon loading the page
   const [cards, setCards] = useState([]);
   const[searchCard, setSearchCard] = useState("")
-  const[display, setDisplay] = useState("Simcards")
-   const[tabletsVisible, setTabletsVisible] = useState(false)
-  const[simcardsVisible, setSimcardsVisible] = useState(false)
-
-
 
     useEffect(() => {
 
@@ -33,12 +20,6 @@ const Simcards = () => {
       
     }, [])
 
-    useEffect(() => {
-     display==="Simcards"? setSimcardsVisible(true):setSimcardsVisible(false)
-        display==="Tablets"? setTabletsVisible(true):setTabletsVisible(false)
-        console.log(display)
-      
-    }, [display])
 
 
     //handleClick
@@ -46,9 +27,6 @@ const Simcards = () => {
         navigate('/addSimcards')
 
     }
-
-   
-
 
     //List all cards in the inventory
     const getAllCards = () =>{
@@ -79,32 +57,29 @@ const Simcards = () => {
         }
     };
 
-    const handleChange = (e)=>{
-    setDisplay(e.target.value)
 
-}
-
-
-const Simcards = ()=>{
-    
+    //render tables on screen
     return(
-        <div>
+         <div>
+            <div>
+      <h1 className="header">Simcards Inventory</h1>
+      </div>
             <div>
                 <input 
                 placeholder='Search for Simcard'
                 value={searchCard}
                 onChange={(e)=> setSearchCard(e.target.value)}
-                />
+                ></input>
                 <button onClick={handleClick} className="buttonadd">Add New Simcard</button>
             </div>
             <div>
-        <select  className= "buttonadd" value={display} onChange={handleChange}>
+        {/* <select  className= "buttonadd" value={display} onChange={handleChange}>
                   <option selected disabled ="true">--Select Item Type--</option>
                 <option value="Simcards">Simcards</option>
                 <option value="Tablets">Tablets</option>
 
               
-        </select>
+        </select> */}
         </div>
         <div className='table'>
             <table className="table_content">
@@ -167,15 +142,6 @@ const Simcards = ()=>{
         </tbody>
     </table>
     </div>
-</div>
-    )
-}
-
-//render tables on screen
-    return(
-        <div>
-    {tabletsVisible && <Inventory/>}
-    {simcardsVisible && <Simcards/>}
     </div>
     )
 

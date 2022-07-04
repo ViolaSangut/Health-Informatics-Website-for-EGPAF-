@@ -1,9 +1,8 @@
 import React,{useState, useEffect, useRef} from 'react'
 import axios from 'axios';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate, Link, useParams } from 'react-router-dom';
 import { toast  } from 'react-toastify';
 import "./Inventory.css";
-import Simcards from './Simcards';
 // import ReactSearchBox from "react-search-box"
 
 
@@ -17,21 +16,16 @@ const Inventory = () => {
   const navigate = useNavigate();
   const[searchInventory, setSearchInventory] = useState("")
   const tableRef =useRef(null)
-  const[display, setDisplay] = useState("Tablets")
-  const[tabletsVisible, setTabletsVisible] = useState(true)
-  const[simcardsVisible, setSimcardsVisible] = useState(false)
+  const id = useParams();
+  const [itemId, setItemId] = useState("");
+ 
 
 
     useEffect(() => {
-        display==="Simcards"? setSimcardsVisible(true):setSimcardsVisible(false)
-        display==="Tablets"? setTabletsVisible(true):setTabletsVisible(false)
-        console.log(display)
+ 
         getAllItems()
       
-    }, [display])
-
-    
-
+    }, [])
 
     //List all items in the inventory
     const getAllItems = () =>{
@@ -44,13 +38,6 @@ const Inventory = () => {
             console.log(error);
         })
     }
-
-
-    //select table to display on page based on user choice on dropdown
-
-const handleChange = (e)=>{
-    setDisplay(e.target.value)
-}
 
      
     //delete item from inventory
@@ -71,17 +58,36 @@ const handleChange = (e)=>{
         }
     };
     
-//handleClick on Add Inventory button
+    //handleClick on Add Inventory button
     const handleClick =()=>{
       navigate("/addinventory");
     }
-//Tablet page component
-    const TabletPage = () => {
-        return(
-            <div>
+
+//handle clicking on row     
+// PATCH request; calls handleInventoryUpdate to push changes to the page
+// let handleInventoryUpdate
+//     function handleRowClick(e) {
+//         e.preventDefault();
+//         fetch(`http://localhost:4000/updateinventory/${id}`, {
+//             method: "PATCH",
+//             headers: {
+//                 "Content-Type" : "application/json"
+//             },
+//             // body: JSON.stringify(),
+//         })
+//             .then(resp => resp.json())
+//             .then(updatedInventory => {
+//                 handleInventoryUpdate(updatedInventory)})
+//     }
+
+
+
+ 
+    return (
+    <div>
     <div className="upper-section">
       <div className="left-panel">
-      <h1 className="header">Inventory</h1>
+      <h1 className="header">Tablets Inventory</h1>
       </div>
       <div>
      
@@ -108,13 +114,13 @@ const handleChange = (e)=>{
          
         </button>
         <div>
-        <select  className= "buttonadd" value={display} onChange={handleChange}>
+        {/* <select  className= "buttonadd" value={display} onChange={handleChange}>
                   <option selected disabled ="true">--Select Item Type--</option>
                 <option value="Simcards">Simcards</option>
                 <option value="Tablets">Tablets</option>
 
               
-        </select>
+        </select> */}
         {/* <ReactSearchBox
         placeholder="Placeholder"
         value=""
@@ -173,7 +179,13 @@ const handleChange = (e)=>{
                     )
         .map (
             item => 
-                <tr key = {item.id}>
+                <tr key = {item.id} 
+
+                
+        
+                // onClick={handleRowClick}
+                >
+                    
 
                     <td> {item.id} </td>
                     <td> {item.AssetNumber} </td>
@@ -185,13 +197,15 @@ const handleChange = (e)=>{
                     <td> {item.Passcode} </td>
                     <td> {item.Email} </td>
                     <td> {item.EmailPassword} </td>
-                
+
                     <td>
                             <Link to = {`/updateInventory/${item.id}`} className='btn btn-info' > Update</Link>
                             </td>
                             <td> <Link to = '' className = "btn btn-danger" onClick = {() => deleteItem(item.id)}
                                     style = {{marginLeft:"10px"}}> Delete</Link>
                     </td>
+
+                    
       
 
                 </tr>
@@ -202,16 +216,6 @@ const handleChange = (e)=>{
     </tbody>
     </table>
     </div>
-    </div>
-        )
-    }
- 
-  //rendering inventory page based on selection
-  return (
-    <div>
-    {tabletsVisible && <TabletPage/>}
-    {simcardsVisible && <Simcards/>}
-
     </div>
   );
 };
