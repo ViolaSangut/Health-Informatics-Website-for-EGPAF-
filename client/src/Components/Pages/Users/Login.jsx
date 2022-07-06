@@ -35,12 +35,7 @@ const Login = () => {
    setErrorMessage('');
   }, [email, password])
 
-  //Preventing
-  useEffect(() => {
-    
-   }, [])
- 
- 
+
 
 
   const login = async (e) => {

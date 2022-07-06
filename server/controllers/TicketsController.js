@@ -166,6 +166,24 @@ const countUnsignedTickets = async (req, res)=>{
     res.json(unassignedTickets);
 };
 
+//List unasigned
+const getUnsignedTickets = async (req, res)=>{
+
+    const tickets = await Tickets.findAll({where:{
+        ticket_status: "Unassigned"
+    }}, {attributes: ["id", "title", "facility", "creatorsEmail", "creatorsFirstName", "creatorsLastName","ticket_status", "assignee", "priority", "due_date",[
+        sequelize.fn
+        (
+          "DATE_FORMAT", 
+          sequelize.col("createdAt"), 
+          "%Y-%m-%d"
+        ),
+        "createdAt",
+      ],], });
+    res.json(tickets);
+
+};
+
 //Count pending
 const countpendingTickets = async (req, res)=>{
     const pendingTickets = await Tickets.count({where:{
@@ -174,12 +192,49 @@ const countpendingTickets = async (req, res)=>{
     res.json(pendingTickets);
 };
 
+//List pending
+const getPendingTickets = async (req, res)=>{
+
+    const tickets = await Tickets.findAll({where:{
+        ticket_status: "Pending"
+    }}, {attributes: ["id", "title", "facility", "creatorsEmail", "creatorsFirstName", "creatorsLastName","ticket_status", "assignee", "priority", "due_date",[
+        sequelize.fn
+        (
+          "DATE_FORMAT", 
+          sequelize.col("createdAt"), 
+          "%Y-%m-%d"
+        ),
+        "createdAt",
+      ],], });
+    res.json(tickets);
+
+};
+
+
 //Count Resolved
 const countResolvedTickets = async (req, res)=>{
     const resolvedTickets = await Tickets.count({where:{
         ticket_status: "Resolved"
     }});
     res.json(resolvedTickets);
+
+};
+
+//List Resolved
+const getResolvedTickets = async (req, res)=>{
+
+    const tickets = await Tickets.findAll({where:{
+        ticket_status: "Resolved"
+    }}, {attributes: ["id", "title", "facility", "creatorsEmail", "creatorsFirstName", "creatorsLastName","ticket_status", "assignee", "priority", "due_date",[
+        sequelize.fn
+        (
+          "DATE_FORMAT", 
+          sequelize.col("createdAt"), 
+          "%Y-%m-%d"
+        ),
+        "createdAt",
+      ],], });
+    res.json(tickets);
 
 };
 
@@ -233,4 +288,4 @@ const countTodaysResolvedTickets = async (req, res)=>{
 };
 
 
-module.exports = { getTickets, addTicket, deleteTicket, findTicketById, updateTicket, countAllTickets, countUnsignedTickets, countpendingTickets, countResolvedTickets, countTodaysResolvedTickets, countTodaysTickets, percentageCountTodaysResolvedTickets, getNoOfWeeklyTickets, db}
+module.exports = { getTickets, addTicket, deleteTicket, findTicketById, updateTicket, countAllTickets, countUnsignedTickets, countpendingTickets, countResolvedTickets, countTodaysResolvedTickets, countTodaysTickets, percentageCountTodaysResolvedTickets, getNoOfWeeklyTickets, getUnsignedTickets, getPendingTickets, getResolvedTickets,db}

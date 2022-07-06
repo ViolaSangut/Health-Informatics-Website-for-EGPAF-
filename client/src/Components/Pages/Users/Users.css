@@ -82,6 +82,14 @@
     display: flex;
     margin-right: 1%;
   }
+
+  .date_filter{
+    margin-left: 75%;
+    padding-left: 10px;
+    display: flex;
+    margin-right: 10%;
+  }
+
     .buttonadd {
       padding: 0.5rem;
       margin-top: 0.5rem;
