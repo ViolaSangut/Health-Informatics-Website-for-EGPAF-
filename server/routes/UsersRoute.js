@@ -15,8 +15,7 @@ router
     verifyRole(ROLES_LIST.Admin, ROLES_LIST.Super_User),
     UsersController.getUsers
   );
-// router.route('/').get(verifyRole(ROLES_LIST.Admin, ROLES_LIST.User, ROLES_LIST.Manager, ROLES_LIST.Super_User), UsersController.getUsers);
-//verifyRole(ROLES_LIST.User),
+
 // Add
 router.route("/register").post(UsersController.addUser);
 //Update
@@ -36,8 +35,7 @@ router
     UsersController.deleteUser
   );
 
-//Delete
-// router.route("/deleteemp/:id").delete(UsersController.deleteEmployee)
+
 //Find By Id
 router.route("/:id").get(UsersController.findUserById);
 

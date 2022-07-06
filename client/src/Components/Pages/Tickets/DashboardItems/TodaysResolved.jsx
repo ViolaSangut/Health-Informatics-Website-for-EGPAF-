@@ -1,13 +1,12 @@
 import React from 'react'
-import './Featured.css';
+import './TodaysResolved.css';
 import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import { useState, useEffect } from 'react';
 import { Link, useNavigate, useLocation} from 'react-router-dom';
 import usePrivateAxios from '../../../hooks/usePrivateAxios';
 
-
-const Featured = () => {
+const TodaysResolved = () => {
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -15,8 +14,6 @@ const Featured = () => {
   const [todaysTicket, setTodaysTicket] = useState('');
   const [todaysResolvedTicket, setTodaysResolvedTicket] = useState('');
   const [percentageCountOfTodaysResolvedTickets, setpercentageCountOfTodaysResolvedTickets] = useState('');
-
-
 
   useEffect(() => {
     countTodaysTickets();
@@ -56,11 +53,9 @@ const Featured = () => {
         const todaysTicketsObject = todaysResolvedTicketsJson.substring(1, todaysResolvedTicketsJson.length-1);
     
         const todaysResolvedTickets = JSON.parse(todaysTicketsObject);
-        console.log(todaysResolvedTickets.todays_resolved_tickets)
 
         setTodaysResolvedTicket(todaysResolvedTickets.todays_resolved_tickets)
-        console.log(todaysResolvedTicket);
-  
+
       })
      
     } catch (error) {
@@ -121,4 +116,4 @@ const Featured = () => {
   )
 }
 
-export default Featured
+export default TodaysResolved

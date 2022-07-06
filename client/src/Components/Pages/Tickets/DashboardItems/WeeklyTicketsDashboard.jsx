@@ -8,7 +8,7 @@ import {
 
 import { Bar } from 'react-chartjs-2';
 import Chart from 'chart.js/auto';
-import './Chart.css';
+import './WeeklyTicketsDashboard.css';
 import { useNavigate, useLocation} from 'react-router-dom';
 import usePrivateAxios from '../../../hooks/usePrivateAxios';
 
@@ -18,7 +18,7 @@ ChartJS.register(
 
 
 
-const BarChart = () => {
+const WeeklyTicketsDashboard = () => {
   const [chart, setChart] = useState({})
 
   const [weeklyTicketsCounts, setweeklyTicketsCounts] = useState([]);
@@ -38,9 +38,9 @@ const BarChart = () => {
         setChart(response.data)
 
         const noOfWeeklyTickets = (response.data)
-        setweekDays(noOfWeeklyTickets.map(x => x.Day));
-        setweekDate(noOfWeeklyTickets.map(x => x.createdAt));
-        setTicketsCount(noOfWeeklyTickets.map(x => x.Tickets));
+        setweekDays(noOfWeeklyTickets.map(Tickets => Tickets.Day));
+        setweekDate(noOfWeeklyTickets.map(Tickets => Tickets.createdAt));
+        setTicketsCount(noOfWeeklyTickets.map(dailyCount => dailyCount.Tickets));
     
       })
       
@@ -94,4 +94,4 @@ const BarChart = () => {
   )
 }
 
-export default BarChart
+export default WeeklyTicketsDashboard
