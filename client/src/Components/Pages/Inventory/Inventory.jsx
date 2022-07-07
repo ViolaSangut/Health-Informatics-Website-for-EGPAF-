@@ -62,7 +62,9 @@ const Inventory = () => {
     const handleClick =()=>{
       navigate("/addinventory");
     }
-
+    
+   
+    
 
     return (
     <div>
@@ -145,13 +147,17 @@ const Inventory = () => {
         .map (
             item => 
                 <tr key = {item.id} 
-
+                    onDoubleClick={
+                            () => {
+                            navigate(`/updateInventory/${item.id}`)
+                        }
+                    }
                 
         
                 >
                     
 
-                    <td onc> {item.id} </td>
+                    <td > {item.id} </td>
                     <td> {item.AssetNumber} </td>
                     <td> {item.AssetName} </td>
                     <td> {item.AssetStatus} </td>
@@ -163,10 +169,10 @@ const Inventory = () => {
                     <td> {item.EmailPassword} </td>
 
                     <td>
-                            <Link to = {`/updateInventory/${item.id}`} className='btn btn-info' > Update</Link>
+                            {/* <Link to = {`/updateInventory/${item.id}`} className='btn btn-info' > Update</Link> */}
                             </td>
                             <td> <Link to = '' className = "btn btn-danger" onClick = {() => deleteItem(item.id)}
-                                    style = {{marginLeft:"10px"}}> Delete</Link>
+                                    style = {{marginLeft:"10px"}}> X </Link>
                     </td>
 
                     

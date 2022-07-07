@@ -19,7 +19,6 @@ const EMAIL_REGEX = /^\S+@\S+\.\S+$/;
 const PWD_REGEX = /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,24}$/;
 
 const AddInventory = ()=> {
-const nameRef = useRef();
 
 
 const[AssetNumber, setAssetNumber]= useState("")
@@ -211,6 +210,14 @@ useEffect(() => {
   const onClickBack =() =>{
     navigate("/inventory")
   }
+
+  //Change Sumit button title dynamically
+  if(id){
+    <p>Update</p>
+  } else {
+    <p>Add</p>
+  }
+
   
 
     return  (
@@ -499,7 +506,9 @@ useEffect(() => {
             <button onClick={handleSubmit} align="middle" 
             disabled={(!validFacility|| !validEmail || !validPassword || !validPasscode || !validSerial || !validStatus || !validName || !validNumber) ? true : false}
             >
-                Submit
+                {id 
+                 ? <> Update </>
+                 : <> Add </>}
             </button>
 
         </form>
