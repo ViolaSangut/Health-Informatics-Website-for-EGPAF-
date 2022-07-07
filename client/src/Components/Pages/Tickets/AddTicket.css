@@ -1,0 +1,102 @@
+section {
+    width: 30%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    display: table-cell;
+    vertical-align: middle;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 1rem;
+    background-color: rgba(166, 169, 168, 0.596);
+    border-radius: 20px;
+    vertical-align: middle;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    flex-grow: 1;
+    padding-bottom: 1rem;
+  }
+  
+  .card-body {
+    /* background-color: black; */
+  }
+  a,
+  a:visited {
+    color: #fff;
+  }
+  
+  input[type="text"],
+  input[type="password"],
+  button,
+  textarea {
+    font-family: 'Nunito', sans-serif;
+    font-size: 15px;
+    padding: 0.25rem;
+    border-radius: 0.5rem;
+  }
+  
+  label,
+  button {
+    margin-top: 2%;
+  }
+  
+  
+  .button {
+    padding: 0.5rem;
+    margin-top: 1rem;
+    vertical-align: middle;
+    border-radius:0.5rem;
+    background-color: teal;
+    color: white;
+  }
+  
+  .instructions {
+    font-size: 0.75rem;
+    border-radius: 0.5rem;
+    background: rgb(238, 127, 127);
+    color: #fff;
+    padding: 0.25rem;
+    position: relative;
+    bottom: -10px;
+  }
+  
+  .instructions>svg {
+    margin-right: 0.25rem;
+  }
+  
+  .offscreen {
+    position: absolute;
+    left: -9999px;
+  }
+  
+  .hide {
+    display: none;
+  }
+  
+  .valid {
+    color: limegreen;
+    margin-left: 0.25rem;
+  }
+  
+  .invalid {
+    color: red;
+    margin-left: 0.25rem;
+  }
+  
+  .errmsg {
+    background-color: rgb(230, 89, 110);
+    color: firebrick;
+    font-weight: bold;
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .line {
+    display: inline-block;
+  } 
+  

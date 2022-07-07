@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
-import axios from "axios";
 import usePrivateAxios from "../../hooks/usePrivateAxios";
 import './AddTicket.css';
 import { toast } from 'react-toastify';
@@ -248,7 +247,7 @@ const AddTicketComponent = () => {
                          <Link to="/tickets-list" className="btn btn-danger" style={{width: "50%", marginLeft: "20%", marginBottom: "0%"}}>Cancel</Link>
             </form>
             </div>
-         </>
+        </>
             }
            
         

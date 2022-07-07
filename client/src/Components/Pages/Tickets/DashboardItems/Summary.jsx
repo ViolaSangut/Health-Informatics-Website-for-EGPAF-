@@ -3,6 +3,7 @@ import * as BsIcons from 'react-icons/bs';
 import * as MdIcons from 'react-icons/md';
 import { useState, useEffect } from 'react';
 import usePrivateAxios from '../../../hooks/usePrivateAxios';
+import { useNavigate } from 'react-router-dom';
 
 
 
@@ -14,6 +15,7 @@ const [unassignedTickets, setUnassignedTickets] = useState('');
 const [pendingTickets, setPendingTickets] = useState('');
 const [resolvedTicket, setresolvedTicket] = useState('');
 const privateAxios = usePrivateAxios();
+const navigate = useNavigate();
 
 
 
@@ -29,7 +31,6 @@ const countAllTickets = () =>{
   try {
     privateAxios.get("/tickets/countAllTickets")
     .then((response)=>{
-      // console.log(response.data);
       setAllTickets(response.data);
     })
     
@@ -43,7 +44,6 @@ const countUnassignedTickets = () =>{
   try {
     privateAxios.get("/tickets/countUnassignedTickets")
     .then((response)=>{
-      // console.log(response.data);
       setUnassignedTickets(response.data);
     })
     
@@ -57,7 +57,6 @@ const countPendingTickets = () =>{
   try {
     privateAxios.get("/tickets/countPendingTickets")
     .then((response)=>{
-      // console.log(response.data);
       setPendingTickets(response.data);
     })
     
@@ -71,7 +70,6 @@ const countResolvedTickets = () =>{
   try {
     privateAxios.get("/tickets/countResolvedTickets")
     .then((response)=>{
-      // console.log(response.data);
       setresolvedTicket(response.data);
     })
     
@@ -121,7 +119,9 @@ const countResolvedTickets = () =>{
     default:
       break;
   }
-  
+  const listTickets = () =>{
+    navigate( '/tickets-list')
+  }
   return (
     <div className='summary'>
         <div className='summary_items'>
@@ -129,7 +129,7 @@ const countResolvedTickets = () =>{
             <h2 className={data.valueClassName}>{data.value}</h2>
         </div>
         <div className='summary_items'>
-            {/* <MdIcons.MdArrowDropDownCircle/>           */}
+            <MdIcons.MdArrowDropDownCircle />          
         </div>
     </div>
   )
