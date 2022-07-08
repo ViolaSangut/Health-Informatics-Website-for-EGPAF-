@@ -8,11 +8,6 @@ import { Link, useNavigate } from 'react-router-dom';
 const TicketsDashboard = () => {
 
   const navigate = useNavigate();
-  
-  const totalTickets = () => {
-    navigate('/tickets-list')
-  }
-
 
   return (
     <div>

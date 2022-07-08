@@ -97,7 +97,7 @@ const Tickets = () => {
                 <option value={myYesterdaysDate}>Yesterdays Tickets</option>
             </select>
         </div>
-    
+        {/* Search */}
         <div className='search_bar'>
             <label style={{margin: "1%"}}>Search</label>
             <input 

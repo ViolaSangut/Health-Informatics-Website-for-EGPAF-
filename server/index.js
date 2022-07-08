@@ -9,9 +9,9 @@ const mysql = require("mysql2");
 
 //DB Configuration
 const db1 = mysql.createConnection({
-  user: "root",
+  user: "hbhis",
   host: "localhost",
-  password: "root",
+  password: "hbhis",
   database: "hbhis",
   multipleStatements: true
 });

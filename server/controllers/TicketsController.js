@@ -4,9 +4,9 @@ const sequelize = require("sequelize");
 
 //DB Configuration
 const db = mysql.createConnection({
-    user: "root",
+    user: "hbhis",
     host: "localhost",
-    password: "root",
+    password: "hbhis",
     database: "hbhis",
     multipleStatements: true
 });
@@ -267,9 +267,6 @@ const countTodaysTickets = async (req, res)=>{
         }
     )
 };
-
-
-
 
 //Count Todays Resolved Tickets
 const countTodaysResolvedTickets = async (req, res)=>{
