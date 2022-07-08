@@ -31,7 +31,7 @@ const Inventory = () => {
     const getAllItems = () =>{
         private_axios.get("/Inventory")
         .then((response)=>{
-            console.log(response.data)
+            // console.log(response.data)
             setItems(response.data);
         })
         .catch((error)=>{
@@ -72,14 +72,7 @@ const Inventory = () => {
       <div className="left-panel">
       <h1 className="header">Tablets Inventory</h1>
       </div>
-      <div>
-     
-      <div >
-        
-        
-        
-      </div>
-      </div>
+      
       </div>
       <br/>
       <input

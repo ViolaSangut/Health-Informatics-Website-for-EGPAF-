@@ -119,7 +119,13 @@ const Simcards = () => {
                     }
                     )
             .map (card => 
-                <tr key = {card.id}>
+                <tr key = {card.id}
+                onDoubleClick={
+                            () => {
+                            navigate(`/addSimcards/${card.id}`)
+                        }
+                    }
+                    >
 
                     <td> {card.id} </td>
                     <td> {card.PhoneNumber} </td>
@@ -130,10 +136,9 @@ const Simcards = () => {
                     <td> {card.PhoneAssigned} </td>
                 
                     <td>
-                            <Link to = {`/addSimcards/${card.id}`} className='btn btn-info' > Update</Link>
                             </td>
                             <td> <Link to = '' className = "btn btn-danger" onClick = {() => deleteCard(card.id)}
-                                    style = {{marginLeft:"10px"}}> Delete</Link>
+                                    style = {{marginLeft:"10px"}}> X</Link>
                     </td>
               </tr>
             

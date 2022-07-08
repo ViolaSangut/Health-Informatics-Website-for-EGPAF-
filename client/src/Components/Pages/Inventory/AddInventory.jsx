@@ -147,7 +147,7 @@ useEffect(() => {
             AssetName: AssetName, AssetNumber:AssetNumber, serialNumber: serialNumber, AssetStatus: AssetStatus, 
             facility: facility, Passcode: Passcode, Email: Email, EmailPassword: EmailPassword
         }).then((response)=>{
-        console.log(response.data)
+        // console.log(response.data)
         // console.log("item inserted!");
         toast.success("Item Saved Successfully")
         navigate('/inventory');
@@ -185,9 +185,9 @@ useEffect(() => {
          facility: facility, Passcode:Passcode, Email:Email, EmailPassword:EmailPassword
       });
       
-      console.log(response.data);
+      // console.log(response.data);
       // console.log(response.accessToken);
-      console.log(JSON.stringify(response));
+      // console.log(JSON.stringify(response));
       // setSuccess(true);
       toast.success("Item Updated Succesfully");
       navigate('/Inventory')

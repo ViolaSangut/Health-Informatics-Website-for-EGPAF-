@@ -363,7 +363,9 @@ return(
                 <button onClick={handleSubmit} disabled={
                     !validIMEI || !validPhoneImei || !validPUK || !validPIN || !validPhone ? true : false
                     }
-                >Submit</button>
+                >{id 
+                 ? <> Update </>
+                 : <> Add </>}</button>
             </form>
         </section>
 
