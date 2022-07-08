@@ -136,7 +136,7 @@ return (
     {
                         pageTitle()
                       }
-      <form  className="input" onSubmit={(e) =>saveorUpdateFacility(e)} >
+      <Form  className="input" onSubmit={(e) =>saveorUpdateFacility(e)} >
       <Form.Group controlId="mflcode" className="mb-3" >
                     <Form.Label>MFL CODE</Form.Label>
                     <Form.Control
@@ -193,8 +193,8 @@ return (
                         <Form.Check
                             type="checkbox"
                             name="ushauri"
-                            value={ushauri}
-                            onChange={(e) => setUshauri(e.target.value)}
+                            
+                            onChange={(e) => setUshauri(e.target.checked)}
                             label="ushauri"
                            />
                     </Form.Group>
@@ -205,8 +205,8 @@ return (
                         <Form.Check
                             type="checkbox"
                             name="ushauri"
-                            value={WebADT}
-                            onChange={(e) =>setWebADT(e.target.value)}
+                            
+                            onChange={(e) =>setWebADT(e.target.checked)}
                             label="WebADT"
                            />
                     </Form.Group>
@@ -250,11 +250,11 @@ return (
                 </Form.Group>
          
           
-        <button className='form-input-btn' type='submit'>
+        <Button variant="primary" type='submit'>
           ADD FACILITY
-        </button>
+        </Button>
         
-      </form>
+      </Form>
       </Container>
 </div>
 

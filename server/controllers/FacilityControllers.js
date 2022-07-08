@@ -9,8 +9,8 @@ const router = express.Router();
 const db = mysql.createConnection({
     user: "root",
     host: "localhost",
-    password: "123456789",
-    database: "healthinformatics",
+    password: "root",
+    database: "hbhis",
     multipleStatements: true
 });
 
@@ -74,9 +74,9 @@ const addFacilities = async (req, res)=>{
         status:status,
         ipaddress:ipaddress,
         county:county,
-        ushauri:ushauri,
+        ushauri:ushauri? ushauri:false,
         WebADT:WebADT,
-        elasticipaddress:elasticipaddress,
+        elasticipaddress:elasticipaddress, 
     })
     .then(()=>{
         res.json("facility added!")
