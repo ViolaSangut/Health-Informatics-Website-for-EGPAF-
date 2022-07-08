@@ -1,5 +1,5 @@
-import axios from "axios"
-import UseAuth from "../context/UseAuth"
+import axios from "axios";
+import UseAuth from "../context/UseAuth";
 
 const useRefreshToken = () => {
     const { setAuth } = UseAuth();

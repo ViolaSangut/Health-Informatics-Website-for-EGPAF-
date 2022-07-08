@@ -66,11 +66,16 @@ return (
         <table>
           <thead>
             <tr>
-              <th>FACILITY NAME</th>
               <th>MFL CODE</th>
+              <th>FACILITY NAME</th>
+              <th>COUNTY</th>
               <th>SUBCOUNTY</th>
+              <th>PRIVATE IP ADDRESS</th>
+              <th> ELASTIC IP ADDRESS</th>
               <th>STATUS</th>
-              <th>IP ADDRESS</th>
+              <th>USHARI </th>
+              <th>WebADT </th>
+              
               <th>ACTION</th>
             </tr>
           </thead>
@@ -89,16 +94,25 @@ return (
                       return facility;
                     }else if (facility.ipaddress !== null && facility.ipaddress.toLowerCase().includes(searchFacilities.toLowerCase())) {
                       return facility;
+                    } else if (facility.county !== null && facility.county.toLowerCase().includes(searchFacilities.toLowerCase())) {
+                      return facility;
+                    } else if (facility.elasticipaddress !== null && facility.elasticipaddress.toLowerCase().includes(searchFacilities.toLowerCase())) {
+                      return facility;
                     }
                   }).map (
                     facility => 
                         <tr key = {facility.id}>
-                          <td>{facility.facilityname}</td>
+                          
                           <td>{facility.mflcode}</td>
+                          <td><Link to = {`/specificfacility/${facility.id}`}  >{facility.facilityname}</Link></td>
+                          <td>{facility.county}</td>
                           <td>{facility.subcounty}</td>
+                          <td><a href={`http://${facility.ipaddress}:8080/openmrs`}>{facility.ipaddress} </a> </td>
+                          <td><a href={`http://${facility.elasticipaddress}:8080/openmrs`}>{facility.elasticipaddress} </a> </td>  
                           <td>{facility.status}</td>
-                          <td>{facility.ipaddress}</td>
-                            
+                          <td>{ facility.ushauri? "True" : "False"}</td>
+                          <td>{facility.WebADT}</td>
+                          
                             <td>
                             <Link to = {`/edit-facility/${facility.id}`} className='btn btn-info'> Update</Link>
                             </td>
@@ -107,6 +121,7 @@ return (
                                     > Delete</Link>
                             </td>
                 </tr>
+              
                     
                 )    
                     

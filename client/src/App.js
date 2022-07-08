@@ -20,6 +20,7 @@ import Users from "./Components/Pages/Users/Users";
 import RegisterComponent from "./Components/Pages/Users/Register";
 import AddTicketComponent from "./Components/Pages/Tickets/AddTicket";
 import AddFacilityComponent from "./Components/Pages/Facilities/AddFacilities";
+import SpecificFacilityComponent from "./Components/Pages/Facilities/specificFacility";
 import AddingMy from "./Components/Pages/Tickets/AddingMy";
 import AddInventory from "./Components/Pages/Inventory/AddInventory";
 import AddSimcards from "./Components/Pages/Inventory/AddSimcard";
@@ -53,6 +54,7 @@ function App() {
             <Route path='/addticket' element={<AddTicketComponent/>}/>
             <Route path='/edit-ticket/:id' element={<AddTicketComponent/>}/>
             <Route path='/edit-facility/:id' element={<AddFacilityComponent/>}/>
+            <Route path='/specificfacility/:id' element={<SpecificFacilityComponent/>}/>
             <Route path='/tickets-list' element={<Tickets/>}/>
             <Route path='/test' element={<AddingMy/>}/>
 
@@ -68,10 +70,7 @@ function App() {
             <Route path="/edit-user/:id" element={<RegisterComponent />} />
             </Route>
 
-            {/* Facilities */}
-            <Route element={<CheckAuth allowedRoles={[1,2,3,4]}/>}>
-            <Route path="/facilities" element={<Facilities />} />
-            </Route>
+            
 
             {/* Tickets */}
             <Route element={<CheckAuth allowedRoles={[1,2,3,4]}/>}>

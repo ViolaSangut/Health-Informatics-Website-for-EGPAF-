@@ -1,6 +1,6 @@
 'use strict';
 
-const fs = require('fs');
+const fs = require ('fs');
 const path = require('path');
 const Sequelize = require('sequelize');
 const basename = path.basename(__filename);
@@ -31,6 +31,16 @@ Object.keys(db).forEach(modelName => {
   }
 });
 
+
+db.Facilities.hasMany(db.Tickets, {
+  foreignKey: 'Facility_id',
+  as: 'Tickets'
+})
+
+db.Tickets.belongsTo(db.Facilities, {
+  foreignKey: 'Facility_id',
+  as: 'Facility'
+})
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 

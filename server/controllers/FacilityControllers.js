@@ -18,7 +18,7 @@ const db = mysql.createConnection({
 const updateFacility = async (req, res, next)=>{
     try {
         const { id } = req.params;
-        const {facilityname,mflcode,subcounty,status,ipaddress} = req.body;
+        const {facilityname,mflcode,subcounty,status,ipaddress, county, ushauri, WebADT, elasticipaddress} = req.body;
         const findOneFacilityById = await Facilities.findOne({
             where:{
                 id: id,
@@ -34,7 +34,10 @@ const updateFacility = async (req, res, next)=>{
             if(subcounty) findOneFacilityById.subcounty = subcounty;
             if(status) findOneFacilityById.status = status;
             if(ipaddress) findOneFacilityById.ipaddress = ipaddress;
-            
+            if(county) findOneFacilityById.county = county;
+            if(ushauri) findOneFacilityById.ushauri = ushauri;
+            if(WebADT) findOneFacilityById.WebADT = WebADT;
+            if(elasticipaddress) findOneFacilityById.elasticipaddress = elasticipaddress;
             
             const updatedFacility = await findOneFacilityById.save();
             if (!updatedFacility) {
@@ -57,22 +60,26 @@ const updateFacility = async (req, res, next)=>{
 const getFacilities = async (req, res)=>{
     
 
-    const facilities = await Facilities.findAll({attributes: ["id","facilityname","mflcode","subcounty","status","ipaddress"], });
+    const facilities = await Facilities.findAll({attributes: ["id", "facilityname","mflcode","subcounty","county" ,"status","ipaddress","ushauri", "WebADT", "elasticipaddress"], });
     res.json(facilities);
 
 };
 //Adding a facility
 const addFacilities = async (req, res)=>{
-    const { facilityname, mflcode, subcounty, status, ipaddress} = req.body;
+    const { facilityname, mflcode, subcounty, status, ipaddress, ushauri, WebADT, county, elasticipaddress} = req.body;
     Facilities.create({
         facilityname:facilityname,
         mflcode:mflcode,
         subcounty:subcounty,
         status:status,
         ipaddress:ipaddress,
+        county:county,
+        ushauri:ushauri,
+        WebADT:WebADT,
+        elasticipaddress:elasticipaddress,
     })
     .then(()=>{
-        res.json("User added!")
+        res.json("facility added!")
     })
     .catch((error)=>{
         if(error){
