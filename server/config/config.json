@@ -1,13 +1,13 @@
 {
   "development": {
-    "username": "root",
-    "password": "123456789",
+    "username": "hbhis",
+    "password": "hbhis",
     "database": "hbhis",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "test": {
-    "username": "root",
+    "username": "hbhis",
     "password": null,
     "database": "database_test",
     "host": "127.0.0.1",

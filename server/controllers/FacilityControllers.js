@@ -7,9 +7,9 @@ const router = express.Router();
 //DB Configuration
 
 const db = mysql.createConnection({
-    user: "root",
+    user: "hbhis",
     host: "localhost",
-    password: "123456789",
+    password: "hbhis",
     database: "hbhis",
     multipleStatements: true
 });
