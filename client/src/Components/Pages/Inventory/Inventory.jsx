@@ -1,9 +1,9 @@
 import React,{useState, useEffect, useRef} from 'react'
-import axios from 'axios';
 import { useNavigate, Link } from 'react-router-dom';
 import { toast  } from 'react-toastify';
 import "./Inventory.css";
-import Simcards from './Simcards';
+import moment from 'moment';
+import usePrivateAxios from '../../hooks/usePrivateAxios';
 // import ReactSearchBox from "react-search-box"
 
 
@@ -17,27 +17,21 @@ const Inventory = () => {
   const navigate = useNavigate();
   const[searchInventory, setSearchInventory] = useState("")
   const tableRef =useRef(null)
-  const[display, setDisplay] = useState("Tablets")
-  const[tabletsVisible, setTabletsVisible] = useState(true)
-  const[simcardsVisible, setSimcardsVisible] = useState(false)
+  const private_axios = usePrivateAxios();
+ 
 
 
     useEffect(() => {
-        display==="Simcards"? setSimcardsVisible(true):setSimcardsVisible(false)
-        display==="Tablets"? setTabletsVisible(true):setTabletsVisible(false)
-        console.log(display)
+ 
         getAllItems()
       
-    }, [display])
-
-    
-
+    }, [])
 
     //List all items in the inventory
     const getAllItems = () =>{
-        axios.get("http://localhost:4000/Inventory")
+        private_axios.get("/Inventory")
         .then((response)=>{
-            console.log(response.data)
+            // console.log(response.data)
             setItems(response.data);
         })
         .catch((error)=>{
@@ -45,18 +39,11 @@ const Inventory = () => {
         })
     }
 
-
-    //select table to display on page based on user choice on dropdown
-
-const handleChange = (e)=>{
-    setDisplay(e.target.value)
-}
-
      
     //delete item from inventory
     const deleteItem = (id) =>{
         if(window.confirm("Are you sure you want to delete this Item?")){
-            axios.delete(`http://localhost:4000/Inventory/delete/${id}`)
+            private_axios.delete(`/Inventory/delete/${id}`)
         .then((response)=>{
             setItems(items.filter((item)=>{
                 return item.id !== id;
@@ -71,26 +58,21 @@ const handleChange = (e)=>{
         }
     };
     
-//handleClick on Add Inventory button
+    //handleClick on Add Inventory button
     const handleClick =()=>{
       navigate("/addinventory");
     }
-//Tablet page component
-    const TabletPage = () => {
-        return(
-            <div>
+    
+   
+    
+
+    return (
+    <div>
     <div className="upper-section">
       <div className="left-panel">
-      <h1 className="header">Inventory</h1>
+      <h1 className="header">Tablets Inventory</h1>
       </div>
-      <div>
-     
-      <div >
-        
-        
-        
-      </div>
-      </div>
+      
       </div>
       <br/>
       <input
@@ -107,23 +89,7 @@ const handleChange = (e)=>{
             Add Tablet to Inventory
          
         </button>
-        <div>
-        <select  className= "buttonadd" value={display} onChange={handleChange}>
-                  <option selected disabled ="true">--Select Item Type--</option>
-                <option value="Simcards">Simcards</option>
-                <option value="Tablets">Tablets</option>
-
-              
-        </select>
-        {/* <ReactSearchBox
-        placeholder="Placeholder"
-        value=""
-        data={items}
-        callback={(items) => console.log(items)}
-        /> */}
-        </div>
-
-      <div className="table">
+              <div className="table">
    <table className="table_content" ref={tableRef}>
     <thead className=''>
         <th>Serial</th>
@@ -173,25 +139,36 @@ const handleChange = (e)=>{
                     )
         .map (
             item => 
-                <tr key = {item.id}>
+                <tr key = {item.id} 
+                    onDoubleClick={
+                            () => {
+                            navigate(`/updateInventory/${item.id}`)
+                        }
+                    }
+                
+        
+                >
+                    
 
-                    <td> {item.id} </td>
+                    <td > {item.id} </td>
                     <td> {item.AssetNumber} </td>
                     <td> {item.AssetName} </td>
                     <td> {item.AssetStatus} </td>
                     <td> {item.serialNumber} </td>
-                    <td> {item.createdAt} </td>
+                    <td> {(moment(item.createdAt).format('DD-MM-YYYY | HH:MM'))} </td>
                     <td> {item.facility} </td>
                     <td> {item.Passcode} </td>
                     <td> {item.Email} </td>
                     <td> {item.EmailPassword} </td>
-                
+
                     <td>
-                            <Link to = {`/updateInventory/${item.id}`} className='btn btn-info' > Update</Link>
+                            {/* <Link to = {`/updateInventory/${item.id}`} className='btn btn-info' > Update</Link> */}
                             </td>
                             <td> <Link to = '' className = "btn btn-danger" onClick = {() => deleteItem(item.id)}
-                                    style = {{marginLeft:"10px"}}> Delete</Link>
+                                    style = {{marginLeft:"10px"}}> X </Link>
                     </td>
+
+                    
       
 
                 </tr>
@@ -202,16 +179,6 @@ const handleChange = (e)=>{
     </tbody>
     </table>
     </div>
-    </div>
-        )
-    }
- 
-  //rendering inventory page based on selection
-  return (
-    <div>
-    {tabletsVisible && <TabletPage/>}
-    {simcardsVisible && <Simcards/>}
-
     </div>
   );
 };

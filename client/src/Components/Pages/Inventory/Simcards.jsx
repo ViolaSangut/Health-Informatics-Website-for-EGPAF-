@@ -1,16 +1,8 @@
 import React,{useState, useEffect, } from 'react'
-import axios from 'axios';
 import { useNavigate, Link } from 'react-router-dom';
 import { toast  } from 'react-toastify';
 import "./Inventory.css";
-import Inventory from './Inventory';
-
-
-
-
-
-
-
+import usePrivateAxios from '../../hooks/usePrivateAxios';
 
 
 const Simcards = () => {
@@ -21,11 +13,7 @@ const Simcards = () => {
     //declaring state for the inventory list upon loading the page
   const [cards, setCards] = useState([]);
   const[searchCard, setSearchCard] = useState("")
-  const[display, setDisplay] = useState("Simcards")
-   const[tabletsVisible, setTabletsVisible] = useState(false)
-  const[simcardsVisible, setSimcardsVisible] = useState(false)
-
-
+  const private_axios = usePrivateAxios();
 
     useEffect(() => {
 
@@ -33,12 +21,6 @@ const Simcards = () => {
       
     }, [])
 
-    useEffect(() => {
-     display==="Simcards"? setSimcardsVisible(true):setSimcardsVisible(false)
-        display==="Tablets"? setTabletsVisible(true):setTabletsVisible(false)
-        console.log(display)
-      
-    }, [display])
 
 
     //handleClick
@@ -47,12 +29,9 @@ const Simcards = () => {
 
     }
 
-   
-
-
     //List all cards in the inventory
     const getAllCards = () =>{
-        axios.get("http://localhost:4000/simcards")
+        private_axios.get("/simcards")
         .then((response)=>{
             console.log(response.data)
             setCards(response.data);
@@ -65,7 +44,7 @@ const Simcards = () => {
     //delete cards from inventory
     const deleteCard = (id) =>{
         if(window.confirm("Are you sure you want to delete this card?")){
-            axios.delete(`http://localhost:4000/simcards/delete/${id}`)
+            private_axios.delete(`/simcards/delete/${id}`)
         .then((response)=>{
             setCards(cards.filter((card)=>{
                 return card.id !== id;
@@ -79,32 +58,29 @@ const Simcards = () => {
         }
     };
 
-    const handleChange = (e)=>{
-    setDisplay(e.target.value)
 
-}
-
-
-const Simcards = ()=>{
-    
+    //render tables on screen
     return(
-        <div>
+         <div>
+            <div>
+      <h1 className="header">Simcards Inventory</h1>
+      </div>
             <div>
                 <input 
                 placeholder='Search for Simcard'
                 value={searchCard}
                 onChange={(e)=> setSearchCard(e.target.value)}
-                />
+                ></input>
                 <button onClick={handleClick} className="buttonadd">Add New Simcard</button>
             </div>
             <div>
-        <select  className= "buttonadd" value={display} onChange={handleChange}>
+        {/* <select  className= "buttonadd" value={display} onChange={handleChange}>
                   <option selected disabled ="true">--Select Item Type--</option>
                 <option value="Simcards">Simcards</option>
                 <option value="Tablets">Tablets</option>
 
               
-        </select>
+        </select> */}
         </div>
         <div className='table'>
             <table className="table_content">
@@ -143,7 +119,13 @@ const Simcards = ()=>{
                     }
                     )
             .map (card => 
-                <tr key = {card.id}>
+                <tr key = {card.id}
+                onDoubleClick={
+                            () => {
+                            navigate(`/addSimcards/${card.id}`)
+                        }
+                    }
+                    >
 
                     <td> {card.id} </td>
                     <td> {card.PhoneNumber} </td>
@@ -154,10 +136,9 @@ const Simcards = ()=>{
                     <td> {card.PhoneAssigned} </td>
                 
                     <td>
-                            <Link to = {`/addSimcards/${card.id}`} className='btn btn-info' > Update</Link>
                             </td>
                             <td> <Link to = '' className = "btn btn-danger" onClick = {() => deleteCard(card.id)}
-                                    style = {{marginLeft:"10px"}}> Delete</Link>
+                                    style = {{marginLeft:"10px"}}> X</Link>
                     </td>
               </tr>
             
@@ -167,15 +148,6 @@ const Simcards = ()=>{
         </tbody>
     </table>
     </div>
-</div>
-    )
-}
-
-//render tables on screen
-    return(
-        <div>
-    {tabletsVisible && <Inventory/>}
-    {simcardsVisible && <Simcards/>}
     </div>
     )
 

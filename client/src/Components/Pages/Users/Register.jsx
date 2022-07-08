@@ -9,16 +9,21 @@ import {
   faTimes,
   faInfoCircle,
 } from "@fortawesome/free-solid-svg-icons";
+import usePrivateAxios from '../../hooks/usePrivateAxios';
 
 
 
-
+//regex definitions
 const USER_REGEX = /^[a-zA-Z][a-zA-Z0-9-_]{3,23}$/;
 const PWD_REGEX = /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,24}$/;
 const EMAIL_REGEX = /^\S+@\S+\.\S+$/;
 
 
+
 const RegisterComponent = () => {
+
+
+const private_axios = usePrivateAxios();
 
 const fnameRef = useRef()
 const lnameRef = useRef()
@@ -117,8 +122,8 @@ const saveUser = async () => {
     
     try {
 
-      const response = await axios.post(
-        "http://localhost:4000/users/register",
+      const response = await private_axios.post(
+        "/users/register",
         JSON.stringify({ firstName, lastName, email, password, RoleId}),
         {
           headers: { "Content-type": "application/json" },
@@ -161,7 +166,7 @@ const saveUser = async () => {
     
     try {
 
-      const response = await  axios.put(`http://localhost:4000/users/update/${id}`, {
+      const response = await  private_axios.put(`/users/update/${id}`, {
         firstName:firstName, lastName:lastName, email: email, password: password, matchPassword: matchPassword, RoleId: RoleId
       });
       
@@ -189,7 +194,7 @@ const saveUser = async () => {
 
   //Getting all users
   const getAllusers = () =>{
-    axios.get("http://localhost:4000/users")
+    private_axios.get("/users")
     .then((response)=>{
         console.log(response.data)
         setUsers(response.data);
@@ -242,7 +247,7 @@ const saveUser = async () => {
 
   //Getting roles
   const getRoles = () =>{
-    axios.get("http://localhost:4000/roles")
+    private_axios.get("/roles")
     .then((response)=>{
         console.log(response.data)
         setRoles(response.data);

@@ -22,14 +22,19 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.TEXT,
     },
   });
-
+  
   Users.associate = (models) =>{
+    //Creating relationship btw user & roles
     Users.belongsTo(models.Roles, {
       foreignKey: {
         allowNull: false,
         defaultValue: 1
       }
     })
+
+    // Users.hasMany(models.Tickets, {
+    //   onDelete: "cascade",
+    // })
   }
 
   return Users;

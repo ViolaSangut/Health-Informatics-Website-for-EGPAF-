@@ -1,8 +1,8 @@
 import './TicketsDashboard.css';
 import Summary from './DashboardItems/Summary';
 
-import Featured from './DashboardItems/Featured';
-import Chart from './DashboardItems/Chart';
+import TodaysResolved from './DashboardItems/TodaysResolved';
+import WeeklyTicketsDashboard from './DashboardItems/WeeklyTicketsDashboard';
 import { Link, useNavigate } from 'react-router-dom';
 
 const TicketsDashboard = () => {
@@ -22,15 +22,15 @@ const TicketsDashboard = () => {
       </div>
       
       <h5 className='pageTitle'>Tickets Dashboard</h5>
-      <div className='summary1'>
+      <div className='summary1' onClick ={()=>navigate('/tickets-list')}>
         <Summary type = "Unassigned"/>
         <Summary type = "Pending"/>
         <Summary type = "Resolved"/>
-        <Summary type = "Total" onClick ={()=>{totalTickets()}}/>
+        <Summary type = "Total"/>
       </div>
       <div className="charts">
-          <Featured/>
-          <Chart/>
+          <TodaysResolved/>
+          <WeeklyTicketsDashboard/>
       </div>
     </div>
   )

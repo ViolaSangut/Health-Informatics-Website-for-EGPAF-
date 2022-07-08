@@ -11,3 +11,6 @@ Install the following dependencies after syncing with the latest version:
       npm install --save moment
 
       npm install chart.js react-chartjs-2
+
+      npm i @fvilers/disable-react-devtools
+      npm i jwt-decode

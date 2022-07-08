@@ -7,10 +7,9 @@ import {
 } from 'chart.js';
 
 import { Bar } from 'react-chartjs-2';
-import axios from 'axios';
 import Chart from 'chart.js/auto';
-import './Chart.css';
-import { Link, useNavigate, useLocation} from 'react-router-dom';
+import './WeeklyTicketsDashboard.css';
+import { useNavigate, useLocation} from 'react-router-dom';
 import usePrivateAxios from '../../../hooks/usePrivateAxios';
 
 ChartJS.register(
@@ -19,7 +18,7 @@ ChartJS.register(
 
 
 
-const BarChart = () => {
+const WeeklyTicketsDashboard = () => {
   const [chart, setChart] = useState({})
 
   const [weeklyTicketsCounts, setweeklyTicketsCounts] = useState([]);
@@ -31,17 +30,17 @@ const BarChart = () => {
   const navigate = useNavigate();
   const privateAxios = usePrivateAxios();
 
-  const countAllTickets = () =>{
+  const countWeeklyTickets = () =>{
     try {
       privateAxios.get("/tickets/getNoOfWeeklyTickets")
       .then((response)=>{
         console.log(response.data);
         setChart(response.data)
 
-        const data1 = (response.data)
-        setweekDays(data1.map(x => x.Day));
-        setweekDate(data1.map(x => x.createdAt));
-        setTicketsCount(data1.map(x => x.Tickets));
+        const noOfWeeklyTickets = (response.data)
+        setweekDays(noOfWeeklyTickets.map(Tickets => Tickets.Day));
+        setweekDate(noOfWeeklyTickets.map(Tickets => Tickets.createdAt));
+        setTicketsCount(noOfWeeklyTickets.map(dailyCount => dailyCount.Tickets));
     
       })
       
@@ -52,7 +51,7 @@ const BarChart = () => {
   }
 
   useEffect(()=>{
-    countAllTickets();
+    countWeeklyTickets();
   }, [])
 
  
@@ -95,4 +94,4 @@ const BarChart = () => {
   )
 }
 
-export default BarChart
+export default WeeklyTicketsDashboard

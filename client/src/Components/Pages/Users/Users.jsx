@@ -3,6 +3,8 @@ import { Link, useNavigate, useLocation} from 'react-router-dom';
 import './Users.css';
 import { toast  } from 'react-toastify';
 import usePrivateAxios from '../../hooks/usePrivateAxios';
+import UseAuth from "../../context/UseAuth";
+import jwt_decode from "jwt-decode";
 
 const Users = () => {
     const [users, setUsers] = useState([]);
@@ -10,41 +12,34 @@ const Users = () => {
     const location = useLocation();
     const privateAxios = usePrivateAxios();
 
-    const [error, setError] = useState('');
-   
+    const { auth } = UseAuth();
+
+    //Getting loggedin's user roles, email from accessToken.
+    const decodedAccessToken = auth?.accessToken
+          ? jwt_decode(auth.accessToken)
+          : undefined
+    const userRoles = decodedAccessToken?.roles || null;
+    const userEmail = decodedAccessToken?.email || null;
 
     useEffect(() => {
-     
-        // const controller = new AbortController();   
         
         //List 
         const getAllUsers = () =>{
             privateAxios.get('/users')
             .then((response)=>{
-                console.log(response.data)
             setUsers(response.data);
-            setError("");
             })
             .catch((error)=>{
                 console.log(error);
-                setError(error.message);
+    
                 console.log(error.message)
-                if(error.message === "Request failed with status code 401"){
-                    navigate('/unauthorized', { state: { from: location }, replace: true });
-                } else{
-                navigate('/', { state: { from: location }, replace: true });
-                }
+                    navigate('/unauthorized');
             })
         }
         getAllUsers();
-
-        // return () =>{
-        //     controller.abort();
-        // }
-      
+   
     }, [])
-
-    
+  
     //delete
     const deleteUser = (id) =>{
         if(window.confirm("Are you sure you want to delete the user?")){
@@ -80,7 +75,7 @@ const Users = () => {
         <th>Last Name</th> 
         <th>Role</th> 
         <th>Email</th> 
-        <th> Actions</th>         
+        <th>Actions</th>         
      </tr>
     </thead>
 
@@ -94,20 +89,25 @@ const Users = () => {
                     <td> {user.firstName} </td>
                     <td> {user.lastName} </td>
                     <td> {user.Role.role} </td>
-                    <td> {user.email} </td>
-
-                      
-                    <td>
-                       
-                       <Link to = {`/edit-user/${user.id}`} className='btn btn-info'>Update</Link>
+                    <td> {user.email} </td>         
                     
-                       <Link to = "" className = "btn btn-danger" onClick = {() => deleteUser(user.id)}
-                               style = {{marginLeft:"10px"}}> Delete</Link>
-                    </td>
-      
+                    {
+                      userEmail !== user.email &&
+                      
+                        <td>
+                        <Link to = {`/edit-user/${user.id}`} className='btn btn-info'>Update</Link> 
+                        <Link to = "" className = "btn btn-danger" onClick = {() => deleteUser(user.id)}
+                               style = {{marginLeft:"10px"}}> 
+                               X 
+                        </Link>
+                               
+                        </td>  
+                            
+                    }
+                       
+                   
 
-                </tr>
-            
+                </tr>          
         )    
      }
     

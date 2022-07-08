@@ -6,7 +6,7 @@ const sequelize = require("sequelize");
 const db = mysql.createConnection({
     user: "root",
   host: "localhost",
-  password: "root",
+  password: "123456789",
   database: "hbhis",
     multipleStatements: true
 });
@@ -14,7 +14,7 @@ const db = mysql.createConnection({
 //List
 const getTickets = async (req, res)=>{
 
-    const tickets = await Tickets.findAll({attributes: ["id", "title", "facility", "creator", "ticket_status", "assignee", "priority", "due_date",[
+    const tickets = await Tickets.findAll({attributes: ["id", "title", "facility", "creatorsEmail", "creatorsFirstName", "creatorsLastName","ticket_status", "assignee", "priority", "due_date",[
         sequelize.fn
         (
           "DATE_FORMAT", 
@@ -29,15 +29,24 @@ const getTickets = async (req, res)=>{
 
 //Adding a Ticket
 const addTicket = async (req, res)=>{
-    const { title, facility, creator, ticket_status, assignee, priority, due_date} = req.body;
+    const { title, facility, creatorsEmail, creatorsFirstName, creatorsLastName, ticket_status, assignee, priority, due_date} = req.body;
+
+
+    if(!title || !facility || !creatorsEmail || !due_date ){
+        res.status(400) //Bad req
+        throw new error("Please add all mandatory fields!")
+    }
+
     Tickets.create({
         title: title,
         facility: facility,
-        creator: creator,
+        creatorsEmail: creatorsEmail,
+        creatorsFirstName: creatorsFirstName,
+        creatorsLastName: creatorsLastName,
         ticket_status:ticket_status,
         assignee: assignee,
         priority: priority,
-        due_date: due_date
+        due_date: due_date,
     })
     .then(()=>{
         res.json("Ticket added!")
@@ -87,7 +96,7 @@ const findTicketById = async (req, res, next) => {
 const updateTicket = async (req, res, next)=>{
     try {
         const { id } = req.params;
-        const { title, facility, creator, ticket_status, assignee, priority, due_date} = req.body;
+        const { title, facility, ticket_status, assignee, priority, due_date} = req.body;
         const findOneTicketById = await Tickets.findOne({
             where:{
                 id: id,
@@ -100,7 +109,6 @@ const updateTicket = async (req, res, next)=>{
             }
             if(title) findOneTicketById.title = title;
             if(facility) findOneTicketById.facility = facility;
-            if(creator) findOneTicketById.creator = creator;
             if(ticket_status) findOneTicketById.ticket_status = ticket_status;
             if(assignee) findOneTicketById.assignee = assignee;
             if(priority) findOneTicketById.priority = priority;
@@ -158,6 +166,24 @@ const countUnsignedTickets = async (req, res)=>{
     res.json(unassignedTickets);
 };
 
+//List unasigned
+const getUnsignedTickets = async (req, res)=>{
+
+    const tickets = await Tickets.findAll({where:{
+        ticket_status: "Unassigned"
+    }}, {attributes: ["id", "title", "facility", "creatorsEmail", "creatorsFirstName", "creatorsLastName","ticket_status", "assignee", "priority", "due_date",[
+        sequelize.fn
+        (
+          "DATE_FORMAT", 
+          sequelize.col("createdAt"), 
+          "%Y-%m-%d"
+        ),
+        "createdAt",
+      ],], });
+    res.json(tickets);
+
+};
+
 //Count pending
 const countpendingTickets = async (req, res)=>{
     const pendingTickets = await Tickets.count({where:{
@@ -166,12 +192,49 @@ const countpendingTickets = async (req, res)=>{
     res.json(pendingTickets);
 };
 
+//List pending
+const getPendingTickets = async (req, res)=>{
+
+    const tickets = await Tickets.findAll({where:{
+        ticket_status: "Pending"
+    }}, {attributes: ["id", "title", "facility", "creatorsEmail", "creatorsFirstName", "creatorsLastName","ticket_status", "assignee", "priority", "due_date",[
+        sequelize.fn
+        (
+          "DATE_FORMAT", 
+          sequelize.col("createdAt"), 
+          "%Y-%m-%d"
+        ),
+        "createdAt",
+      ],], });
+    res.json(tickets);
+
+};
+
+
 //Count Resolved
 const countResolvedTickets = async (req, res)=>{
     const resolvedTickets = await Tickets.count({where:{
         ticket_status: "Resolved"
     }});
     res.json(resolvedTickets);
+
+};
+
+//List Resolved
+const getResolvedTickets = async (req, res)=>{
+
+    const tickets = await Tickets.findAll({where:{
+        ticket_status: "Resolved"
+    }}, {attributes: ["id", "title", "facility", "creatorsEmail", "creatorsFirstName", "creatorsLastName","ticket_status", "assignee", "priority", "due_date",[
+        sequelize.fn
+        (
+          "DATE_FORMAT", 
+          sequelize.col("createdAt"), 
+          "%Y-%m-%d"
+        ),
+        "createdAt",
+      ],], });
+    res.json(tickets);
 
 };
 
@@ -225,4 +288,4 @@ const countTodaysResolvedTickets = async (req, res)=>{
 };
 
 
-module.exports = { getTickets, addTicket, deleteTicket, findTicketById, updateTicket, countAllTickets, countUnsignedTickets, countpendingTickets, countResolvedTickets, countTodaysResolvedTickets, countTodaysTickets, percentageCountTodaysResolvedTickets, getNoOfWeeklyTickets, db}
+module.exports = { getTickets, addTicket, deleteTicket, findTicketById, updateTicket, countAllTickets, countUnsignedTickets, countpendingTickets, countResolvedTickets, countTodaysResolvedTickets, countTodaysTickets, percentageCountTodaysResolvedTickets, getNoOfWeeklyTickets, getUnsignedTickets, getPendingTickets, getResolvedTickets,db}
