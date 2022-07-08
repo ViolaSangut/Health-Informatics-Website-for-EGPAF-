@@ -5,6 +5,8 @@ import { toast  } from 'react-toastify';
 import './Tickets';
 import moment from 'moment';
 import usePrivateAxios from '../../hooks/usePrivateAxios';
+import UseAuth from "../../context/UseAuth";
+import jwt_decode from "jwt-decode";
 
 const Tickets = () => {
     const [tickets, setTickets] = useState([]);
@@ -12,11 +14,26 @@ const Tickets = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const [searchTickets, setSearchTickets] = useState("");
+    const [filterTickets, setFilterTickets] = useState("");
     const privateAxios = usePrivateAxios();
 
     const todaysDate = new Date();
 
-    const myTodaysDate = moment(todaysDate).format('DD-MM-YYYY')
+    const myTodaysDate = moment(todaysDate).format('DD-MM-YYYY');
+    
+
+    let yesterdaysDate = new Date();
+    yesterdaysDate.setDate(yesterdaysDate.getDate() - 1);
+
+    let myYesterdaysDate = moment(yesterdaysDate).format('DD-MM-YYYY')
+
+    const { auth } = UseAuth();
+
+    //Getting loggedin's user email from accessToken.
+    const decodedAccessToken = auth?.accessToken
+          ? jwt_decode(auth.accessToken)
+          : undefined
+    const userEmail = decodedAccessToken?.email || null;
 
 
     useEffect(() => {
@@ -77,6 +94,7 @@ const Tickets = () => {
                 onChange={(e)=> setSearchTickets(e.target.value)}>
                 <option value="">All</option>
                 <option value={myTodaysDate}>Todays Tickets</option>
+                <option value={myYesterdaysDate}>Yesterdays Tickets</option>
             </select>
         </div>
     
@@ -105,7 +123,7 @@ const Tickets = () => {
                 <th>Priority</th> 
                 <th>Due Date</th> 
                 <th>Date Created</th> 
-                <th> update</th>  
+                {/* <th> update</th>   */}
                 <th> Remove</th>      
                 </tr>
                 </thead>
@@ -136,7 +154,11 @@ const Tickets = () => {
                             }
                         }).map (
                             ticket => 
-                                <tr key = {ticket.id}>
+                                <tr key = {ticket.id}
+                                    onDoubleClick={()=>{
+                                        navigate(`/edit-ticket/${ticket.id}`)
+                                    }}
+                                >
 
                                     <td> {ticket.title} </td>
                                     <td> {ticket.facility} </td>
@@ -147,13 +169,15 @@ const Tickets = () => {
                                     <td>{ticket.priority}</td>
                                     <td>{(moment(ticket.due_date).format('DD-MM-YYYY'))}</td>
                                     <td>{(moment(ticket.createdAt).format('DD-MM-YYYY'))}</td>
+                                   
+                                    {
+                                        ticket.creatorsEmail === userEmail &&
+                                        <td> <Link to = '' className = "btn btn-danger" onClick = {() => deleteTicket(ticket.id)}
+                                            style = {{marginLeft:"10px"}}> X 
+                                            </Link>
+                                        </td>
+                                    }
                                     
-                                    <td>
-                                    <Link to = {`/edit-ticket/${ticket.id}`} className='btn btn-info'> Update</Link>
-                                    </td>
-                                    <td> <Link to = '' className = "btn btn-danger" onClick = {() => deleteTicket(ticket.id)}
-                                            style = {{marginLeft:"10px"}}> Delete</Link>
-                                    </td>
                         </tr>
                             
                         )    

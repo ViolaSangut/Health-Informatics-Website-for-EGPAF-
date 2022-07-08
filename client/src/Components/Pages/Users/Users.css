@@ -84,10 +84,11 @@
   }
 
   .date_filter{
-    margin-left: 75%;
-    padding-left: 10px;
-    display: flex;
-    margin-right: 10%;
+    margin-left: 7%;
+    width: 10%;
+    /* padding-left: 10px;
+    display: flex; */
+    /* margin-right: 10%; */
   }
 
     .buttonadd {

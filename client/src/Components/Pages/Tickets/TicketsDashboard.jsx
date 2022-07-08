@@ -22,11 +22,11 @@ const TicketsDashboard = () => {
       </div>
       
       <h5 className='pageTitle'>Tickets Dashboard</h5>
-      <div className='summary1'>
+      <div className='summary1' onClick ={()=>navigate('/tickets-list')}>
         <Summary type = "Unassigned"/>
         <Summary type = "Pending"/>
         <Summary type = "Resolved"/>
-        <Summary type = "Total" onClick ={()=>{totalTickets()}}/>
+        <Summary type = "Total"/>
       </div>
       <div className="charts">
           <TodaysResolved/>
