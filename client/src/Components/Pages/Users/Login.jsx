@@ -86,7 +86,7 @@ const Login = () => {
     <div align ="middle">
           
     <section >
-    <p ref={errorRef} className={errorMessage ? "errmsg" : "offscreen"} aria-live="assertive">{errorMessage}</p>
+    <p ref={errorRef} className={errorMessage ? "errmsg" :  "offscreen"} aria-live="assertive">{errorMessage}</p>
       <form >
         <h5>HEALTH INFORMATION SYSTEM</h5>
         <label>

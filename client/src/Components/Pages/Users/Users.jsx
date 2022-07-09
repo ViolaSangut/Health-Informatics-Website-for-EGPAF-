@@ -123,29 +123,36 @@ const Users = () => {
                     <td> {user.email} </td>         
                     
                     {
-                   
+                    //Denying loggedin userright to update his/her deta
                     loggedinUserEmail === user.email ?
-                    <td>
-                     <>C/U</>
-                    </td>
+                        <td>
+                        <>C/U</>
+                        </td>
+
+                    //Desallowing Admin to modify Super_users details
                     :loggedinUserRoles === "3" && user.Role.role === "Super_User"  ?
-                    <td>
-                    <></>
-                    </td>
+                        <td>
+                        <></>
+                        </td>
+                    
+                    //Allowing Superuser to update all Superusers
                     : loggedinUserRoles === "4" && user.Role.role === "Super_User"?            
                         <td>
                         <Link to = {`/edit-user/${user.id}`} className='btn btn-info'>Update</Link>         
                         </td>
+
+                    //Allowing Superuser to update & delete all users   
                     : loggedinUserRoles === "4" ?            
-                    <td>
-                    <Link to = {`/edit-user/${user.id}`} className='btn btn-info'>Update</Link> 
-                    <Link to = "" className = "btn btn-danger" onClick = {() => deleteUser(user.id)}
-                           style = {{marginLeft:"10px"}}> 
-                           X 
-                    </Link>
-                           
-                    </td>   
-                        : (loggedinUserRoles === "3" || loggedinUserRoles === "4") && user.Role.role !== "Super_User" ?
+                        <td>
+                        <Link to = {`/edit-user/${user.id}`} className='btn btn-info'>Update</Link> 
+                        <Link to = "" className = "btn btn-danger" onClick = {() => deleteUser(user.id)}
+                            style = {{marginLeft:"10px"}}> 
+                            X 
+                        </Link>    
+                        </td> 
+                        
+                    
+                    : (loggedinUserRoles === "3" || loggedinUserRoles === "4") && user.Role.role !== "Super_User" ?
 
                         <td>
                         <Link to = {`/edit-user/${user.id}`} className='btn btn-info'>Update</Link> 

@@ -13,7 +13,7 @@ const usePrivateAxios = () => {
         const requestIntercept = privateAxios.interceptors.request.use(
             config => {
                 if (!config.headers['Authorization']) { //Confirming req isn't retry.
-                    config.headers['Authorization'] = `Bearer ${auth?.accessToken}`;
+                    config.headers ['Authorization'] = `Bearer ${auth?.accessToken}`;
                 }
                 return config;
             }, (error) => Promise.reject(error)
@@ -28,7 +28,7 @@ const usePrivateAxios = () => {
                     previousRequest.sent = true;
                     //Getting  new accessToken, parsing it to Authorization setting in prev req's headers
                     const newAccessToken = await refresh();
-                    previousRequest.headers['Authorization'] = `Bearer ${newAccessToken}`;
+                    previousRequest.headers['Authorization'] = `Bearer ${newAccessToken}` ;
                     return privateAxios(previousRequest); //parsing updated prev req & making req again.
                 }
                 return Promise.reject(error);

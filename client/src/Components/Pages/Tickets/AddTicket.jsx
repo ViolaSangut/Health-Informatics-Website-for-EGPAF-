@@ -11,13 +11,16 @@ import jwt_decode from "jwt-decode";
 const AddTicketComponent = () => {
     const { auth } = UseAuth();
 
-    //Getting loggedin's user email, firstName & lastName from accessToken.
+    //Getting loggedin's user role, email, firstName & lastName from accessToken.
     const decodedAccessToken = auth?.accessToken
           ? jwt_decode(auth.accessToken)
           : undefined
-    const userEmail = decodedAccessToken?.email || null;
+    const loggedinUserEmail = decodedAccessToken?.email || null;
     const usersFirstName = decodedAccessToken?.firstName || null;
     const usersLastName = decodedAccessToken?.lastName || null;
+    const UserRoles = decodedAccessToken?.roles || null;
+    const loggedinUserRoles = UserRoles.toString();
+
     
 
     const [tickets, setTickets] = useState([]);
@@ -26,7 +29,8 @@ const AddTicketComponent = () => {
 
     const [title, setTitle] = useState("");
     const [facility, setFacility] = useState("");
-    const [creatorsEmail, setCreatorEmail] = useState(userEmail);
+    const [creatorsEmail, setCreatorEmail] = useState(loggedinUserEmail);
+    const [ticketCreatorsEmail, setTicketCreatorEmail] = useState("");
     const [creatorsFirstName, setCreatorFirstName] = useState(usersFirstName);
     const [creatorsLastName, setCreatorsLastName] = useState(usersLastName);
     const [ticket_status, setTicket_status] = useState("Unassigned");
@@ -120,6 +124,7 @@ const AddTicketComponent = () => {
             setTicket_status(ticket.ticket_status);
             setDue_date(ticket.due_date);
             setPriority(ticket.priority);
+            setTicketCreatorEmail(ticket.creatorsEmail)
 
         }
 
@@ -134,6 +139,10 @@ const AddTicketComponent = () => {
         .then((response)=>{
             console.log(response.data)
             setTickets(response.data);
+            console.log(response.data)
+            console.log(creatorsEmail)
+            console.log(loggedinUserEmail)
+            // setTicketCreatorEmail(response.data[0].creatorsEmail);
         })
         .catch((error)=>{
             console.log(error);
@@ -214,9 +223,6 @@ const AddTicketComponent = () => {
                         
                         }   
 
-                    
- 
-
                      <div  className='form-group'>
                      <label>Priority</label>
                      <select value={priority} onChange={(e)=>{setPriority(e.target.value)}} >
@@ -242,8 +248,21 @@ const AddTicketComponent = () => {
                          min={minDate}                         
                         />                           
                          </div>
-                         <br/>                          
-                         <Link to="" className="btn btn-info" style={{width: "50%", marginLeft: "20%", marginBottom: "2%"}} onClick={(e) => saveorUpdateTicket(e)}> {id ? <>Update</> :<>Add</>}</Link>
+                         <br/>    
+                         {
+                            //Adding Ticket
+                            !id?
+                            <Link to="" className="btn btn-info" style={{width: "50%", marginLeft: "20%", marginBottom: "2%"}} onClick={(e) => saveorUpdateTicket(e)}> Add</Link>
+
+                            //Checking if loggedin user is the creator of the ticket for update permission
+                            :ticketCreatorsEmail === loggedinUserEmail?
+                            <Link to="" className="btn btn-info" style={{width: "50%", marginLeft: "20%", marginBottom: "2%"}} onClick={(e) => saveorUpdateTicket(e)}> {id ? <>Update</> :<>Add</>}</Link>
+
+                            //Allowing Admin and superuser to update all tickets
+                            :(loggedinUserRoles === "4" || loggedinUserRoles ==="3") ?
+                            <Link to="" className="btn btn-info" style={{width: "50%", marginLeft: "20%", marginBottom: "2%"}} onClick={(e) => saveorUpdateTicket(e)}> {id ? <>Update</> :<>Add</>}</Link>
+                            : <></>
+                         }                      
                          <Link to="/tickets-list" className="btn btn-danger" style={{width: "50%", marginLeft: "20%", marginBottom: "0%"}}>Cancel</Link>
             </form>
             </div>

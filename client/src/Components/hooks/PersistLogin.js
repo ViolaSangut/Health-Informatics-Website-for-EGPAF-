@@ -1,9 +1,9 @@
-import { Outlet } from "react-router-dom";
+import { Outlet } from "react-router-dom" ;
 import { useState, useEffect } from "react";
 import useRefreshToken from "./useRefreshToken";
 import UseAuth from "../context/UseAuth";
 
-import React from 'react'
+import React from 'react';
 
 const PersistLogin = () => {
   const { auth } = UseAuth();
@@ -11,7 +11,7 @@ const PersistLogin = () => {
   const refresh = useRefreshToken();
 
   useEffect(() => {
-    let isMounted = true;
+    let isMounted = true; 
 
     const verifyRefreshToken = async () => {
         try {
@@ -27,13 +27,13 @@ const PersistLogin = () => {
     //Getting new accessToken using RefreshToken if it's absent or has expired
     !auth?.accessToken ? verifyRefreshToken() : setIsLoading(false);
 
-    return () => isMounted = false;
+    return () => isMounted = false ;
 }, [])
 
     return (
         <>
             {isLoading
-                    ? <p>Loading...</p>
+                    ? <p>Loading... </p>
                     : <Outlet />
             }
         </>

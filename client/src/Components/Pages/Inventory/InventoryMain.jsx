@@ -11,7 +11,7 @@ const InventoryMain = () => {
 useEffect(() => {
         display==="Simcards"? setSimcardsVisible(true):setSimcardsVisible(false)
         display==="Tablets"? setTabletsVisible(true):setTabletsVisible(false)
-        console.log(display)
+        // console.log(display)
         // getAllItems()
       
     }, [display])

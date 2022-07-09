@@ -19,6 +19,8 @@ import PageNotFound from "./Components/Common/PageNotFound";
 import Users from "./Components/Pages/Users/Users";
 import RegisterComponent from "./Components/Pages/Users/Register";
 import AddTicketComponent from "./Components/Pages/Tickets/AddTicket";
+import AddFacilityComponent from "./Components/Pages/Facilities/AddFacilities";
+import SpecificFacilityComponent from "./Components/Pages/Facilities/specificFacility";
 import AddingMy from "./Components/Pages/Tickets/AddingMy";
 import AddInventory from "./Components/Pages/Inventory/AddInventory";
 import AddSimcards from "./Components/Pages/Inventory/AddSimcard";
@@ -57,6 +59,7 @@ function App() {
               {/* Facilities */}
               <Route element={<CheckAuth allowedRoles={[1, 2, 3, 4]} />}>
                 <Route path="/facilities" element={<Facilities />} />
+                <Route path="/addfacility" element={<AddFacilityComponent />} />
               </Route>
 
               {/* Tickets */}

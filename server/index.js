@@ -49,6 +49,9 @@ app.use("/tickets", ticketsRouter);
 const inventoryRouter = require("./routes/InventoryRoute");
 app.use("/inventory", inventoryRouter);
 
+const facilityRouter = require("./routes/FacilityRoute");
+app.use("/facilities", facilityRouter);
+
 //Sim Cards
 const simcardsRouter = require("./routes/SimcardRoute");
 app.use("/simcards", simcardsRouter);
