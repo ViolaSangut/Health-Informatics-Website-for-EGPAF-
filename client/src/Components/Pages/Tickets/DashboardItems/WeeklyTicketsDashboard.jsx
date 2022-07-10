@@ -82,14 +82,20 @@ const WeeklyTicketsDashboard = () => {
     },
   }
 
+  let dashboardTitle = <h5 className='dashboardTitle'>Weekly Tickets History</h5>
+
   return (
     <div className='chart'>
+     { dashboardTitle}
+    <div >
+      <></>
       <Bar
         data={data}
-        height={330}
+        height={300}
         options={options}
 
       />
+    </div>
     </div>
   )
 }

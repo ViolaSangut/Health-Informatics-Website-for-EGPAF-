@@ -87,12 +87,12 @@ const TodaysResolved = () => {
 
 
   return (
-    <div className="featured">
+    <div className="todaysResolved">
       
-      <div className="bottom">
+      <div className="todaysResolvedContent">
       <p >Percentage of today's resolved ticket(s) </p>
         
-        <div className="featuredChart">
+        <div className="circleChart">
           { 
           percentageCountOfTodaysResolvedTickets !== null ?  (
           <CircularProgressbar 

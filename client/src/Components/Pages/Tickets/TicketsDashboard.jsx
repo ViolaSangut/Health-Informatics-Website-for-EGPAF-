@@ -14,9 +14,9 @@ const TicketsDashboard = () => {
       <div >
       <Link to = '/tickets-list' className='btn btn-info' style={{marginLeft:"10%", marginTop:"1%"}}>Tickets</Link>
       <Link to = '/addticket' className='btn btn-info' style={{marginLeft:"2%", marginTop:"1%"}}>Add Ticket</Link>
-      </div>
       
-      <h5 className='pageTitle'>Tickets Dashboard</h5>
+      <h4 className='pageTitle'>Tickets Dashboard</h4>
+      </div>
       <div className='summary1' onClick ={()=>navigate('/tickets-list')}>
         <Summary type = "Unassigned"/>
         <Summary type = "Pending"/>
@@ -24,8 +24,8 @@ const TicketsDashboard = () => {
         <Summary type = "Total"/>
       </div>
       <div className="charts">
-          <TodaysResolved/>
           <WeeklyTicketsDashboard/>
+          <TodaysResolved/>
       </div>
     </div>
   )

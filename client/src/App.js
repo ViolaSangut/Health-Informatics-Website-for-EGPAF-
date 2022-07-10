@@ -85,6 +85,7 @@ function App() {
             </Route>
           </Route>
           <Route path="/add-user" element={<RegisterComponent />} />
+          <Route path="/test" element={<AddingMy />} />
           <Route path="/" element={<Login />} />
           <Route path="/unauthorized" element={<Unauthorized />} />
           <Route path="/sim" element={<Simcards />} />

@@ -516,7 +516,7 @@ let addUpdateEmailPassword =
              :<></>
             }
             
-        {/* Email */}
+        {/* Email & Password*/}
         { 
         ( 
           //Adding Email & Password
@@ -539,9 +539,7 @@ let addUpdateEmailPassword =
         )
         }
         
-     
-        
-      
+         {/* Submit Button */}
           {
            !id ?
            <button className='button'
