@@ -119,4 +119,11 @@ const deleteFacility = async(req, res) =>{
     });
     return res.json('Facility deleted');
 };
-module.exports ={addFacilities, getFacilities, updateFacility, findFacilityById, deleteFacility};
+
+//Count All HomaBay Facilities
+const countHomaByFacilities = async (req, res) =>{
+    const homaBayFacilitiesCount = await Facilities.count();
+    res.json(homaBayFacilitiesCount);
+}
+
+module.exports ={addFacilities, getFacilities, updateFacility, findFacilityById, deleteFacility, countHomaByFacilities};

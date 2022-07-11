@@ -123,10 +123,15 @@ const Users = () => {
                     <td> {user.email} </td>         
                     
                     {
-                    //Denying loggedin userright to update his/her deta
+                    //Denying loggedin user right to delete himself/herself 
                     loggedinUserEmail === user.email ?
                         <td>
-                        <>C/U</>
+                        <Link to = {`/edit-user/${user.id}`} className='btn btn-info'>Update</Link>
+                       
+                        <Link to = "" className = "btn btn-secondary"
+                            style = {{marginLeft:"10px"}}> 
+                            C/U
+                        </Link>    
                         </td>
 
                     //Desallowing Admin to modify Super_users details
@@ -145,7 +150,7 @@ const Users = () => {
                     : loggedinUserRoles === "4" ?            
                         <td>
                         <Link to = {`/edit-user/${user.id}`} className='btn btn-info'>Update</Link> 
-                        <Link to = "" className = "btn btn-danger" onClick = {() => deleteUser(user.id)}
+                        <Link to = "" className = "btn q" onClick = {() => deleteUser(user.id)}
                             style = {{marginLeft:"10px"}}> 
                             X 
                         </Link>    

@@ -107,7 +107,7 @@ return (
                           <td><Link to = {`/specificfacility/${facility.id}`}  >{facility.facilityname}</Link></td>
                           <td>{facility.county}</td>
                           <td>{facility.subcounty}</td>
-                          <td><a href={`http://${facility.ipaddress}:8080/openmrs`}>{facility.ipaddress} </a> </td>
+                          <td><a href={`http://${facility.ipaddress}:8080/openmrs`}>http://{facility.ipaddress}:8080/openmrs </a> </td>
                           <td><a href={`http://${facility.elasticipaddress}:8080/openmrs`}>{facility.elasticipaddress} </a> </td>  
                           <td>{facility.status}</td>
                           <td>{ facility.ushauri? "True" : "False"}</td>

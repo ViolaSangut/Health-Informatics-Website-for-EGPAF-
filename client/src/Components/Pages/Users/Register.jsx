@@ -273,7 +273,7 @@ useEffect(()=>{
 
 
 let addUpdateEmailPassword = 
-      <>
+    <>
       {/* Email input */}
       <label>Email
         <span className={validEmail ? "valid" : "hide"}>
@@ -388,7 +388,7 @@ let addUpdateEmailPassword =
               <FontAwesomeIcon icon={faInfoCircle} />
               Must match the first password input field.
             </p>
-      </>
+    </>
     
     
   return (

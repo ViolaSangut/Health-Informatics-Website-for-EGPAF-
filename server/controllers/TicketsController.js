@@ -155,8 +155,6 @@ const countAllTickets = async (req, res)=>{
     res.json(tickets);
 };
 
-
-
 //Count unasigned
 const countUnsignedTickets = async (req, res)=>{
     const unassignedTickets = await Tickets.count({where:{

@@ -1,8 +1,31 @@
 import './Facilities_Summary.css'
 
-import React from 'react'
+import { useState, useEffect } from 'react';
+import usePrivateAxios from '../../hooks/usePrivateAxios';
+import { useNavigate } from 'react-router-dom';
+
 
 const Facilities_Summary = ({county}) => {
+
+  const [homaBayFacilitiesCount, setHomaBayFacilitiesCount] = useState('');
+  const privateAxios = usePrivateAxios();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    //counting Homa Bay Facilities
+      const countHomaBayFacilities= () =>{
+        try {
+          privateAxios.get("/facilities/countHomaBayFacilities")
+          .then((response)=>{
+            setHomaBayFacilitiesCount(response.data);
+          })
+          
+        } catch (error) {
+          console.log(error)
+        }
+      }
+      countHomaBayFacilities();
+  }, [])
 
     let data;
 
@@ -10,9 +33,9 @@ const Facilities_Summary = ({county}) => {
       case "Homa_Bay":
         data = {
           title: "Homa Bay Facilities",
-          value: 165,
-          className: "Homa_Bay",
-          valueClassName:'Homa_Bay'
+          value: homaBayFacilitiesCount,
+          className: "homaBay",
+          valueClassName:'homaBay'
         };    
       break;
   
