@@ -5,6 +5,8 @@ const dotenv = require("dotenv");
 const cookieParser = require("cookie-parser");
 const { verifyToken } = require("./middleware/VerifyToken");
 const mysql = require("mysql2");
+const hbFacilities = require("./models/homaBayFacilities.json");
+
 
 //DB Configuration
 const db1 = mysql.createConnection({
@@ -14,7 +16,11 @@ const db1 = mysql.createConnection({
   database: "hbhis",
   multipleStatements: true,
 });
+<<<<<<< HEAD
 //Whitelisting
+=======
+//Allowed paths 
+>>>>>>> a09fc191f88afe34397526a7bd3da40395e829de
 const corsOptions = {
   origin: "http://localhost:4000",
   origin: "http://localhost:4001",
@@ -78,10 +84,42 @@ const creatingRoles = async (req, res) => {
   });
 };
 
+//Facilities
+//Inserting Facilities to db if they don't exists
+let insertingFacilities = "INSERT IGNORE INTO facilities (facilityname, mflcode, county, subcounty, ushauri, WebADT, status, ipaddress, elasticipaddress) VALUES ?";
+
+let hbFacilitiesList = hbFacilities;
+let hbFacilitiesValues = [];
+
+for (let i = 0; i < hbFacilitiesList.length; i++) {
+  hbFacilitiesValues.push([hbFacilitiesList[i].facilityname, hbFacilitiesList[i].mflcode, hbFacilitiesList[i].county, hbFacilitiesList[i].subcounty, hbFacilitiesList[i].ushauri, hbFacilitiesList[i].WebADT, hbFacilitiesList[i].status, hbFacilitiesList[i].ipaddress, hbFacilitiesList[i].elasticipaddress])
+}
+
+//Creating facilities when server runs
+const creatingFacilities = async (req, res)=>{
+  db1.query(insertingFacilities, [hbFacilitiesValues],
+          (err, result)=>{
+              if(err){
+                  console.log(err)
+              }
+          }
+  )
+
+};
+
+
+
 //Running server
 db.sequelize.sync().then(() => {
+<<<<<<< HEAD
   creatingRoles(),
     app.listen(4000, () => {
       console.log("Server running at port 4000");
     });
+=======
+  creatingRoles(), creatingFacilities(),
+  app.listen(4000, () => {
+    console.log("Server running at port 4000");
+  });
+>>>>>>> a09fc191f88afe34397526a7bd3da40395e829de
 });

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import {
   Chart as ChartJS,
 
@@ -30,6 +30,9 @@ const WeeklyTicketsDashboard = () => {
   const navigate = useNavigate();
   const privateAxios = usePrivateAxios();
 
+  const runningUseEffect = useRef(false);
+
+  //Getting weekly tickets count
   const countWeeklyTickets = () =>{
     try {
       privateAxios.get("/tickets/getNoOfWeeklyTickets")
@@ -51,7 +54,15 @@ const WeeklyTicketsDashboard = () => {
   }
 
   useEffect(()=>{
-    countWeeklyTickets();
+    if (runningUseEffect.current === false || process.env.NODE_ENV !== 'development') {
+      countWeeklyTickets();
+    }
+
+    return () =>{
+      console.log('unmounted')
+      runningUseEffect.current = true;
+    }
+   
   }, [])
 
  
@@ -82,14 +93,20 @@ const WeeklyTicketsDashboard = () => {
     },
   }
 
+  let dashboardTitle = <h5 className='dashboardTitle'>Weekly Tickets History</h5>
+
   return (
     <div className='chart'>
+     { dashboardTitle}
+    <div >
+      <></>
       <Bar
         data={data}
-        height={330}
+        height={300}
         options={options}
 
       />
+    </div>
     </div>
   )
 }

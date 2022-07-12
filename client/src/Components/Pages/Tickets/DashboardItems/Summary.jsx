@@ -5,9 +5,6 @@ import { useState, useEffect } from 'react';
 import usePrivateAxios from '../../../hooks/usePrivateAxios';
 import { useNavigate } from 'react-router-dom';
 
-
-
-
 const Summary = ({type}) => {
 
 const [allTickets, setAllTickets] = useState('');
@@ -16,8 +13,6 @@ const [pendingTickets, setPendingTickets] = useState('');
 const [resolvedTicket, setresolvedTicket] = useState('');
 const privateAxios = usePrivateAxios();
 const navigate = useNavigate();
-
-
 
 useEffect(() => {
   countAllTickets();

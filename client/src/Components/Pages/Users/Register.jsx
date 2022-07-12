@@ -10,18 +10,15 @@ import {
   faInfoCircle,
 } from "@fortawesome/free-solid-svg-icons";
 import usePrivateAxios from '../../hooks/usePrivateAxios';
-
-
+import UseAuth from "../../context/UseAuth";
+import jwt_decode from "jwt-decode";
 
 //regex definitions
 const USER_REGEX = /^[a-zA-Z][a-zA-Z0-9-_]{3,23}$/;
 const PWD_REGEX = /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,24}$/;
 const EMAIL_REGEX = /^\S+@\S+\.\S+$/;
 
-
-
 const RegisterComponent = () => {
-
 
 const private_axios = usePrivateAxios();
 
@@ -64,6 +61,19 @@ const user = users.find(user => (user.id).toString() === id);
 const[roles, setRoles] = useState([]);
 const [RoleId, setRoleId] = useState(1);
 const [userRoles, setUserRoles] = useState("");
+
+//Getting loggedin's user role, email, firstName & lastName from accessToken.
+const { auth } = UseAuth();
+const decodedAccessToken = auth?.accessToken
+? jwt_decode(auth.accessToken)
+: undefined
+const loggedinUserEmail = decodedAccessToken?.email || null;
+const usersFirstName = decodedAccessToken?.firstName || null;
+const usersLastName = decodedAccessToken?.lastName || null;
+const UserRoles = decodedAccessToken?.roles || null;
+const loggedinUserRoles = UserRoles.toString();
+
+const [singleUserRole, setSingleUserRole] = useState("")
 
 useEffect(() => {
     fnameRef.current.focus();
@@ -115,7 +125,7 @@ const saveUser = async () => {
     //if button is enabled through a JS hack
     const v1 = EMAIL_REGEX.test(email);
     const v2 = PWD_REGEX.test(password);
-    if (!v1 || !v2) {
+    if (!id && (!v1 || !v2)) {
       setErrMsg("Invalid Entry");
       return;
     }
@@ -130,9 +140,7 @@ const saveUser = async () => {
           withCredentials: true,
         }
       );
-      // console.log(response.data);
-      // console.log(response.accessToken);
-      // console.log(JSON.stringify(response));
+
       setSuccess(true);
       toast.success("User Registered Succesfully");
       navigate('/')
@@ -213,6 +221,7 @@ const saveUser = async () => {
           setEmail(user.email);
           setPassword(user.password);
           setMatchPassword(user.password);
+          setSingleUserRole(user.Role.role);
       }
     }, [user])
 
@@ -261,6 +270,125 @@ const saveUser = async () => {
 useEffect(()=>{
   getRoles();
 }, [])
+
+
+let addUpdateEmailPassword = 
+    <>
+      {/* Email input */}
+      <label>Email
+        <span className={validEmail ? "valid" : "hide"}>
+            <FontAwesomeIcon icon={faCheck} />
+          </span>
+          <span className={validEmail || !email ? "hide" : "invalid"}>
+            <FontAwesomeIcon icon={faTimes} />
+          </span>
+      </label>
+
+      <input
+        autoComplete="off"
+        id="email"
+        placeholder="Email"
+        type="text"
+        ref= {emailRef}
+        onChange={(e) => setEmail(e.target.value)}
+        required
+        aria-invalid={validEmail ? "false" : "true"}
+        aria-describedby="emailidnote"
+        onFocus={() => setEmailFocus(true)}
+        onBlur={() => setEmailFocus(false)}
+        value={email}
+      />
+      <p
+          id="emailidnote"
+          className={
+            emailFocus && email && !validEmail
+              ? "instructions"
+              : "offscreen"
+          }
+        >
+          <FontAwesomeIcon icon={faInfoCircle} />
+          <br />
+          Must be a Valid email address!
+        </p>
+
+        {/* password input */}
+        <label>Password 
+            <span className={validPassword ? "valid" : "hide"}>
+                <FontAwesomeIcon icon={faCheck} />
+              </span>
+              <span className={validPassword || !password ? "hide" : "invalid"}>
+                <FontAwesomeIcon icon={faTimes} />
+              </span>
+          </label>
+          <input
+            autoComplete="off"
+            type="password"
+            id="pwdnote"
+            name="password"
+            placeholder="Password"
+            onChange={(e) => setPassword(e.target.value)}
+            required
+            aria-invalid={validPassword ? "false" : "true"}
+            aria-describedby="pwdnote"
+            onFocus={() => setPasswordFocus(true)}
+            onBlur={() => setPasswordFocus(false)}
+            value={password}
+          />
+           <p
+              id="pwdnote"
+              className={passwordFocus && !validPassword ? "instructions" : "offscreen"}
+            >
+              <FontAwesomeIcon icon={faInfoCircle} />
+              8 to 24 characters. <br />
+              Must include uppercase and lowercase letters, a number and a
+              special character.
+              <br />
+              Allowed special characters:
+              <span aria-label="exclamation mark">!</span>
+              <span aria-label="at symbol">@</span>
+              <span aria-label="hashtag">#</span>
+              <span aria-label="dollar sign">$</span>
+              <span aria-label="percent">%</span>
+            </p>
+          {/* Confirm password */}
+          <label>Confirm Password 
+            <span className={validMatch ? "valid" : "hide"}>
+            <FontAwesomeIcon
+                icon={faCheck}
+                className={validMatch && matchPassword ? "valid" : "hide"}
+              />
+              <FontAwesomeIcon
+                icon={faTimes}
+                className={validMatch || !matchPassword ? "hide" : "invalid"}
+              />
+              </span>
+              </label>.
+            
+          <input
+            autoComplete="off"
+            type="password"
+            id="confpwdid"
+            name="retypePassword"
+            placeholder="Confirm Password"
+            onChange={(e) => setMatchPassword(e.target.value)}
+            value={matchPassword}
+            required
+            aria-invalid={validMatch ? "false" : "true"}
+            aria-describedby="confpwdid"
+            onFocus={() => setMatchFocus(true)}
+            onBlur={() => setMatchFocus(false)}
+            
+          />
+         <p
+              id="confpwdid"
+              className={
+                matchFocus && !validMatch ? "instructions" : "offscreen"
+              }
+            >
+              <FontAwesomeIcon icon={faInfoCircle} />
+              Must match the first password input field.
+            </p>
+    </>
     
     
   return (
@@ -355,140 +483,74 @@ useEffect(()=>{
             </p>
 
             {/* Roles */}
-            {id && (
-              <>
-                <label>Roles</label>
-                        <select  onChange ={(e) => setRoleId(e.target.value)}>
-                            <option selected disabled="true" >{userRoles}</option>
-                            {
-                                roles.map((role)=>(<option key={role.id}value={role.id}>
-                                  {role.role}
-                                </option>))
-                            }
-                        </select>
-              </>
-           )}
-
-          
-        {/* Email input */}
-          <label>Email 
-            <span className={validEmail ? "valid" : "hide"}>
-                <FontAwesomeIcon icon={faCheck} />
-              </span>
-              <span className={validEmail || !email ? "hide" : "invalid"}>
-                <FontAwesomeIcon icon={faTimes} />
-              </span>
-          </label>
-
-          <input
-            autoComplete="off"
-            id="email"
-            placeholder="Email"
-            type="text"
-            ref= {emailRef}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-            aria-invalid={validEmail ? "false" : "true"}
-            aria-describedby="emailidnote"
-            onFocus={() => setEmailFocus(true)}
-            onBlur={() => setEmailFocus(false)}
-            value={email}
-          />
-          <p
-              id="emailidnote"
-              className={
-                emailFocus && email && !validEmail
-                  ? "instructions"
-                  : "offscreen"
-              }
-            >
-              <FontAwesomeIcon icon={faInfoCircle} />
-              <br />
-              Must be a Valid email address!
-            </p>
-     
-           {/* password input */}
-          <label>Password 
-            <span className={validPassword ? "valid" : "hide"}>
-                <FontAwesomeIcon icon={faCheck} />
-              </span>
-              <span className={validPassword || !password ? "hide" : "invalid"}>
-                <FontAwesomeIcon icon={faTimes} />
-              </span>
-          </label>
-          <input
-            autoComplete="off"
-            type="password"
-            id="pwdnote"
-            name="password"
-            placeholder="Password"
-            onChange={(e) => setPassword(e.target.value)}
-            required
-            aria-invalid={validPassword ? "false" : "true"}
-            aria-describedby="pwdnote"
-            onFocus={() => setPasswordFocus(true)}
-            onBlur={() => setPasswordFocus(false)}
-            value={password}
-          />
-           <p
-              id="pwdnote"
-              className={passwordFocus && !validPassword ? "instructions" : "offscreen"}
-            >
-              <FontAwesomeIcon icon={faInfoCircle} />
-              8 to 24 characters. <br />
-              Must include uppercase and lowercase letters, a number and a
-              special character.
-              <br />
-              Allowed special characters:
-              <span aria-label="exclamation mark">!</span>
-              <span aria-label="at symbol">@</span>
-              <span aria-label="hashtag">#</span>
-              <span aria-label="dollar sign">$</span>
-              <span aria-label="percent">%</span>
-            </p>
-          {/* Confirm password */}
-          <label>Confirm Password 
-            <span className={validMatch ? "valid" : "hide"}>
-            <FontAwesomeIcon
-                icon={faCheck}
-                className={validMatch && matchPassword ? "valid" : "hide"}
-              />
-              <FontAwesomeIcon
-                icon={faTimes}
-                className={validMatch || !matchPassword ? "hide" : "invalid"}
-              />
-              </span>
-              </label>.
+            { id ?
+               (
+                //Enabling Super user to update all users roles except for his / hers
+                (loggedinUserEmail !== email) && (loggedinUserRoles === "4" || singleUserRole === "Admin" || singleUserRole === "Manager" || singleUserRole === "User") ?
+                <>
+                  <label>Roles</label>
+                          <select value={RoleId} onChange ={(e) => setRoleId(e.target.value)}>
+                              <option selected disabled="false" >{singleUserRole}</option>
+                              {
+                                  roles.map((role)=>(<option key={role.id}value={role.id}>
+                                    {role.role}
+                                  </option>))
+                              }
+                          </select>
+                </>
+                //Enabling Admin to update all users roles except for Super user and his / hers
+                :(loggedinUserEmail !== email) && ((loggedinUserRoles === "3" && singleUserRole !== "Super_User") || singleUserRole === "Manager" || singleUserRole === "User") ?
+                <>
+                  <label>Roles</label>
+                          <select  onChange ={(e) => setRoleId(e.target.value)}>
+                              <option selected disabled="true" >{userRoles}</option>
+                              {
+                                  roles.map((role)=>(<option key={role.id}value={role.id}>
+                                    {role.role}
+                                  </option>))
+                              }
+                          </select>
+                </>
+                :<></>
+               )
+             :<></>
+            }
             
-          <input
-            autoComplete="off"
-            type="password"
-            id="confpwdid"
-            name="retypePassword"
-            placeholder="Confirm Password"
-            onChange={(e) => setMatchPassword(e.target.value)}
-            value={matchPassword}
-            required
-            aria-invalid={validMatch ? "false" : "true"}
-            aria-describedby="confpwdid"
-            onFocus={() => setMatchFocus(true)}
-            onBlur={() => setMatchFocus(false)}
-            
-          />
-         <p
-              id="confpwdid"
-              className={
-                matchFocus && !validMatch ? "instructions" : "offscreen"
-              }
-            >
-              <FontAwesomeIcon icon={faInfoCircle} />
-              Must match the first password input field.
-            </p>
-            
-      
-          <button className='button'
-           disabled={!validFName || !validLName || !validPassword || !validMatch ? true : false}> Submit
+        {/* Email & Password*/}
+        { 
+        ( 
+          //Adding Email & Password
+          !id?
+          ( 
+            addUpdateEmailPassword
+          )
+          // Updating Email & Password
+          : (id && loggedinUserRoles === "4") || (singleUserRole === "Admin" || singleUserRole === "Manager" || singleUserRole === "User") ?
+          ( 
+            addUpdateEmailPassword
+          )
+          : (id && loggedinUserRoles === "3") && singleUserRole === "Super_User"?
+          <></>
+          : (id && loggedinUserRoles === "3") || (singleUserRole === "Manager" || singleUserRole === "User") ?
+          ( 
+            addUpdateEmailPassword
+          )
+          :<></>
+        )
+        }
+        
+         {/* Submit Button */}
+          {
+           !id ?
+           <button className='button'
+             disabled={!validFName || !validLName || !validPassword || !validEmail || !validMatch ? true : false}> Submit
            </button>
+           :id ?
+           <button className='button'
+             disabled={!validFName || !validLName ? true : false}> Submit
+           </button>
+           :<></>
+           }
         </form>
         <p>
             Already registered?

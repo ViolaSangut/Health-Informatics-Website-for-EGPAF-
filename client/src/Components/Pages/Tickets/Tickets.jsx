@@ -29,11 +29,13 @@ const Tickets = () => {
 
     const { auth } = UseAuth();
 
-    //Getting loggedin's user email from accessToken.
+    //Getting loggedin's user details from accessToken.
     const decodedAccessToken = auth?.accessToken
           ? jwt_decode(auth.accessToken)
           : undefined
     const userEmail = decodedAccessToken?.email || null;
+    const UserRoles = decodedAccessToken?.roles || null;
+    const loggedinUserRoles = UserRoles.toString();
 
 
     useEffect(() => {
@@ -87,6 +89,7 @@ const Tickets = () => {
             <h2 className='text-center'>Tickets</h2>  
 
             <Link to = '/addticket' className='btn btn-primary mb-2'>Add Ticket</Link>
+            <Link to = '/tickets' className='btn btn-primary mb-2' style={{marginLeft: "3%"}}>Tickets DashBoard</Link>
         </div>
         {/* Date Filter */}
         <div className='date_filter'>
@@ -97,7 +100,7 @@ const Tickets = () => {
                 <option value={myYesterdaysDate}>Yesterdays Tickets</option>
             </select>
         </div>
-    
+        {/* Search */}
         <div className='search_bar'>
             <label style={{margin: "1%"}}>Search</label>
             <input 
@@ -171,10 +174,13 @@ const Tickets = () => {
                                     <td>{(moment(ticket.createdAt).format('DD-MM-YYYY'))}</td>
                                    
                                     {
-                                        ticket.creatorsEmail === userEmail &&
+                                         (loggedinUserRoles === "4" || loggedinUserRoles ==="3") ||ticket.creatorsEmail === userEmail ?
                                         <td> <Link to = '' className = "btn btn-danger" onClick = {() => deleteTicket(ticket.id)}
                                             style = {{marginLeft:"10px"}}> X 
                                             </Link>
+                                        </td>
+                                        : <td>
+                                            <></>
                                         </td>
                                     }
                                     

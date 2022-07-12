@@ -24,19 +24,31 @@ const Login = () => {
   const emailRef = useRef();
   const errorRef = useRef();
 
+  const checkLogin = () =>{
+    if (!auth?.accessToken) {
+      navigate('/home')
+    }
+  }
+
+
+  useEffect(()=>{
+    if(localStorage.getItem("loggedInCheck")){
+        navigate('/home')
+    } else{
+      navigate('/')
+    }
+}, []);
+
+
 
   useEffect(() => {
     emailRef.current.focus();
-
   }, [])
 
 
   useEffect(() => {
    setErrorMessage('');
   }, [email, password])
-
-
-
 
   const login = async (e) => {
 
@@ -56,6 +68,8 @@ const Login = () => {
       }
       
       const accessToken = response?.data?.accessToken;
+
+      localStorage.setItem("loggedInCheck", "loggedIn");
 
       setAuth({email, accessToken });
       setEmail('');
