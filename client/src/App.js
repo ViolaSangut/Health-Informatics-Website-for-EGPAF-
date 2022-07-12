@@ -59,6 +59,8 @@ function App() {
               {/* Facilities */}
               <Route element={<CheckAuth allowedRoles={[1, 2, 3, 4]} />}>
                 <Route path="/facilities" element={<Facilities />} />
+                <Route path="/AddFacility" element={<AddFacilityComponent />} />
+                <Route path="/facilities" element={<Facilities />} />
               </Route>
 
               {/* Tickets */}

@@ -189,7 +189,7 @@ useEffect(() => {
 
 return(
     <div align ="middle">
-            <button className="buttonadd" onClick={onClickBack}>Back to Simcard List</button>
+            <button className="buttonadd" onClick={onClickBack}>Back to Inventory</button>
 
         <section>
             <form>
