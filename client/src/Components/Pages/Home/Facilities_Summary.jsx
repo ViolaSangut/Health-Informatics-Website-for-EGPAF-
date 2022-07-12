@@ -18,6 +18,7 @@ const Facilities_Summary = ({county}) => {
           privateAxios.get("/facilities/countHomaBayFacilities")
           .then((response)=>{
             setHomaBayFacilitiesCount(response.data);
+            console.log(response.data)
           })
           
         } catch (error) {

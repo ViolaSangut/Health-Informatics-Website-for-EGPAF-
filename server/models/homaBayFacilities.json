@@ -1,9 +1,8 @@
 [
   {
-    "id": 1,
     "facilityname": "Adiedo Dispensary",
-    "mflcode": 19864,
-    "county": "Homabay",
+    "mflcode": 13463,
+    "county": "Homa Bay",
     "subcounty": "Rachuonyo North",
     "ushauri": 1,
     "WebADT": 1,
@@ -12,10 +11,9 @@
     "elasticipaddress": "10.201.30.54"
   },
   {
-    "id": 2,
     "facilityname": "Agawo Health Centre",
-    "mflcode": 13728,
-    "county": "Homabay",
+    "mflcode": 13466,
+    "county": "Homa Bay",
     "subcounty": "Kasipul",
     "ushauri": 1,
     "WebADT": 1,
@@ -24,10 +22,9 @@
     "elasticipaddress": "10.201.30.158"
   },
   {
-    "id": 3,
     "facilityname": "Alum Beach Dispensary",
-    "mflcode": 19865,
-    "county": "Homabay",
+    "mflcode": 13472,
+    "county": "Homa Bay",
     "subcounty": "Rachuonyo North",
     "ushauri": 1,
     "WebADT": 1,
@@ -36,10 +33,9 @@
     "elasticipaddress": "10.201.30.244"
   },
   {
-    "id": 4,
     "facilityname": "Amoyo Dispensary",
-    "mflcode": 13643,
-    "county": "Homabay",
+    "mflcode": 16768,
+    "county": "Homa Bay",
     "subcounty": "Ndhiwa",
     "ushauri": 1,
     "WebADT": 1,
@@ -48,10 +44,9 @@
     "elasticipaddress": "10.201.30.94"
   },
   {
-    "id": 5,
     "facilityname": "Ang'iya Dispensary",
-    "mflcode": 16259,
-    "county": "Homabay",
+    "mflcode": 13479,
+    "county": "Homa Bay",
     "subcounty": "Mbita",
     "ushauri": 1,
     "WebADT": 1,
@@ -60,10 +55,9 @@
     "elasticipaddress": "10.201.30.194"
   },
   {
-    "id": 6,
     "facilityname": "Atela Health Centre",
-    "mflcode": 13509,
-    "county": "Homabay",
+    "mflcode": 18610,
+    "county": "Homa Bay",
     "subcounty": "Kabondo Kasipul",
     "ushauri": 1,
     "WebADT": 1,
@@ -72,10 +66,9 @@
     "elasticipaddress": "10.201.30.36"
   },
   {
-    "id": 7,
     "facilityname": "Atemo Health Centre",
-    "mflcode": 14150,
-    "county": "Homabay",
+    "mflcode": 13489,
+    "county": "Homa Bay",
     "subcounty": "Kabondo Kasipul",
     "ushauri": 1,
     "WebADT": 1,
@@ -84,10 +77,9 @@
     "elasticipaddress": "10.201.30.77"
   },
   {
-    "id": 8,
     "facilityname": "Bora Bora Clinic",
-    "mflcode": 13812,
-    "county": "Homabay",
+    "mflcode": 13509,
+    "county": "Homa Bay",
     "subcounty": "Ndhiwa",
     "ushauri": 1,
     "WebADT": 1,
@@ -96,10 +88,9 @@
     "elasticipaddress": "10.201.30.147"
   },
   {
-    "id": 9,
     "facilityname": "Chuowe Dispensary",
-    "mflcode": 19866,
-    "county": "Homabay",
+    "mflcode": 13529,
+    "county": "Homa Bay",
     "subcounty": "Rachuonyo North",
     "ushauri": 1,
     "WebADT": 1,
@@ -108,10 +99,9 @@
     "elasticipaddress": "10.201.30.206"
   },
   {
-    "id": 10,
     "facilityname": "Chuthber Dispensary",
-    "mflcode": 19868,
-    "county": "Homabay",
+    "mflcode": 13530,
+    "county": "Homa Bay",
     "subcounty": "Rachuonyo North",
     "ushauri": 1,
     "WebADT": 1,
@@ -120,11 +110,10 @@
     "elasticipaddress": "10.201.30.28"
   },
   {
-    "id": 11,
-    "facilityname": "Godber Health Centre",
-    "mflcode": 14155,
-    "county": "Homabay",
-    "subcounty": "Kabondo Kasipul",
+    "facilityname": "GodBer Health Center",
+    "mflcode": 13584,
+    "county": "Homa Bay",
+    "subcounty": "Suba",
     "ushauri": 1,
     "WebADT": 1,
     "status": "Running",
@@ -132,10 +121,9 @@
     "elasticipaddress": "10.201.30.117"
   },
   {
-    "id": 12,
     "facilityname": "Godbura Health Centre",
-    "mflcode": 14075,
-    "county": "Homabay",
+    "mflcode": 13585,
+    "county": "Homa Bay",
     "subcounty": "Suba",
     "ushauri": 1,
     "WebADT": 1,
@@ -144,10 +132,9 @@
     "elasticipaddress": "10.201.30.212"
   },
   {
-    "id": 13,
     "facilityname": "Gongo Dispensary",
-    "mflcode": 14002,
-    "county": "Homabay",
+    "mflcode": 13587,
+    "county": "Homa Bay",
     "subcounty": "Rangwe",
     "ushauri": 1,
     "WebADT": 1,
@@ -156,11 +143,10 @@
     "elasticipaddress": "10.201.30.235"
   },
   {
-    "id": 14,
     "facilityname": "Got Kamondi Dispensary",
-    "mflcode": 13589,
-    "county": "Homabay",
-    "subcounty": "Kabondo Kasipul",
+    "mflcode": 18874,
+    "county": "Homa Bay",
+    "subcounty": "Kasipul",
     "ushauri": 1,
     "WebADT": 1,
     "status": "Running",
@@ -168,10 +154,9 @@
     "elasticipaddress": "10.201.30.80"
   },
   {
-    "id": 15,
     "facilityname": "Got Kojowi Health Centre",
-    "mflcode": 13972,
-    "county": "Homabay",
+    "mflcode": 13589,
+    "county": "Homa Bay",
     "subcounty": "Ndhiwa",
     "ushauri": 1,
     "WebADT": 1,
@@ -180,10 +165,9 @@
     "elasticipaddress": "10.201.30.166"
   },
   {
-    "id": 16,
     "facilityname": "Got Oyaro Dispensary",
-    "mflcode": 13585,
-    "county": "Homabay",
+    "mflcode": 13592,
+    "county": "Homa Bay",
     "subcounty": "Rachuonyo North",
     "ushauri": 1,
     "WebADT": 1,
@@ -192,10 +176,9 @@
     "elasticipaddress": "10.201.30.223"
   },
   {
-    "id": 17,
     "facilityname": "Homa Bay County Teaching and Referral Hospital",
-    "mflcode": 17690,
-    "county": "Homabay",
+    "mflcode": 13608,
+    "county": "Homa Bay",
     "subcounty": "Homa Bay Township",
     "ushauri": 1,
     "WebADT": 1,
@@ -204,10 +187,9 @@
     "elasticipaddress": "10.201.30.24"
   },
   {
-    "id": 18,
     "facilityname": "Homa Lime Health Centre",
-    "mflcode": 13691,
-    "county": "Homabay",
+    "mflcode": 13607,
+    "county": "Homa Bay",
     "subcounty": "Rachuonyo North",
     "ushauri": 1,
     "WebADT": 1,
@@ -216,10 +198,9 @@
     "elasticipaddress": "10.201.30.115"
   },
   {
-    "id": 19,
     "facilityname": "Hope Compassionate (ACK) Dispensary",
-    "mflcode": 13967,
-    "county": "Homabay",
+    "mflcode": 16983,
+    "county": "Homa Bay",
     "subcounty": "Homa Bay Township",
     "ushauri": 1,
     "WebADT": 1,
@@ -228,11 +209,10 @@
     "elasticipaddress": "10.201.30.57"
   },
   {
-    "id": 20,
     "facilityname": "Integrated Development Fund (Idf) VCT",
-    "mflcode": 18420,
-    "county": "Homabay",
-    "subcounty": "Kabondo Kasipul",
+    "mflcode": 17585,
+    "county": "Homa Bay",
+    "subcounty": "Kasipul",
     "ushauri": 1,
     "WebADT": 1,
     "status": "Running",
@@ -240,10 +220,9 @@
     "elasticipaddress": "10.201.30.103"
   },
   {
-    "id": 21,
     "facilityname": "Jawabu (Community) Medical Clinic",
-    "mflcode": 14162,
-    "county": "Homabay",
+    "mflcode": 13633,
+    "county": "Homa Bay",
     "subcounty": "Kabondo Kasipul",
     "ushauri": 1,
     "WebADT": 1,
@@ -252,10 +231,9 @@
     "elasticipaddress": "10.201.30.208"
   },
   {
-    "id": 22,
-    "facilityname": "Johpas Clinic",
-    "mflcode": 17852,
-    "county": "Homabay",
+    "facilityname": "Jophas Clinic",
+    "mflcode": 13636,
+    "county": "Homa Bay",
     "subcounty": "Rangwe",
     "ushauri": 1,
     "WebADT": 1,
@@ -264,10 +242,9 @@
     "elasticipaddress": "10.201.30.15"
   },
   {
-    "id": 23,
     "facilityname": "Kabondo Sub County Hospital",
-    "mflcode": 14167,
-    "county": "Homabay",
+    "mflcode": 13638,
+    "county": "Homa Bay",
     "subcounty": "Kabondo Kasipul",
     "ushauri": 1,
     "WebADT": 1,
@@ -276,10 +253,9 @@
     "elasticipaddress": "10.201.30.185"
   },
   {
-    "id": 24,
     "facilityname": "Kachuth Dispensary",
-    "mflcode": 13957,
-    "county": "Homabay",
+    "mflcode": 18876,
+    "county": "Homa Bay",
     "subcounty": "Ndhiwa",
     "ushauri": 1,
     "WebADT": 1,
@@ -288,10 +264,9 @@
     "elasticipaddress": "10.201.30.131"
   },
   {
-    "id": 25,
     "facilityname": "Kadhola Dispensary",
-    "mflcode": 13843,
-    "county": "Homabay",
+    "mflcode": 16769,
+    "county": "Homa Bay",
     "subcounty": "Ndhiwa",
     "ushauri": 1,
     "WebADT": 1,
@@ -300,10 +275,9 @@
     "elasticipaddress": "10.201.30.179"
   },
   {
-    "id": 26,
     "facilityname": "Kager Dispensary",
-    "mflcode": 14011,
-    "county": "Homabay",
+    "mflcode": 13643,
+    "county": "Homa Bay",
     "subcounty": "Rangwe",
     "ushauri": 1,
     "WebADT": 1,
@@ -312,10 +286,9 @@
     "elasticipaddress": "10.201.30.13"
   },
   {
-    "id": 27,
     "facilityname": "Kajieyi Dispensary",
-    "mflcode": 13700,
-    "county": "Homabay",
+    "mflcode": 13646,
+    "county": "Homa Bay",
     "subcounty": "Rachuonyo North",
     "ushauri": 1,
     "WebADT": 1,
@@ -324,10 +297,9 @@
     "elasticipaddress": "10.201.30.105"
   },
   {
-    "id": 28,
-    "facilityname": "Kandiege Sub District Hospital",
-    "mflcode": 13701,
-    "county": "Homabay",
+    "facilityname": "Kandiege SCH",
+    "mflcode": 13653,
+    "county": "Homa Bay",
     "subcounty": "Rachuonyo North",
     "ushauri": 1,
     "WebADT": 1,
@@ -336,10 +308,9 @@
     "elasticipaddress": "10.201.30.162"
   },
   {
-    "id": 29,
     "facilityname": "Kangir Dispensary",
-    "mflcode": 18892,
-    "county": "Homabay",
+    "mflcode": 20169,
+    "county": "Homa Bay",
     "subcounty": "Rachuonyo North",
     "ushauri": 1,
     "WebADT": 1,
@@ -348,10 +319,9 @@
     "elasticipaddress": "10.201.30.176"
   },
   {
-    "id": 30,
     "facilityname": "Kasewe Dispensary",
-    "mflcode": 13686,
-    "county": "Homabay",
+    "mflcode": 20153,
+    "county": "Homa Bay",
     "subcounty": "Kabondo Kasipul",
     "ushauri": 1,
     "WebADT": 1,
@@ -360,10 +330,9 @@
     "elasticipaddress": "10.201.30.125"
   },
   {
-    "id": 31,
-    "facilityname": "Kauma Health Centre (Rachuonyo)",
-    "mflcode": 14169,
-    "county": "Homabay",
+    "facilityname": "Kauma Health Centre",
+    "mflcode": 13658,
+    "county": "Homa Bay",
     "subcounty": "Kabondo Kasipul",
     "ushauri": 1,
     "WebADT": 1,
@@ -372,10 +341,9 @@
     "elasticipaddress": "10.201.30.252"
   },
   {
-    "id": 32,
-    "facilityname": "Kendu Sub-District Hospital",
-    "mflcode": 13707,
-    "county": "Homabay",
+    "facilityname": "Kendu Sub District Hospital",
+    "mflcode": 13668,
+    "county": "Homa Bay",
     "subcounty": "Rachuonyo North",
     "ushauri": 1,
     "WebADT": 1,
@@ -384,10 +352,9 @@
     "elasticipaddress": "10.201.30.39"
   },
   {
-    "id": 33,
     "facilityname": "Kiasa Dispensary",
-    "mflcode": 13974,
-    "county": "Homabay",
+    "mflcode": 13686,
+    "county": "Homa Bay",
     "subcounty": "Ndhiwa",
     "ushauri": 1,
     "WebADT": 1,
@@ -396,10 +363,9 @@
     "elasticipaddress": "10.201.30.136"
   },
   {
-    "id": 34,
     "facilityname": "Kiembe Dispensary",
-    "mflcode": 14172,
-    "county": "Homabay",
+    "mflcode": 18077,
+    "county": "Homa Bay",
     "subcounty": "Suba",
     "ushauri": 1,
     "WebADT": 1,
@@ -408,10 +374,9 @@
     "elasticipaddress": "10.201.30.139"
   },
   {
-    "id": 35,
     "facilityname": "Kigwa Dispensary",
-    "mflcode": 14089,
-    "county": "Homabay",
+    "mflcode": 13691,
+    "county": "Homa Bay",
     "subcounty": "Suba",
     "ushauri": 1,
     "WebADT": 1,
@@ -420,10 +385,9 @@
     "elasticipaddress": "10.201.30.61"
   },
   {
-    "id": 36,
     "facilityname": "Kijawa Dispensary",
-    "mflcode": 13854,
-    "county": "Homabay",
+    "mflcode": 16765,
+    "county": "Homa Bay",
     "subcounty": "Homa Bay Township",
     "ushauri": 1,
     "WebADT": 1,
@@ -432,10 +396,9 @@
     "elasticipaddress": "10.201.30.27"
   },
   {
-    "id": 37,
     "facilityname": "Kimonge Health Centre",
-    "mflcode": 14171,
-    "county": "Homabay",
+    "mflcode": 13693,
+    "county": "Homa Bay",
     "subcounty": "Kabondo Kasipul",
     "ushauri": 1,
     "WebADT": 1,
@@ -444,10 +407,9 @@
     "elasticipaddress": "10.201.30.133"
   },
   {
-    "id": 38,
     "facilityname": "Kisaku Dispensary",
-    "mflcode": 14090,
-    "county": "Homabay",
+    "mflcode": 13700,
+    "county": "Homa Bay",
     "subcounty": "Suba",
     "ushauri": 1,
     "WebADT": 1,
@@ -456,10 +418,9 @@
     "elasticipaddress": "10.201.30.211"
   },
   {
-    "id": 39,
-    "facilityname": "Kisegi Sub District Hosptial",
-    "mflcode": 14092,
-    "county": "Homabay",
+    "facilityname": "Kisegi SDH",
+    "mflcode": 13701,
+    "county": "Homa Bay",
     "subcounty": "Suba",
     "ushauri": 1,
     "WebADT": 1,
@@ -468,10 +429,9 @@
     "elasticipaddress": "10.201.30.90"
   },
   {
-    "id": 40,
     "facilityname": "Kitare Health Centre",
-    "mflcode": 16768,
-    "county": "Homabay",
+    "mflcode": 13705,
+    "county": "Homa Bay",
     "subcounty": "Mbita",
     "ushauri": 1,
     "WebADT": 1,
@@ -480,10 +440,9 @@
     "elasticipaddress": "10.201.30.123"
   },
   {
-    "id": 41,
     "facilityname": "Kiwa Island Dispensary",
-    "mflcode": 14095,
-    "county": "Homabay",
+    "mflcode": 13707,
+    "county": "Homa Bay",
     "subcounty": "Suba",
     "ushauri": 1,
     "WebADT": 1,
@@ -492,10 +451,9 @@
     "elasticipaddress": "10.201.30.234"
   },
   {
-    "id": 42,
     "facilityname": "Kobodo Dispensary",
-    "mflcode": 14031,
-    "county": "Homabay",
+    "mflcode": 20241,
+    "county": "Homa Bay",
     "subcounty": "Ndhiwa",
     "ushauri": 1,
     "WebADT": 1,
@@ -504,10 +462,9 @@
     "elasticipaddress": "10.201.30.249"
   },
   {
-    "id": 43,
     "facilityname": "Kobuya Dispensary",
-    "mflcode": 13742,
-    "county": "Homabay",
+    "mflcode": 13708,
+    "county": "Homa Bay",
     "subcounty": "Rachuonyo North",
     "ushauri": 1,
     "WebADT": 1,
@@ -516,10 +473,9 @@
     "elasticipaddress": "10.201.30.210"
   },
   {
-    "id": 44,
     "facilityname": "Koduogo Dispensary",
-    "mflcode": 14140,
-    "county": "Homabay",
+    "mflcode": 19861,
+    "county": "Homa Bay",
     "subcounty": "Homa Bay Township",
     "ushauri": 1,
     "WebADT": 1,
@@ -528,10 +484,9 @@
     "elasticipaddress": "10.201.30.241"
   },
   {
-    "id": 45,
     "facilityname": "Kogweno Oriang' Dispensary",
-    "mflcode": 13753,
-    "county": "Homabay",
+    "mflcode": 13711,
+    "county": "Homa Bay",
     "subcounty": "Rachuonyo North",
     "ushauri": 1,
     "WebADT": 1,
@@ -540,10 +495,9 @@
     "elasticipaddress": "10.201.30.81"
   },
   {
-    "id": 46,
     "facilityname": "Kokwanyo Health Centre",
-    "mflcode": 14176,
-    "county": "Homabay",
+    "mflcode": 13712,
+    "county": "Homa Bay",
     "subcounty": "Kabondo Kasipul",
     "ushauri": 1,
     "WebADT": 1,
@@ -552,10 +506,9 @@
     "elasticipaddress": "10.201.30.49"
   },
   {
-    "id": 47,
     "facilityname": "Kolunga Dispensary",
-    "mflcode": 16767,
-    "county": "Homabay",
+    "mflcode": 13642,
+    "county": "Homa Bay",
     "subcounty": "Mbita",
     "ushauri": 1,
     "WebADT": 1,
@@ -564,10 +517,9 @@
     "elasticipaddress": "10.201.30.53"
   },
   {
-    "id": 48,
     "facilityname": "Kome Dispensary",
-    "mflcode": 19860,
-    "county": "Homabay",
+    "mflcode": 20347,
+    "county": "Homa Bay",
     "subcounty": "Ndhiwa",
     "ushauri": 1,
     "WebADT": 1,
@@ -576,10 +528,9 @@
     "elasticipaddress": "10.201.30.170"
   },
   {
-    "id": 49,
     "facilityname": "Kosele Dispensary",
-    "mflcode": 13828,
-    "county": "Homabay",
+    "mflcode": 13721,
+    "county": "Homa Bay",
     "subcounty": "Rachuonyo North",
     "ushauri": 1,
     "WebADT": 1,
@@ -588,11 +539,10 @@
     "elasticipaddress": "10.201.30.121"
   },
   {
-    "id": 50,
     "facilityname": "Koywech Dispensary",
-    "mflcode": 16258,
-    "county": "Homabay",
-    "subcounty": "Kasipul",
+    "mflcode": 18531,
+    "county": "Homa Bay",
+    "subcounty": "Kabondo Kasipul",
     "ushauri": 1,
     "WebADT": 1,
     "status": "Running",
@@ -600,10 +550,9 @@
     "elasticipaddress": "10.201.30.150"
   },
   {
-    "id": 51,
     "facilityname": "Kwamo Dispensary",
-    "mflcode": 13980,
-    "county": "Homabay",
+    "mflcode": 13728,
+    "county": "Homa Bay",
     "subcounty": "Ndhiwa",
     "ushauri": 1,
     "WebADT": 1,
@@ -612,10 +561,9 @@
     "elasticipaddress": "10.201.30.222"
   },
   {
-    "id": 52,
     "facilityname": "Lambwe Dispensary",
-    "mflcode": 16769,
-    "county": "Homabay",
+    "mflcode": 13731,
+    "county": "Homa Bay",
     "subcounty": "Mbita",
     "ushauri": 1,
     "WebADT": 1,
@@ -624,10 +572,9 @@
     "elasticipaddress": "10.201.30.8"
   },
   {
-    "id": 53,
     "facilityname": "Lambwe Forest Dispensary",
-    "mflcode": 14039,
-    "county": "Homabay",
+    "mflcode": 13732,
+    "county": "Homa Bay",
     "subcounty": "Ndhiwa",
     "ushauri": 1,
     "WebADT": 1,
@@ -636,10 +583,9 @@
     "elasticipaddress": "10.201.30.198"
   },
   {
-    "id": 54,
-    "facilityname": "Langi Kodera Dispensary",
-    "mflcode": 19863,
-    "county": "Homabay",
+    "facilityname": "Langi Kodera Disp",
+    "mflcode": 25260,
+    "county": "Homa Bay",
     "subcounty": "Ndhiwa",
     "ushauri": 1,
     "WebADT": 1,
@@ -648,10 +594,9 @@
     "elasticipaddress": "10.201.30.111"
   },
   {
-    "id": 55,
     "facilityname": "Lela (Community) Dispensary",
-    "mflcode": 13870,
-    "county": "Homabay",
+    "mflcode": 13733,
+    "county": "Homa Bay",
     "subcounty": "Rachuonyo North",
     "ushauri": 1,
     "WebADT": 1,
@@ -660,10 +605,9 @@
     "elasticipaddress": "10.201.30.177"
   },
   {
-    "id": 56,
     "facilityname": "Litare community health centre",
-    "mflcode": 13733,
-    "county": "Homabay",
+    "mflcode": 22476,
+    "county": "Homa Bay",
     "subcounty": "Mbita",
     "ushauri": 1,
     "WebADT": 1,
@@ -672,10 +616,9 @@
     "elasticipaddress": "10.201.30.225"
   },
   {
-    "id": 57,
     "facilityname": "Lwanda Awiti Dispensary",
-    "mflcode": 13849,
-    "county": "Homabay",
+    "mflcode": 16770,
+    "county": "Homa Bay",
     "subcounty": "Ndhiwa",
     "ushauri": 1,
     "WebADT": 1,
@@ -684,10 +627,9 @@
     "elasticipaddress": "10.201.30.87"
   },
   {
-    "id": 58,
-    "facilityname": "Lwanda Gwassi Dispensary",
-    "mflcode": 14130,
-    "county": "Homabay",
+    "facilityname": "Lwanda Gwassi Dispendary",
+    "mflcode": 13742,
+    "county": "Homa Bay",
     "subcounty": "Suba",
     "ushauri": 1,
     "WebADT": 1,
@@ -696,10 +638,9 @@
     "elasticipaddress": "10.201.30.23"
   },
   {
-    "id": 59,
     "facilityname": "Lwanda Kobita Dispensary",
-    "mflcode": 16985,
-    "county": "Homabay",
+    "mflcode": 20285,
+    "county": "Homa Bay",
     "subcounty": "Ndhiwa",
     "ushauri": 1,
     "WebADT": 1,
@@ -708,10 +649,9 @@
     "elasticipaddress": "10.201.30.199"
   },
   {
-    "id": 60,
     "facilityname": "Magina Health Centre",
-    "mflcode": 14089,
-    "county": "Homabay",
+    "mflcode": 13751,
+    "county": "Homa Bay",
     "subcounty": "Ndhiwa",
     "ushauri": 1,
     "WebADT": 1,
@@ -720,10 +660,9 @@
     "elasticipaddress": "10.201.30.102"
   },
   {
-    "id": 61,
     "facilityname": "Magunga Health Centre",
-    "mflcode": 14138,
-    "county": "Homabay",
+    "mflcode": 13753,
+    "county": "Homa Bay",
     "subcounty": "Suba",
     "ushauri": 1,
     "WebADT": 1,
@@ -732,10 +671,9 @@
     "elasticipaddress": "10.201.30.161"
   },
   {
-    "id": 62,
     "facilityname": "Makongeni Health Centre",
-    "mflcode": 14075,
-    "county": "Homabay",
+    "mflcode": 19858,
+    "county": "Homa Bay",
     "subcounty": "Homa Bay Township",
     "ushauri": 1,
     "WebADT": 1,
@@ -744,10 +682,9 @@
     "elasticipaddress": "10.201.30.182"
   },
   {
-    "id": 63,
     "facilityname": "Malela Dispensary",
-    "mflcode": 14168,
-    "county": "Homabay",
+    "mflcode": 13761,
+    "county": "Homa Bay",
     "subcounty": "Ndhiwa",
     "ushauri": 1,
     "WebADT": 1,
@@ -756,10 +693,9 @@
     "elasticipaddress": "10.201.30.239"
   },
   {
-    "id": 64,
     "facilityname": "Malongo Dispensary",
-    "mflcode": 19909,
-    "county": "Homabay",
+    "mflcode": 20379,
+    "county": "Homa Bay",
     "subcounty": "Suba",
     "ushauri": 1,
     "WebADT": 1,
@@ -768,10 +704,9 @@
     "elasticipaddress": "10.201.30.213"
   },
   {
-    "id": 65,
     "facilityname": "Mangima SDA Health Centre",
-    "mflcode": 14176,
-    "county": "Homabay",
+    "mflcode": 13768,
+    "county": "Homa Bay",
     "subcounty": "Kasipul",
     "ushauri": 1,
     "WebADT": 1,
@@ -780,10 +715,9 @@
     "elasticipaddress": "10.201.30.59"
   },
   {
-    "id": 66,
     "facilityname": "Maram Dispensary",
-    "mflcode": 20173,
-    "county": "Homabay",
+    "mflcode": 16258,
+    "county": "Homa Bay",
     "subcounty": "Ndhiwa",
     "ushauri": 1,
     "WebADT": 1,
@@ -792,10 +726,9 @@
     "elasticipaddress": "10.201.30.97"
   },
   {
-    "id": 67,
     "facilityname": "Marindi Sub County Referral Hospital",
-    "mflcode": 13705,
-    "county": "Homabay",
+    "mflcode": 13777,
+    "county": "Homa Bay",
     "subcounty": "Homa Bay Township",
     "ushauri": 1,
     "WebADT": 1,
@@ -804,10 +737,9 @@
     "elasticipaddress": "10.201.30.226"
   },
   {
-    "id": 68,
     "facilityname": "Masogo Dispensary",
-    "mflcode": 18531,
-    "county": "Homabay",
+    "mflcode": 13784,
+    "county": "Homa Bay",
     "subcounty": "Kabondo Kasipul",
     "ushauri": 1,
     "WebADT": 1,
@@ -816,10 +748,9 @@
     "elasticipaddress": "10.201.30.203"
   },
   {
-    "id": 69,
     "facilityname": "Matata Nursing Hospital",
-    "mflcode": 13732,
-    "county": "Homabay",
+    "mflcode": 13789,
+    "county": "Homa Bay",
     "subcounty": "Kasipul",
     "ushauri": 1,
     "WebADT": 1,
@@ -828,10 +759,9 @@
     "elasticipaddress": "10.201.30.168"
   },
   {
-    "id": 70,
-    "facilityname": "Mbita District Hospital",
-    "mflcode": 16770,
-    "county": "Homabay",
+    "facilityname": "Mbita DH",
+    "mflcode": 13798,
+    "county": "Homa Bay",
     "subcounty": "Mbita",
     "ushauri": 1,
     "WebADT": 1,
@@ -840,10 +770,9 @@
     "elasticipaddress": "10.201.30.152"
   },
   {
-    "id": 71,
     "facilityname": "Miniambo Dispensary",
-    "mflcode": 13950,
-    "county": "Homabay",
+    "mflcode": 16766,
+    "county": "Homa Bay",
     "subcounty": "Homa Bay Township",
     "ushauri": 1,
     "WebADT": 1,
@@ -852,10 +781,9 @@
     "elasticipaddress": "10.201.30.5"
   },
   {
-    "id": 72,
     "facilityname": "Miriu Health Centre",
-    "mflcode": 13915,
-    "county": "Homabay",
+    "mflcode": 13812,
+    "county": "Homa Bay",
     "subcounty": "Rachuonyo North",
     "ushauri": 1,
     "WebADT": 1,
@@ -864,10 +792,9 @@
     "elasticipaddress": "10.201.30.118"
   },
   {
-    "id": 73,
     "facilityname": "Msare Health Centre",
-    "mflcode": 14140,
-    "county": "Homabay",
+    "mflcode": 13828,
+    "county": "Homa Bay",
     "subcounty": "Suba",
     "ushauri": 1,
     "WebADT": 1,
@@ -876,10 +803,9 @@
     "elasticipaddress": "10.201.30.20"
   },
   {
-    "id": 74,
     "facilityname": "Ndere Dispensary",
-    "mflcode": 13608,
-    "county": "Homabay",
+    "mflcode": 20173,
+    "county": "Homa Bay",
     "subcounty": "Rachuonyo North",
     "ushauri": 1,
     "WebADT": 1,
@@ -888,10 +814,9 @@
     "elasticipaddress": "10.201.30.55"
   },
   {
-    "id": 75,
-    "facilityname": "Ndhiwa District Hospital",
-    "mflcode": 16284,
-    "county": "Homabay",
+    "facilityname": "Ndhiwa DH",
+    "mflcode": 13841,
+    "county": "Homa Bay",
     "subcounty": "Ndhiwa",
     "ushauri": 1,
     "WebADT": 1,
@@ -900,10 +825,9 @@
     "elasticipaddress": "10.201.30.171"
   },
   {
-    "id": 76,
     "facilityname": "Ndhuru Dispensary",
-    "mflcode": 16771,
-    "county": "Homabay",
+    "mflcode": 13842,
+    "county": "Homa Bay",
     "subcounty": "Mbita",
     "ushauri": 1,
     "WebADT": 1,
@@ -912,10 +836,9 @@
     "elasticipaddress": "10.201.30.44"
   },
   {
-    "id": 77,
     "facilityname": "Ndiru Health Centre",
-    "mflcode": 19859,
-    "county": "Homabay",
+    "mflcode": 13843,
+    "county": "Homa Bay",
     "subcounty": "Rangwe",
     "ushauri": 1,
     "WebADT": 1,
@@ -924,10 +847,9 @@
     "elasticipaddress": "10.201.30.84"
   },
   {
-    "id": 78,
     "facilityname": "Ndisi Dispensary",
-    "mflcode": 13875,
-    "county": "Homabay",
+    "mflcode": 16771,
+    "county": "Homa Bay",
     "subcounty": "Ndhiwa",
     "ushauri": 1,
     "WebADT": 1,
@@ -936,10 +858,9 @@
     "elasticipaddress": "10.201.30.70"
   },
   {
-    "id": 79,
     "facilityname": "Nduga Dispensary",
-    "mflcode": 14074,
-    "county": "Homabay",
+    "mflcode": 19868,
+    "county": "Homa Bay",
     "subcounty": "Rangwe",
     "ushauri": 1,
     "WebADT": 1,
@@ -948,10 +869,9 @@
     "elasticipaddress": "10.201.30.83"
   },
   {
-    "id": 80,
     "facilityname": "Ngegu Dispensary",
-    "mflcode": 14015,
-    "county": "Homabay",
+    "mflcode": 13849,
+    "county": "Homa Bay",
     "subcounty": "Rangwe",
     "ushauri": 1,
     "WebADT": 1,
@@ -960,10 +880,9 @@
     "elasticipaddress": "10.201.30.178"
   },
   {
-    "id": 81,
     "facilityname": "Ngeri Dispensary",
-    "mflcode": 14171,
-    "county": "Homabay",
+    "mflcode": 17711,
+    "county": "Homa Bay",
     "subcounty": "Suba",
     "ushauri": 1,
     "WebADT": 1,
@@ -972,10 +891,9 @@
     "elasticipaddress": "10.201.30.6"
   },
   {
-    "id": 82,
     "facilityname": "Ngeta Dispensary",
-    "mflcode": 18530,
-    "county": "Homabay",
+    "mflcode": 20168,
+    "county": "Homa Bay",
     "subcounty": "Rachuonyo North",
     "ushauri": 1,
     "WebADT": 1,
@@ -984,10 +902,9 @@
     "elasticipaddress": "10.201.30.221"
   },
   {
-    "id": 83,
-    "facilityname": "Ng'odhe Island Dispensary",
-    "mflcode": 18876,
-    "county": "Homabay",
+    "facilityname": "Ngodhe Island Dispensary",
+    "mflcode": 13854,
+    "county": "Homa Bay",
     "subcounty": "Mbita",
     "ushauri": 1,
     "WebADT": 1,
@@ -996,10 +913,9 @@
     "elasticipaddress": "10.201.30.172"
   },
   {
-    "id": 84,
     "facilityname": "Nguku Dispensary",
-    "mflcode": 16876,
-    "county": "Homabay",
+    "mflcode": 13855,
+    "county": "Homa Bay",
     "subcounty": "Ndhiwa",
     "ushauri": 1,
     "WebADT": 1,
@@ -1008,10 +924,9 @@
     "elasticipaddress": "10.201.30.26"
   },
   {
-    "id": 85,
     "facilityname": "Nyabola Dispensary",
-    "mflcode": 13751,
-    "county": "Homabay",
+    "mflcode": 13863,
+    "county": "Homa Bay",
     "subcounty": "Kasipul",
     "ushauri": 1,
     "WebADT": 1,
@@ -1020,10 +935,9 @@
     "elasticipaddress": "10.201.30.45"
   },
   {
-    "id": 86,
     "facilityname": "Nyadenda Health Centre",
-    "mflcode": 17170,
-    "county": "Homabay",
+    "mflcode": 13870,
+    "county": "Homa Bay",
     "subcounty": "Suba",
     "ushauri": 1,
     "WebADT": 1,
@@ -1032,10 +946,9 @@
     "elasticipaddress": "10.201.30.190"
   },
   {
-    "id": 87,
-    "facilityname": "Nyagoro Health Centre",
-    "mflcode": 14016,
-    "county": "Homabay",
+    "facilityname": "Nyagoro Health Center",
+    "mflcode": 13875,
+    "county": "Homa Bay",
     "subcounty": "Rangwe",
     "ushauri": 1,
     "WebADT": 1,
@@ -1044,10 +957,9 @@
     "elasticipaddress": "10.201.30.38"
   },
   {
-    "id": 88,
     "facilityname": "Nyakweri Dispensary",
-    "mflcode": 13721,
-    "county": "Homabay",
+    "mflcode": 18420,
+    "county": "Homa Bay",
     "subcounty": "Mbita",
     "ushauri": 1,
     "WebADT": 1,
@@ -1056,10 +968,9 @@
     "elasticipaddress": "10.201.30.113"
   },
   {
-    "id": 89,
     "facilityname": "Nyalgosi Dispensary",
-    "mflcode": 13761,
-    "county": "Homabay",
+    "mflcode": 13889,
+    "county": "Homa Bay",
     "subcounty": "Kasipul",
     "ushauri": 1,
     "WebADT": 1,
@@ -1068,10 +979,9 @@
     "elasticipaddress": "10.201.30.64"
   },
   {
-    "id": 90,
     "facilityname": "Nyalkinyi (Jersey) Dispensary",
-    "mflcode": 14016,
-    "county": "Homabay",
+    "mflcode": 16986,
+    "county": "Homa Bay",
     "subcounty": "Homa Bay Township",
     "ushauri": 1,
     "WebADT": 1,
@@ -1080,10 +990,9 @@
     "elasticipaddress": "10.201.30.180"
   },
   {
-    "id": 91,
     "facilityname": "Nyamasi Dispensary",
-    "mflcode": 13731,
-    "county": "Homabay",
+    "mflcode": 13902,
+    "county": "Homa Bay",
     "subcounty": "Homa Bay Township",
     "ushauri": 1,
     "WebADT": 1,
@@ -1092,10 +1001,9 @@
     "elasticipaddress": "10.201.30.183"
   },
   {
-    "id": 92,
     "facilityname": "Nyambare Dispensary",
-    "mflcode": 13642,
-    "county": "Homabay",
+    "mflcode": 19867,
+    "county": "Homa Bay",
     "subcounty": "Rangwe",
     "ushauri": 1,
     "WebADT": 1,
@@ -1104,10 +1012,9 @@
     "elasticipaddress": "10.201.30.89"
   },
   {
-    "id": 93,
     "facilityname": "Nyamrisra Health Centre",
-    "mflcode": 14150,
-    "county": "Homabay",
+    "mflcode": 13915,
+    "county": "Homa Bay",
     "subcounty": "Suba",
     "ushauri": 1,
     "WebADT": 1,
@@ -1116,10 +1023,9 @@
     "elasticipaddress": "10.201.30.95"
   },
   {
-    "id": 94,
     "facilityname": "Nyandiwa Dispensary",
-    "mflcode": 14152,
-    "county": "Homabay",
+    "mflcode": 13920,
+    "county": "Homa Bay",
     "subcounty": "Suba",
     "ushauri": 1,
     "WebADT": 1,
@@ -1128,10 +1034,9 @@
     "elasticipaddress": "10.201.30.48"
   },
   {
-    "id": 95,
     "facilityname": "Nyangajo Dispensary",
-    "mflcode": 13768,
-    "county": "Homabay",
+    "mflcode": 20172,
+    "county": "Homa Bay",
     "subcounty": "Rachuonyo North",
     "ushauri": 1,
     "WebADT": 1,
@@ -1140,10 +1045,9 @@
     "elasticipaddress": "10.201.30.233"
   },
   {
-    "id": 96,
     "facilityname": "Nyangiela Sub District Hospital",
-    "mflcode": 13841,
-    "county": "Homabay",
+    "mflcode": 13926,
+    "county": "Homa Bay",
     "subcounty": "Kasipul",
     "ushauri": 1,
     "WebADT": 1,
@@ -1152,10 +1056,9 @@
     "elasticipaddress": "10.201.30.21"
   },
   {
-    "id": 97,
-    "facilityname": "Nyaoga Community Dispensary",
-    "mflcode": 17711,
-    "county": "Homabay",
+    "facilityname": "Nyaoga Dispensary",
+    "mflcode": 16876,
+    "county": "Homa Bay",
     "subcounty": "Rachuonyo North",
     "ushauri": 1,
     "WebADT": 1,
@@ -1164,10 +1067,9 @@
     "elasticipaddress": "10.201.30.191"
   },
   {
-    "id": 98,
     "facilityname": "Nyarut Health Centre",
-    "mflcode": 14039,
-    "county": "Homabay",
+    "mflcode": 19860,
+    "county": "Homa Bay",
     "subcounty": "Rangwe",
     "ushauri": 1,
     "WebADT": 1,
@@ -1176,10 +1078,9 @@
     "elasticipaddress": "10.201.30.134"
   },
   {
-    "id": 99,
     "facilityname": "Nyatoto Health Centre",
-    "mflcode": 14155,
-    "county": "Homabay",
+    "mflcode": 13946,
+    "county": "Homa Bay",
     "subcounty": "Suba",
     "ushauri": 1,
     "WebADT": 1,
@@ -1188,10 +1089,9 @@
     "elasticipaddress": "10.201.30.50"
   },
   {
-    "id": 100,
     "facilityname": "Nyawango Dispensary",
-    "mflcode": 22476,
-    "county": "Homabay",
+    "mflcode": 18051,
+    "county": "Homa Bay",
     "subcounty": "Kabondo Kasipul",
     "ushauri": 1,
     "WebADT": 1,
@@ -1200,10 +1100,9 @@
     "elasticipaddress": "10.201.30.62"
   },
   {
-    "id": 101,
     "facilityname": "Nyawawa Dispensary",
-    "mflcode": 17593,
-    "county": "Homabay",
+    "mflcode": 19863,
+    "county": "Homa Bay",
     "subcounty": "Rangwe",
     "ushauri": 1,
     "WebADT": 1,
@@ -1212,10 +1111,9 @@
     "elasticipaddress": "10.201.30.107"
   },
   {
-    "id": 102,
     "facilityname": "Nyawita Dispensary",
-    "mflcode": 17710,
-    "county": "Homabay",
+    "mflcode": 19864,
+    "county": "Homa Bay",
     "subcounty": "Rangwe",
     "ushauri": 1,
     "WebADT": 1,
@@ -1224,10 +1122,9 @@
     "elasticipaddress": "10.201.30.246"
   },
   {
-    "id": 103,
     "facilityname": "NYS Dispensary (Suba)",
-    "mflcode": 20242,
-    "county": "Homabay",
+    "mflcode": 13949,
+    "county": "Homa Bay",
     "subcounty": "Suba",
     "ushauri": 1,
     "WebADT": 1,
@@ -1236,10 +1133,9 @@
     "elasticipaddress": "10.201.30.140"
   },
   {
-    "id": 104,
     "facilityname": "Obalwanda Dispensary",
-    "mflcode": 18877,
-    "county": "Homabay",
+    "mflcode": 13950,
+    "county": "Homa Bay",
     "subcounty": "Mbita",
     "ushauri": 1,
     "WebADT": 1,
@@ -1248,10 +1144,9 @@
     "elasticipaddress": "10.201.30.72"
   },
   {
-    "id": 105,
     "facilityname": "Obanga Health Centre",
-    "mflcode": 14162,
-    "county": "Homabay",
+    "mflcode": 13951,
+    "county": "Homa Bay",
     "subcounty": "Suba",
     "ushauri": 1,
     "WebADT": 1,
@@ -1260,10 +1155,9 @@
     "elasticipaddress": "10.201.30.22"
   },
   {
-    "id": 106,
-    "facilityname": "Ober Health Centre",
-    "mflcode": 17593,
-    "county": "Homabay",
+    "facilityname": "Ober Health Center",
+    "mflcode": 13953,
+    "county": "Homa Bay",
     "subcounty": "Kabondo Kasipul",
     "ushauri": 1,
     "WebADT": 1,
@@ -1272,10 +1166,9 @@
     "elasticipaddress": "10.201.30.192"
   },
   {
-    "id": 107,
     "facilityname": "Ober Kabuoch Dispensary",
-    "mflcode": 17852,
-    "county": "Homabay",
+    "mflcode": 13952,
+    "county": "Homa Bay",
     "subcounty": "Ndhiwa",
     "ushauri": 1,
     "WebADT": 1,
@@ -1284,10 +1177,9 @@
     "elasticipaddress": "10.201.30.7"
   },
   {
-    "id": 108,
     "facilityname": "Obunga Dispensary",
-    "mflcode": 14022,
-    "county": "Homabay",
+    "mflcode": 13957,
+    "county": "Homa Bay",
     "subcounty": "Rangwe",
     "ushauri": 1,
     "WebADT": 1,
@@ -1296,10 +1188,9 @@
     "elasticipaddress": "10.201.30.242"
   },
   {
-    "id": 109,
     "facilityname": "Obuya Dispensary",
-    "mflcode": 17594,
-    "county": "Homabay",
+    "mflcode": 19866,
+    "county": "Homa Bay",
     "subcounty": "Rangwe",
     "ushauri": 1,
     "WebADT": 1,
@@ -1308,10 +1199,9 @@
     "elasticipaddress": "10.201.30.29"
   },
   {
-    "id": 110,
     "facilityname": "Obwanda Dispensary",
-    "mflcode": 18530,
-    "county": "Homabay",
+    "mflcode": 13958,
+    "county": "Homa Bay",
     "subcounty": "Rangwe",
     "ushauri": 1,
     "WebADT": 1,
@@ -1320,10 +1210,9 @@
     "elasticipaddress": "10.201.30.37"
   },
   {
-    "id": 111,
     "facilityname": "Ogande Dispensary",
-    "mflcode": 13798,
-    "county": "Homabay",
+    "mflcode": 13962,
+    "county": "Homa Bay",
     "subcounty": "Homa Bay Township",
     "ushauri": 1,
     "WebADT": 1,
@@ -1332,10 +1221,9 @@
     "elasticipaddress": "10.201.30.88"
   },
   {
-    "id": 112,
-    "facilityname": "Ogongo Sub-District Hospital",
-    "mflcode": 20241,
-    "county": "Homabay",
+    "facilityname": "Ogongo Sub County Hospital",
+    "mflcode": 13967,
+    "county": "Homa Bay",
     "subcounty": "Mbita",
     "ushauri": 1,
     "WebADT": 1,
@@ -1344,10 +1232,9 @@
     "elasticipaddress": "10.201.30.196"
   },
   {
-    "id": 113,
     "facilityname": "Okiki Amayo Health Centre",
-    "mflcode": 13920,
-    "county": "Homabay",
+    "mflcode": 13972,
+    "county": "Homa Bay",
     "subcounty": "Rachuonyo North",
     "ushauri": 1,
     "WebADT": 1,
@@ -1356,10 +1243,9 @@
     "elasticipaddress": "10.201.30.60"
   },
   {
-    "id": 114,
     "facilityname": "Okok Dispensary",
-    "mflcode": 13587,
-    "county": "Homabay",
+    "mflcode": 16259,
+    "county": "Homa Bay",
     "subcounty": "Ndhiwa",
     "ushauri": 1,
     "WebADT": 1,
@@ -1368,10 +1254,9 @@
     "elasticipaddress": "10.201.30.9"
   },
   {
-    "id": 115,
     "facilityname": "Olando Dispensary",
-    "mflcode": 13946,
-    "county": "Homabay",
+    "mflcode": 13974,
+    "county": "Homa Bay",
     "subcounty": "Rachuonyo North",
     "ushauri": 1,
     "WebADT": 1,
@@ -1380,10 +1265,9 @@
     "elasticipaddress": "10.201.30.66"
   },
   {
-    "id": 116,
     "facilityname": "Ombek Health Centre",
-    "mflcode": 13855,
-    "county": "Homabay",
+    "mflcode": 13978,
+    "county": "Homa Bay",
     "subcounty": "Kasipul",
     "ushauri": 1,
     "WebADT": 1,
@@ -1392,10 +1276,9 @@
     "elasticipaddress": "10.201.30.31"
   },
   {
-    "id": 117,
     "facilityname": "Ombo Kachieng' Dispensary",
-    "mflcode": 19909,
-    "county": "Homabay",
+    "mflcode": 13979,
+    "county": "Homa Bay",
     "subcounty": "Ndhiwa",
     "ushauri": 1,
     "WebADT": 1,
@@ -1404,10 +1287,9 @@
     "elasticipaddress": "10.201.30.40"
   },
   {
-    "id": 118,
     "facilityname": "Omboga Dispensary",
-    "mflcode": 13949,
-    "county": "Homabay",
+    "mflcode": 13980,
+    "county": "Homa Bay",
     "subcounty": "Rachuonyo North",
     "ushauri": 1,
     "WebADT": 1,
@@ -1416,10 +1298,9 @@
     "elasticipaddress": "10.201.30.250"
   },
   {
-    "id": 119,
     "facilityname": "Omiro Dispensary",
-    "mflcode": 17594,
-    "county": "Homabay",
+    "mflcode": 13981,
+    "county": "Homa Bay",
     "subcounty": "Kabondo Kasipul",
     "ushauri": 1,
     "WebADT": 1,
@@ -1428,10 +1309,9 @@
     "elasticipaddress": "10.201.30.74"
   },
   {
-    "id": 120,
     "facilityname": "Oneno Dispensary",
-    "mflcode": 14038,
-    "county": "Homabay",
+    "mflcode": 16985,
+    "county": "Homa Bay",
     "subcounty": "Rangwe",
     "ushauri": 1,
     "WebADT": 1,
@@ -1440,10 +1320,9 @@
     "elasticipaddress": "10.201.30.142"
   },
   {
-    "id": 121,
     "facilityname": "Ongamo Dispensary",
-    "mflcode": 17069,
-    "county": "Homabay",
+    "mflcode": 18892,
+    "county": "Homa Bay",
     "subcounty": "Kasipul",
     "ushauri": 1,
     "WebADT": 1,
@@ -1452,10 +1331,9 @@
     "elasticipaddress": "10.201.30.227"
   },
   {
-    "id": 122,
     "facilityname": "Oriang (SDA) Health Centre",
-    "mflcode": 14152,
-    "county": "Homabay",
+    "mflcode": 16284,
+    "county": "Homa Bay",
     "subcounty": "Rachuonyo North",
     "ushauri": 1,
     "WebADT": 1,
@@ -1464,10 +1342,9 @@
     "elasticipaddress": "10.201.30.159"
   },
   {
-    "id": 123,
     "facilityname": "Oridi Dispensary",
-    "mflcode": 13636,
-    "county": "Homabay",
+    "mflcode": 16767,
+    "county": "Homa Bay",
     "subcounty": "Ndhiwa",
     "ushauri": 1,
     "WebADT": 1,
@@ -1476,10 +1353,9 @@
     "elasticipaddress": "10.201.30.228"
   },
   {
-    "id": 124,
     "facilityname": "Otange Dispensary",
-    "mflcode": 13958,
-    "county": "Homabay",
+    "mflcode": 18877,
+    "county": "Homa Bay",
     "subcounty": "Ndhiwa",
     "ushauri": 1,
     "WebADT": 1,
@@ -1488,10 +1364,9 @@
     "elasticipaddress": "10.201.30.67"
   },
   {
-    "id": 125,
-    "facilityname": "Othoro Sub District Hospital (Rachuonyo)",
-    "mflcode": 17690,
-    "county": "Homabay",
+    "facilityname": "Othoro Sub District Hospital",
+    "mflcode": 14002,
+    "county": "Homa Bay",
     "subcounty": "Kabondo Kasipul",
     "ushauri": 1,
     "WebADT": 1,
@@ -1500,10 +1375,9 @@
     "elasticipaddress": "10.201.30.202"
   },
   {
-    "id": 126,
     "facilityname": "Oyuma Dispensary (Rachuonyo)",
-    "mflcode": 18077,
-    "county": "Homabay",
+    "mflcode": 17852,
+    "county": "Homa Bay",
     "subcounty": "Rachuonyo North",
     "ushauri": 1,
     "WebADT": 1,
@@ -1512,10 +1386,9 @@
     "elasticipaddress": "10.201.30.47"
   },
   {
-    "id": 127,
-    "facilityname": "Pala Level 4 Hospital",
-    "mflcode": 20168,
-    "county": "Homabay",
+    "facilityname": "Pala Level4",
+    "mflcode": 14011,
+    "county": "Homa Bay",
     "subcounty": "Ndhiwa",
     "ushauri": 1,
     "WebADT": 1,
@@ -1524,10 +1397,9 @@
     "elasticipaddress": "10.201.30.101"
   },
   {
-    "id": 128,
-    "facilityname": "Pala Masogo Health Centre",
-    "mflcode": 14095,
-    "county": "Homabay",
+    "facilityname": "Pala Masogo Health Center",
+    "mflcode": 19859,
+    "county": "Homa Bay",
     "subcounty": "Homa Bay Township",
     "ushauri": 1,
     "WebADT": 1,
@@ -1536,11 +1408,10 @@
     "elasticipaddress": "10.201.30.127"
   },
   {
-    "id": 129,
-    "facilityname": "Ponge Dispensary (Mbita)",
-    "mflcode": 20242,
-    "county": "Homabay",
-    "subcounty": "Mbita",
+    "facilityname": "Ponge Dispensary - Ndhiwa",
+    "mflcode": 14015,
+    "county": "Homa Bay",
+    "subcounty": "Ndhiwa",
     "ushauri": 1,
     "WebADT": 1,
     "status": "Running",
@@ -1548,11 +1419,10 @@
     "elasticipaddress": "10.201.30.51"
   },
   {
-    "id": 130,
-    "facilityname": "Ponge Dispensary (Ndhiwa)",
-    "mflcode": 20169,
-    "county": "Homabay",
-    "subcounty": "Ndhiwa",
+    "facilityname": "Ponge Dispensary (Mbita)",
+    "mflcode": 14016,
+    "county": "Homa Bay",
+    "subcounty": "Mbita",
     "ushauri": 1,
     "WebADT": 1,
     "status": "Running",
@@ -1560,10 +1430,9 @@
     "elasticipaddress": "10.201.30.247"
   },
   {
-    "id": 131,
-    "facilityname": "Rachuonyo District Hospital",
-    "mflcode": 13952,
-    "county": "Homabay",
+    "facilityname": "Rachuonyo sub-county Hospital",
+    "mflcode": 14022,
+    "county": "Homa Bay",
     "subcounty": "Kasipul",
     "ushauri": 1,
     "WebADT": 1,
@@ -1572,10 +1441,9 @@
     "elasticipaddress": "10.201.30.201"
   },
   {
-    "id": 132,
     "facilityname": "Ragwe Dispensary",
-    "mflcode": 19865,
-    "county": "Homabay",
+    "mflcode": 18530,
+    "county": "Homa Bay",
     "subcounty": "Kasipul",
     "ushauri": 1,
     "WebADT": 1,
@@ -1584,10 +1452,9 @@
     "elasticipaddress": "10.201.30.17"
   },
   {
-    "id": 133,
     "facilityname": "Randung Dispensary",
     "mflcode": 14031,
-    "county": "Homabay",
+    "county": "Homa Bay",
     "subcounty": "Rangwe",
     "ushauri": 1,
     "WebADT": 1,
@@ -1596,10 +1463,9 @@
     "elasticipaddress": "10.201.30.186"
   },
   {
-    "id": 134,
     "facilityname": "Rangwe Sub-District Hospital",
     "mflcode": 14036,
-    "county": "Homabay",
+    "county": "Homa Bay",
     "subcounty": "Rangwe",
     "ushauri": 1,
     "WebADT": 1,
@@ -1608,10 +1474,9 @@
     "elasticipaddress": "10.201.30.218"
   },
   {
-    "id": 135,
     "facilityname": "Rariw Dispensary",
-    "mflcode": 13479,
-    "county": "Homabay",
+    "mflcode": 14038,
+    "county": "Homa Bay",
     "subcounty": "Rangwe",
     "ushauri": 1,
     "WebADT": 1,
@@ -1620,10 +1485,9 @@
     "elasticipaddress": "10.201.30.78"
   },
   {
-    "id": 136,
     "facilityname": "Raruowa Health Centre",
-    "mflcode": 13951,
-    "county": "Homabay",
+    "mflcode": 14039,
+    "county": "Homa Bay",
     "subcounty": "Rachuonyo North",
     "ushauri": 1,
     "WebADT": 1,
@@ -1632,10 +1496,9 @@
     "elasticipaddress": "10.201.30.216"
   },
   {
-    "id": 137,
     "facilityname": "Remba Dispensary",
-    "mflcode": 13653,
-    "county": "Homabay",
+    "mflcode": 17593,
+    "county": "Homa Bay",
     "subcounty": "Mbita",
     "ushauri": 1,
     "WebADT": 1,
@@ -1644,10 +1507,9 @@
     "elasticipaddress": "10.201.30.42"
   },
   {
-    "id": 138,
     "facilityname": "Ringiti Dispensary",
-    "mflcode": 13711,
-    "county": "Homabay",
+    "mflcode": 17710,
+    "county": "Homa Bay",
     "subcounty": "Mbita",
     "ushauri": 1,
     "WebADT": 1,
@@ -1656,10 +1518,9 @@
     "elasticipaddress": "10.201.30.91"
   },
   {
-    "id": 139,
     "facilityname": "Roadblock Clinic",
-    "mflcode": 20172,
-    "county": "Homabay",
+    "mflcode": 14056,
+    "county": "Homa Bay",
     "subcounty": "Ndhiwa",
     "ushauri": 1,
     "WebADT": 1,
@@ -1668,10 +1529,9 @@
     "elasticipaddress": "10.201.30.33"
   },
   {
-    "id": 140,
     "facilityname": "Rusinga Island of Hope Humanist Health Centre",
-    "mflcode": 13668,
-    "county": "Homabay",
+    "mflcode": 17594,
+    "county": "Homa Bay",
     "subcounty": "Mbita",
     "ushauri": 1,
     "WebADT": 1,
@@ -1680,10 +1540,9 @@
     "elasticipaddress": "10.201.30.175"
   },
   {
-    "id": 141,
     "facilityname": "Seka Health Centre",
-    "mflcode": 14167,
-    "county": "Homabay",
+    "mflcode": 14074,
+    "county": "Homa Bay",
     "subcounty": "Suba",
     "ushauri": 1,
     "WebADT": 1,
@@ -1692,10 +1551,9 @@
     "elasticipaddress": "10.201.30.149"
   },
   {
-    "id": 142,
     "facilityname": "Sena Health Centre",
-    "mflcode": 20285,
-    "county": "Homabay",
+    "mflcode": 14075,
+    "county": "Homa Bay",
     "subcounty": "Mbita",
     "ushauri": 1,
     "WebADT": 1,
@@ -1704,10 +1562,9 @@
     "elasticipaddress": "10.201.30.126"
   },
   {
-    "id": 143,
     "facilityname": "Simbi Kogembo Dispensary",
-    "mflcode": 14074,
-    "county": "Homabay",
+    "mflcode": 14089,
+    "county": "Homa Bay",
     "subcounty": "Rachuonyo North",
     "ushauri": 1,
     "WebADT": 1,
@@ -1716,10 +1573,9 @@
     "elasticipaddress": "10.201.30.137"
   },
   {
-    "id": 144,
     "facilityname": "Simbiri Nanbell Health Centre",
-    "mflcode": 13979,
-    "county": "Homabay",
+    "mflcode": 14090,
+    "county": "Homa Bay",
     "subcounty": "Kasipul",
     "ushauri": 1,
     "WebADT": 1,
@@ -1728,10 +1584,9 @@
     "elasticipaddress": "10.201.30.30"
   },
   {
-    "id": 145,
     "facilityname": "Sino Health Centre",
-    "mflcode": 14011,
-    "county": "Homabay",
+    "mflcode": 14092,
+    "county": "Homa Bay",
     "subcounty": "Kasipul",
     "ushauri": 1,
     "WebADT": 1,
@@ -1740,10 +1595,9 @@
     "elasticipaddress": "10.201.30.151"
   },
   {
-    "id": 146,
     "facilityname": "Soklo Dispensary",
-    "mflcode": 20347,
-    "county": "Homabay",
+    "mflcode": 14095,
+    "county": "Homa Bay",
     "subcounty": "Mbita",
     "ushauri": 1,
     "WebADT": 1,
@@ -1752,10 +1606,9 @@
     "elasticipaddress": "10.201.30.146"
   },
   {
-    "id": 147,
     "facilityname": "Suba District Hospital",
-    "mflcode": 14168,
-    "county": "Homabay",
+    "mflcode": 14130,
+    "county": "Homa Bay",
     "subcounty": "Suba",
     "ushauri": 1,
     "WebADT": 1,
@@ -1764,10 +1617,9 @@
     "elasticipaddress": "10.201.30.68"
   },
   {
-    "id": 148,
     "facilityname": "Swindon Clinic",
-    "mflcode": 14015,
-    "county": "Homabay",
+    "mflcode": 14138,
+    "county": "Homa Bay",
     "subcounty": "Kasipul",
     "ushauri": 1,
     "WebADT": 1,
@@ -1776,10 +1628,9 @@
     "elasticipaddress": "10.201.30.85"
   },
   {
-    "id": 149,
     "facilityname": "Takawiri Dispensary",
-    "mflcode": 25260,
-    "county": "Homabay",
+    "mflcode": 14140,
+    "county": "Homa Bay",
     "subcounty": "Mbita",
     "ushauri": 1,
     "WebADT": 1,
@@ -1788,10 +1639,9 @@
     "elasticipaddress": "10.201.30.251"
   },
   {
-    "id": 150,
     "facilityname": "Tala Health Centre",
-    "mflcode": 17710,
-    "county": "Homabay",
+    "mflcode": 17170,
+    "county": "Homa Bay",
     "subcounty": "Kabondo Kasipul",
     "ushauri": 1,
     "WebADT": 1,
@@ -1800,10 +1650,9 @@
     "elasticipaddress": "10.201.30.16"
   },
   {
-    "id": 151,
-    "facilityname": "Tom Mboya Memorial Sub County Hospital",
-    "mflcode": 13463,
-    "county": "Homabay",
+    "facilityname": "Tom Mboya Memorial SCH",
+    "mflcode": 14150,
+    "county": "Homa Bay",
     "subcounty": "Mbita",
     "ushauri": 1,
     "WebADT": 1,
@@ -1812,10 +1661,9 @@
     "elasticipaddress": "10.201.30.205"
   },
   {
-    "id": 152,
     "facilityname": "Tonga Health Centre",
-    "mflcode": 14169,
-    "county": "Homabay",
+    "mflcode": 14152,
+    "county": "Homa Bay",
     "subcounty": "Suba",
     "ushauri": 1,
     "WebADT": 1,
@@ -1824,10 +1672,9 @@
     "elasticipaddress": "10.201.30.12"
   },
   {
-    "id": 153,
     "facilityname": "Ugina Health Centre",
-    "mflcode": 13472,
-    "county": "Homabay",
+    "mflcode": 14155,
+    "county": "Homa Bay",
     "subcounty": "Mbita",
     "ushauri": 1,
     "WebADT": 1,
@@ -1836,10 +1683,9 @@
     "elasticipaddress": "10.201.30.231"
   },
   {
-    "id": 154,
     "facilityname": "Unga Dispensary",
-    "mflcode": 14036,
-    "county": "Homabay",
+    "mflcode": 20242,
+    "county": "Homa Bay",
     "subcounty": "Ndhiwa",
     "ushauri": 1,
     "WebADT": 1,
@@ -1848,10 +1694,9 @@
     "elasticipaddress": "10.201.30.112"
   },
   {
-    "id": 155,
     "facilityname": "Usao Health Centre",
-    "mflcode": 13529,
-    "county": "Homabay",
+    "mflcode": 14162,
+    "county": "Homa Bay",
     "subcounty": "Mbita",
     "ushauri": 1,
     "WebADT": 1,
@@ -1860,10 +1705,9 @@
     "elasticipaddress": "10.201.30.238"
   },
   {
-    "id": 156,
-    "facilityname": "Viagenco Medical Centre",
-    "mflcode": 13530,
-    "county": "Homabay",
+    "facilityname": "Viagenco Medical Center",
+    "mflcode": 14167,
+    "county": "Homa Bay",
     "subcounty": "Mbita",
     "ushauri": 1,
     "WebADT": 1,
@@ -1872,10 +1716,9 @@
     "elasticipaddress": "10.201.30.232"
   },
   {
-    "id": 157,
-    "facilityname": "Wagwe Health Centre",
-    "mflcode": 14130,
-    "county": "Homabay",
+    "facilityname": "Wagwe Health Center",
+    "mflcode": 14168,
+    "county": "Homa Bay",
     "subcounty": "Rachuonyo North",
     "ushauri": 1,
     "WebADT": 1,
@@ -1884,10 +1727,9 @@
     "elasticipaddress": "10.201.30.43"
   },
   {
-    "id": 158,
     "facilityname": "Wakula Health Centre",
-    "mflcode": 13592,
-    "county": "Homabay",
+    "mflcode": 14169,
+    "county": "Homa Bay",
     "subcounty": "Mbita",
     "ushauri": 1,
     "WebADT": 1,
@@ -1896,10 +1738,9 @@
     "elasticipaddress": "10.201.30.145"
   },
   {
-    "id": 159,
     "facilityname": "Waware Dispensary",
-    "mflcode": 13607,
-    "county": "Homabay",
+    "mflcode": 14171,
+    "county": "Homa Bay",
     "subcounty": "Mbita",
     "ushauri": 1,
     "WebADT": 1,
@@ -1908,10 +1749,9 @@
     "elasticipaddress": "10.201.30.189"
   },
   {
-    "id": 160,
     "facilityname": "Wiga Dispensary",
-    "mflcode": 13842,
-    "county": "Homabay",
+    "mflcode": 14172,
+    "county": "Homa Bay",
     "subcounty": "Homa Bay Township",
     "ushauri": 1,
     "WebADT": 1,
@@ -1920,10 +1760,9 @@
     "elasticipaddress": "10.201.30.104"
   },
   {
-    "id": 161,
     "facilityname": "Wikondiek Dispensary",
-    "mflcode": 20379,
-    "county": "Homabay",
+    "mflcode": 19909,
+    "county": "Homa Bay",
     "subcounty": "Rachuonyo North",
     "ushauri": 1,
     "WebADT": 1,
@@ -1932,10 +1771,9 @@
     "elasticipaddress": "10.201.30.63"
   },
   {
-    "id": 162,
     "facilityname": "Wikoteng Dispensary",
-    "mflcode": 14056,
-    "county": "Homabay",
+    "mflcode": 19865,
+    "county": "Homa Bay",
     "subcounty": "Rangwe",
     "ushauri": 1,
     "WebADT": 1,
@@ -1944,10 +1782,9 @@
     "elasticipaddress": "10.201.30.65"
   },
   {
-    "id": 163,
     "facilityname": "Yala Dispensary",
-    "mflcode": 14056,
-    "county": "Homabay",
+    "mflcode": 17069,
+    "county": "Homa Bay",
     "subcounty": "Kasipul",
     "ushauri": 1,
     "WebADT": 1,
@@ -1956,10 +1793,9 @@
     "elasticipaddress": "10.201.30.116"
   },
   {
-    "id": 164,
     "facilityname": "Yokia Dispensary",
-    "mflcode": 13646,
-    "county": "Homabay",
+    "mflcode": 14176,
+    "county": "Homa Bay",
     "subcounty": "Mbita",
     "ushauri": 1,
     "WebADT": 1,
@@ -1968,10 +1804,9 @@
     "elasticipaddress": "10.201.30.69"
   },
   {
-    "id": 165,
     "facilityname": "Young Generation Centre Dispensary (Med 25)",
-    "mflcode": 13708,
-    "county": "Homabay",
+    "mflcode": 17690,
+    "county": "Homa Bay",
     "subcounty": "Mbita",
     "ushauri": 1,
     "WebADT": 1,
@@ -1979,4 +1814,4 @@
     "ipaddress": "192.168.1.172",
     "elasticipaddress": "10.201.30.114"
   }
-]
+ ]

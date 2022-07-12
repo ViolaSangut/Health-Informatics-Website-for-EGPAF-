@@ -85,13 +85,13 @@ const creatingRoles = async (req, res)=>{
 
 //Facilities
 //Inserting Facilities to db if they don't exists
-let insertingFacilities = "INSERT IGNORE INTO facilities (id, facilityname, mflcode, county, subcounty, ushauri, WebADT, status, ipaddress, elasticipaddress) VALUES ?";
+let insertingFacilities = "INSERT IGNORE INTO facilities (facilityname, mflcode, county, subcounty, ushauri, WebADT, status, ipaddress, elasticipaddress) VALUES ?";
 
 let hbFacilitiesList = hbFacilities;
 let hbFacilitiesValues = [];
 
 for (let i = 0; i < hbFacilitiesList.length; i++) {
-  hbFacilitiesValues.push([hbFacilitiesList[i].id, hbFacilitiesList[i].facilityname, hbFacilitiesList[i].mflcode, hbFacilitiesList[i].county, hbFacilitiesList[i].subcounty, hbFacilitiesList[i].ushauri, hbFacilitiesList[i].WebADT, hbFacilitiesList[i].status, hbFacilitiesList[i].ipaddress, hbFacilitiesList[i].elasticipaddress])
+  hbFacilitiesValues.push([hbFacilitiesList[i].facilityname, hbFacilitiesList[i].mflcode, hbFacilitiesList[i].county, hbFacilitiesList[i].subcounty, hbFacilitiesList[i].ushauri, hbFacilitiesList[i].WebADT, hbFacilitiesList[i].status, hbFacilitiesList[i].ipaddress, hbFacilitiesList[i].elasticipaddress])
 }
 
 //Creating facilities when server runs
