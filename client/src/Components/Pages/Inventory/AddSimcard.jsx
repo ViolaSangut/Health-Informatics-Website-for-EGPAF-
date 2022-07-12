@@ -10,6 +10,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import usePrivateAxios from '../../hooks/usePrivateAxios';
+import { getDatasetAtEvent } from 'react-chartjs-2';
 
 
 
@@ -26,6 +27,7 @@ function AddSimcard (){
 
 
 const [Facility, setFacility] = useState()
+const [facilities, setFacilities] = useState([]);
 
 
 const [PhoneNumber, setPhoneNumber] = useState()
@@ -118,7 +120,7 @@ useEffect(() => {
     //Add a new card
     const addCard = () =>{
         
-        private_axios.post(`/simcards/addSimcards`, {
+        private_axios.post (`/simcards/addSimcards`, {
             PhoneNumber: PhoneNumber, IMEI:IMEI, PUK: PUK, PIN: PIN, 
             Facility: Facility, PhoneAssigned:PhoneAssigned,
         }).then((response)=>{
@@ -144,7 +146,7 @@ useEffect(() => {
                 console.log(error);
             })
         }
-
+        
         //Update card details
   const updateCard = async () => {
 
@@ -180,6 +182,20 @@ useEffect(() => {
     navigate("/Inventory")
   }
 
+//get facilities
+useEffect(() => {   
+    getAllFacilities();
+  }, [])
+
+  const getAllFacilities = () =>{
+    axios.get("http://localhost:4000/facilities")
+    .then((response)=>{
+        console.log(response.data)
+        setFacilities(response.data);
+    })
+    .catch((error)=>{
+        console.log(error);
+    })}
 
 
 
@@ -322,7 +338,7 @@ return(
                 <select  onChange ={(e) => setFacility(e.target.value)}>
                     <option selected disabled ="true">--Select Assigned Facility--</option>
                     {
-                        Facilities.Facilitynames.map((result)=>(<option key={result.no}text={result.mfl}>{result.facility}</option>))
+                        facilities.map((facility)=>(<option key={facility.id}text={facility.mflcode}>{facility.facilityname}</option>))
                     }
                 </select>
                 <label>IMEI of Assigned Phone
@@ -372,7 +388,6 @@ return(
     </div>
     
 )
-
 
 }
 export default AddSimcard

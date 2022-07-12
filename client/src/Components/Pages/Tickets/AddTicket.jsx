@@ -7,7 +7,7 @@ import moment from 'moment';
 import facilities from '../../../Resources/facilities/facilities.json'
 import UseAuth from "../../context/UseAuth";
 import jwt_decode from "jwt-decode";
-
+import axios from "axios";
 const AddTicketComponent = () => {
     const { auth } = UseAuth();
 
@@ -33,13 +33,25 @@ const AddTicketComponent = () => {
     const [assignee, setAssignee] = useState("");
     const [priority, setPriority] = useState("");
     const [due_date, setDue_date] = useState("");
-
+    const [facilities, setFacilities] = useState([]);
     const [minDate, setMinDate] = useState(null)
 
     const min_date  = new Date();
     const privateAxios = usePrivateAxios();
   
-
+    useEffect(() => {   
+        getAllFacilities();
+      }, [])
+    
+      const getAllFacilities = () =>{
+        axios.get("http://localhost:4000/facilities")
+        .then((response)=>{
+            console.log(response.data)
+            setFacilities(response.data);
+        })
+        .catch((error)=>{
+            console.log(error);
+        })}
     
     
     
@@ -144,10 +156,10 @@ const AddTicketComponent = () => {
      const pageTitle = () =>{
 
         if(id){
-            return <h3 className="text-center">Update Ticket</h3>
+            return <h3 className="text-center">Update Ticket </h3>
         } 
         else {
-            return <h3 className="text-center">Add Ticket</h3>
+            return <h3 className="text-center">Add Ticket </h3>
 
         }
         
@@ -172,10 +184,10 @@ const AddTicketComponent = () => {
                         />                
                         <label>Facility</label>
                         <select  onChange ={(e) => setFacility(e.target.value)}>
-                   
+                        <option selected disabled ="true">--Select  Facility--</option>
                           {/* <option >Select</option> */}
                             {
-                                facilitiesList.Facilitynames.map((facility)=>(<option key={facility.no}text={facility.mfl}>{facility.facility}</option>))
+                                facilities.map((facility)=>(<option key={facility.id}text={facility.mflcode}>{facility.facilityname}</option>))
                             }
                            
                         </select>

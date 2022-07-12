@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import {useNavigate } from "react-router-dom";
 import { toast } from 'react-toastify' ;
+import Tickets from "../Tickets/Tickets";
 
 
 const SpecificFacilityComponent = () => {
@@ -21,6 +22,23 @@ const SpecificFacilityComponent = () => {
   const [ushauri, setUshauri] = useState("");
   const [WebADT, setWebADT] = useState("");
   const [elasticipaddress,setElasticipaddress] = useState("");
+
+
+  const [tickets, setTickets] = useState([]);
+  const facilityticket = tickets.find(ticket => (ticket.facility) === facilityname);
+  useEffect(() => {   
+    getAllTickets();
+  }, [])
+
+  const getAllTickets = () =>{
+    axios.get("http://localhost:4000/tickets")
+    .then((response)=>{
+        console.log(response.data)
+        setTickets(response.data);
+    })
+    .catch((error)=>{
+        console.log(error);
+    })}
   
   useEffect(() => {
     if (facility) {
@@ -56,11 +74,22 @@ return (
   <h2>Facility name:{facilityname}</h2>
   <p>County:{county}</p>
   <p>subcounty:{subcounty}</p>
-  <p>IMPLEMENTATIONS </p>
+  <p>IP Address: {ipaddress}</p>
+  <p>Elastic IP Address:{elasticipaddress}</p>
+  <h2>IMPLEMENTATIONS </h2>
   <p>WebADT:{WebADT}</p>
-  <p>Ushauri{ushauri}</p>
+  <p>Ushauri:{ushauri}</p>
+  <h2>TICKETS</h2>
+   {tickets.filter((ticket)=>{
+                            if(ticket.facility === facilityname){
+                                return ticket;
+                            } }).map
+                            (ticket=><p key={ticket.id}>{ticket.title}</p>)
+
+                            }
+
   </div>
 )
 };
-
+ 
 export default SpecificFacilityComponent

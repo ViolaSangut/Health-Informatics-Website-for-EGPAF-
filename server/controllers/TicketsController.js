@@ -36,6 +36,9 @@ const addTicket = async (req, res)=>{
         res.status(400) //Bad req
         throw new error("Please add all mandatory fields!")
     }
+     
+    
+
 
     Tickets.create({
         title: title,

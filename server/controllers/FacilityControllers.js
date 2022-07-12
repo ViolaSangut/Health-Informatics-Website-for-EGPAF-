@@ -77,6 +77,7 @@ const addFacilities = async (req, res)=>{
         ushauri:ushauri? ushauri:false,
         WebADT:WebADT,
         elasticipaddress:elasticipaddress, 
+        
     })
     .then(()=>{
         res.json("facility added!")
