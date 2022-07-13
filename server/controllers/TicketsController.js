@@ -4,19 +4,11 @@ const sequelize = require("sequelize");
 
 //DB Configuration
 const db = mysql.createConnection({
-<<<<<<< HEAD
-  user: "hbhis",
-  host: "localhost",
-  password: "hbhis",
-  database: "hbhis",
-  multipleStatements: true,
-=======
     user: "hbhis",
     host: "localhost",
     password: "hbhis",
     database: "hbhis",
     multipleStatements: true
->>>>>>> a09fc191f88afe34397526a7bd3da40395e829de
 });
 
 //List
