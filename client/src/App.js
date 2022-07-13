@@ -21,7 +21,7 @@ import RegisterComponent from "./Components/Pages/Users/Register";
 import AddTicketComponent from "./Components/Pages/Tickets/AddTicket";
 import AddFacilityComponent from "./Components/Pages/Facilities/AddFacilities";
 import SpecificFacilityComponent from "./Components/Pages/Facilities/specificFacility";
-import AddingMy from "./Components/Pages/Tickets/AddingMy";
+import Test from "./Components/Pages/Tickets/Test";
 import AddInventory from "./Components/Pages/Inventory/AddInventory";
 import AddSimcards from "./Components/Pages/Inventory/AddSimcard";
 import Simcards from "./Components/Pages/Inventory/Simcards";
@@ -68,7 +68,7 @@ function App() {
                 <Route path="/addticket" element={<AddTicketComponent />} />
                 <Route
                   path="/edit-ticket/:id"
-                  element={<AddTicketComponent />}
+                  element={<AddTicketComponent/>}
                 />
                 <Route path="/tickets-list" element={<Tickets />} />
               </Route>
@@ -85,7 +85,7 @@ function App() {
             </Route>
           </Route>
           <Route path="/add-user" element={<RegisterComponent />} />
-          <Route path="/test" element={<AddingMy />} />
+          {/* <Route path="/test" element={<Test />} /> */}
           <Route path="/" element={<Login />} />
           <Route path="/unauthorized" element={<Unauthorized />} />
           <Route path="/sim" element={<Simcards />} />

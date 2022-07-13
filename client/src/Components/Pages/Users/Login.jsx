@@ -5,6 +5,7 @@ import './Login.css';
 import egpaf_logo from '../../../Resources/Images/egpaf_logov2.JPG'
 import { Link, useLocation, useNavigate} from 'react-router-dom';
 import UseAuth from '../../context/UseAuth';
+import jwt_decode from "jwt-decode";
 
 
 
@@ -24,19 +25,37 @@ const Login = () => {
   const emailRef = useRef();
   const errorRef = useRef();
 
+    //Getting loggedin's user roles, email from accessToken.
+    const decodedAccessToken = auth?.accessToken
+          ? jwt_decode(auth.accessToken)
+          : undefined
+    const UserRoles = decodedAccessToken?.roles || null;
+    // const loggedinUserRoles = UserRoles.toString();
+    const loggedinUserEmail = decodedAccessToken?.email || null;
+
+  //   if (loggedinUserRoles !== "4" || loggedinUserRoles !== "3" || loggedinUserRoles !== "2" || loggedinUserRoles !== "1") {
+  //     localStorage.removeItem("loggedInCheck");
+  //   }
+  // }
+
+ 
+
   const checkLogin = () =>{
-    if (!auth?.accessToken) {
-      navigate('/home')
+    console.log(auth)
+    if (!loggedinUserEmail) {
+      // localStorage.removeItem("loggedInCheck");
     }
   }
 
 
   useEffect(()=>{
-    if(localStorage.getItem("loggedInCheck")){
-        navigate('/home')
-    } else{
-      navigate('/')
-    }
+    // checkLogin();
+    // if(localStorage.getItem("loggedInCheck")){
+    //     navigate('/home')
+    // } 
+    // else{
+    //   navigate('/')
+    // }
 }, []);
 
 
@@ -92,6 +111,12 @@ const Login = () => {
 
     
   };
+
+  useEffect(() => {
+    console.log(auth?.accessToken)
+   }, [])
+   
+
 
 
   return (

@@ -14,7 +14,7 @@ const db = mysql.createConnection({
 //List
 const getTickets = async (req, res)=>{
 
-    const tickets = await Tickets.findAll({attributes: ["id", "title", "facility", "creatorsEmail", "creatorsFirstName", "creatorsLastName","ticket_status", "assignee", "priority", "due_date",[
+    const tickets = await Tickets.findAll({attributes: ["id", "title", "description", "facility", "creatorsEmail", "creatorsFirstName", "creatorsLastName","ticket_status", "assignee", "priority", "due_date",[
         sequelize.fn
         (
           "DATE_FORMAT", 
@@ -29,7 +29,7 @@ const getTickets = async (req, res)=>{
 
 //Adding a Ticket
 const addTicket = async (req, res)=>{
-    const { title, facility, creatorsEmail, creatorsFirstName, creatorsLastName, ticket_status, assignee, priority, due_date} = req.body;
+    const { title, facility, description, creatorsEmail, creatorsFirstName, creatorsLastName, ticket_status, assignee, priority, due_date} = req.body;
 
 
     if(!title || !facility || !creatorsEmail || !due_date ){
@@ -39,6 +39,7 @@ const addTicket = async (req, res)=>{
 
     Tickets.create({
         title: title,
+        description: description,
         facility: facility,
         creatorsEmail: creatorsEmail,
         creatorsFirstName: creatorsFirstName,
@@ -96,7 +97,7 @@ const findTicketById = async (req, res, next) => {
 const updateTicket = async (req, res, next)=>{
     try {
         const { id } = req.params;
-        const { title, facility, ticket_status, assignee, priority, due_date} = req.body;
+        const { title,description, facility, ticket_status, assignee, priority, due_date} = req.body;
         const findOneTicketById = await Tickets.findOne({
             where:{
                 id: id,
@@ -108,12 +109,13 @@ const updateTicket = async (req, res, next)=>{
                 });
             }
             if(title) findOneTicketById.title = title;
+            if(description) findOneTicketById.description = description;
             if(facility) findOneTicketById.facility = facility;
             if(ticket_status) findOneTicketById.ticket_status = ticket_status;
             if(assignee) findOneTicketById.assignee = assignee;
             if(priority) findOneTicketById.priority = priority;
             if(due_date) findOneTicketById.due_date = due_date;
-            
+           
             const updatedTicket = await findOneTicketById.save();
             if (!updatedTicket) {
                 res.status(404).send({

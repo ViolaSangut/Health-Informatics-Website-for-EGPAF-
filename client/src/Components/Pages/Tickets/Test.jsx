@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react'
 
 import { useNavigate, useLocation, useParams, Link} from 'react-router-dom';
 import usePrivateAxios from '../../hooks/usePrivateAxios';
-import './AddTicket.css'
+import './test.css'
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import moment from 'moment';
@@ -10,7 +10,7 @@ import moment from 'moment';
 import UseAuth from "../../context/UseAuth";
 import jwt_decode from "jwt-decode";
 
-const AddTicket = () => {
+const Test = () => {
 
   const [facilitiesList, setFacilitiesList] = useState("")
 
@@ -325,4 +325,4 @@ const AddTicket = () => {
 }
 
 
-export default AddTicket
+export default Test
