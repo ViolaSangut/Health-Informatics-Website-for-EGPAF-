@@ -9,7 +9,7 @@ const ROLES_LIST = require("../config/roles");
 //List
 router.route('/').get(verifyToken , verifyRole(ROLES_LIST.Admin, ROLES_LIST.User, ROLES_LIST.Manager, ROLES_LIST.Super_User),TicketsController.getTickets);
 
-//List
+//getNoOfWeeklyTickets
 router.route('/getNoOfWeeklyTickets').get(TicketsController.getNoOfWeeklyTickets);
 
 //No of All tickets 

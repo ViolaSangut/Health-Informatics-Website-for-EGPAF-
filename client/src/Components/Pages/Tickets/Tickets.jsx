@@ -47,6 +47,7 @@ const Tickets = () => {
             .then((response)=>{
                 console.log(response.data)
                 setTickets(response.data);
+                console.log(tickets)
             })
             .catch((error)=>{
                 console.log(error);

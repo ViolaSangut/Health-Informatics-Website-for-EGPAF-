@@ -13,7 +13,7 @@ const usePrivateAxios = () => {
         const requestIntercept = privateAxios.interceptors.request.use(
             config => {
                 if (!config.headers['Authorization']) { //Confirming req isn't retry.
-                    config.headers ['Authorization'] = `Bearer ${auth?.accessToken}`;
+                    config.headers['Authorization'] = `Bearer ${auth?.accessToken}`;
                 }
                 return config;
             }, (error) => Promise.reject(error)
