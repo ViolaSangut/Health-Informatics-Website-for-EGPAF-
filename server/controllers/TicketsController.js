@@ -4,11 +4,11 @@ const sequelize = require("sequelize");
 
 //DB Configuration
 const db = mysql.createConnection({
-    user: "hbhis",
-    host: "localhost",
-    password: "hbhis",
-    database: "hbhis",
-    multipleStatements: true
+  user: "hbhis",
+  host: "localhost",
+  password: "hbhis",
+  database: "hbhis",
+  multipleStatements: true,
 });
 
 //List
@@ -147,10 +147,9 @@ const updateTicket = async (req, res, next) => {
 };
 
 //Count of Tickets within a week
-<<<<<<< HEAD
 const getNoOfWeeklyTickets = async (req, res) => {
   db.query(
-    " select DAYOFWEEK(createdAt) as weekDay, DATE_FORMAT(CURDATE(), '%d/%m/%Y') createdAt, count(*) as Tickets, CASE WHEN DAYOFWEEK(createdAt) = 1 THEN 'Sun' WHEN DAYOFWEEK(createdAt) = 2 THEN 'Mon' WHEN DAYOFWEEK(createdAt) = 3 THEN 'Tue' WHEN DAYOFWEEK(createdAt) = 4 THEN 'Wed' WHEN DAYOFWEEK(createdAt) = 5 THEN 'Thur'  WHEN DAYOFWEEK(createdAt) = 6 THEN 'Fri' ELSE 'Sat' END AS Day from tickets WHERE date(createdAt)!=date(now())-7 GROUP BY Day ORDER BY COUNT(*) DESC ",
+    " select b.WeekDay, a.created_date, DAYOFWEEK(a.createdAt) as WeekDay2, IFNULL(count(a.createdAt), 0) as Tickets, CASE WHEN DAYOFWEEK(b.WeekDay) = 1 THEN 'Sun' WHEN DAYOFWEEK(b.WeekDay) = 2 THEN 'Mon' WHEN DAYOFWEEK(b.WeekDay) = 3 THEN 'Tue' WHEN DAYOFWEEK(b.WeekDay) = 4 THEN 'Wed' WHEN DAYOFWEEK(b.WeekDay) = 5 THEN 'Thur' WHEN DAYOFWEEK(b.WeekDay) = 6 THEN 'Fri' ELSE 'Sat' END AS Day from (SELECT DATE(NOW())-INTERVAL seq.seq DAY WeekDay FROM (SELECT 0 AS seq UNION ALL SELECT 1  UNION ALL SELECT 2 UNION ALL SELECT 3  UNION ALL SELECT 4 UNION ALL SELECT 5  UNION ALL SELECT 6 ) seq ) b left join tickets a on b.WeekDay = DATE(a.created_date) GROUP BY weekDay ORDER BY weekDay ASC ; ",
     (err, result) => {
       if (err) {
         console.log(error);
@@ -159,21 +158,6 @@ const getNoOfWeeklyTickets = async (req, res) => {
       }
     }
   );
-=======
-const getNoOfWeeklyTickets = async (req, res)=>{
-    db.query(
-        " select b.WeekDay, a.created_date, DAYOFWEEK(a.createdAt) as WeekDay2, IFNULL(count(a.createdAt), 0) as Tickets, CASE WHEN DAYOFWEEK(b.WeekDay) = 1 THEN 'Sun' WHEN DAYOFWEEK(b.WeekDay) = 2 THEN 'Mon' WHEN DAYOFWEEK(b.WeekDay) = 3 THEN 'Tue' WHEN DAYOFWEEK(b.WeekDay) = 4 THEN 'Wed' WHEN DAYOFWEEK(b.WeekDay) = 5 THEN 'Thur' WHEN DAYOFWEEK(b.WeekDay) = 6 THEN 'Fri' ELSE 'Sat' END AS Day from (SELECT DATE(NOW())-INTERVAL seq.seq DAY WeekDay FROM (SELECT 0 AS seq UNION ALL SELECT 1  UNION ALL SELECT 2 UNION ALL SELECT 3  UNION ALL SELECT 4 UNION ALL SELECT 5  UNION ALL SELECT 6 ) seq ) b left join tickets a on b.WeekDay = DATE(a.created_date) GROUP BY weekDay ORDER BY weekDay ASC ; ",
-            (err, result)=>{
-                if(err){
-                    console.log(error)
-                }
-                else{
-                    res.send(result);
-                }
-            }
-    )
-
->>>>>>> a09fc191f88afe34397526a7bd3da40395e829de
 };
 
 //Count All

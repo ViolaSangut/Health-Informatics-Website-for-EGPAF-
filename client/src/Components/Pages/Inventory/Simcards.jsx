@@ -33,7 +33,7 @@ const Simcards = () => {
     const getAllCards = () =>{
         private_axios.get("/simcards")
         .then((response)=>{
-            console.log(response.data)
+            // console.log(response.data)
             setCards(response.data);
         })
         .catch((error)=>{
@@ -50,7 +50,7 @@ const Simcards = () => {
                 return card.id !== id;
             }));
             toast.success("Card deleted successfully");
-            console.log(response);
+            // console.log(response);
         })
         .catch((error)=>{
             console.log(error);

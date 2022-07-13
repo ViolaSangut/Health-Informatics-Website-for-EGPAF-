@@ -5,6 +5,7 @@ import WeeklyTicketsDashboard from '../Tickets/DashboardItems/WeeklyTicketsDashb
 import Facilities_Summary from './Facilities_Summary';
 import TodaysResolved from '../Tickets/DashboardItems/TodaysResolved';
 import Implementation_Summary from './Implementation_Summary';
+import InventorySummary from './InventorySummary';
 
 const Home = () => {
   const navigate = useNavigate();
@@ -19,6 +20,9 @@ const Home = () => {
           <Implementation_Summary/>
         
         </div>
+        
+          <InventorySummary/>
+
 
       </div>
     

@@ -6,19 +6,11 @@ const router = express.Router();
 //DB Configuration
 
 const db = mysql.createConnection({
-<<<<<<< HEAD
   user: "hbhis",
   host: "localhost",
   password: "hbhis",
   database: "hbhis",
   multipleStatements: true,
-=======
-    user: "hbhis",
-    host: "localhost",
-    password: "hbhis",
-    database: "hbhis",
-    multipleStatements: true
->>>>>>> a09fc191f88afe34397526a7bd3da40395e829de
 });
 
 //update a facility
@@ -162,14 +154,18 @@ module.exports = {
   findFacilityById,
   deleteFacility,
 };
-<<<<<<< HEAD
-=======
 
 //Count All HomaBay Facilities
-const countHomaByFacilities = async (req, res) =>{
-    const homaBayFacilitiesCount = await Facilities.count();
-    res.json(homaBayFacilitiesCount);
-}
+const countHomaByFacilities = async (req, res) => {
+  const homaBayFacilitiesCount = await Facilities.count();
+  res.json(homaBayFacilitiesCount);
+};
 
-module.exports ={addFacilities, getFacilities, updateFacility, findFacilityById, deleteFacility, countHomaByFacilities};
->>>>>>> a09fc191f88afe34397526a7bd3da40395e829de
+module.exports = {
+  addFacilities,
+  getFacilities,
+  updateFacility,
+  findFacilityById,
+  deleteFacility,
+  countHomaByFacilities,
+};
