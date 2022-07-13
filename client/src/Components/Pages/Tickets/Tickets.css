@@ -1,59 +1,62 @@
-
- .table {
+.ticketsTable {
   display: flex;
   justify-content: center;
   align-items: center;
-
-  
 }
 
-.users-title {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 2%;
-  }
-
-.table h {
+.ticketsTable h {
   align-items: center;
 }
-.table_content {
+.tickets_table_content {
   border-collapse: collapse;
-  /* margin: 25px 0; */
+  margin: 25px 0;
   margin-top: 0%;
   font-size: 100%;
-  /* min-width: 400px; */
+  min-width: 400px;
   border-radius: 5px 5px 0 0;
   overflow: hidden;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.15); 
  
 }
 
-.table_content thead {
-  background-color: #009879;
+.tickets_table_content tbody tr :hover {
+  background-color: rgb(140, 171, 207);
+
+}
+
+.tickets_table_content tbody {
+  cursor: pointer;
+}
+
+
+.tickets_table_content thead {
+  background-color: #980000;
   color: #ffffff;
   text-align: left;
   font-weight: bold;
 }
 
-.table_content th,
-.table_content td {
+.tickets_table_content th,
+.tickets_table_content td {
   padding: 12px 15px;
+  
 }
 
-.table_content tbody tr {
+
+
+.tickets_table_content tbody tr {
   border-bottom: 1px solid #dddddd;
 }
 
-.table_content tbody tr:nth-of-type(even) {
+.tickets_table_content tbody tr:nth-of-type(even) {
   background-color: #f3f3f3;
 }
 
-.table_content tbody tr:last-of-type {
-  border-bottom: 2px solid #009879;
+.tickets_table_content tbody tr:last-of-type {
+  border-bottom: 2px solid gray;
 }
 
-.table_content tbody td[data-href]{
+.tickets_table_content tbody td[data-href]{
   cursor: pointer;
   
 }
@@ -76,9 +79,28 @@
 }
 
 
-.search_bar{
+.tickets_search_bar{
   margin-left: 75%;
   padding-left: 10px;
   display: flex;
   margin-right: 1%;
+  margin-bottom: 1%;
 }
+
+.tickets_date_filter{
+  margin-left: 7%;
+  width: 10%;
+
+}
+
+  .buttonadd {
+    padding: 0.5rem;
+    margin-top: 0.5rem;
+    vertical-align: middle;
+    border-radius: 0.5rem;
+    background-color: teal;
+    color: white;
+    width: 250px;
+    height: 50px;
+    margin-left: 85%;
+  }

@@ -2,11 +2,12 @@ import React,{useState, useEffect, useContext} from 'react'
 import axios from 'axios';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { toast  } from 'react-toastify';
-import './Tickets';
+import './Tickets.css';
 import moment from 'moment';
 import usePrivateAxios from '../../hooks/usePrivateAxios';
 import UseAuth from "../../context/UseAuth";
 import jwt_decode from "jwt-decode";
+import * as AiIcons from "react-icons/ai";
 
 const Tickets = () => {
     const [tickets, setTickets] = useState([]);
@@ -93,16 +94,18 @@ const Tickets = () => {
             <Link to = '/tickets' className='btn btn-primary mb-2' style={{marginLeft: "3%"}}>Tickets DashBoard</Link>
         </div>
         {/* Date Filter */}
-        <div className='date_filter'>
+        <div className='tickets_date_filter'>
             <select name="isAvailable" value={searchTickets}
                 onChange={(e)=> setSearchTickets(e.target.value)}>
                 <option value="">All</option>
                 <option value={myTodaysDate}>Todays Tickets</option>
                 <option value={myYesterdaysDate}>Yesterdays Tickets</option>
             </select>
+
+            
         </div>
         {/* Search */}
-        <div className='search_bar'>
+        <div className='tickets_search_bar'>
             <label style={{margin: "1%"}}>Search</label>
             <input 
                 type="text" 
@@ -114,8 +117,8 @@ const Tickets = () => {
         {tickets?.length
         ? (
            <>
-           <div className='table'>
-            <table className='table_content'>
+           <div className='ticketsTable'>
+            <table className='tickets_table_content'>
                 <thead>
                 <tr>
                 <th>Title </th>
@@ -128,7 +131,7 @@ const Tickets = () => {
                 <th>Due Date</th> 
                 <th>Date Created</th> 
                 {/* <th> update</th>   */}
-                <th> Remove</th>      
+                <th> Action</th>      
                 </tr>
                 </thead>
 
@@ -174,14 +177,16 @@ const Tickets = () => {
                                     <td>{(moment(ticket.due_date).format('DD-MM-YYYY'))}</td>
                                     <td>{(moment(ticket.createdAt).format('DD-MM-YYYY'))}</td>
                                    
-                                    {
+                                    {    //Enabling only creators of the ticket, Admins and Super_Users to update & delete
                                          (loggedinUserRoles === "4" || loggedinUserRoles ==="3") ||ticket.creatorsEmail === userEmail ?
                                         <td> <Link to = '' className = "btn btn-danger" onClick = {() => deleteTicket(ticket.id)}
-                                            style = {{marginLeft:"10px"}}> X 
+                                            style = {{marginLeft:"10px"}}> <AiIcons.AiFillDelete/>
                                             </Link>
                                         </td>
                                         : <td>
-                                            <></>
+                                             <Link to = '' className = "btn btn-secondary"
+                                               style = {{marginLeft:"10px"}}> <AiIcons.AiFillDelete/>
+                                            </Link>
                                         </td>
                                     }
                                     
