@@ -51,7 +51,7 @@ function InventorySummary() {
   return (
     <div>
     <div  className="InventorySum" onClick={tabClicked}>Inventory Summary 
-    <span>{ `Tablets \n ${tabletCount}`}</span>
+    <span className="span">{ `Tablets \n ${tabletCount}`}</span>
     <span>{`Simcards ${simCount}`}</span>
     </div>
 

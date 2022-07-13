@@ -5,12 +5,8 @@ import WeeklyTicketsDashboard from '../Tickets/DashboardItems/WeeklyTicketsDashb
 import Facilities_Summary from './Facilities_Summary';
 import TodaysResolved from '../Tickets/DashboardItems/TodaysResolved';
 import Implementation_Summary from './Implementation_Summary';
-<<<<<<< HEAD
-import InventorySummary from './InventorySummary';
-=======
 import UseAuth from "../../context/UseAuth";
-
->>>>>>> af5db509e3db81d931a481e7ac49026c604ee37b
+import InventorySummary from './InventorySummary';
 
 const Home = () => {
   const navigate = useNavigate();

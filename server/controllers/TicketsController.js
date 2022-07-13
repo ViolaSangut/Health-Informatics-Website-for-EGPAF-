@@ -12,12 +12,12 @@ const db = mysql.createConnection({
 });
 
 //List
-<<<<<<< HEAD
 const getTickets = async (req, res) => {
   const tickets = await Tickets.findAll({
     attributes: [
       "id",
       "title",
+      "description",
       "facility",
       "creatorsEmail",
       "creatorsFirstName",
@@ -28,17 +28,6 @@ const getTickets = async (req, res) => {
       "due_date",
       [
         sequelize.fn("DATE_FORMAT", sequelize.col("createdAt"), "%Y-%m-%d"),
-=======
-const getTickets = async (req, res)=>{
-
-    const tickets = await Tickets.findAll({attributes: ["id", "title", "description", "facility", "creatorsEmail", "creatorsFirstName", "creatorsLastName","ticket_status", "assignee", "priority", "due_date",[
-        sequelize.fn
-        (
-          "DATE_FORMAT", 
-          sequelize.col("createdAt"), 
-          "%Y-%m-%d"
-        ),
->>>>>>> af5db509e3db81d931a481e7ac49026c604ee37b
         "createdAt",
       ],
     ],
@@ -47,11 +36,11 @@ const getTickets = async (req, res)=>{
 };
 
 //Adding a Ticket
-<<<<<<< HEAD
 const addTicket = async (req, res) => {
   const {
     title,
     facility,
+    description,
     creatorsEmail,
     creatorsFirstName,
     creatorsLastName,
@@ -60,19 +49,20 @@ const addTicket = async (req, res) => {
     priority,
     due_date,
   } = req.body;
-=======
-const addTicket = async (req, res)=>{
-    const { title, facility, description, creatorsEmail, creatorsFirstName, creatorsLastName, ticket_status, assignee, priority, due_date} = req.body;
->>>>>>> af5db509e3db81d931a481e7ac49026c604ee37b
 
   if (!title || !facility || !creatorsEmail || !due_date) {
     res.status(400); //Bad req
     throw new error("Please add all mandatory fields!");
   }
 
-<<<<<<< HEAD
+  if (!title || !facility || !creatorsEmail || !due_date) {
+    res.status(400); //Bad req
+    throw new error("Please add all mandatory fields!");
+  }
+
   Tickets.create({
     title: title,
+    description: description,
     facility: facility,
     creatorsEmail: creatorsEmail,
     creatorsFirstName: creatorsFirstName,
@@ -81,33 +71,11 @@ const addTicket = async (req, res)=>{
     assignee: assignee,
     priority: priority,
     due_date: due_date,
-  })
-    .then(() => {
-      res.json("Ticket added!");
-=======
-    if(!title || !facility || !creatorsEmail || !due_date ){
-        res.status(400) //Bad req
-        throw new error("Please add all mandatory fields!")
+  }).catch((error) => {
+    if (error) {
+      res.status(400).json({ error: error });
     }
-
-    Tickets.create({
-        title: title,
-        description: description,
-        facility: facility,
-        creatorsEmail: creatorsEmail,
-        creatorsFirstName: creatorsFirstName,
-        creatorsLastName: creatorsLastName,
-        ticket_status:ticket_status,
-        assignee: assignee,
-        priority: priority,
-        due_date: due_date,
->>>>>>> af5db509e3db81d931a481e7ac49026c604ee37b
-    })
-    .catch((error) => {
-      if (error) {
-        res.status(400).json({ error: error });
-      }
-    });
+  });
 };
 
 //Delete
@@ -143,7 +111,6 @@ const findTicketById = async (req, res, next) => {
 };
 
 //update
-<<<<<<< HEAD
 const updateTicket = async (req, res, next) => {
   try {
     const { id } = req.params;
@@ -166,45 +133,6 @@ const updateTicket = async (req, res, next) => {
     if (assignee) findOneTicketById.assignee = assignee;
     if (priority) findOneTicketById.priority = priority;
     if (due_date) findOneTicketById.due_date = due_date;
-=======
-const updateTicket = async (req, res, next)=>{
-    try {
-        const { id } = req.params;
-        const { title,description, facility, ticket_status, assignee, priority, due_date} = req.body;
-        const findOneTicketById = await Tickets.findOne({
-            where:{
-                id: id,
-            }});
-            if (!findOneTicketById) {
-                res.status(404).send({
-                    status: 'error',
-                    message: `Ticket with id: ${id} not found`,
-                });
-            }
-            if(title) findOneTicketById.title = title;
-            if(description) findOneTicketById.description = description;
-            if(facility) findOneTicketById.facility = facility;
-            if(ticket_status) findOneTicketById.ticket_status = ticket_status;
-            if(assignee) findOneTicketById.assignee = assignee;
-            if(priority) findOneTicketById.priority = priority;
-            if(due_date) findOneTicketById.due_date = due_date;
-           
-            const updatedTicket = await findOneTicketById.save();
-            if (!updatedTicket) {
-                res.status(404).send({
-                    status: 'error',
-                    message: `Ticket with id: ${id} not found`
-                    ,
-                });
-            }
-            res.status(200).send({
-                status: 'success',
-                data: updatedTicket
-            });  
-        } catch (error) {
-            next(error);
-        }
->>>>>>> af5db509e3db81d931a481e7ac49026c604ee37b
 
     const updatedTicket = await findOneTicketById.save();
     if (!updatedTicket) {

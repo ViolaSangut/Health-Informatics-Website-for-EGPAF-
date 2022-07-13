@@ -10,7 +10,7 @@
         cursor: pointer;
         margin: 1em;
 }
-.InventorySum span {
+.span {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
