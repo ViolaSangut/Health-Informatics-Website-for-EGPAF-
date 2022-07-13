@@ -192,14 +192,9 @@ const AddTicket = () => {
      
     }, [])
 
-
- 
-
-  let dashboardTitle = <h3 className='dashboardTitle'>Weekly Tickets History</h3>
-
   return (
-    <div className='test'>
-      <div className="wrapper">
+    <div className='addTicket'>
+      <div className="addTicketContent">
       <div className="title">
         <> 
         {
@@ -282,7 +277,6 @@ const AddTicket = () => {
               <select value={priority} onChange={(e)=>{setPriority(e.target.value)}} >
                 <option value="">Select</option>
                 <option value="Low">Low</option>
-                <option value="Medium">Medium</option>
                 <option value="Medium">Medium</option>
                 <option value="High">High</option>
                 <option value="Urgent">Urgent</option>

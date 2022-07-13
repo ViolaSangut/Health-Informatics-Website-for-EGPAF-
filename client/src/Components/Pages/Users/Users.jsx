@@ -5,6 +5,7 @@ import { toast  } from 'react-toastify';
 import usePrivateAxios from '../../hooks/usePrivateAxios';
 import UseAuth from "../../context/UseAuth";
 import jwt_decode from "jwt-decode";
+import * as AiIcons from "react-icons/ai";
 
 const Users = () => {
     const [users, setUsers] = useState([]);
@@ -65,8 +66,8 @@ const Users = () => {
   return (
     <div className='container'> 
     <div className='users-title'>
-        <h2 className='text-center'>Users List</h2>  
-        <Link to = '/add-user' className='btn btn-success'   style = {{marginLeft:"30px"}}>Add user</Link>
+        <h2 className='text-center'>Users</h2>  
+        <Link to = '/add-user' className='btn btn-success'   style = {{marginLeft:"10%"}}>New user</Link>
 
     </div>
 
@@ -84,7 +85,7 @@ const Users = () => {
     <table className='table_content'>
     <thead>
      <tr>
-        <th>User ID </th>
+        {/* <th>User ID </th> */}
         <th>First Name</th>
         <th>Last Name</th> 
         <th>Role</th> 
@@ -116,7 +117,7 @@ const Users = () => {
             user => 
                 <tr key = {user.id}>
 
-                    <td> {user.id} </td>
+                    {/* <td> {user.id} </td> */}
                     <td> {user.firstName} </td>
                     <td> {user.lastName} </td>
                     <td> {user.Role.role} </td>
@@ -126,11 +127,11 @@ const Users = () => {
                     //Denying loggedin user right to delete himself/herself 
                     loggedinUserEmail === user.email ?
                         <td>
-                        <Link to = {`/edit-user/${user.id}`} className='btn btn-info'>Update</Link>
+                        <Link to = {`/edit-user/${user.id}`} className='btn btn-info'><AiIcons.AiFillEdit/></Link>
                        
                         <Link to = "" className = "btn btn-secondary"
                             style = {{marginLeft:"10px"}}> 
-                            C/U
+                             <AiIcons.AiFillDelete/> 
                         </Link>    
                         </td>
 
@@ -143,16 +144,16 @@ const Users = () => {
                     //Allowing Superuser to update all Superusers
                     : loggedinUserRoles === "4" && user.Role.role === "Super_User"?            
                         <td>
-                        <Link to = {`/edit-user/${user.id}`} className='btn btn-info'>Update</Link>         
+                        <Link to = {`/edit-user/${user.id}`} className='btn btn-info'><AiIcons.AiFillEdit/></Link>         
                         </td>
 
                     //Allowing Superuser to update & delete all users   
                     : loggedinUserRoles === "4" ?            
                         <td>
-                        <Link to = {`/edit-user/${user.id}`} className='btn btn-info'>Update</Link> 
-                        <Link to = "" className = "btn q" onClick = {() => deleteUser(user.id)}
+                        <Link to = {`/edit-user/${user.id}`} className='btn btn-info'><AiIcons.AiFillEdit/></Link> 
+                        <Link to = "" className = "btn btn-danger" onClick = {() => deleteUser(user.id)}
                             style = {{marginLeft:"10px"}}> 
-                            X 
+                            <AiIcons.AiFillDelete/>  
                         </Link>    
                         </td> 
                         
@@ -160,10 +161,10 @@ const Users = () => {
                     : (loggedinUserRoles === "3" || loggedinUserRoles === "4") && user.Role.role !== "Super_User" ?
 
                         <td>
-                        <Link to = {`/edit-user/${user.id}`} className='btn btn-info'>Update</Link> 
+                        <Link to = {`/edit-user/${user.id}`} className='btn btn-info'><AiIcons.AiFillEdit/></Link> 
                         <Link to = "" className = "btn btn-danger" onClick = {() => deleteUser(user.id)}
                                style = {{marginLeft:"10px"}}> 
-                               X 
+                               <AiIcons.AiFillDelete/> 
                         </Link>
                                
                         </td>  

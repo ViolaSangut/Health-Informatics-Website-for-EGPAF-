@@ -71,7 +71,7 @@ const loggedinUserEmail = decodedAccessToken?.email || null;
 const usersFirstName = decodedAccessToken?.firstName || null;
 const usersLastName = decodedAccessToken?.lastName || null;
 const UserRoles = decodedAccessToken?.roles || null;
-const loggedinUserRoles = UserRoles.toString();
+const loggedinUserRoles = UserRoles?.toString();
 
 const [singleUserRole, setSingleUserRole] = useState("")
 
