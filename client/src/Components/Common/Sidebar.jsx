@@ -31,6 +31,7 @@ const SidebarComponent = ({ items }) => {
     //Logout
     const logout = async () => {
         setAuth({});
+        localStorage.removeItem("loggedInCheck");
         try {
           await axios.delete("http://localhost:4000/users/logout", {
             withCredentials: true

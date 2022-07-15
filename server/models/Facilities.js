@@ -1,9 +1,6 @@
 module.exports = (sequelize, DataTypes) =>{
     const Facilities = sequelize.define("Facilities", {
-        
-        
-        
-        
+           
         facilityname: {
             type: DataTypes.STRING,
             allowNull: false,

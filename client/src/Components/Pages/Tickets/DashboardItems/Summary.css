@@ -7,7 +7,13 @@
     box-shadow: 2px 4px 10px 1px rgba(201, 201, 201, 0.47);
     border-radius: 10px;
     height: 100px;
+    cursor: pointer;
+    
 }
+
+.summary:hover {
+    background-color: rgb(74, 181, 174);
+  }
 
 .summary_items {
     display: flex;
@@ -23,6 +29,7 @@
     color:red;
     font-weight: bold;
     font-size: 300%;
+    
 }
 
 .valuePending {

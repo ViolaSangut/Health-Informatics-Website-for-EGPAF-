@@ -41,7 +41,15 @@ Object.keys(db).forEach((modelName) => {
 });
 
 
+// db.Facilities.hasMany(db.Tickets, {
+//   foreignKey: 'Facility_id',
+//   as: 'Tickets'
+// })
 
+// db.Tickets.belongsTo(db.Facilities, {
+//   foreignKey: 'Facility_id',
+//   as: 'Facility'
+// })
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 

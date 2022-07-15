@@ -185,7 +185,7 @@ const AddTicketComponent = () => {
                         <label>Facility</label>
                         <select  onChange ={(e) => setFacility(e.target.value)}>
                         <option selected disabled ="true">--Select  Facility--</option>
-                          {/* <option >Select</option> */}
+                           {/* <option >Select</option> */}
                             {
                                 facilities.map((facility)=>(<option key={facility.id}text={facility.mflcode}>{facility.facilityname}</option>))
                             }

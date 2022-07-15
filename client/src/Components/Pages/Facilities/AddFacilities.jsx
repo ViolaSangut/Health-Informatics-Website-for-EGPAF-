@@ -72,7 +72,7 @@ const AddFacilityComponent = () => {
         const facility = {mflcode, facilityname, ipaddress, subcounty, county, elasticipaddress}
       //Preventing adding empty fields
         if(facility.mflcode ==="" || facility.facilityname ==="" || facility.ipaddress ==="" || facility.county ==="" || facility.subcounty ==="" || facility.elasticipaddress ===""){
-            alert("All the fields are mandatory!");
+            alert("Enter all the mandatory fields !");
          return;
         } else{
             if (id) {

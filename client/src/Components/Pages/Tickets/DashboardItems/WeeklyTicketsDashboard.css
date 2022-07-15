@@ -1,18 +1,23 @@
 .chart{
-    flex: 3;
+    flex: 6;
     -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
   box-shadow: 2px 4px 10px 1px rgba(201, 201, 201, 0.47);
-  padding: 10px;
   color: gray;
+  margin-bottom: 2%;
+  
 }
-
-.title {
-    /* margin-bottom: 20px; */
-  }
 
   .chartGrid {
     stroke: rgb(228, 225, 225);
   }
 
+
+.dashboardTitle{
+  color: black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
 
   

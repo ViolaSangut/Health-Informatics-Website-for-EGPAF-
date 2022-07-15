@@ -1,5 +1,7 @@
 const Sequelize = require("sequelize");
 
+const todaysDate = new Date();
+
 module.exports = (sequelize, DataTypes) => {
   const Tickets = sequelize.define("Tickets", {
     title: {
@@ -35,6 +37,10 @@ module.exports = (sequelize, DataTypes) => {
     },
     due_date: {
       type: DataTypes.DATEONLY,
+    },
+    created_date: {
+      type: DataTypes.DATEONLY,
+      defaultValue: todaysDate,
     },
   });
   return Tickets;

@@ -25,7 +25,7 @@ const SpecificFacilityComponent = () => {
 
 
   const [tickets, setTickets] = useState([]);
-  const facilityticket = tickets.find(ticket => (ticket.facility) === facilityname);
+  
   useEffect(() => {   
     getAllTickets();
   }, [])
@@ -80,14 +80,7 @@ return (
   <p>WebADT:{WebADT}</p>
   <p>Ushauri:{ushauri}</p>
   <h2>TICKETS</h2>
-   {tickets.filter((ticket)=>{
-                            if(ticket.facility === facilityname){
-                                return ticket;
-                            } }).map
-                            (ticket=><p key={ticket.id}>{ticket.title}</p>)
-
-                            }
-
+   
   </div>
 )
 };
