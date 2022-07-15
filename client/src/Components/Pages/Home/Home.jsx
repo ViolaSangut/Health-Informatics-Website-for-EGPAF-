@@ -21,7 +21,7 @@ const Home = () => {
           <Facilities_Summary county= "Homa_Bay"/>
           <Facilities_Summary county= "Kisii" />
           <Facilities_Summary county= "Kiambu"/>
-          <Implementation_Summary/>
+          <Implementation_Summary  />
         
         </div>
         

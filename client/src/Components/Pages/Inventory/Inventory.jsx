@@ -103,9 +103,8 @@ const Inventory = () => {
         <th>Passcode</th> 
         <th>Email</th>
         <th>Email Password</th>
-        <th></th>
-        <th></th>
-        <th></th>
+        <th>Actions</th>
+        <th/>
         </tr>             
     </thead>
 

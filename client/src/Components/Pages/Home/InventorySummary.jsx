@@ -43,18 +43,17 @@ function InventorySummary() {
   }, [])
 
   const tabClicked = () => {
-    console.log("Clicked")
-    window.location.href = "/Inventory"
+    // console.log("Clicked"
+    window.location.href = `/Inventory`
   }
 
 
   return (
     <div>
-    <div  className="InventorySum" onClick={tabClicked}>Inventory Summary 
-    <span className="span">{ `Tablets \n ${tabletCount}`}</span>
-    <span>{`Simcards ${simCount}`}</span>
-    </div>
-
+    <div className="inventorySum" onClick={tabClicked}>
+      <h3>Tablets: <b>{ `${tabletCount}`}</b></h3></div>
+    <div className="inventorySum" onClick={tabClicked}>
+      <h3>Simcards: <b>{`${simCount}`}</b></h3></div>
     </div>
   )
 }
