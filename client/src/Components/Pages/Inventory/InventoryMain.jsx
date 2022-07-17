@@ -28,7 +28,7 @@ useEffect(() => {
     <div>
      
         <select  className= "buttonadd" value={display} onChange={handleChange}>
-                 <option selected disabled ="true">--Select Item Type--</option>
+                 <option value="DEFAULT" disabled ={true}>--Select Item Type--</option>
                 <option value="Simcards">Simcards</option>
                 <option value="Tablets">Tablets</option>
 

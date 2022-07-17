@@ -362,7 +362,7 @@ useEffect(() => {
                 onFocus={() => setStatusFocus(true)}
               onBlur={() => setStatusFocus(false)}
             >
-                  <option selected disabled="true">--Select Device Status--</option>
+                  <option value="DEFAULT" disabled={true}>--Select Device Status--</option>
                 {
                     DeviceStatus.DeviceStatus.map((result)=>( <option text={result.no}>{result.status}</option>))
                 }
@@ -399,7 +399,7 @@ useEffect(() => {
                 onFocus={() => setFacilityFocus(true)}
               onBlur={() => setFacilityFocus(false)}
              >
-                  <option selected disabled="true">--Select Facility Assigned--</option>
+                  <option value="DEFAULT" disabled={true}>--Select Facility Assigned--</option>
                 {
                      facilities.map((facility)=>(<option key={facility.id}text={facility.mflcode}>{facility.facilityname}</option>))
                 }

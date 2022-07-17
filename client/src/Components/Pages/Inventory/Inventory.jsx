@@ -49,7 +49,7 @@ const Inventory = () => {
                 return item.id !== id;
             }));
             toast.success("Item deleted successfully");
-            console.log(response);
+            // console.log(response);
             // navigate("/inventory")
         })
         .catch((error)=>{
@@ -92,6 +92,7 @@ const Inventory = () => {
               <div className="table">
    <table className="table_content" ref={tableRef}>
     <thead className=''>
+        <tr>
         <th>Serial</th>
         <th>IMEI</th>
         <th>Brand Name</th>
@@ -102,13 +103,9 @@ const Inventory = () => {
         <th>Passcode</th> 
         <th>Email</th>
         <th>Email Password</th>
-        <th></th>
-        <th></th>
-        <th></th>
-        
-
-                
-
+        <th>Actions</th>
+        <th/>
+        </tr>             
     </thead>
 
     <tbody className="">

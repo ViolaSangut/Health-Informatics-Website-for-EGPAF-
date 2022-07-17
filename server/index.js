@@ -7,21 +7,19 @@ const { verifyToken } = require("./middleware/VerifyToken");
 const mysql = require("mysql2");
 const hbFacilities = require("./models/homaBayFacilities.json");
 
-
-
 //DB Configuration
 const db1 = mysql.createConnection({
   user: "hbhis",
   host: "localhost",
   password: "hbhis",
   database: "hbhis",
-  multipleStatements: true
+  multipleStatements: true,
 });
-//Allowed paths 
+//Allowed paths
 const corsOptions = {
   origin: "http://localhost:4000",
   origin: "http://localhost:4001",
-  credentials: true, 
+  credentials: true,
   optionSuccessStatus: 200,
 };
 
@@ -59,59 +57,64 @@ const simcardsRouter = require("./routes/SimcardRoute");
 app.use("/simcards", simcardsRouter);
 
 //Roles
-app.use("/roles", require("./routes/rolesRoute") )
+app.use("/roles", require("./routes/rolesRoute"));
 
 //Inserting roles to db if they don't exists
-var insertingRoles = "INSERT IGNORE INTO roles (id, role, createdAt, updatedAt ) VALUES ?";
+var insertingRoles =
+  "INSERT IGNORE INTO roles (id, role, createdAt, updatedAt ) VALUES ?";
 const todaysDate = new Date();
 var values = [
-    [1, 'User', todaysDate, todaysDate],
-    [2, "Manager", todaysDate,todaysDate],
-    [3, "Admin", todaysDate, todaysDate],
-    [4, "Super_User", todaysDate, todaysDate]
+  [1, "User", todaysDate, todaysDate],
+  [2, "Manager", todaysDate, todaysDate],
+  [3, "Admin", todaysDate, todaysDate],
+  [4, "Super_User", todaysDate, todaysDate],
 ];
 
 //Creating roles when server runs
-const creatingRoles = async (req, res)=>{
-  db1.query(insertingRoles, [values],
-          (err, result)=>{
-              if(err){
-                  console.log(err)
-              }
-          }
-  )
-
+const creatingRoles = async (req, res) => {
+  db1.query(insertingRoles, [values], (err, result) => {
+    if (err) {
+      console.log(err);
+    }
+  });
 };
 
 //Facilities
 //Inserting Facilities to db if they don't exists
-let insertingFacilities = "INSERT IGNORE INTO facilities (facilityname, mflcode, county, subcounty, ushauri, WebADT, status, ipaddress, elasticipaddress) VALUES ?";
+let insertingFacilities =
+  "INSERT IGNORE INTO facilities (facilityname, mflcode, county, subcounty, ushauri, WebADT, status, ipaddress, elasticipaddress) VALUES ?";
 
 let hbFacilitiesList = hbFacilities;
 let hbFacilitiesValues = [];
 
 for (let i = 0; i < hbFacilitiesList.length; i++) {
-  hbFacilitiesValues.push([hbFacilitiesList[i].facilityname, hbFacilitiesList[i].mflcode, hbFacilitiesList[i].county, hbFacilitiesList[i].subcounty, hbFacilitiesList[i].ushauri, hbFacilitiesList[i].WebADT, hbFacilitiesList[i].status, hbFacilitiesList[i].ipaddress, hbFacilitiesList[i].elasticipaddress])
+  hbFacilitiesValues.push([
+    hbFacilitiesList[i].facilityname,
+    hbFacilitiesList[i].mflcode,
+    hbFacilitiesList[i].county,
+    hbFacilitiesList[i].subcounty,
+    hbFacilitiesList[i].ushauri,
+    hbFacilitiesList[i].WebADT,
+    hbFacilitiesList[i].status,
+    hbFacilitiesList[i].ipaddress,
+    hbFacilitiesList[i].elasticipaddress,
+  ]);
 }
 
 //Creating facilities when server runs
-const creatingFacilities = async (req, res)=>{
-  db1.query(insertingFacilities, [hbFacilitiesValues],
-          (err, result)=>{
-              if(err){
-                  console.log(err)
-              }
-          }
-  )
-
+const creatingFacilities = async (req, res) => {
+  db1.query(insertingFacilities, [hbFacilitiesValues], (err, result) => {
+    if (err) {
+      console.log(err);
+    }
+  });
 };
-
-
 
 //Running server
 db.sequelize.sync().then(() => {
-  creatingRoles(), creatingFacilities(),
-  app.listen(4000, () => {
-    console.log("Server running at port 4000");
-  });
+  creatingRoles(),
+    creatingFacilities(),
+    app.listen(4000, () => {
+      console.log("Server running at port 4000");
+    });
 });

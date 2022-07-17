@@ -1,11 +1,13 @@
-.addTicket{
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap');
+
+.test{
   margin-top: 2%;
   padding: 0;
   box-sizing: border-box;
   font-family: 'Montserrat', sans-serif;
 }
 
-.addTicketContent{
+.wrapper{
   max-width: 500px;
   width: 100%;
   background: #fff;
@@ -14,7 +16,7 @@
   padding: 30px;
 }
 
-.addTicketContent .title{
+.wrapper .title{
   font-size: 24px;
   font-weight: 700;
   margin-bottom: 25px;
@@ -22,25 +24,25 @@
   text-align: center;
 }
 
-.addTicketContent .form{
+.wrapper .form{
   width: 100%;
 }
 
-.addTicketContent .form .inputfield{
+.wrapper .form .inputfield{
   margin-bottom: 15px;
   display: flex;
   align-items: center;
 }
 
-.addTicketContent .form .inputfield label{
+.wrapper .form .inputfield label{
    width: 200px;
    color: #757575;
    margin-right: 10px;
   font-size: 14px;
 }
 
-.addTicketContent .form .inputfield .input,
-.addTicketContent .form .inputfield .textarea{
+.wrapper .form .inputfield .input,
+.wrapper .form .inputfield .textarea{
   width: 100%;
   outline: none;
   border: 1px solid #d5dbd9;
@@ -50,19 +52,19 @@
   transition: all 0.3s ease;
 }
 
-.addTicketContent .form .inputfield .textarea{
+.wrapper .form .inputfield .textarea{
   width: 100%;
   height: 125px;
   resize: none;
 }
 
-.addTicketContent .form .inputfield .custom_select{
+.wrapper .form .inputfield .custom_select{
   position: relative;
   width: 100%;
   height: 37px;
 }
 
-.addTicketContent .form .inputfield .custom_select:before{
+.wrapper .form .inputfield .custom_select:before{
   content: "";
   position: absolute;
   top: 12px;
@@ -72,7 +74,7 @@
   pointer-events: none;
 }
 
-.addTicketContent .form .inputfield .custom_select select{
+.wrapper .form .inputfield .custom_select select{
   -webkit-appearance: none;
   -moz-appearance:   none;
   appearance:        none;
@@ -87,36 +89,36 @@
 }
 
 
-.wrapaddTicketContentper .form .inputfield .input:focus,
-.addTicketContent .form .inputfield .textarea:focus,
-.addTicketContent .form .inputfield .custom_select select:focus{
+.wrapper .form .inputfield .input:focus,
+.wrapper .form .inputfield .textarea:focus,
+.wrapper .form .inputfield .custom_select select:focus{
   border: 1px solid black;
 }
 
-.addTicketContent .form .inputfield p{
+.wrapper .form .inputfield p{
    font-size: 14px;
    color: #757575;
 }
-.addTicketContent .form .inputfield .check{
+.wrapper .form .inputfield .check{
   width: 15px;
   height: 15px;
   position: relative;
   display: block;
   cursor: pointer;
 }
-.addTicketContent .form .inputfield .check input[type="checkbox"]{
+.wrapper .form .inputfield .check input[type="checkbox"]{
   position: absolute;
   top: 0;
   left: 0;
   opacity: 0;
 }
-.addTicketContent .form .inputfield .check .checkmark{
+.wrapper .form .inputfield .check .checkmark{
   width: 15px;
   height: 15px;
   display: block;
   position: relative;
 }
-.addTicketContent .form .inputfield .check .checkmark:before{
+.wrapper .form .inputfield .check .checkmark:before{
   content: "";
   position: absolute;
   top: 1px;
@@ -129,11 +131,11 @@
   display: none;
 }
 
-.addTicketContent .form .inputfield .check input[type="checkbox"]:checked ~ .checkmark:before{
+.wrapper .form .inputfield .check input[type="checkbox"]:checked ~ .checkmark:before{
   display: block;
 }
 
-.addTicketContent .form .inputfield .btn{
+.wrapper .form .inputfield .btn{
   width: 100%;
    padding: 8px 10px;
   font-size: 15px; 
@@ -144,23 +146,23 @@
   outline: none;
 }
 
-.addTicketContent .form .inputfield .btn:hover{
+.wrapper .form .inputfield .btn:hover{
   background: #5d6ab3;
 }
 
-.addTicketContent .form .inputfield:last-child{
+.wrapper .form .inputfield:last-child{
   margin-bottom: 0;
 }
 
 @media (max-width:420px) {
-  .addTicketContent .form .inputfield{
+  .wrapper .form .inputfield{
     flex-direction: column;
     align-items: flex-start;
   }
-  .addTicketContent .form .inputfield label{
+  .wrapper .form .inputfield label{
     margin-bottom: 5px;
   }
-  .addTicketContent .form .inputfield.terms{
+  .wrapper .form .inputfield.terms{
     flex-direction: row;
   }
 }
