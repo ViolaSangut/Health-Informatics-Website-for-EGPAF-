@@ -84,31 +84,19 @@ const getFacilities = async (req, res) => {
   res.json(facilities);
 };
 //Adding a facility
-const addFacilities = async (req, res) => {
-  const {
-    facilityname,
-    mflcode,
-    subcounty,
-    status,
-    ipaddress,
-    ushauri,
-    WebADT,
-    county,
-    elasticipaddress,
-  } = req.body;
-  Facilities.create({
-    facilityname: facilityname,
-    mflcode: mflcode,
-    subcounty: subcounty,
-    status: status,
-    ipaddress: ipaddress,
-    county: county,
-    ushauri: ushauri ? ushauri : false,
-    WebADT: WebADT,
-    elasticipaddress: elasticipaddress,
-  })
-    .then(() => {
-      res.json("facility added!");
+const addFacilities = async (req, res)=>{
+    const { facilityname, mflcode, subcounty, status, ipaddress, ushauri, WebADT, county, elasticipaddress} = req.body;
+    Facilities.create({
+        facilityname:facilityname,
+        mflcode:mflcode,
+        subcounty:subcounty,
+        status:status,
+        ipaddress:ipaddress,
+        county:county,
+        ushauri:ushauri,
+        WebADT:WebADT,
+        elasticipaddress:elasticipaddress, 
+        
     })
     .catch((error) => {
       if (error) {

@@ -204,14 +204,18 @@ const AddTicket = () => {
             <input type="text" className="input"  
             value={title} 
             onChange={(e) =>setTitle(e.target.value)}
+            //Disabling Update for non admin & super and non-ticket creators
+            disabled={!id? false :(loggedinUserRoles === "4" || loggedinUserRoles ==="3") ||((ticketCreatorsEmail === loggedinUserEmail) ) ? false : true}
             />
         </div>  
 
-        <div className="inputfield">
+        <div className="inputfield"  >
             <label>Description</label>
             <textarea className="textarea"  
             value={description} 
             onChange={(e) =>setDescription(e.target.value)}
+            //Disabling Update for non admin & super and non-ticket creators
+            disabled={!id? false :(loggedinUserRoles === "4" || loggedinUserRoles ==="3") ||((ticketCreatorsEmail === loggedinUserEmail) ) ? false : true}
             />
         </div> 
 
@@ -219,7 +223,7 @@ const AddTicket = () => {
             <label>Facility</label>
             <div className="custom_select">
               
-              <select value={facility} onChange ={(e) => setFacility(e.target.value)}>
+              <select value={facility} onChange ={(e) => setFacility(e.target.value)} disabled={!id? false :(loggedinUserRoles === "4" || loggedinUserRoles ==="3") ||((ticketCreatorsEmail === loggedinUserEmail) ) ? false : true}>
               <option selected disabled ="true">--Select  Facility--</option>
                   {
                       facilities.map((facility)=>(<option key={facility.id}text={facility.mflcode}>{facility.facilityname}</option>))
@@ -232,7 +236,8 @@ const AddTicket = () => {
         <div className="inputfield">
             <label>Assignee</label>
             <div className="custom_select">
-              <select value={assignee} onChange={(e) =>setAssignee(e.target.value)} >
+              <select value={assignee} onChange={(e) =>setAssignee(e.target.value)} 
+              disabled={!id? false :(loggedinUserRoles === "4" || loggedinUserRoles ==="3") ||((ticketCreatorsEmail === loggedinUserEmail) ) ? false : true}>
                 <option value="">Select</option>
                 <option value="Ezra">Ezra</option>
                 <option value="Alvin">Alvin</option>
@@ -246,7 +251,8 @@ const AddTicket = () => {
         <div className="inputfield" >
           <label>Status</label>
           <div class="custom_select">
-            <select value={ticket_status} onChange={(e)=>{setTicket_status(e.target.value)}} >
+            <select value={ticket_status} onChange={(e)=>{setTicket_status(e.target.value)}} 
+            disabled={!id? false :(loggedinUserRoles === "4" || loggedinUserRoles ==="3") ||((ticketCreatorsEmail === loggedinUserEmail) ) ? false : true}>
               <option value="">Select</option>
               <option value="Unasigned">Unasigned</option>
               <option value="Pending">Pending</option>
@@ -259,7 +265,9 @@ const AddTicket = () => {
         <div className="inputfield" hidden={true}>
           <label>Status</label>
           <div className="custom_select">
-            <select value={ticket_status} onChange={(e)=>{setTicket_status(e.target.value)}} >
+            <select value={ticket_status} onChange={(e)=>{setTicket_status(e.target.value)}} 
+            disabled={!id? false :(loggedinUserRoles === "4" || loggedinUserRoles ==="3") ||((ticketCreatorsEmail === loggedinUserEmail) ) ? false : true}
+            >
               {/* <option value="">Select</option> */}
               <option value="Unasigned">Unasigned</option>
               <option value="Pending">Pending</option>
@@ -273,7 +281,8 @@ const AddTicket = () => {
         <div className="inputfield">
             <label>Priority</label>
             <div className="custom_select">
-              <select value={priority} onChange={(e)=>{setPriority(e.target.value)}} >
+              <select value={priority} onChange={(e)=>{setPriority(e.target.value)}} disabled={!id? false :(loggedinUserRoles === "4" || loggedinUserRoles ==="3") ||((ticketCreatorsEmail === loggedinUserEmail) ) ? false : true}
+              >
                 <option value="">Select</option>
                 <option value="Low">Low</option>
                 <option value="Medium">Medium</option>
@@ -289,7 +298,9 @@ const AddTicket = () => {
                       <input type="date" name="due_date" className="form-control"
                            value={(moment(due_date).format('YYYY-MM-DD'))} 
                        onChange={(e)=>{setDue_date(e.target.value)}}
-                       min={minDate}                         
+                       min={minDate}  
+                       
+                       disabled={!id? false :(loggedinUserRoles === "4" || loggedinUserRoles ==="3") ||((ticketCreatorsEmail === loggedinUserEmail) ) ? false : true}
                       />                
         </div>  
        

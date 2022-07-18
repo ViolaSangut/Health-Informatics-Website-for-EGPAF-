@@ -4,6 +4,7 @@ import { toast  } from 'react-toastify';
 import './AddInventory.css'
 import Facilities from './Facilities.json'
 import DeviceStatus from './DeviceStatus.json';
+import axios from "axios";
 import usePrivateAxios from '../../hooks/usePrivateAxios';
 import {
   faCheck,
@@ -62,7 +63,7 @@ const [passwordFocus, setPasswordFocus]= useState(false);
 
 const {id} =useParams(); 
 const navigate = useNavigate();
-
+const [facilities, setFacilities] = useState([]);
 const [items, setItems] = useState([])
 const item = items.find(item => (item.id).toString() === id);
 
@@ -172,6 +173,21 @@ useEffect(() => {
                 alert("Error: " + error.message);
             })
         }
+
+        //get facilities
+        useEffect(() => {   
+          getAllFacilities();
+        }, [])
+      
+        const getAllFacilities = () =>{
+          axios.get("http://localhost:4000/facilities")
+          .then((response)=>{
+              console.log(response.data)
+              setFacilities(response.data);
+          })
+          .catch((error)=>{
+              console.log(error);
+          })}
 
         //Update Item
   const updateItem = async () => {
@@ -385,7 +401,7 @@ useEffect(() => {
              >
                   <option value="DEFAULT" disabled={true}>--Select Facility Assigned--</option>
                 {
-                     Facilities.Facilitynames.map((result)=>(<option text={result.no}>{result.facility}</option>))
+                     facilities.map((facility)=>(<option key={facility.id}text={facility.mflcode}>{facility.facilityname}</option>))
                 }
             </select>
             <p

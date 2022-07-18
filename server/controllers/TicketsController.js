@@ -55,11 +55,6 @@ const addTicket = async (req, res) => {
     throw new error("Please add all mandatory fields!");
   }
 
-  if (!title || !facility || !creatorsEmail || !due_date) {
-    res.status(400); //Bad req
-    throw new error("Please add all mandatory fields!");
-  }
-
   Tickets.create({
     title: title,
     description: description,
@@ -71,11 +66,15 @@ const addTicket = async (req, res) => {
     assignee: assignee,
     priority: priority,
     due_date: due_date,
-  }).catch((error) => {
-    if (error) {
-      res.status(400).json({ error: error });
-    }
-  });
+  })
+    .then(() => {
+      res.json("Ticket added!");
+    })
+    .catch((error) => {
+      if (error) {
+        res.status(400).json({ error: error });
+      }
+    });
 };
 
 //Delete
@@ -114,8 +113,15 @@ const findTicketById = async (req, res, next) => {
 const updateTicket = async (req, res, next) => {
   try {
     const { id } = req.params;
-    const { title, facility, ticket_status, assignee, priority, due_date } =
-      req.body;
+    const {
+      title,
+      description,
+      facility,
+      ticket_status,
+      assignee,
+      priority,
+      due_date,
+    } = req.body;
     const findOneTicketById = await Tickets.findOne({
       where: {
         id: id,
@@ -128,6 +134,7 @@ const updateTicket = async (req, res, next) => {
       });
     }
     if (title) findOneTicketById.title = title;
+    if (description) findOneTicketById.description = description;
     if (facility) findOneTicketById.facility = facility;
     if (ticket_status) findOneTicketById.ticket_status = ticket_status;
     if (assignee) findOneTicketById.assignee = assignee;
@@ -154,8 +161,8 @@ const updateTicket = async (req, res, next) => {
 const getNoOfWeeklyTickets = async (req, res) => {
   db.query(
     " select b.WeekDay, a.created_date, DAYOFWEEK(a.createdAt) as WeekDay2, IFNULL(count(a.createdAt), 0) as Tickets, CASE WHEN DAYOFWEEK(b.WeekDay) = 1 THEN 'Sun' WHEN DAYOFWEEK(b.WeekDay) = 2 THEN 'Mon' WHEN DAYOFWEEK(b.WeekDay) = 3 THEN 'Tue' WHEN DAYOFWEEK(b.WeekDay) = 4 THEN 'Wed' WHEN DAYOFWEEK(b.WeekDay) = 5 THEN 'Thur' WHEN DAYOFWEEK(b.WeekDay) = 6 THEN 'Fri' ELSE 'Sat' END AS Day from (SELECT DATE(NOW())-INTERVAL seq.seq DAY WeekDay FROM (SELECT 0 AS seq UNION ALL SELECT 1  UNION ALL SELECT 2 UNION ALL SELECT 3  UNION ALL SELECT 4 UNION ALL SELECT 5  UNION ALL SELECT 6 ) seq ) b left join tickets a on b.WeekDay = DATE(a.created_date) GROUP BY weekDay ORDER BY weekDay ASC ; ",
-    (err, result) => {
-      if (err) {
+    (error, result) => {
+      if (error) {
         console.log(error);
       } else {
         res.send(result);

@@ -60,6 +60,11 @@ function App() {
                 <Route path="/facilities" element={<Facilities />} />
                 <Route path="/facilities/:id" element={<Facilities />} />
                 <Route path="/addfacility" element={<AddFacilityComponent />} />
+                <Route path="/specificfacility/:id" element={<SpecificFacilityComponent />} />
+                <Route
+                  path="/edit-facility/:id"
+                  element={<AddFacilityComponent />}
+                />
               </Route>
 
               {/* Tickets */}

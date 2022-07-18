@@ -21,18 +21,18 @@ module.exports = (sequelize, DataTypes) =>{
 
         },
         ushauri: {
-            type: DataTypes.BOOLEAN,
+            type: DataTypes.STRING,
             allowNull: true,
             
         },
         WebADT: {
-            type: DataTypes.BOOLEAN,
+            type: DataTypes.STRING,
             allowNull: true,
             
         },
         status: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: true,
             
         },
         ipaddress: {

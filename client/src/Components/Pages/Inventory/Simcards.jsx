@@ -85,6 +85,7 @@ const Simcards = () => {
         <div className='table'>
             <table className="table_content">
                 <thead className="table-header">
+                    <tr>
                     <th>Serial</th>
                     <th>Phone Number</th>
                     <th>IMEI</th>
@@ -93,8 +94,7 @@ const Simcards = () => {
                     <th>Facility</th>
                     <th>Tablet IMEI</th>
                     <th>Actions</th>
-                    <th/>
-                    <th/>
+                    </tr>
                 </thead>
     <tbody className="">
      {
