@@ -41,8 +41,14 @@ button {
 .button {
     padding: 0.5rem;
     margin-top: 1rem;
-    vertical-align: middle;
     border-radius: 0.5rem;
-    background-color: teal;
-    color: white;
+    background-color: rgba(166, 169, 168, 0.596);
+    color: black;
+    font-weight: bold;
+    font-size: 1.2em;
+    width: 15%;
+    margin-left: 82.5%;
+}
+.button:hover{
+    background-color: #2f9e30;
 }

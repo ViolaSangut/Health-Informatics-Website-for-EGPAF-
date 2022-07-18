@@ -3,6 +3,8 @@ import { useNavigate, Link } from 'react-router-dom';
 import { toast  } from 'react-toastify';
 import "./Inventory.css";
 import usePrivateAxios from '../../hooks/usePrivateAxios';
+import * as AiIcons from "react-icons/ai";
+
 
 
 const Simcards = () => {
@@ -65,26 +67,19 @@ const Simcards = () => {
             <div>
       <h1 className="header">Simcards Inventory</h1>
       </div>
-            <div>
-                <input 
+                <input className="searchbox"
                 placeholder='Search for Simcard'
                 value={searchCard}
                 onChange={(e)=> setSearchCard(e.target.value)}
                 ></input>
-                <button onClick={handleClick} className="buttonadd">Add New Simcard</button>
-            </div>
-            <div>
-        {/* <select  className= "buttonadd" value={display} onChange={handleChange}>
-                  <option selected disabled ="true">--Select Item Type--</option>
-                <option value="Simcards">Simcards</option>
-                <option value="Tablets">Tablets</option>
 
-              
-        </select> */}
+                <button onClick={handleClick} className="addnewinventorybtn">Add New Simcard</button>
+            <div>
+
         </div>
         <div className='table'>
             <table className="table_content">
-                <thead className="table-header">
+                <thead className="thead">
                     <tr>
                     <th>Serial</th>
                     <th>Phone Number</th>
@@ -93,10 +88,10 @@ const Simcards = () => {
                     <th>PIN</th>
                     <th>Facility</th>
                     <th>Tablet IMEI</th>
-                    <th>Actions</th>
+                    <th>Action</th>
                     </tr>
                 </thead>
-    <tbody className="">
+    <tbody className="tbody">
      {
         
           cards.filter((card)=> {
@@ -134,11 +129,9 @@ const Simcards = () => {
                     <td> {card.PIN} </td>
                     <td> {card.Facility} </td>
                     <td> {card.PhoneAssigned} </td>
-                
-                    <td>
-                            </td>
+
                             <td> <Link to = '' className = "btn btn-danger" onClick = {() => deleteCard(card.id)}
-                                    style = {{marginLeft:"10px"}}> X</Link>
+                                    style = {{marginLeft:"10px"}}> <AiIcons.AiFillDelete/> </Link>
                     </td>
               </tr>
             
