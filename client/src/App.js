@@ -40,7 +40,6 @@ const SidebarLayout = () => (
 function App() {
   return (
     <div>
-      <>
         <ToastContainer position="top-center" />
         <Routes>
           <Route element={<PersistLogin />}>
@@ -59,6 +58,7 @@ function App() {
               {/* Facilities */}
               <Route element={<CheckAuth allowedRoles={[1, 2, 3, 4]} />}>
                 <Route path="/facilities" element={<Facilities />} />
+                <Route path="/facilities/:id" element={<Facilities />} />
                 <Route path="/addfacility" element={<AddFacilityComponent />} />
               </Route>
 
@@ -71,6 +71,7 @@ function App() {
                   element={<AddTicketComponent/>}
                 />
                 <Route path="/tickets-list" element={<Tickets />} />
+                <Route path="/tickets-list/:id" element={<Tickets />} />
               </Route>
 
               {/* Inventory */}
@@ -91,7 +92,6 @@ function App() {
           <Route path="/sim" element={<Simcards />} />
           <Route path="*" element={<PageNotFound />} />
         </Routes>
-      </>
     </div>
   );
 }

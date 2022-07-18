@@ -155,10 +155,110 @@ module.exports = {
   deleteFacility,
 };
 
-//Count All HomaBay Facilities
-const countHomaByFacilities = async (req, res) => {
-  const homaBayFacilitiesCount = await Facilities.count();
+//Count HomaBay Facilities
+const countHomaBayFacilities = async (req, res) => {
+  const homaBayFacilitiesCount = await Facilities.count({where: {county: 'Homa Bay'}});
   res.json(homaBayFacilitiesCount);
+};
+
+//Count All HomaBay Facilities
+const countKiambuFacilities = async (req, res) => {
+  const KiambuFacilitiesCount = await Facilities.count({where: {county: 'Kiambu'}});
+  res.json(KiambuFacilitiesCount);
+};
+
+//Count All HomaBay Facilities
+const countKisiiFacilities = async (req, res) => {
+  const KisiiFacilitiesCount = await Facilities.count({where: {county: 'Kisii'}});
+  res.json(KisiiFacilitiesCount);
+};
+
+//EMRImplementation Status
+const EMRImplementation = async (req, res) => {
+  db.query(
+    " select round ((select count (*) from facilities where status='running') / (select count (*) from facilities) * 100,0) as EMRImplementationPercentage",
+    (error, result) => {
+      if (error) {
+        console.log(error);
+      } else {
+        res.send(result);
+      }
+    }
+  );
+};
+//ADTImplementation Status
+const ADTImplementation = async (req, res) => {
+  db.query(
+    " select round ((select count (*) from facilities where WebAdt=1) / (select count (*) from facilities) * 100,0) as ADTImplementationPercentage",
+    (error, result) => {
+      if (error) {
+        console.log(error);
+      } else {
+        res.send(result);
+      }
+    }
+  );
+};
+
+//List HomaBay Facilities
+const getHomaBayFacilities = async (req, res) => {
+  const facilities = await Facilities.findAll({
+    attributes: [
+      "id",
+      "facilityname",
+      "mflcode",
+      "subcounty",
+      "county",
+      "status",
+      "ipaddress",
+      "ushauri",
+      "WebADT",
+      "elasticipaddress",
+    ], where: {
+      county:"Homa Bay"
+    },
+  });
+  res.json(facilities);
+};
+//List Kiambu Facilities
+const getKiambuFacilities = async (req, res) => {
+  const facilities = await Facilities.findAll({
+    attributes: [
+      "id",
+      "facilityname",
+      "mflcode",
+      "subcounty",
+      "county",
+      "status",
+      "ipaddress",
+      "ushauri",
+      "WebADT",
+      "elasticipaddress",
+    ], where: {
+      county:"Kiambu"
+    },
+  });
+  res.json(facilities);
+};
+//List Kisii Facilities
+const getKisiiFacilities = async (req, res) => {
+  const facilities = await Facilities.findAll({
+    attributes: [
+      "id",
+      "facilityname",
+      "mflcode",
+      "subcounty",
+      "county",
+      "status",
+      "ipaddress",
+      "ushauri",
+      "WebADT",
+      "elasticipaddress",
+    ], where: {
+      county:"Kisii"
+    },
+  });
+  res.json(facilities);
 };
 
 module.exports = {
@@ -167,5 +267,12 @@ module.exports = {
   updateFacility,
   findFacilityById,
   deleteFacility,
-  countHomaByFacilities,
+  countHomaBayFacilities,
+  EMRImplementation,
+  ADTImplementation,
+  getHomaBayFacilities,
+  getKiambuFacilities,
+  getKisiiFacilities,
+  countKiambuFacilities,
+  countKisiiFacilities,
 };

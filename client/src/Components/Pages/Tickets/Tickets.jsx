@@ -29,6 +29,7 @@ const Tickets = () => {
     let myYesterdaysDate = moment(yesterdaysDate).format('DD-MM-YYYY')
 
     const { auth } = UseAuth();
+    
 
     //Getting loggedin's user details from accessToken.
     const decodedAccessToken = auth?.accessToken
@@ -38,30 +39,115 @@ const Tickets = () => {
     const UserRoles = decodedAccessToken?.roles || null;
     const loggedinUserRoles = UserRoles.toString();
 
+    //Listing Tickets By Status
+  const filterByTicketStatus = () =>{
+    if (window.location.pathname === "/tickets-list" || window.location.pathname === "/tickets-list/" || window.location.pathname === "/tickets-list/4" || window.location.pathname === "/tickets-list/4/") {
+      getAllTickets();
+    } else if(window.location.pathname === "/tickets-list/1" || window.location.pathname === "/tickets-list/1/"){
+      getUnassignedTickets();
+    }  else if(window.location.pathname === "/tickets-list/2" || window.location.pathname === "/tickets-list/2/"){
+      getPendingTickets();
+    }  else if(window.location.pathname === "/tickets-list/3" || window.location.pathname === "/tickets-list/3/"){
+      getResolvedTickets();
+    }
 
-    useEffect(() => {
- 
-        //List 
-        const getAllTickets = () =>{
-            privateAxios.get("/tickets"
-            )
-            .then((response)=>{
-                console.log(response.data)
-                setTickets(response.data);
-                console.log(tickets)
-            })
-            .catch((error)=>{
-                console.log(error);
-                if(error.message === "Request failed with status code 401"){
-                    navigate('/unauthorized', { state: { from: location }, replace: true });
-                } else{
-                navigate('/', { state: { from: location }, replace: true });
-                }
-            })
+  }
+
+  //Changing Facilities List Title Dynamically 
+  const ticketsListPageTitle = () =>{
+    if (window.location.pathname === "/tickets-list" || window.location.pathname === "/tickets-list/" || window.location.pathname === "/tickets-list/4" || window.location.pathname === "/tickets-list/4/") {
+        return <h2 className='text-center'>All Tickets</h2>;
+      } else if(window.location.pathname === "/tickets-list/1" || window.location.pathname === "/tickets-list/1/"){
+        return <h2 className='text-center'>Unassigned Tickets</h2>;
+      }  else if(window.location.pathname === "/tickets-list/2" || window.location.pathname === "/tickets-list/2/"){
+        return <h2 className='text-center'>Pending Tickets</h2>;
+      }  else if(window.location.pathname === "/tickets-list/3" || window.location.pathname === "/tickets-list/3/"){
+        return <h2 className='text-center'>Resolved Tickets</h2>;
+      }
+
+  }
+
+
+   //List All Tickets
+   const getAllTickets = () =>{
+    privateAxios.get("/tickets"
+    )
+    .then((response)=>{
+        console.log(response.data)
+        setTickets(response.data);
+        console.log(tickets)
+    })
+    .catch((error)=>{
+        console.log(error);
+        if(error.message === "Request failed with status code 401"){
+            navigate('/unauthorized', { state: { from: location }, replace: true });
+        } else{
+        navigate('/', { state: { from: location }, replace: true });
         }
+    })
+}
 
-        getAllTickets();
+ //List Resolved Tickets
+ const getResolvedTickets = () =>{
+    privateAxios.get("/tickets/Resolved"
+    )
+    .then((response)=>{
+        console.log(response.data)
+        setTickets(response.data);
+        console.log(tickets)
+    })
+    .catch((error)=>{
+        console.log(error);
+        if(error.message === "Request failed with status code 401"){
+            navigate('/unauthorized', { state: { from: location }, replace: true });
+        } else{
+        navigate('/', { state: { from: location }, replace: true });
+        }
+    })
+}
 
+ //List Pending Tickets
+ const getPendingTickets = () =>{
+    privateAxios.get("/tickets/pending"
+    )
+    .then((response)=>{
+        console.log(response.data)
+        setTickets(response.data);
+        console.log(tickets)
+    })
+    .catch((error)=>{
+        console.log(error);
+        if(error.message === "Request failed with status code 401"){
+            navigate('/unauthorized', { state: { from: location }, replace: true });
+        } else{
+        navigate('/', { state: { from: location }, replace: true });
+        }
+    })
+}
+
+ //List Unassigned Tickets
+ const getUnassignedTickets = () =>{
+    privateAxios.get("/tickets/unassigned"
+    )
+    .then((response)=>{
+        console.log(response.data)
+        setTickets(response.data);
+        console.log(tickets)
+    })
+    .catch((error)=>{
+        console.log(error);
+        if(error.message === "Request failed with status code 401"){
+            navigate('/unauthorized', { state: { from: location }, replace: true });
+        } else{
+        navigate('/', { state: { from: location }, replace: true });
+        }
+    })
+}
+
+    
+    useEffect(() => {
+        filterByTicketStatus();
+   
     }, [])
 
     
@@ -83,12 +169,14 @@ const Tickets = () => {
         
     };
 
-
+    
   return (
     <div >
     
         <div style={{textAlign: "center"}}>
-            <h2 className='text-center'>Tickets</h2>  
+           {
+            ticketsListPageTitle()
+           }
 
             <Link to = '/addticket' className='btn btn-primary mb-2'>Add Ticket</Link>
             <Link to = '/tickets' className='btn btn-primary mb-2' style={{marginLeft: "3%"}}>Tickets DashBoard</Link>

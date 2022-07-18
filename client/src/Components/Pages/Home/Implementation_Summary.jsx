@@ -5,13 +5,12 @@ import { useNavigate, useLocation} from 'react-router-dom';
 import './Implementation_Summary.css'
 
 const Implementation_Summary = () => {
+  const navigate = useNavigate();
   return (
-    <div className="implementationSummary">
-      
+    <div className="implementationSummary" onClick={()=>{navigate("")}}>
+       <p >Implementation Summary </p>
       <div className="implementationSummaryContent">
-      <p >Implementation Summary </p>
-        
-        <div className="summryChart">
+        <div className="summaryChart">
           { 
           40 !== null ?  (
           <CircularProgressbar 

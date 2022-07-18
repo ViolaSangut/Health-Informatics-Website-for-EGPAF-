@@ -294,8 +294,8 @@ const getResolvedTickets = async (req, res) => {
 const percentageCountTodaysResolvedTickets = async (req, res) => {
   db.query(
     " select round ((select count (*) from tickets where date(createdAt)=date(now()) and ticket_status='Resolved') / (select count (*) from tickets where date(createdAt)=date(now())) * 100,0) as percentageCountOfTodaysResolvedTickets",
-    (err, result) => {
-      if (err) {
+    (error, result) => {
+      if (error) {
         console.log(error);
       } else {
         res.send(result);

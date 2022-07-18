@@ -52,6 +52,8 @@ const AddTicket = () => {
 
     const min_date  = new Date();
 
+    const [facilities, setFacilities] = useState([]);
+
     useEffect(() => {
       date();
      }, [])
@@ -67,16 +69,15 @@ const AddTicket = () => {
       privateAxios.post("/tickets/addticket", {
           title:title, description: description,facility:facility, creatorsEmail: creatorsEmail, creatorsFirstName: creatorsFirstName, creatorsLastName: creatorsLastName, ticket_status: ticket_status, 
           assignee: assignee, priority: priority, due_date: due_date,
-      }).then((response)=>{
-      console.log(response.data)
-      console.log("ticket inserted!");
-      toast.success("ticket inserted successfully")
-      navigate('/tickets-list');
-  })
-  .catch((error)=>{
-    console.log(error)
-  });
-  };
+        }).then((response)=>{
+          console.log("ticket added!");
+          toast.success("ticket added successfully")
+          navigate('/tickets-list');
+          })
+          .catch((error)=>{
+          console.log(error)
+          });
+        };
 
     //Update Ticket
     const updateTicket = () =>{
@@ -84,7 +85,6 @@ const AddTicket = () => {
         title:title,  description: description, facility:facility, ticket_status: ticket_status, 
         assignee: assignee, priority: priority, due_date: due_date
       }).then((response)=>{
-      console.log(response.data)
       console.log("ticket updated!");
       toast.success("ticket updated successfully")
       navigate('/tickets-list');
@@ -163,21 +163,17 @@ const AddTicket = () => {
   }
   
 
-  const getAllFacilities = () =>{
-    privateAxios.get("/facilities")
-    .then((response)=>{
-      
+ //Get All Facilities
+ const getAllFacilities = () =>{
+  axios.get("http://localhost:4000/facilities")
+  .then((response)=>{
+      console.log(response.data)
+      setFacilities(response.data);
+  })
+  .catch((error)=>{
+      console.log(error);
+  })}
 
-        // setFacilitiesList(response.data);
-        const rt = JSON.stringify(response.data)
-        const tr = JSON.parse(rt)
-
-        console.log(tr)
-
-    })
-    .catch((error)=>{
-        console.log(error);
-    })}
 
     useEffect(()=>{
       if (runUseEffect.current === false || process.env.NODE_ENV !== 'development') {
@@ -222,10 +218,13 @@ const AddTicket = () => {
         <div className="inputfield">
             <label>Facility</label>
             <div className="custom_select">
-              <select value={facility} onChange ={(e) => setFacility(e.target.value)} >
-                <option value="">Select</option>
-                <option value="Adiedo">Adiedo</option>
-                <option value="RDH">RDH</option>
+              
+              <select value={facility} onChange ={(e) => setFacility(e.target.value)}>
+              <option selected disabled ="true">--Select  Facility--</option>
+                  {
+                      facilities.map((facility)=>(<option key={facility.id}text={facility.mflcode}>{facility.facilityname}</option>))
+                  }
+                 
               </select>
             </div>
         </div> 

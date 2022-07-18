@@ -1,14 +1,39 @@
 .home {
     display: flex;
+    /* position: fixed; */
+
+    
  
 }
 
+/* @media (max-width: 479px) {
+    body {
+        font-size: 13px;
+    }
+} */
+
 .homeContainer {
     flex: 6;
+    /* position: fixed; */
+    /* min-zoom: 100%; */
 }
 
 .facilities_summary {
       display: flex;
       padding: 20px;
       gap: 20px;
-    }
+}
+
+.homeCharts {
+    display: flex;
+    flex-direction: row;
+
+    /* padding: 5px 20px; */
+    /* gap: 20px; */
+    background-color: rgb(237, 237, 237);
+}
+
+.Implementation_Summary{
+    /* display: flex;
+    flex-direction: column; */
+}
