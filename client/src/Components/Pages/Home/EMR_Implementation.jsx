@@ -27,7 +27,6 @@ const EMR_Implementation = () => {
  
        //Converting response to Object
         const emrStatus = JSON.parse(resJsonObject);
-        console.log(emrStatus)
         
         setEmrImplementation(emrStatus.EMRImplementationPercentage)
    

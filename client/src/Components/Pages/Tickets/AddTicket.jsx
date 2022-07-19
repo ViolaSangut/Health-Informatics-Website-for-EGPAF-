@@ -320,7 +320,7 @@ const AddTicket = () => {
           <Link to="" className="btn btn-info" style={{width: "50%", marginLeft: "20%", marginBottom: "2%"}} onClick={(e) => saveorUpdateTicket(e)}> {id ? <>Update</> :<>Add</>}</Link>
           : <></>
         }                      
-          <Link to="/tickets-list" className="btn btn-danger" style={{width: "50%", marginLeft: "20%", marginBottom: "0%"}}>Cancel</Link>
+          <Link to="/tickets-list" className="btn btn-dark" style={{width: "50%", marginLeft: "20%", marginBottom: "0%"}}>Back</Link>
           </div>
       </div>
   </div>	

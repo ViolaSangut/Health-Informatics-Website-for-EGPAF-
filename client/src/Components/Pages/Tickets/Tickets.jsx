@@ -244,7 +244,7 @@ const Tickets = () => {
                                 return ticket;
                             }else if (ticket.due_date !== null && (moment(ticket.due_date).format('DD-MM-YYYY')).toString().toLowerCase().includes(searchTickets.toString().toLowerCase())) {
                                 return ticket;
-                            }else if (ticket.createdAt !== null && (moment(ticket.createdAt).format('DD-MM-YYYY')).toString().toLowerCase().includes(searchTickets.toString().toLowerCase())) {
+                            }else if (ticket.created_date !== null && (moment(ticket.created_date).format('DD-MM-YYYY')).toString().toLowerCase().includes(searchTickets.toString().toLowerCase())) {
                                 return ticket;
                             }
                         }).map (
@@ -263,7 +263,7 @@ const Tickets = () => {
                                     <td>{ticket.assignee}</td>
                                     <td>{ticket.priority}</td>
                                     <td>{(moment(ticket.due_date).format('DD-MM-YYYY'))}</td>
-                                    <td>{(moment(ticket.createdAt).format('DD-MM-YYYY'))}</td>
+                                    <td>{(moment(ticket.created_date).format('DD-MM-YYYY'))}</td>
                                    
                                     {    //Enabling only creators of the ticket, Admins and Super_Users to update & delete
                                          (loggedinUserRoles === "4" || loggedinUserRoles ==="3") ||ticket.creatorsEmail === userEmail ?

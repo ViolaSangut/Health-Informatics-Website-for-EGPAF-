@@ -11,9 +11,7 @@ const HomaBayFacilities = () => {
   const privateAxios = usePrivateAxios();
   const navigate = useNavigate();
   let id = useParams();
-
   id = 1
-
 
   useEffect(() => {
     //counting Homa Bay Facilities
