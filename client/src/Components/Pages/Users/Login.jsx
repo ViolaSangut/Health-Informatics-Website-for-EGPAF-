@@ -151,7 +151,7 @@ const Login = () => {
           }}
         />
        <div>
-          <button className="button" onClick={login}> Sign in </button>
+          <button className="buttonlogin" onClick={login}> Sign in </button>
           <p>
              Do Not have an account? 
             <Link to = '/add-user'   style = {{marginLeft:"30px"}}> Register</Link>

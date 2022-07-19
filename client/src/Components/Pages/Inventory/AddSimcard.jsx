@@ -11,7 +11,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import usePrivateAxios from '../../hooks/usePrivateAxios';
 import { getDatasetAtEvent } from 'react-chartjs-2';
-
+import "./AddInventory.css"
 
 
 
@@ -205,7 +205,7 @@ useEffect(() => {
 
 return(
     <div align ="middle">
-            <button className="buttonadd" onClick={onClickBack}>Back to Inventory</button>
+            <button className="button" onClick={onClickBack}>Back to Inventory</button>
 
         <section>
             <form>
