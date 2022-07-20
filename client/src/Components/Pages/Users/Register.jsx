@@ -542,11 +542,11 @@ let addUpdateEmailPassword =
          {/* Submit Button */}
           {
            !id ?
-           <button className='button'
+           <button className='buttons'
              disabled={!validFName || !validLName || !validPassword || !validEmail || !validMatch ? true : false}> Submit
            </button>
            :id ?
-           <button className='button'
+           <button className='buttons'
              disabled={!validFName || !validLName ? true : false}> Submit
            </button>
            :<></>

@@ -10,7 +10,7 @@ import * as AiIcons from "react-icons/ai";
 
 
 
-const Inventory = () => {
+const Inventory = (props) => {
 
 
  //declaring state for the inventory list upon loading the page
