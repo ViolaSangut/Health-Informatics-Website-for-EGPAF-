@@ -6,8 +6,7 @@ import "./Facilities.css";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import { toast } from 'react-toastify' ;
-
-
+import ReactHTMLTableToExcel from 'react-html-table-to-excel';
 const Facilities = () => {
 
   const [facilities, setFacilities] = useState([]);
@@ -129,9 +128,16 @@ return (
           />
           </div>
     <br/>
+    <ReactHTMLTableToExcel
+                    id="test-table-xls-button"
+                    className="download-table-xls-button btn btn-success mb-3"
+                    table="table-to-xls"
+                    filename="tablexls"
+                    sheet="tablexls"
+                    buttonText="Export Data to Excel Sheet"/>
   <div className="app-container" >
     
-        <table>
+        <table id="table-to-xls">
           <thead>
             <tr>
               <th>MFL CODE</th>
