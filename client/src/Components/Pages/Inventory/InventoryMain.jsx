@@ -2,6 +2,7 @@ import React from 'react'
 import Inventory from './Inventory'
 import Simcards from './Simcards'
 import { useState, useEffect} from 'react'
+import "./Inventory.css"
 
 const InventoryMain = () => {
     const[tabletsVisible, setTabletsVisible] = useState(true)
@@ -25,9 +26,9 @@ useEffect(() => {
 
 
   return (
-    <div>
+    <div className='body'>
      
-        <select  className= "buttonadd" value={display} onChange={handleChange}>
+        <select  className= "inventory-selector" value={display} onChange={handleChange}>
                  <option value="DEFAULT" disabled ={true}>--Select Item Type--</option>
                 <option value="Simcards">Simcards</option>
                 <option value="Tablets">Tablets</option>

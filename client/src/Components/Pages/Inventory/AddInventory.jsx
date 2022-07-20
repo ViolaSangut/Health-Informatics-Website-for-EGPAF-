@@ -238,7 +238,7 @@ useEffect(() => {
 
     return  (
         <div align ="middle">
-            <button className="buttonadd" onClick={onClickBack}>Back to Inventory</button>
+            <button className="button" onClick={onClickBack}>Back to Inventory</button>
         <section className="section">
             
         <form className= "">

@@ -19,6 +19,48 @@ router
     // ),
     TicketsController.getTickets
   );
+  
+//List Resolved
+router
+  .route("/resolved")
+  .get(
+    verifyToken,
+    verifyRole(
+      ROLES_LIST.Admin,
+      ROLES_LIST.User,
+      ROLES_LIST.Manager,
+      ROLES_LIST.Super_User
+    ),
+    TicketsController.getResolvedTickets
+  );
+
+//List Unassigned
+router
+.route("/unassigned")
+.get(
+  verifyToken,
+  verifyRole(
+    ROLES_LIST.Admin,
+    ROLES_LIST.User,
+    ROLES_LIST.Manager,
+    ROLES_LIST.Super_User
+  ),
+  TicketsController.getUnsignedTickets
+);
+
+//List Pending
+router
+  .route("/pending")
+  .get(
+    verifyToken,
+    verifyRole(
+      ROLES_LIST.Admin,
+      ROLES_LIST.User,
+      ROLES_LIST.Manager,
+      ROLES_LIST.Super_User
+    ),
+    TicketsController.getPendingTickets
+  );
 
 //getNoOfWeeklyTickets
 router

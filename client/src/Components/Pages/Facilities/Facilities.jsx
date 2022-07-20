@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react" ;
 
 import "./Facilities.css";
 
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import { toast } from 'react-toastify' ;
 
@@ -12,14 +12,80 @@ const Facilities = () => {
 
   const [facilities, setFacilities] = useState([]);
   const navigate = useNavigate();
-  const [searchFacilities, setSearchFacilities] = useState("");
+  let [searchFacilities, setSearchFacilities] = useState("");
+  const id = useParams();
+
+
+  //Listing Facilties By county
+  const filterByCounty = () =>{
+    if (window.location.pathname === "/facilities") {
+      getAllFacilities();
+    } else if(window.location.pathname === "/facilities/1"){
+      getHomaBayFacilities();
+    } else if(window.location.pathname === "/facilities/2"){
+      getKiambuFacilities();
+    } else if(window.location.pathname === "/facilities/3"){
+      getKisiiFacilities();
+    }
+
+  }
+
+  //Changing Facilities List Title Dynamically 
+  const facilityListPageTitle = () =>{
+    if (window.location.pathname === "/facilities" || window.location.pathname === "/facilities/") {
+      return <h2 className='text-center'>All Facilities</h2>  
+    } else if(window.location.pathname === "/facilities/1" || window.location.pathname === "/facilities/1/"){
+      return <h2 className='text-center'>Homa Bay Facilities</h2>
+    } else if(window.location.pathname === "/facilities/2" || window.location.pathname === "/facilities/2/") {
+      return <h2 className='text-center'>Kiambu Facilities</h2>
+    } else if(window.location.pathname === "/facilities/3" || window.location.pathname === "/facilities/3/"){
+      return <h2 className='text-center'>Kisii Facilities</h2>
+    }
+
+  }
+
 
   useEffect(() => {   
-    getAllFacilities();
+    
+    filterByCounty();
   }, [])
 
+  //Get All Facilities
   const getAllFacilities = () =>{
     axios.get("http://localhost:4000/facilities")
+    .then((response)=>{
+        console.log(response.data)
+        setFacilities(response.data);
+    })
+    .catch((error)=>{
+        console.log(error);
+    })}
+
+  //Get HomaBay Facilities
+  const getHomaBayFacilities = () =>{
+    axios.get("http://localhost:4000/facilities/homabayfacilities")
+    .then((response)=>{
+        console.log(response.data)
+        setFacilities(response.data);
+    })
+    .catch((error)=>{
+        console.log(error);
+    })}
+
+  //Get Kiambu Facilities
+  const getKiambuFacilities = () =>{
+    axios.get("http://localhost:4000/facilities/kiambufacilities")
+    .then((response)=>{
+        console.log(response.data)
+        setFacilities(response.data);
+    })
+    .catch((error)=>{
+        console.log(error);
+    })}
+
+  //Get Kisii Facilities
+  const getKisiiFacilities = () =>{
+    axios.get("http://localhost:4000/facilities/kisiifacilities")
     .then((response)=>{
         console.log(response.data)
         setFacilities(response.data);
@@ -49,7 +115,9 @@ const Facilities = () => {
 return (
   
   <div style={{textAlign: "center"}}>
-  <h2 className='text-center'>facilities</h2>  
+  {
+    facilityListPageTitle()
+  } 
 
   <Link to = '/addfacility' className='btn btn-primary mb-2'>Add Facility</Link>
   <div className='search_bar'>

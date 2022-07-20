@@ -37,7 +37,6 @@ const WeeklyTicketsDashboard = () => {
     try {
       privateAxios.get("/tickets/getNoOfWeeklyTickets")
       .then((response)=>{
-        console.log(response.data);
         setChart(response.data)
 
         const noOfWeeklyTickets = (response.data)

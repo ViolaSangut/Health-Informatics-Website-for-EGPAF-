@@ -4,7 +4,8 @@ import { toast  } from 'react-toastify';
 import "./Inventory.css";
 import moment from 'moment';
 import usePrivateAxios from '../../hooks/usePrivateAxios';
-// import ReactSearchBox from "react-search-box"
+import * as AiIcons from "react-icons/ai";
+
 
 
 
@@ -67,31 +68,33 @@ const Inventory = () => {
     
 
     return (
-    <div>
-    <div className="upper-section">
-      <div className="left-panel">
+    <div className="">
+    <div >
+      <div >
       <h1 className="header">Tablets Inventory</h1>
       </div>
       
       </div>
-      <br/>
-      <input
+      <div  className='searchbox'>
+        <input
           type="text"
-          className='searchbox'
+         
           placeholder='Search for Item'
                 value={searchInventory}
                 onChange={(e)=> setSearchInventory(e.target.value)}
         ></input>
+      </div>
+      
 
       <button onClick={handleClick}
-       className= "buttonadd">
+       className= "addnewinventorybtn">
          
             Add Tablet to Inventory
          
         </button>
-              <div className="table">
+<div className="table">
    <table className="table_content" ref={tableRef}>
-    <thead className=''>
+    <thead className='thead'>
         <tr>
         <th>Serial</th>
         <th>IMEI</th>
@@ -103,12 +106,11 @@ const Inventory = () => {
         <th>Passcode</th> 
         <th>Email</th>
         <th>Email Password</th>
-        <th>Actions</th>
-        <th/>
+        <th>Action</th>
         </tr>             
     </thead>
 
-    <tbody className="">
+    <tbody className="tbody">
      {
         items.filter((item) => {
                         if(searchInventory === ""){
@@ -157,12 +159,8 @@ const Inventory = () => {
                     <td> {item.Passcode} </td>
                     <td> {item.Email} </td>
                     <td> {item.EmailPassword} </td>
-
-                    <td>
-                            {/* <Link to = {`/updateInventory/${item.id}`} className='btn btn-info' > Update</Link> */}
-                            </td>
                             <td> <Link to = '' className = "btn btn-danger" onClick = {() => deleteItem(item.id)}
-                                    style = {{marginLeft:"10px"}}> X </Link>
+                                    style = {{marginLeft:"10px"}}>  <AiIcons.AiFillDelete/></Link>
                     </td>
 
                     

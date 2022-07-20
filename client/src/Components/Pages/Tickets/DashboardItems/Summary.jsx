@@ -3,7 +3,7 @@ import * as BsIcons from 'react-icons/bs';
 import * as MdIcons from 'react-icons/md';
 import { useState, useEffect } from 'react';
 import usePrivateAxios from '../../../hooks/usePrivateAxios';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const Summary = ({type}) => {
 
@@ -13,6 +13,8 @@ const [pendingTickets, setPendingTickets] = useState('');
 const [resolvedTicket, setresolvedTicket] = useState('');
 const privateAxios = usePrivateAxios();
 const navigate = useNavigate();
+let tickets_tatus;
+const id = useParams();
 
 useEffect(() => {
   countAllTickets();
@@ -80,7 +82,8 @@ const countResolvedTickets = () =>{
         title: "Unassigned",
         value: unassignedTickets,
         className: "Unassigned",
-        valueClassName:'valueUnassigned'
+        valueClassName:'valueUnassigned',
+        url: `/tickets-list/${1}`
       };    
     break;
 
@@ -89,7 +92,8 @@ const countResolvedTickets = () =>{
         title: "Pending",
         value: pendingTickets,
         className: "Pending",
-        valueClassName:'valuePending'
+        valueClassName:'valuePending',
+        url: `/tickets-list/${2}`
       };    
     break;
 
@@ -98,7 +102,8 @@ const countResolvedTickets = () =>{
         title: "Resolved",
         value: resolvedTicket,
         className: "Resolved",
-        valueClassName:'valueResolved'
+        valueClassName:'valueResolved',
+        url: `/tickets-list/${3}`
       };    
     break;
 
@@ -107,18 +112,17 @@ const countResolvedTickets = () =>{
         title: "Total",
         value: allTickets,
         className: "Total",
-        valueClassName:'valueTotal'
+        valueClassName:'valueTotal',
+        url: `/tickets-list/${4}`
       };    
     break;
   
     default:
       break;
   }
-  const listTickets = () =>{
-    navigate( '/tickets-list')
-  }
+
   return (
-    <div className='summary'>
+    <div className='summary' onClick={()=>{navigate(data.url)}}>
         <div className='summary_items'>
             <h5>{data.title}</h5> 
             <h2 className={data.valueClassName}>{data.value}</h2>

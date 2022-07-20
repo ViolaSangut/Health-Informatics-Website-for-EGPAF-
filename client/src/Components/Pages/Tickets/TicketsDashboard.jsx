@@ -4,10 +4,13 @@ import Summary from './DashboardItems/Summary';
 import TodaysResolved from './DashboardItems/TodaysResolved';
 import WeeklyTicketsDashboard from './DashboardItems/WeeklyTicketsDashboard';
 import { Link, useNavigate } from 'react-router-dom';
+import ResolvedTickets from './DashboardItems/ResolvedTickets';
 
 const TicketsDashboard = () => {
 
   const navigate = useNavigate();
+
+  
 
   return (
     <div>
@@ -17,7 +20,7 @@ const TicketsDashboard = () => {
       
       <h4 className='pageTitle'>Tickets Dashboard</h4>
       </div>
-      <div className='summary1' onClick ={()=>navigate('/tickets-list')}>
+      <div className='summary1'>
         <Summary type = "Unassigned"/>
         <Summary type = "Pending"/>
         <Summary type = "Resolved"/>

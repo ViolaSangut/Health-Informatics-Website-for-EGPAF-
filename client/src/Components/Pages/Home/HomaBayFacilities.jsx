@@ -2,14 +2,16 @@ import './Facilities_Summary.css'
 
 import { useState, useEffect } from 'react';
 import usePrivateAxios from '../../hooks/usePrivateAxios';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 
-const Facilities_Summary = ({county}) => {
+const HomaBayFacilities = () => {
 
   const [homaBayFacilitiesCount, setHomaBayFacilitiesCount] = useState('');
   const privateAxios = usePrivateAxios();
   const navigate = useNavigate();
+  let id = useParams();
+  id = 1
 
   useEffect(() => {
     //counting Homa Bay Facilities
@@ -27,46 +29,17 @@ const Facilities_Summary = ({county}) => {
       }
       countHomaBayFacilities();
   }, [])
-
-    let data;
-
-    switch (county) {
-      case "Homa_Bay":
-        data = {
-          title: "Homa Bay Facilities",
-          value: homaBayFacilitiesCount,
-          className: "homaBay",
-          valueClassName:'homaBay'
-        };    
-      break;
-  
-      case "Kisii":
-        data = {
-          title: "Kisii Facilities",
-          value: 32,
-          className: "Kisii",
-          valueClassName:'Kisii'
-        };    
-      break;
-  
-      case "Kiambu":
-        data = {
-          title: "Kiambu Facilities",
-          value: 32,
-          className: "Kiambu",
-          valueClassName:'Kiambu'
-        };    
-      break;
     
-      default:
-        break;
-    }
-
-
+  let data = {
+       title: "Homa Bay Facilities",
+       value: homaBayFacilitiesCount,
+       className: "homaBay",
+       valueClassName:'homaBay'
+     };    
+    
 return (
 
-    <div className='facilitiesSummary'>
-     
+    <div className='facilitiesSummary' onClick={()=>{navigate(`/facilities/${id}`)}}> 
         <div className='summaryItems'>
             <h5>{data.title}</h5> 
             <h2 className={data.valueClassName}>{data.value}</h2>
@@ -78,4 +51,4 @@ return (
   )
 }
 
-export default Facilities_Summary
+export default HomaBayFacilities
