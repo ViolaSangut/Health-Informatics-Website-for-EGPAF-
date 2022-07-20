@@ -129,7 +129,6 @@ return (
   <button onClick={handleClick} className='addnewfacilitybtn'>Add Facility</button>
             
   <div className="searchbox">
-          {/* <label>Search</label> */}
           <input 
             type="text" 
             value={searchFacilities}
@@ -138,7 +137,6 @@ return (
             }
           />
           </div>
-    {/* <br/> */}
     <ReactHTMLTableToExcel
                     id="test-table-xls-button"
                     className="addnewinventorybtn"
