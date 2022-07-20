@@ -6,7 +6,8 @@ import axios from "axios";
 import {useNavigate } from "react-router-dom";
 import { toast } from 'react-toastify' ;
 import Tickets from "../Tickets/Tickets";
-
+import moment from 'moment';
+import { privateAxios } from "../../api/axios";
 
 const SpecificFacilityComponent = () => {
 
@@ -30,15 +31,15 @@ const SpecificFacilityComponent = () => {
     getAllTickets();
   }, [])
 
-  const getAllTickets = () =>{
-    axios.get("http://localhost:4000/tickets")
-    .then((response)=>{
-        console.log(response.data)
-        setTickets(response.data);
-    })
-    .catch((error)=>{
-        console.log(error);
-    })}
+//   const getAllTickets = () =>{
+//     privateAxios.get("/tickets")
+//     .then((response)=>{
+//         console.log(response.data)
+//         setTickets(response.data);
+//     })
+//     .catch((error)=>{
+//         console.log(error);
+//     })}
   
   useEffect(() => {
     if (facility) {
@@ -53,6 +54,7 @@ const SpecificFacilityComponent = () => {
         setElasticipaddress(facility.elasticipaddress);
     }
 }, [facility])
+
   useEffect(() => {   
     getAllFacilities();
 }, [])
@@ -66,7 +68,18 @@ const getAllFacilities = () =>{
     .catch((error)=>{
         console.log(error);
     })}
-    //Adding Condition to change page title dynamically
+
+
+    const getAllTickets = () =>{
+        axios.get("http://localhost:4000/tickets")
+        .then((response)=>{
+            console.log(response.data)
+            setTickets(response.data);
+        })
+        .catch((error)=>{
+            console.log(error);
+        })}
+    
     
 
 return (
@@ -80,7 +93,58 @@ return (
   <p>WebADT:{WebADT}</p>
   <p>Ushauri:{ushauri}</p>
   <h2>TICKETS</h2>
-   
+  <table className='tickets_table_content'>
+                <thead>
+                <tr>
+                <th>Title </th>
+                <th>Facility</th> 
+                <th>Creator</th> 
+                <th>Creator's Email</th> 
+                <th>Status</th> 
+                <th>Assignee</th> 
+                <th>Priority</th> 
+                <th>Due Date</th> 
+                <th>Date Created</th> 
+                {/* <th> update</th>   */}
+                     
+                </tr>
+                </thead>
+
+                <tbody>
+                        {
+                        // tickets.filter((ticket)=>{
+                        //     if(ticket.facility === facilityname){
+                        //         return ticket;
+                        //     } 
+                        // }
+                        //  )}
+                        // {
+                        tickets.map (ticket => 
+                                <tr key = {ticket.id}>
+
+                                    <td> {ticket.title} </td>
+                                    <td> {ticket.facility} </td>
+                                    <td> {ticket.creatorsFirstName} {ticket.creatorsLastName} </td>
+                                    <td>{ticket.creatorsEmail}</td>
+                                    <td>{ticket.ticket_status}</td>
+                                    <td>{ticket.assignee}</td>
+                                    <td>{ticket.priority}</td>
+                                    <td>{(moment(ticket.due_date).format('DD-MM-YYYY'))}</td>
+                                    <td>{(moment(ticket.createdAt).format('DD-MM-YYYY'))}</td>
+                                   
+                                    
+                                    
+                        </tr>
+                            
+                        )    
+
+                            
+                    }
+            
+                </tbody>
+
+            </table>
+        
   </div>
 )
 };
