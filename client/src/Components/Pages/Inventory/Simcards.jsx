@@ -4,6 +4,8 @@ import { toast  } from 'react-toastify';
 import "./Inventory.css";
 import usePrivateAxios from '../../hooks/usePrivateAxios';
 import * as AiIcons from "react-icons/ai";
+import ReactHTMLTableToExcel from 'react-html-table-to-excel';
+
 
 
 
@@ -75,10 +77,16 @@ const Simcards = () => {
 
                 <button onClick={handleClick} className="addnewinventorybtn">Add New Simcard</button>
             <div>
-
+        <ReactHTMLTableToExcel
+                    id="tablets-download-button"
+                    className="addnewinventorybtn"
+                    table="table-to-xls"
+                    filename = "Simcard-List"
+                    sheet="tablexls"
+                    buttonText="Export Data to Excel Sheet"/>
         </div>
         <div className='table'>
-            <table className="table_content">
+            <table className="table_content" id="table-to-xls">
                 <thead className="thead">
                     <tr>
                     <th>Serial</th>

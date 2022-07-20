@@ -4,6 +4,7 @@ import Simcards from './Simcards'
 import { useState, useEffect} from 'react'
 import "./Inventory.css"
 
+
 const InventoryMain = () => {
     const[tabletsVisible, setTabletsVisible] = useState(true)
   const[simcardsVisible, setSimcardsVisible] = useState(false)
@@ -35,6 +36,8 @@ useEffect(() => {
 
               
         </select>
+        
+
     {tabletsVisible && <Inventory/>}
     {simcardsVisible && <Simcards/>}
 
