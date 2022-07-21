@@ -85,7 +85,6 @@ const Users = () => {
     <table className='table_content'>
     <thead>
      <tr>
-        {/* <th>User ID </th> */}
         <th>First Name</th>
         <th>Last Name</th> 
         <th>Role</th> 
@@ -115,9 +114,11 @@ const Users = () => {
         }
         ).map (
             user => 
-                <tr key = {user.id}>
+                <tr key = {user.id}
+                    onDoubleClick={()=>{
+                        navigate(`/edit-user/${user.id}`)
+                    }}>
 
-                    {/* <td> {user.id} </td> */}
                     <td> {user.firstName} </td>
                     <td> {user.lastName} </td>
                     <td> {user.Role.role} </td>
@@ -135,13 +136,13 @@ const Users = () => {
                         </Link>    
                         </td>
 
-                    //Desallowing Admin to modify Super_users details
+                    //Disallowing Admin to modify Super_users details
                     :loggedinUserRoles === "3" && user.Role.role === "Super_User"  ?
                         <td>
                         <></>
                         </td>
                     
-                    //Allowing Superuser to update all Superusers
+                    //Allowing Superuser to update all Superusers&users
                     : loggedinUserRoles === "4" && user.Role.role === "Super_User"?            
                         <td>
                         <Link to = {`/edit-user/${user.id}`} className='btn btn-info'><AiIcons.AiFillEdit/></Link>         

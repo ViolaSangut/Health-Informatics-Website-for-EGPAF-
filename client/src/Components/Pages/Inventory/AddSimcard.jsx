@@ -2,7 +2,7 @@ import React, { useState, useEffect ,useRef} from 'react';
 import Facilities from './Facilities.json'
 import axios from 'axios';
 import { toast  } from 'react-toastify';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams, useLocation } from 'react-router-dom';
 import {
   faCheck,
   faTimes,
@@ -21,6 +21,7 @@ const PUK_REGEX = /^[0-9]{8}$/;
 const IMEI_REGEX = /^[0-9]{20}$/;
 const PIN_REGEX = /^[0-9]{4}$/;
 const PHONEIMEI_REGEX = /^[0-9]{15,20}$/;
+
 
 
 function AddSimcard (){
@@ -60,6 +61,9 @@ const {id} =useParams();
 
 const card = cards.find(card => (card.id).toString() === id);
 const private_axios = usePrivateAxios();
+
+const location = useLocation();
+const from = location.state?.from?.pathname || "/Inventory";
 
 //validating phone number
 useEffect(() => { 
@@ -179,7 +183,8 @@ useEffect(() => {
     }
   }
     const onClickBack =() =>{
-    navigate("/Inventory")
+    // navigate("/")
+    navigate(from, { replace: true });
   }
 
 //get facilities

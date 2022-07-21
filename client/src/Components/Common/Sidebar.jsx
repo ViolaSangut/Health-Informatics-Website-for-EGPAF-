@@ -10,6 +10,7 @@ import * as MdIcons from 'react-icons/md';
 import axios from 'axios';
 import UseAuth from '../context/UseAuth';
 import jwt_decode from "jwt-decode";
+import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
 
 const SidebarComponent = ({ items }) => {
     const [sidebar, setSidebar] = useState(false);
@@ -57,13 +58,20 @@ const SidebarComponent = ({ items }) => {
           <img className='logo1' src={egpaf_logo} alt=''/>
        </div>
        {/* Account */}
+   
+        
+        <NavDropdown 
+        className='account' title= {< MdIcons.MdAccountCircle className='accountIcon' />} 
+        > 
+            <NavDropdown.Item>
+                <h4 className='name'> Hi, {usersFirstName} {usersLastName} </h4>
+            </NavDropdown.Item>
+            <NavDropdown.Item>Profile</NavDropdown.Item>
+            <NavDropdown.Item onClick={logout} >
+                Logout <AIIcons.AiOutlineLogout className='logout' />
+            </NavDropdown.Item>
+        </NavDropdown>
        
-       < MdIcons.MdAccountCircle className='account' />
-       <h4 className='name'> Hi, {usersFirstName} {usersLastName} </h4>
-       
-       {/* Logout */}
-       <AIIcons.AiOutlineLogout className='logout' />
-       <h5 onClick={logout} className='name'>Log Out</h5>
        
        <nav className={sidebar ? 'nav-menu active' : 'nav-menu'} >
            <ul className='nav-menu-items' onClick={showSideBar} >

@@ -178,8 +178,8 @@ return (
                           <td><a href={`http://${facility.ipaddress}:8080/openmrs`}>http://{facility.ipaddress}:8080/openmrs </a> </td>
                           <td><a href={`http://${facility.elasticipaddress}:8080/openmrs`}>{facility.elasticipaddress} </a> </td>  
                           <td>{facility.status}</td>
-                          <td>{ facility.ushauri}</td>
-                          <td>{facility.WebADT }</td>
+                          <td>{ facility.ushauri ===1 ? "In use" : "Not in Use"}</td>
+                          <td>{facility.WebADT ===1 ? "In use" : "Not in Use" }</td>
                           
                             <td>
                             <Link to = {`/edit-facility/${facility.id}`} className='btn btn-info'> Update</Link>

@@ -28,6 +28,11 @@
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15); 
    
   }
+
+  .table_content tbody tr :hover {
+    background-color: rgb(140, 171, 207);
+  
+  }
   
   .table_content thead {
     background-color: #009879;
@@ -81,6 +86,7 @@
     padding-left: 10px;
     display: flex;
     margin-right: 1%;
+    margin-bottom: 1%;
   }
 
   .date_filter{
