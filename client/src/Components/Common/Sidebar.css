@@ -30,13 +30,17 @@
 
 .logout {
   margin-left: auto;
-  font-size: 2rem;
-  background: none;
+  font-size: 120%;
+  background: black;
+}
+
+.accountIcon{
+  font-size: 200%;
 }
 
 
 .name{
-  background-color: gray;
+  /* background-color: gray; */
   margin-right: 2%;
   font-weight: bolder;
   color: black;

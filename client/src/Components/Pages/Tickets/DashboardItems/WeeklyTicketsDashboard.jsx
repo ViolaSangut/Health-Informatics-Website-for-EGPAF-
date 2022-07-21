@@ -95,7 +95,7 @@ const WeeklyTicketsDashboard = () => {
   let dashboardTitle = <h5 className='dashboardTitle'>Weekly Tickets History</h5>
 
   return (
-    <div className='chart'>
+    <div className='chart' onDoubleClick={()=>{navigate("/tickets-list")}}>
      { dashboardTitle}
     <div >
       <></>

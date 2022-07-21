@@ -141,12 +141,12 @@ return (
                     id="test-table-xls-button"
                     className="addnewinventorybtn"
                     table="table-to-xls"
-                    filename="tablexls"
-                    sheet="tablexls"
+                    filename="Facilities"
+                    sheet="Facilities"
                     buttonText="Export Data to Excel Sheet"/>
   <div className="table" >
     
-        <table id="table_content">
+        <table className="table_content" id="table-to-xls">
           <thead className="thead">
             <tr>
               <th>MFL CODE</th>
@@ -198,8 +198,8 @@ return (
                           <td><a href={`http://${facility.ipaddress}:8080/openmrs`}>http://{facility.ipaddress}:8080/openmrs </a> </td>
                           <td><a href={`http://${facility.elasticipaddress}:8080/openmrs`}>{facility.elasticipaddress} </a> </td>  
                           <td>{facility.status}</td>
-                          <td>{ facility.ushauri}</td>
-                          <td>{facility.WebADT }</td>
+                          <td>{ facility.ushauri ===1 ? "In use" : "Not in Use"}</td>
+                          <td>{facility.WebADT ===1 ? "In use" : "Not in Use" }</td>
                           
                             <td>
                             <Link to = '' className = "btn btn-danger" onClick = {() => deleteFacility(facility.id)}
