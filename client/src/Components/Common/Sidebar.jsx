@@ -5,7 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { sidebarItems } from './SidebarItems';
 import './Sidebar.css';
 import { IconContext } from 'react-icons';
-import egpaf_logo from '../../Resources/Images/egpaf_logov2.jpg'
+import egpaf_logo from '../../Resources/Images/egpaf_logov2.JPG'
 import * as MdIcons from 'react-icons/md';
 import axios from 'axios';
 import UseAuth from '../context/UseAuth';
