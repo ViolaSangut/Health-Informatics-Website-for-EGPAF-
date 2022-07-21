@@ -2,7 +2,7 @@ import React from 'react'
 import axios from "axios";
 import { useState, useEffect, useRef, useContext } from 'react';
 import './Login.css';
-import egpaf_logo from '../../../Resources/Images/egpaf_logov2.JPG'
+import egpaf_logo from '../../../Resources/Images/egpaf_logov2.jpg'
 import { Link, useLocation, useNavigate} from 'react-router-dom';
 import UseAuth from '../../context/UseAuth';
 import jwt_decode from "jwt-decode";
