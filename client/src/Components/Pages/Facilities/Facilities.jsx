@@ -1,11 +1,15 @@
 
 import React, { useState, useEffect } from "react" ;
-
 import "./Facilities.css";
-
 import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import { toast } from 'react-toastify' ;
+import ReactHTMLTableToExcel from 'react-html-table-to-excel';
+import * as AiIcons from "react-icons/ai";
+
+
+
+
 
 
 const Facilities = () => {
@@ -111,28 +115,39 @@ const Facilities = () => {
       }
       
   };
+  const handleClick = () => {
+    navigate('/addfacility')
+  }
 
 return (
   
-  <div style={{textAlign: "center"}}>
+  <div style={{textAlign: "center"}} >
   {
     facilityListPageTitle()
   } 
 
-  <Link to = '/addfacility' className='btn btn-primary mb-2'>Add Facility</Link>
-  <div className='search_bar'>
-          <label>Search</label>
+  <button onClick={handleClick} className='addnewfacilitybtn'>Add Facility</button>
+            
+  <div className="searchbox">
           <input 
             type="text" 
             value={searchFacilities}
-            onChange={(e)=> setSearchFacilities(e.target.value)}
+            placeholder = "Type to search"
+            onChange={(e)=> setSearchFacilities(e.target.value)
+            }
           />
           </div>
-    <br/>
-  <div className="app-container" >
+    <ReactHTMLTableToExcel
+                    id="test-table-xls-button"
+                    className="addnewinventorybtn"
+                    table="table-to-xls"
+                    filename="Facilities"
+                    sheet="Facilities"
+                    buttonText="Export Data to Excel Sheet"/>
+  <div className="table" >
     
-        <table>
-          <thead>
+        <table className="table_content" id="table-to-xls">
+          <thead className="thead">
             <tr>
               <th>MFL CODE</th>
               <th>FACILITY NAME</th>
@@ -147,7 +162,7 @@ return (
               <th>ACTION</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody className="tbody">
                 {
                   facilities.filter((facility)=>{
                     if(searchFacilities === ""){
@@ -169,7 +184,12 @@ return (
                     }
                   }).map (
                     facility => 
-                        <tr key = {facility.id}>
+                        <tr key = {facility.id}
+                        onDoubleClick={
+                            () => {
+                            navigate(`/edit-facility/${facility.id}`)
+                        }}
+                        >
                           
                           <td>{facility.mflcode}</td>
                           <td><Link to = {`/specificfacility/${facility.id}`}  >{facility.facilityname}</Link></td>
@@ -182,11 +202,8 @@ return (
                           <td>{facility.WebADT ===1 ? "In use" : "Not in Use" }</td>
                           
                             <td>
-                            <Link to = {`/edit-facility/${facility.id}`} className='btn btn-info'> Update</Link>
-                            </td>
-                            <td>
                             <Link to = '' className = "btn btn-danger" onClick = {() => deleteFacility(facility.id)}
-                                    > Delete</Link>
+                                    > <AiIcons.AiFillDelete/></Link>
                             </td>
                 </tr>
               

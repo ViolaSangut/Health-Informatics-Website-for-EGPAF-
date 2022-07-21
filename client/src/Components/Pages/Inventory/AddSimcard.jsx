@@ -23,8 +23,7 @@ const PIN_REGEX = /^[0-9]{4}$/;
 const PHONEIMEI_REGEX = /^[0-9]{15,20}$/;
 
 
-
-function AddSimcard (){
+function AddSimcard (props){
 
 
 const [Facility, setFacility] = useState()
@@ -183,8 +182,9 @@ useEffect(() => {
     }
   }
     const onClickBack =() =>{
-    // navigate("/")
-    navigate(from, { replace: true });
+    navigate("/Inventory")
+    props.handleChange();
+
   }
 
 //get facilities

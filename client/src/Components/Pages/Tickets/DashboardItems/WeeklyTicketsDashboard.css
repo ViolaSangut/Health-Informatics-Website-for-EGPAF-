@@ -6,6 +6,9 @@
   margin-bottom: 2%;
   
 }
+.chart:hover{
+  background-color: rgb(207, 212, 212);
+}
 
   .chartGrid {
     stroke: rgb(228, 225, 225);

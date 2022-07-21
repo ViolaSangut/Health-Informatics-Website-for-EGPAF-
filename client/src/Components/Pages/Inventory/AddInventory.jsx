@@ -19,7 +19,7 @@ const PIN_REGEX = /^[0-9]{4}$/;
 const EMAIL_REGEX = /^\S+@\S+\.\S+$/;
 const PWD_REGEX = /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,24}$/;
 
-const AddInventory = ()=> {
+const AddInventory = (props)=> {
 
 
 const[AssetNumber, setAssetNumber]= useState("")
@@ -174,20 +174,20 @@ useEffect(() => {
             })
         }
 
-        //get facilities
-        useEffect(() => {   
-          getAllFacilities();
-        }, [])
+        // //get facilities
+        // useEffect(() => {   
+        //   getAllFacilities();
+        // }, [])
       
-        const getAllFacilities = () =>{
-          axios.get("http://localhost:4000/facilities")
-          .then((response)=>{
-              console.log(response.data)
-              setFacilities(response.data);
-          })
-          .catch((error)=>{
-              console.log(error);
-          })}
+        // const getAllFacilities = () =>{
+        //   axios.get("http://localhost:4000/facilities")
+        //   .then((response)=>{
+        //       console.log(response.data)
+        //       setFacilities(response.data);
+        //   })
+        //   .catch((error)=>{
+        //       console.log(error);
+        //   })}
 
         //Update Item
   const updateItem = async () => {
@@ -223,8 +223,12 @@ useEffect(() => {
         addItem();
     }
   }
+
+
+
   const onClickBack =() =>{
     navigate("/inventory")
+        
   }
 
   //Change Sumit button title dynamically
@@ -233,6 +237,7 @@ useEffect(() => {
   } else {
     <p>Add</p>
   }
+
 
   
 

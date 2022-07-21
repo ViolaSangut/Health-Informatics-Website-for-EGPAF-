@@ -5,7 +5,7 @@ import "./Inventory.css";
 import moment from 'moment';
 import usePrivateAxios from '../../hooks/usePrivateAxios';
 import * as AiIcons from "react-icons/ai";
-
+import ReactHTMLTableToExcel from 'react-html-table-to-excel';
 
 
 
@@ -17,7 +17,6 @@ const Inventory = () => {
   const [items, setItems] = useState([]);
   const navigate = useNavigate();
   const[searchInventory, setSearchInventory] = useState("")
-  const tableRef =useRef(null)
   const private_axios = usePrivateAxios();
  
 
@@ -92,8 +91,15 @@ const Inventory = () => {
             Add Tablet to Inventory
          
         </button>
+        <ReactHTMLTableToExcel
+                    id="tablets-download-button"
+                    className="addnewinventorybtn"
+                    table="table-to-xls"
+                    filename = "Tablet-List"
+                    sheet="tablexls"
+                    buttonText="Export Data to Excel Sheet"/>
 <div className="table">
-   <table className="table_content" ref={tableRef}>
+   <table className="table_content" id="table-to-xls" >
     <thead className='thead'>
         <tr>
         <th>Serial</th>
