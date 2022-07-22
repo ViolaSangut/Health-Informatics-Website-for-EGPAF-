@@ -27,7 +27,7 @@ const Simcards = () => {
 
 
 
-    //handleClick
+    //handleClick on add simcard button
     const handleClick = () => {
         navigate('/addSimcards')
 
@@ -63,7 +63,7 @@ const Simcards = () => {
     };
 
 
-    //render tables on screen
+    //render table on screen
     return(
          <div>
             <div>
