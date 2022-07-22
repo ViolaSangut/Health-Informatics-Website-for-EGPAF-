@@ -352,7 +352,10 @@ return (
           
         <Button variant="primary" type='submit'
         disabled={( !validMflcode|| !validFacilityname || !validIpaddress || !validElasticIpaddress || !validSubcounty) ? true : false}>
-          ADD FACILITY
+          
+                {id 
+                 ? <> Update Facility</>
+                 : <> Add Facility</>}
         </Button>
         
       </Form>

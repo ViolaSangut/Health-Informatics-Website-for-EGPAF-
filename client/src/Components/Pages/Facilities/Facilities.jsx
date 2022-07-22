@@ -118,6 +118,14 @@ const Facilities = () => {
   const handleClick = () => {
     navigate('/addfacility')
   }
+  
+  //Change Sumit button title dynamically
+  if(id){
+    <p>Update</p>
+  } else {
+    <p>Add</p>
+  }
+
 
 return (
   

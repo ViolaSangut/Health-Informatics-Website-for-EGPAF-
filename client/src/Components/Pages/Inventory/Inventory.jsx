@@ -87,9 +87,7 @@ const Inventory = () => {
 
       <button onClick={handleClick}
        className= "addnewinventorybtn">
-         
             Add Tablet to Inventory
-         
         </button>
         <ReactHTMLTableToExcel
                     id="tablets-download-button"
@@ -150,11 +148,7 @@ const Inventory = () => {
                             navigate(`/updateInventory/${item.id}`)
                         }
                     }
-                
-        
                 >
-                    
-
                     <td > {item.id} </td>
                     <td> {item.AssetNumber} </td>
                     <td> {item.AssetName} </td>
@@ -168,12 +162,7 @@ const Inventory = () => {
                             <td> <Link to = '' className = "btn btn-danger" onClick = {() => deleteItem(item.id)}
                                     style = {{marginLeft:"10px"}}>  <AiIcons.AiFillDelete/></Link>
                     </td>
-
-                    
-      
-
                 </tr>
-            
         )    
      }
     

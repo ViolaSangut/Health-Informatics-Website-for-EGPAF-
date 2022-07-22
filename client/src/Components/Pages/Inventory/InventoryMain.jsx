@@ -4,12 +4,14 @@ import Simcards from './Simcards'
 import { useState, useEffect} from 'react'
 import "./Inventory.css"
 
-
+//declaring state for inventory
 const InventoryMain = () => {
     const[tabletsVisible, setTabletsVisible] = useState(true)
   const[simcardsVisible, setSimcardsVisible] = useState(false)
   const[display, setDisplay] = useState("Tablets")
 
+
+//choosing display table upon page loading
 useEffect(() => {
         display==="Simcards"? setSimcardsVisible(true):setSimcardsVisible(false)
         display==="Tablets"? setTabletsVisible(true):setTabletsVisible(false)
@@ -20,12 +22,12 @@ useEffect(() => {
 
 
 
-
+//changing tables upon drop down selection
   const handleChange = (e)=>{
     setDisplay(e.target.value)
 }
 
-
+//render table on screen
   return (
     <div className='body'>
      

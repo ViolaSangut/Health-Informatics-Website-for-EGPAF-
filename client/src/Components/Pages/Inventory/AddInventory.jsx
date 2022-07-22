@@ -21,7 +21,7 @@ const PWD_REGEX = /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,24}$/;
 
 const AddInventory = (props)=> {
 
-
+//definition of state variables and params
 const[AssetNumber, setAssetNumber]= useState("")
 const [validNumber, setValidNumber]= useState(false);
 const [numberFocus, setNumberFocus]= useState(false);
@@ -141,7 +141,7 @@ useEffect(() => {
     
 
     
-    //Add Item
+//Add Item
     const addItem = () =>{
         // e.preventDefault();
         private_axios.post(`/inventory/addInventory`, {
@@ -160,8 +160,7 @@ useEffect(() => {
     });
     };
 
-    
-    //List all items in the inventory
+  //List all items in the inventory
         const getAllItems = () =>{
             private_axios.get("/Inventory")
             .then((response)=>{
@@ -174,28 +173,9 @@ useEffect(() => {
             })
         }
 
-        // //get facilities
-        // useEffect(() => {   
-        //   getAllFacilities();
-        // }, [])
-      
-        // const getAllFacilities = () =>{
-        //   axios.get("http://localhost:4000/facilities")
-        //   .then((response)=>{
-        //       console.log(response.data)
-        //       setFacilities(response.data);
-        //   })
-        //   .catch((error)=>{
-        //       console.log(error);
-        //   })}
-
-        //Update Item
-  const updateItem = async () => {
-
-
-    
+//Update Item
+  const updateItem = async () => { 
     try {
-
       const response = await  private_axios.put(`/Inventory/${id}`, {
         AssetName:AssetName, AssetNumber:AssetNumber, serialNumber:serialNumber, AssetStatus: AssetStatus,
          facility: facility, Passcode:Passcode, Email:Email, EmailPassword:EmailPassword
@@ -214,7 +194,7 @@ useEffect(() => {
   };
   }
 
-
+//handle click on add/update button click
   const handleSubmit =(e) =>{
     e.preventDefault();
       if(id){
@@ -225,22 +205,15 @@ useEffect(() => {
   }
 
 
-
+//handle click on back to inventory button
   const onClickBack =() =>{
     navigate("/inventory")
         
   }
 
-  //Change Sumit button title dynamically
-  if(id){
-    <p>Update</p>
-  } else {
-    <p>Add</p>
-  }
-
 
   
-
+//render form on screen
     return  (
         <div align ="middle">
             <button className="button" onClick={onClickBack}>Back to Inventory</button>
