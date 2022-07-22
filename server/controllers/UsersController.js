@@ -135,6 +135,18 @@ const updateUser = async (req, res, next) => {
   }
 };
 
+//Displaying User Profile
+const userProfile = async(req, res) =>{
+  const id = req.params.id;
+
+  const profile = await Users.findByPk(id, {
+    attributes: {exclude: ["password", "createdAt", "updatedAt", "refresh_token"]}
+  });
+
+  res.json(profile);
+}
+
+
 module.exports = {
   getUsers,
   addUser,
@@ -142,4 +154,5 @@ module.exports = {
   findUserById,
   updateUser,
   deleteEmployee,
+  userProfile,
 };

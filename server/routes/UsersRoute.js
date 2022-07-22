@@ -11,19 +11,20 @@ const ROLES_LIST = require("../config/roles");
 router
   .route("/")
   .get(
-    verifyToken,
-    verifyRole(ROLES_LIST.Admin, ROLES_LIST.Super_User),
+    // verifyToken,
+    // verifyRole(ROLES_LIST.Admin, ROLES_LIST.Super_User),
     UsersController.getUsers
   );
-
+//User Profile
+router.route("/userProfile/:id").get(UsersController.userProfile);
 // Add
 router.route("/register").post(UsersController.addUser);
 //Update
 router
   .route("/update/:id")
   .put(
-    verifyToken,
-    verifyRole(ROLES_LIST.Admin, ROLES_LIST.Super_User),
+    // verifyToken,
+    // verifyRole(ROLES_LIST.Admin, ROLES_LIST.Super_User),
     UsersController.updateUser
   );
 //Delete

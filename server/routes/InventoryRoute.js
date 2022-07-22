@@ -9,8 +9,8 @@ const { verifyToken } = require("../middleware/VerifyToken");
 router
   .route("/")
   .get(
-    verifyToken,
-    verifyRole(ROLES_LIST.Admin, ROLES_LIST.Super_User),
+    // verifyToken,
+    // verifyRole(ROLES_LIST.Admin, ROLES_LIST.Super_User),
     InventoryController.getInventory
   );
 

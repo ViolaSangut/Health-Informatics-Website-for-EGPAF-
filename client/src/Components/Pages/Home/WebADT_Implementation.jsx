@@ -17,7 +17,7 @@ const WebADT_Implementation = () => {
   //Implementation Summary
   const adtImplementationStatus = () =>{
     try {
-      axios.get("http://localhost:4000/facilities/ADTImplementation")
+      privateAxios.get("/facilities/ADTImplementation")
       .then((response)=>{
 
         //Stringifying response

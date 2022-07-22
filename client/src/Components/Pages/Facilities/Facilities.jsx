@@ -7,11 +7,6 @@ import { toast } from 'react-toastify' ;
 import ReactHTMLTableToExcel from 'react-html-table-to-excel';
 import * as AiIcons from "react-icons/ai";
 
-
-
-
-
-
 const Facilities = () => {
 
   const [facilities, setFacilities] = useState([]);

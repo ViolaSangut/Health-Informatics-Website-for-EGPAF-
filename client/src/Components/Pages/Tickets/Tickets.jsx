@@ -8,6 +8,7 @@ import usePrivateAxios from '../../hooks/usePrivateAxios';
 import UseAuth from "../../context/UseAuth";
 import jwt_decode from "jwt-decode";
 import * as AiIcons from "react-icons/ai";
+import ReactHTMLTableToExcel from 'react-html-table-to-excel';
 
 const Tickets = () => {
     const [tickets, setTickets] = useState([]);
@@ -205,8 +206,16 @@ const Tickets = () => {
         {tickets?.length
         ? (
            <>
-           <div className='ticketsTable'>
-            <table className='tickets_table_content'>
+             <ReactHTMLTableToExcel
+             id="test-table-xls-button"
+             className="addnewinventorybtn"
+             table="TicketsTable"
+             filename="Tickets"
+             sheet="Tickets"
+             buttonText="Download Excel"
+             />
+           <div className='ticketsTable' >
+            <table className='tickets_table_content' id="TicketsTable">
                 <thead>
                 <tr>
                 <th>Title </th>

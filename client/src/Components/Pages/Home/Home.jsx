@@ -1,4 +1,3 @@
-import React, {useEffect} from 'react'
 import './Home.css';
 import { Link, useNavigate } from 'react-router-dom';
 import WeeklyTicketsDashboard from '../Tickets/DashboardItems/WeeklyTicketsDashboard';

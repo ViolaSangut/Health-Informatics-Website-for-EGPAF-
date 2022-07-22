@@ -26,6 +26,7 @@ const SidebarComponent = ({ items }) => {
 
     const usersFirstName = decodedAccessToken?.firstName || [];
     const usersLastName = decodedAccessToken?.lastName || [];
+    const loggedInUserId = decodedAccessToken?.id || null;
 
 
 
@@ -43,6 +44,12 @@ const SidebarComponent = ({ items }) => {
         }
       };
 
+      //Profile
+      const userProfile = () => {
+         navigate(`user-profile/${loggedInUserId}`)
+      };
+
+
   return (
       <>
       <IconContext.Provider value={{color: 'white'}}>
@@ -58,15 +65,13 @@ const SidebarComponent = ({ items }) => {
           <img className='logo1' src={egpaf_logo} alt=''/>
        </div>
        {/* Account */}
-   
-        
         <NavDropdown 
         className='account' title= {< MdIcons.MdAccountCircle className='accountIcon' />} 
         > 
             <NavDropdown.Item>
                 <h4 className='name'> Hi, {usersFirstName} {usersLastName} </h4>
             </NavDropdown.Item>
-            <NavDropdown.Item>Profile</NavDropdown.Item>
+            <NavDropdown.Item onClick={userProfile}>Profile</NavDropdown.Item >
             <NavDropdown.Item onClick={logout} >
                 Logout <AIIcons.AiOutlineLogout className='logout' />
             </NavDropdown.Item>

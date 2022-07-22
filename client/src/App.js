@@ -29,6 +29,7 @@ import CheckAuth from "./Components/context/CheckAuth";
 import Unauthorized from "./Components/Common/Unauthorized";
 import InventoryMain from "./Components/Pages/Inventory/InventoryMain";
 import PersistLogin from "./Components/hooks/PersistLogin";
+import UserProfile from "./Components/Pages/Users/UserProfile";
 
 const SidebarLayout = () => (
   <>
@@ -53,6 +54,7 @@ function App() {
               <Route element={<CheckAuth allowedRoles={[3, 4]} />}>
                 <Route path="/list-user" element={<Users />} />
                 <Route path="/edit-user/:id" element={<RegisterComponent />} />
+               
               </Route>
 
               {/* Facilities */}
@@ -96,6 +98,10 @@ function App() {
           <Route path="/unauthorized" element={<Unauthorized />} />
           <Route path="/sim" element={<Simcards />} />
           <Route path="*" element={<PageNotFound />} />
+          {/* Profile */}
+          <Route element={<SidebarLayout />}>
+           <Route path="/user-profile/:id" element={<UserProfile />} />
+          </Route>
         </Routes>
     </div>
   );
