@@ -13,7 +13,7 @@ const EMR_Implementation = () => {
   const [emrImplementation, setEmrImplementation] = useState('');
 
 
-  //Implementation Summary
+  //EMR Summary
   const emrImplementationStatus = () =>{
     try {
       axios.get("http://localhost:4000/facilities/EMRImplementation")

@@ -17,8 +17,11 @@ router.route('/countKisiiFacilities').get(FacilityControllers.countKisiiFaciliti
 //EMR Implementation Status
 router.route('/emrimplementation').get(FacilityControllers.EMRImplementation);
 
-//EMR Implementation Status
+//ADT Implementation Status
 router.route('/adtimplementation').get(FacilityControllers.ADTImplementation);
+
+//Summary Implementation Status
+router.route('/summaryimplementation').get(FacilityControllers.SummaryImplementation)
 
 //List HomaBay Facilities
 router.route('/homabayfacilities').get(FacilityControllers.getHomaBayFacilities);

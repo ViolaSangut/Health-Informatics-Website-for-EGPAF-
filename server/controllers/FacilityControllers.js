@@ -135,13 +135,6 @@ const deleteFacility = async (req, res) => {
   });
   return res.json("Facility deleted");
 };
-module.exports = {
-  addFacilities,
-  getFacilities,
-  updateFacility,
-  findFacilityById,
-  deleteFacility,
-};
 
 //Count HomaBay Facilities
 const countHomaBayFacilities = async (req, res) => {
@@ -178,6 +171,20 @@ const EMRImplementation = async (req, res) => {
 const ADTImplementation = async (req, res) => {
   db.query(
     " select round ((select count (*) from facilities where WebAdt=1) / (select count (*) from facilities) * 100,0) as ADTImplementationPercentage",
+    (error, result) => {
+      if (error) {
+        console.log(error);
+      } else {
+        res.send(result);
+      }
+    }
+  );
+};
+
+//Implementation Summary
+const SummaryImplementation = async (req, res) => {
+  db.query(
+    " SELECT round ((SELECT (SELECT SUM(Implementation) Implementation FROM (select (select count(*) from facilities where status='running') / (select count(*) from facilities) as Implementation UNION ALL select (select count(*) from facilities where WebAdt=1) / (select count(*) from facilities) as Implementation UNION ALL select (select count(*) from facilities where ushauri=1) / (select count(*) from facilities) as Implementation) as ImplementationSummary) / 3 )* 100,0) as ImplementationSummary",
     (error, result) => {
       if (error) {
         console.log(error);
@@ -263,4 +270,5 @@ module.exports = {
   getKisiiFacilities,
   countKiambuFacilities,
   countKisiiFacilities,
+  SummaryImplementation,
 };
