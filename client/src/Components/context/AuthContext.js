@@ -1,12 +1,13 @@
 import { createContext, useState } from "react";
+import jwt_decode from "jwt-decode";
 
 const AuthContext = createContext({});
 
 export const AuthProvider = ({ children }) => {
     const [auth, setAuth] = useState({});
-    const [persist, setPersist] = useState(JSON.parse(localStorage.getItem("persist")) || false);
+
     return (
-        <AuthContext.Provider value={{ auth, setAuth, persist, setPersist }}>
+        <AuthContext.Provider value={{ auth, setAuth }}>
             {children}
         </AuthContext.Provider>
     )

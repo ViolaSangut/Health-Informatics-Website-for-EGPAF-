@@ -19,9 +19,8 @@
  
 }
 
-.tickets_table_content tbody tr :hover {
-  background-color: rgb(140, 171, 207);
-
+.tbody tr:hover {
+  color: #2f9e30;
 }
 
 .tickets_table_content tbody {

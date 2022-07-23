@@ -1,5 +1,4 @@
 import './Summary.css'
-import * as BsIcons from 'react-icons/bs';
 import * as MdIcons from 'react-icons/md';
 import { useState, useEffect } from 'react';
 import usePrivateAxios from '../../../hooks/usePrivateAxios';

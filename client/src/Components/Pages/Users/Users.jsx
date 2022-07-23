@@ -7,6 +7,7 @@ import UseAuth from "../../context/UseAuth";
 import jwt_decode from "jwt-decode";
 import * as AiIcons from "react-icons/ai";
 
+
 const Users = () => {
     const [users, setUsers] = useState([]);
     const navigate = useNavigate();
@@ -23,6 +24,7 @@ const Users = () => {
     const UserRoles = decodedAccessToken?.roles || null;
     const loggedinUserRoles = UserRoles.toString();
     const loggedinUserEmail = decodedAccessToken?.email || null;
+
 
     useEffect(() => {
 
@@ -62,6 +64,7 @@ const Users = () => {
         }
         
     };
+    
 
   return (
     <div className='container'> 
@@ -190,3 +193,6 @@ const Users = () => {
 }
 
 export default Users
+
+
+

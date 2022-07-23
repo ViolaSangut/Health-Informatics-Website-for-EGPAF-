@@ -137,12 +137,7 @@ const AddTicket = () => {
   const getAllTickets = () =>{
       privateAxios.get("/tickets")
       .then((response)=>{
-          console.log(response.data)
           setTickets(response.data);
-          console.log(response.data)
-          console.log(creatorsEmail)
-          console.log(loggedinUserEmail)
-          // setTicketCreatorEmail(response.data[0].creatorsEmail);
       })
       .catch((error)=>{
           console.log(error);
@@ -167,7 +162,6 @@ const AddTicket = () => {
  const getAllFacilities = () =>{
   axios.get("http://localhost:4000/facilities")
   .then((response)=>{
-      console.log(response.data)
       setFacilities(response.data);
   })
   .catch((error)=>{
@@ -224,7 +218,7 @@ const AddTicket = () => {
             <div className="custom_select">
               
               <select value={facility} onChange ={(e) => setFacility(e.target.value)} disabled={!id? false :(loggedinUserRoles === "4" || loggedinUserRoles ==="3") ||((ticketCreatorsEmail === loggedinUserEmail) ) ? false : true}>
-              <option selected disabled ="true">--Select  Facility--</option>
+              <option disabled ={true}>--Select  Facility--</option>
                   {
                       facilities.map((facility)=>(<option key={facility.id}text={facility.mflcode}>{facility.facilityname}</option>))
                   }
@@ -250,7 +244,7 @@ const AddTicket = () => {
          (
         <div className="inputfield" >
           <label>Status</label>
-          <div class="custom_select">
+          <div className="custom_select">
             <select value={ticket_status} onChange={(e)=>{setTicket_status(e.target.value)}} 
             disabled={!id? false :(loggedinUserRoles === "4" || loggedinUserRoles ==="3") ||((ticketCreatorsEmail === loggedinUserEmail) ) ? false : true}>
               <option value="">Select</option>

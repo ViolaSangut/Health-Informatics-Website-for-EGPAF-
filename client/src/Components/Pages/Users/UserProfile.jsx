@@ -6,8 +6,8 @@ import './UserProfile.css'
 import { toast } from 'react-toastify';
 import UseAuth from "../../context/UseAuth";
 import jwt_decode from "jwt-decode";
-
-
+import { gettingLoggedUserRoleName } from "./Users";  //CgProfile
+import * as CgIcons from "react-icons/cg";
 const UserProfile = () => {
 
     const {id} = useParams();
@@ -19,6 +19,7 @@ const UserProfile = () => {
     const [user, setUser] = useState([]);
     const navigate = useNavigate(); 
     const privateAxios = usePrivateAxios();
+    let UserRoleId;
     
     //Getting loggedin's role from accessToken.
     const { auth } = UseAuth();
@@ -26,19 +27,26 @@ const UserProfile = () => {
     ? jwt_decode(auth.accessToken)
     : undefined
     const UserRoles = decodedAccessToken?.roles || null;
+    // const loggedinUserRoles = UserRoles.toString();
     const [RoleId, setRoleId] = useState(UserRoles);
+    
     const usersFirstName = decodedAccessToken?.firstName || null;
     const usersLastName = decodedAccessToken?.lastName || null;
 
+    const StringfiedRoleId = JSON.stringify(RoleId)
+    UserRoleId = StringfiedRoleId.substring(1, StringfiedRoleId.length-1)
+    
+
+   
     useEffect(() => {
         getUserProfile();
+       
   }, [])
 
     //Getting user details from API
     const getUserProfile = () =>{
         privateAxios.get(`/users/userProfile/${id}`)
         .then((response)=>{
-            console.log(response?.data);
             setUser(response?.data);
             setFirstName(response?.data?.firstName);
             setLastName(response?.data?.lastName);
@@ -51,6 +59,14 @@ const UserProfile = () => {
         })
     }
 
+  
+    useEffect(()=>{
+      
+      
+
+    }, [])
+
+
   //Update User
   const updateUser = async () => {
     
@@ -61,11 +77,9 @@ const UserProfile = () => {
       });
       
       console.log(response.data);
-      // console.log(response.accessToken);
-      console.log(JSON.stringify(response));
       toast.success("User Updated Succesfully");
       navigate('/home')
-      //clear input fields
+
     } catch (err) {
      console.log(err)
 
@@ -75,10 +89,12 @@ const UserProfile = () => {
 
 
   return (
-    <div className='addTicket'>
-      <div className="addTicketContent">
+    <div className='profile'>
+      <div className="profileContent">
       <div className="title">
-      <h3 className="text-center">{usersFirstName} {usersLastName}</h3>
+      <CgIcons.CgProfile className="profileIcon"/>
+      <h3 style={{color:"black"}} className="text-center">Profile</h3>
+      <h4 className="text-center">{usersFirstName} {usersLastName}</h4>
       </div>
       <div className="form">
         <div className="inputfield">
@@ -104,6 +120,16 @@ const UserProfile = () => {
             onChange={(e) =>setEmail(e.target.value)}
             />
         </div> 
+
+        { UserRoles !== null &&
+           <div className="inputfield">
+           <label>Role</label>
+           <input type="text" className="input" 
+           disabled={true} 
+           value={UserRoleId === "1" ? "User" : UserRoleId === "2" ? "Manager": UserRoleId === "3" ? "Admin" : UserRoleId === "4" ? "Super-User" : ""} 
+           />
+       </div> 
+        }
 
          {/* <div className="inputfield">
             <label>Password</label>

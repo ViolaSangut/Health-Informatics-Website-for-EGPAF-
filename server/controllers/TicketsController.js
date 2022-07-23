@@ -187,12 +187,29 @@ const countUnsignedTickets = async (req, res) => {
   res.json(unassignedTickets);
 };
 
+//List Recent Tickets
+const recentTickets = async (req, res) => {
+  db.query(
+    " select * from hbhis.tickets where date(created_date)=date(now()) or ticket_status !='Resolved' ",
+    (error, result) => {
+      if (error) {
+        console.log(error);
+      } else {
+        res.send(result);
+      }
+    }
+  );
+};
+
 //List unasigned
 const getUnsignedTickets = async (req, res) => {
+  // const todaysDate = new Date().toLocaleDateString('en-CA');
+  // console.log(todaysDate)
   const tickets = await Tickets.findAll(
     {
       where: {
-        ticket_status: "Unassigned",
+        // created_date: todaysDate,
+        ticket_status: "Unassigned", 
       },
     },
     {

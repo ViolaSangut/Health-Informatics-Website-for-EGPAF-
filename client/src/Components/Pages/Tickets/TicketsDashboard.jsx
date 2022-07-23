@@ -4,13 +4,11 @@ import Summary from './DashboardItems/Summary';
 import TodaysResolved from './DashboardItems/TodaysResolved';
 import WeeklyTicketsDashboard from './DashboardItems/WeeklyTicketsDashboard';
 import { Link, useNavigate } from 'react-router-dom';
-import ResolvedTickets from './DashboardItems/ResolvedTickets';
 
 const TicketsDashboard = () => {
 
   const navigate = useNavigate();
 
-  
 
   return (
     <div>

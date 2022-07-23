@@ -29,14 +29,10 @@
    
   }
 
-  .table_content tbody tr :hover {
-    /* background-color: rgb(140, 171, 207); */
   
-  }
   
   .table_content thead {
-    background-color: #009879;
-    color: #ffffff;
+    
     text-align: left;
     font-weight: bold;
   }
@@ -55,7 +51,7 @@
   }
   
   .table_content tbody tr:last-of-type {
-    border-bottom: 2px solid #009879;
+    border-bottom: 2px solid #bfc4c3;
   }
   
   .table_content tbody td[data-href]{
@@ -92,19 +88,7 @@
   .date_filter{
     margin-left: 7%;
     width: 10%;
-    /* padding-left: 10px;
-    display: flex; */
-    /* margin-right: 10%; */
+  
   }
 
-    .buttonadds {
-      padding: 0.5rem;
-      margin-top: 0.5rem;
-      vertical-align: middle;
-      border-radius: 0.5rem;
-      background-color: teal;
-      color: white;
-      width: 250px;
-      height: 50px;
-      margin-left: 85%;
-    }
+   

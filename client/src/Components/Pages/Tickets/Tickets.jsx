@@ -74,9 +74,7 @@ const Tickets = () => {
     privateAxios.get("/tickets"
     )
     .then((response)=>{
-        console.log(response.data)
         setTickets(response.data);
-        console.log(tickets)
     })
     .catch((error)=>{
         console.log(error);
@@ -216,9 +214,9 @@ const Tickets = () => {
              />
            <div className='ticketsTable' >
             <table className='tickets_table_content' id="TicketsTable">
-                <thead>
-                <tr>
-                <th>Title </th>
+                <thead  >
+                <tr >
+                <th >Title </th>
                 <th>Facility</th> 
                 <th>Creator</th> 
                 <th>Creator's Email</th> 
@@ -232,7 +230,7 @@ const Tickets = () => {
                 </tr>
                 </thead>
 
-                <tbody>
+                <tbody className='ticketsRow'>
                         {
                         tickets.filter((ticket)=>{
                             if(searchTickets === ""){
