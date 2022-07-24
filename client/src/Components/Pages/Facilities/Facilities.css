@@ -1,9 +1,9 @@
 .body {
-    background-color: black;
+    /* background-color: black; */
 }
 
 .table {
-    width: 80%;
+    width: 100%;
 }
 
 .table_content {
@@ -14,7 +14,7 @@
 }
 
 .thead th {
-    background-color: black;
+    background-color: rgb(236, 235, 235);
     border: 1px solid #ddd;
     padding: 2px;
     color: black

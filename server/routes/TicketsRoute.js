@@ -62,6 +62,20 @@ router
     TicketsController.getPendingTickets
   );
 
+  //List Recent
+router
+.route("/recent")
+.get(
+  verifyToken,
+  verifyRole(
+    ROLES_LIST.Admin,
+    ROLES_LIST.User,
+    ROLES_LIST.Manager,
+    ROLES_LIST.Super_User
+  ),
+  TicketsController.recentTickets
+);
+
 //getNoOfWeeklyTickets
 router
   .route("/getNoOfWeeklyTickets")

@@ -28,6 +28,9 @@ const SidebarComponent = ({ items }) => {
     const usersLastName = decodedAccessToken?.lastName || [];
     const loggedInUserId = decodedAccessToken?.id || null;
 
+    const UserRoles = decodedAccessToken?.roles || null;
+    const loggedinUserRoles = UserRoles?.toString();
+
 
 
     //Logout
@@ -49,7 +52,6 @@ const SidebarComponent = ({ items }) => {
          navigate(`user-profile/${loggedInUserId}`)
       };
 
-
   return (
       <>
       <IconContext.Provider value={{color: 'white'}}>
@@ -64,6 +66,12 @@ const SidebarComponent = ({ items }) => {
        <div >
           <img className='logo1' src={egpaf_logo} alt=''/>
        </div>
+      { loggedinUserRoles === "3" || loggedinUserRoles === "4" ?
+      <div>
+        <Link className="adminButton " to="/list-user">Admin</Link>
+       </div>
+       :<></>
+       }
        {/* Account */}
         <NavDropdown 
         className='account' title= {< MdIcons.MdAccountCircle className='accountIcon' />} 

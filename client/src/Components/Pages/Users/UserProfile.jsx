@@ -59,13 +59,6 @@ const UserProfile = () => {
         })
     }
 
-  
-    useEffect(()=>{
-      
-      
-
-    }, [])
-
 
   //Update User
   const updateUser = async () => {

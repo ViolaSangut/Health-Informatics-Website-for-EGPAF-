@@ -26,6 +26,7 @@ const getTickets = async (req, res) => {
       "assignee",
       "priority",
       "due_date",
+      "created_date",
       [
         sequelize.fn("DATE_FORMAT", sequelize.col("createdAt"), "%Y-%m-%d"),
         "createdAt",
@@ -181,7 +182,7 @@ const countAllTickets = async (req, res) => {
 const countUnsignedTickets = async (req, res) => {
   const unassignedTickets = await Tickets.count({
     where: {
-      ticket_status: "Unassigned",
+      ticket_status: "Unassigned", 
     },
   });
   res.json(unassignedTickets);
@@ -190,7 +191,7 @@ const countUnsignedTickets = async (req, res) => {
 //List Recent Tickets
 const recentTickets = async (req, res) => {
   db.query(
-    " select * from hbhis.tickets where date(created_date)=date(now()) or ticket_status !='Resolved' ",
+    " select * from hbhis.tickets where date(created_date)>=DATE(NOW()) - INTERVAL 6 day or ticket_status !='Resolved' ",
     (error, result) => {
       if (error) {
         console.log(error);
@@ -203,8 +204,8 @@ const recentTickets = async (req, res) => {
 
 //List unasigned
 const getUnsignedTickets = async (req, res) => {
-  // const todaysDate = new Date().toLocaleDateString('en-CA');
-  // console.log(todaysDate)
+  const todaysDate = new Date().toLocaleDateString('en-CA');
+  console.log(todaysDate)
   const tickets = await Tickets.findAll(
     {
       where: {
@@ -317,7 +318,7 @@ const getResolvedTickets = async (req, res) => {
 //Percentage count of Todays resolved Tickets
 const percentageCountTodaysResolvedTickets = async (req, res) => {
   db.query(
-    " select round ((select count (*) from tickets where date(createdAt)=date(now()) and ticket_status='Resolved') / (select count (*) from tickets where date(createdAt)=date(now())) * 100,0) as percentageCountOfTodaysResolvedTickets",
+    " select round ((select count (*) from tickets where date(updatedAt)=date(now()) and ticket_status='Resolved') / (select count (*) from tickets where date(created_date)=date(now()) or ticket_status != 'Resolved') * 100,0) as percentageCountOfTodaysResolvedTickets",
     (error, result) => {
       if (error) {
         console.log(error);
@@ -345,7 +346,7 @@ const countTodaysTickets = async (req, res) => {
 //Count Todays Resolved Tickets
 const countTodaysResolvedTickets = async (req, res) => {
   db.query(
-    "select count(*) as todays_resolved_tickets from tickets where date(createdAt)=date(now()) and ticket_status='Resolved'",
+    "select count(*) as todays_resolved_tickets from tickets where date(updatedAt)=date(now()) and ticket_status='Resolved'",
     (err, result) => {
       if (err) {
         console.log(error);
@@ -374,5 +375,6 @@ module.exports = {
   getUnsignedTickets,
   getPendingTickets,
   getResolvedTickets,
+  recentTickets,
   db,
 };

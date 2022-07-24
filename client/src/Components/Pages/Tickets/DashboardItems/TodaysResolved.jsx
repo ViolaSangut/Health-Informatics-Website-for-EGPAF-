@@ -90,7 +90,7 @@ const TodaysResolved = () => {
     <div className="todaysResolved">
       
       <div className="todaysResolvedContent">
-      <p >Percentage of today's resolved ticket(s) </p>
+      <p >Today's resolved ticket(s) </p>
         
         <div className="circleChart">
           { 

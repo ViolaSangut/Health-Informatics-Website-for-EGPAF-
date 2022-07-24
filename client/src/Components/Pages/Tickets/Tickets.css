@@ -86,10 +86,17 @@
   margin-bottom: 1%;
 }
 
-.tickets_date_filter{
+.tickets_filter{
   margin-left: 7%;
   width: 10%;
+  display: flex;
+  width: fit-content;
+  align-items: center;
 
+}
+
+.tickets_date_filter{
+  margin-left: 2%;
 }
 
   .buttonadd {

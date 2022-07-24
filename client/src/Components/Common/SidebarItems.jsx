@@ -4,7 +4,7 @@ import * as AiIcons from "react-icons/ai";
 import * as IoIcons from "react-icons/io";
 import * as MdIcons from "react-icons/md";
 import * as RiIcons from "react-icons/ri";
-
+import jwt_decode from "jwt-decode";
 
 export const sidebarItems = [
   {
@@ -32,13 +32,13 @@ export const sidebarItems = [
     className: "nav-text",
   },
 
-    { 
+    // { 
       
-      title: "Users",
-      path: "/list-user",
-      icon: <MdIcons.MdPeople />,
-      className: "nav-text",
-    }
+    //   title: "Users",
+    //   path: "/list-user",
+    //   icon: <MdIcons.MdPeople />,
+    //   className: "nav-text",
+    // }
 
   
 ];

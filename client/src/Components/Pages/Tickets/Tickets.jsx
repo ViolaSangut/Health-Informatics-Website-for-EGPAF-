@@ -43,13 +43,16 @@ const Tickets = () => {
     //Listing Tickets By Status
   const filterByTicketStatus = () =>{
     if (window.location.pathname === "/tickets-list" || window.location.pathname === "/tickets-list/" || window.location.pathname === "/tickets-list/4" || window.location.pathname === "/tickets-list/4/") {
-      getAllTickets();
+    //   getAllTickets();
+    getRecentTickets();
     } else if(window.location.pathname === "/tickets-list/1" || window.location.pathname === "/tickets-list/1/"){
       getUnassignedTickets();
     }  else if(window.location.pathname === "/tickets-list/2" || window.location.pathname === "/tickets-list/2/"){
       getPendingTickets();
     }  else if(window.location.pathname === "/tickets-list/3" || window.location.pathname === "/tickets-list/3/"){
       getResolvedTickets();
+    }  else if(window.location.pathname === "/tickets-list/5" || window.location.pathname === "/tickets-list/5/"){
+        getAllTickets();
     }
 
   }
@@ -57,14 +60,16 @@ const Tickets = () => {
   //Changing Facilities List Title Dynamically 
   const ticketsListPageTitle = () =>{
     if (window.location.pathname === "/tickets-list" || window.location.pathname === "/tickets-list/" || window.location.pathname === "/tickets-list/4" || window.location.pathname === "/tickets-list/4/") {
-        return <h2 className='text-center'>All Tickets</h2>;
+        return <h2 className='text-center'>Recent Tickets</h2>;
       } else if(window.location.pathname === "/tickets-list/1" || window.location.pathname === "/tickets-list/1/"){
         return <h2 className='text-center'>Unassigned Tickets</h2>;
       }  else if(window.location.pathname === "/tickets-list/2" || window.location.pathname === "/tickets-list/2/"){
         return <h2 className='text-center'>Pending Tickets</h2>;
       }  else if(window.location.pathname === "/tickets-list/3" || window.location.pathname === "/tickets-list/3/"){
         return <h2 className='text-center'>Resolved Tickets</h2>;
-      }
+      }else if(window.location.pathname === "/tickets-list/5" || window.location.pathname === "/tickets-list/5/"){
+        return <h2 className='text-center'>All Tickets</h2>;
+    }
 
   }
 
@@ -72,6 +77,23 @@ const Tickets = () => {
    //List All Tickets
    const getAllTickets = () =>{
     privateAxios.get("/tickets"
+    )
+    .then((response)=>{
+        setTickets(response.data);
+    })
+    .catch((error)=>{
+        console.log(error);
+        if(error.message === "Request failed with status code 401"){
+            navigate('/unauthorized', { state: { from: location }, replace: true });
+        } else{
+        navigate('/', { state: { from: location }, replace: true });
+        }
+    })
+}
+
+//List Recent Tickets
+const getRecentTickets = () =>{
+    privateAxios.get("/tickets/recent"
     )
     .then((response)=>{
         setTickets(response.data);
@@ -168,7 +190,34 @@ const Tickets = () => {
         
     };
 
-    
+    const navigateToAllTicketsPage = () =>{
+        navigate('/tickets-list/5');
+        getAllTickets()
+    }
+
+    const navigateToUnsignedTicketsPage = () =>{
+        navigate('/tickets-list/1');
+        getUnassignedTickets();
+    }
+
+    const navigateToPendingTicketsPage = () =>{
+        navigate('/tickets-list/2');
+        getPendingTickets();
+    }
+
+    const navigateToRecentTicketsPage = () =>{
+        navigate('/tickets-list/4');
+        getRecentTickets();
+    }
+
+    useEffect(()=>{
+        filterTickets === "all" ? navigateToAllTicketsPage() 
+        : filterTickets === "unassigned" ? navigateToUnsignedTicketsPage() 
+        : filterTickets === "pending" ? navigateToPendingTicketsPage() 
+        : filterTickets === "recent" ? navigateToRecentTicketsPage() 
+        :console.log("")
+    }, [filterTickets])
+
   return (
     <div >
     
@@ -179,21 +228,34 @@ const Tickets = () => {
 
             <Link to = '/addticket' className='btn btn-primary mb-2'>Add Ticket</Link>
             <Link to = '/tickets' className='btn btn-primary mb-2' style={{marginLeft: "3%"}}>Tickets DashBoard</Link>
-        </div>
-        {/* Date Filter */}
-        <div className='tickets_date_filter'>
-            <select name="isAvailable" value={searchTickets}
-                onChange={(e)=> setSearchTickets(e.target.value)}>
-                <option value="">All</option>
-                <option value={myTodaysDate}>Todays Tickets</option>
-                <option value={myYesterdaysDate}>Yesterdays Tickets</option>
-            </select>
-
             
         </div>
+    
+        {/* Filter */}
+        <div className='tickets_filter'>
+            <select name="isAvailable" value={filterTickets}
+                onChange={(e)=>setFilterTickets(e.target.value)}
+              
+                >
+                <option value="recent">Select</option>
+                <option value="pending">Pending</option>
+                <option value="unassigned">Unassigned</option>
+                <option value="recent">Recent</option>
+                <option value="all">All Tickets</option>
+          
+            </select>      
+
+            <select className='tickets_date_filter' style={{margingLeft: "px"}} name="isAvailable" value={searchTickets}
+                onChange={(e)=> setSearchTickets(e.target.value)}>
+                <option value="">Select</option>
+                <option value={myTodaysDate}>Todays Tickets</option>
+                <option value={myYesterdaysDate}>Yesterdays Tickets</option>
+            </select> 
+        </div>
+    
         {/* Search */}
         <div className='tickets_search_bar'>
-            <label style={{margin: "1%"}}>Search</label>
+            <label style = {{marginLeft:"10px"}}>Search</label>
             <input 
                 type="text" 
                 value={searchTickets}
@@ -271,6 +333,7 @@ const Tickets = () => {
                                     <td>{ticket.priority}</td>
                                     <td>{(moment(ticket.due_date).format('DD-MM-YYYY'))}</td>
                                     <td>{(moment(ticket.created_date).format('DD-MM-YYYY'))}</td>
+                                 
                                    
                                     {    //Enabling only creators of the ticket, Admins and Super_Users to update & delete
                                          (loggedinUserRoles === "4" || loggedinUserRoles ==="3") ||ticket.creatorsEmail === userEmail ?

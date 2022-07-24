@@ -148,7 +148,7 @@ const AddTicket = () => {
    const pageTitle = () =>{
 
       if(id){
-          return <h3 className="text-center">Update Ticket</h3>
+          return <h3 className="text-center">View Ticket</h3>
       } 
       else {
           return <h3 className="text-center">Add Ticket</h3>
