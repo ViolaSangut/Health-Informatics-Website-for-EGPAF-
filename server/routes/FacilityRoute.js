@@ -1,6 +1,9 @@
 const express = require("express");
 const router = express.Router();
 const FacilityControllers = require("../controllers/FacilityControllers");
+const { verifyToken } = require("../middleware/VerifyToken");
+const verifyRole = require("../middleware/VerifyRole");
+const ROLES_LIST = require("../config/roles");
 
 //List
 router.route('/').get(FacilityControllers.getFacilities);
@@ -33,14 +36,19 @@ router.route('/Kiambufacilities').get(FacilityControllers.getKiambuFacilities);
 router.route('/kisiifacilities').get(FacilityControllers.getKisiiFacilities);
 
 // Add
-router.route('/addfacility').post(FacilityControllers.addFacilities);
+router.route('/addfacility').post( 
+    verifyToken,
+    verifyRole(ROLES_LIST.Admin, ROLES_LIST.Super_User),FacilityControllers.addFacilities);
 
 //Delete
-router.route("/delete/:id").delete(FacilityControllers.deleteFacility);
+router.route("/delete/:id").delete(
+    verifyToken,
+    verifyRole(ROLES_LIST.Admin, ROLES_LIST.Super_User), FacilityControllers.deleteFacility);
 //Find By Id
 router.route("/:id").get(FacilityControllers.findFacilityById);
 //update
-router.put("/:id", FacilityControllers.updateFacility);
+router.put("/:id",  verifyToken,
+verifyRole(ROLES_LIST.Admin, ROLES_LIST.Super_User), FacilityControllers.updateFacility);
 
 // router.route('/getNoOfWeeklyTickets').get(TicketsController.getNoOfWeeklyTickets);
 module.exports = router;

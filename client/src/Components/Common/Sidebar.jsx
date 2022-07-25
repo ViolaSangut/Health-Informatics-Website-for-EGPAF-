@@ -10,7 +10,7 @@ import * as MdIcons from 'react-icons/md';
 import axios from 'axios';
 import UseAuth from '../context/UseAuth';
 import jwt_decode from "jwt-decode";
-import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
+import { NavDropdown } from 'react-bootstrap';
 
 const SidebarComponent = ({ items }) => {
     const [sidebar, setSidebar] = useState(false);
@@ -66,12 +66,7 @@ const SidebarComponent = ({ items }) => {
        <div >
           <img className='logo1' src={egpaf_logo} alt=''/>
        </div>
-      { loggedinUserRoles === "3" || loggedinUserRoles === "4" ?
-      <div>
-        <Link className="adminButton " to="/list-user">Admin</Link>
-       </div>
-       :<></>
-       }
+     
        {/* Account */}
         <NavDropdown 
         className='account' title= {< MdIcons.MdAccountCircle className='accountIcon' />} 
@@ -93,6 +88,8 @@ const SidebarComponent = ({ items }) => {
                         <AIIcons.AiOutlineCloseSquare/>
                     </Link>
                </li>
+
+                         
                {
                    sidebarItems.map((item, index)=>{
                        return (
@@ -101,9 +98,23 @@ const SidebarComponent = ({ items }) => {
                                 {item.icon}
                                 <span>{item.title}</span>
                               </Link>
+                              
                            </li>
                        );
                    })
+               }
+               
+                {/* Admin Panel */}
+                {  loggedinUserRoles === "3" || loggedinUserRoles === "4" &&
+                    <>
+                   <li className='nav-text'>
+                   <Link to="/list-user">
+                  < MdIcons.MdAdminPanelSettings/>
+                    <span>Admin</span> 
+                    </Link>
+                   </li>
+                   </>
+                    
                }
            </ul>
 

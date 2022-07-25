@@ -6,6 +6,8 @@ import axios from "axios";
 import { toast } from 'react-toastify' ;
 import ReactHTMLTableToExcel from 'react-html-table-to-excel';
 import * as AiIcons from "react-icons/ai";
+import UseAuth from "../../context/UseAuth";
+import jwt_decode from "jwt-decode";
 
 const Facilities = () => {
 
@@ -13,6 +15,16 @@ const Facilities = () => {
   const navigate = useNavigate();
   let [searchFacilities, setSearchFacilities] = useState("");
   const id = useParams();
+
+  const { auth } = UseAuth();
+
+    //Getting loggedin's user roles from accessToken.
+    const decodedAccessToken = auth?.accessToken
+          ? jwt_decode(auth.accessToken)
+          : undefined
+    const UserRoles = decodedAccessToken?.roles || null;
+    const loggedinUserRoles = UserRoles.toString();
+   
 
 
   //Listing Facilties By county
@@ -128,8 +140,13 @@ return (
   {
     facilityListPageTitle()
   } 
+  {/* Enabling admins & Supers_Users only to add Facility */}
+  {  
+  loggedinUserRoles === "3" || loggedinUserRoles === "4" ?
+     <button onClick={handleClick} className='addnewfacilitybtn'>Add Facility</button>
+     :<></>
+  }
 
-  <button onClick={handleClick} className='addnewfacilitybtn'>Add Facility</button>
             
   <div className="searchbox">
           <input 
@@ -162,7 +179,9 @@ return (
               <th>USHARI </th>
               <th>WebADT </th>
               
-              <th>ACTION</th>
+             { loggedinUserRoles === "3" || loggedinUserRoles === "4" &&
+             <th>ACTION</th>
+             }
             </tr>
           </thead>
           <tbody className="tbody">
@@ -188,8 +207,11 @@ return (
                   }).map (
                     facility => 
                         <tr key = {facility.id}
+                        
                         onDoubleClick={
                             () => {
+                             {/* Enabling admins & Supers_Users only to Update Facility */}
+                            loggedinUserRoles === "3" || loggedinUserRoles === "4" &&
                             navigate(`/edit-facility/${facility.id}`)
                         }}
                         >
@@ -203,11 +225,14 @@ return (
                           <td>{facility.status}</td>
                           <td>{ facility.ushauri ===1 ? "In use" : "Not in Use"}</td>
                           <td>{facility.WebADT ===1 ? "In use" : "Not in Use" }</td>
-                          
-                            <td>
+
+                           {/* Enabling admins & Supers_Users only to delete Facility */}
+                           { loggedinUserRoles === "3" || loggedinUserRoles === "4" &&
+                           <td>
                             <Link to = '' className = "btn btn-danger" onClick = {() => deleteFacility(facility.id)}
                                     > <AiIcons.AiFillDelete/></Link>
                             </td>
+                            }
                 </tr>
               
                     

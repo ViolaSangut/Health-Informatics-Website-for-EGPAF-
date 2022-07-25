@@ -9,8 +9,8 @@ const ROLES_LIST = require("../config/roles");
 router
   .route("/")
   .get(
-    // verifyToken,
-    // verifyRole(ROLES_LIST.Admin, ROLES_LIST.Super_User),
+    verifyToken,
+    verifyRole(ROLES_LIST.Admin, ROLES_LIST.Super_User),
     SimcardController.getSimcard
   );
 
