@@ -129,6 +129,7 @@ const updateUser = async (req, res, next) => {
     res.status(200).send({
       status: "success",
       data: updatedUser,
+      
     });
   } catch (error) {
     next(error);

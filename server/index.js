@@ -5,7 +5,7 @@ const dotenv = require("dotenv");
 const cookieParser = require("cookie-parser");
 const { verifyToken } = require("./middleware/VerifyToken");
 const mysql = require("mysql2");
-const hbFacilities = require("./models/homaBayFacilities.json");
+const allFacilities = require("./models/AllFacilities.json");
 
 //DB Configuration
 const db1 = mysql.createConnection({
@@ -84,20 +84,20 @@ const creatingRoles = async (req, res) => {
 let insertingFacilities =
   "INSERT IGNORE INTO facilities (facilityname, mflcode, county, subcounty, ushauri, WebADT, status, ipaddress, elasticipaddress) VALUES ?";
 
-let hbFacilitiesList = hbFacilities;
+let allFacilitiesList = allFacilities;
 let hbFacilitiesValues = [];
 
-for (let i = 0; i < hbFacilitiesList.length; i++) {
+for (let i = 0; i < allFacilitiesList.length; i++) {
   hbFacilitiesValues.push([
-    hbFacilitiesList[i].facilityname,
-    hbFacilitiesList[i].mflcode,
-    hbFacilitiesList[i].county,
-    hbFacilitiesList[i].subcounty,
-    hbFacilitiesList[i].ushauri,
-    hbFacilitiesList[i].WebADT,
-    hbFacilitiesList[i].status,
-    hbFacilitiesList[i].ipaddress,
-    hbFacilitiesList[i].elasticipaddress,
+    allFacilitiesList[i].facilityname,
+    allFacilitiesList[i].mflcode,
+    allFacilitiesList[i].county,
+    allFacilitiesList[i].subcounty,
+    allFacilitiesList[i].ushauri,
+    allFacilitiesList[i].WebADT,
+    allFacilitiesList[i].status,
+    allFacilitiesList[i].ipaddress,
+    allFacilitiesList[i].elasticipaddress,
   ]);
 }
 

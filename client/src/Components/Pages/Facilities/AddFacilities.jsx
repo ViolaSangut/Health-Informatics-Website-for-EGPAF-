@@ -8,6 +8,7 @@ import {useNavigate } from "react-router-dom";
 import { toast } from 'react-toastify' ;
 import { Container, Form, Button } from 'react-bootstrap';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import usePrivateAxios from "../../hooks/usePrivateAxios";
 
 const FACILITY_REGEX = /^[A-Za-z0-9 ]+$/
 const SUBCOUNTY_REGEX = /^[A-Za-z0-9 ]+$/
@@ -34,6 +35,8 @@ const AddFacilityComponent = () => {
   const [WebADT, setWebADT] = useState("");
   const [elasticipaddress,setElasticipaddress] = useState("");
   const [validElasticIpaddress, setValidElasticIpaddress]= useState(false);
+
+  const privateAxios = usePrivateAxios();
 
   //FORM validation
   useEffect(() => {
@@ -79,38 +82,31 @@ const AddFacilityComponent = () => {
                 updateFacility();
             } else{
                 saveFacility();
-            }
-        
+            }      
         }
-
-
-        
-        
     }
-    
 
-    
-    const saveFacility = () =>{
-    
-  
-        axios.post("http://localhost:4000/facilities/addfacility", {
+    //Add Facility  
+    const saveFacility = async () =>{
+
+
+        privateAxios.post("/facilities/addfacility", {
           facilityname:facilityname, mflcode:mflcode, subcounty: subcounty,
             status:status, ipaddress:ipaddress, county:county, ushauri:ushauri, WebADT:WebADT, elasticipaddress:elasticipaddress
         }).then((response)=>{
-        console.log(response.data)
+          navigate("/facilities");
         console.log("Facility inserted!");
         toast.success("Facility inserted successfully")
-        navigate('/facilities');
-    })
-    .catch((error)=>{
-      console.log(error)
-    });
+       
+        })
+        .catch((error)=>{
+          console.log(error)
+        });
     }
-    
     
       //Update facility
     const updateFacility = () =>{
-        axios.put(`http://localhost:4000/facilities/${id}`, {
+        privateAxios.put(`/facilities/${id}`, {
           facilityname:facilityname, mflcode:mflcode, subcounty: subcounty,
             status:status, ipaddress:ipaddress, county:county, ushauri:ushauri, WebADT:WebADT, elasticipaddress:elasticipaddress
         }).then((response)=>{
@@ -125,10 +121,6 @@ const AddFacilityComponent = () => {
         });
       };
        
-
-  
-
-
 useEffect(() => {
     if (facility) {
         setFacilityName(facility.facilityname);
@@ -147,7 +139,7 @@ useEffect(() => {
 }, [])
 
 const getAllFacilities = () =>{
-    axios.get("http://localhost:4000/facilities")
+    privateAxios.get("/facilities")
     .then((response)=>{
         console.log(response.data)
         setFacilities(response.data);
@@ -268,9 +260,10 @@ return (
           onChange={(e)=>setUshauri(e.target.value)}
         >
           <option value="selects">select Ushauri version installed...</option>
-          <option value="v1">version 4.0.1</option>
-          <option value="v2">version 3.4.2</option>
-          <option value="v3">version 4.0.0</option>
+          <option value="0">None</option>
+          <option value="version 4.0.1">version 4.0.1</option>
+          <option value="version 3.4.2">version 3.4.2</option>
+          <option value="version 4.0.0">version 4.0.0</option>
                               
         </Form.Control>
        
@@ -282,9 +275,10 @@ return (
           onChange={(e)=>setWebADT(e.target.value)}
         >
           <option value="selects">select WebADT version installed...</option>
-          <option value="v1">version 4.0.1</option>
-          <option value="v2">version 3.4.2</option>
-          <option value="v3">version 4.0.0</option>
+          <option value="0">None</option>
+          <option value="version 4.0.1">version 4.0.1</option>
+          <option value="version 3.4.2">version 3.4.2</option>
+          <option value="version 4.0.0">version 4.0.0</option>
                               
         </Form.Control>
         

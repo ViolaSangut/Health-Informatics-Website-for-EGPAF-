@@ -18,7 +18,10 @@ router
 //User Profile
 router.route("/userProfile/:id").get(UsersController.userProfile);
 // Add
-router.route("/register").post(UsersController.addUser);
+router.route("/register").post( 
+  // verifyToken,
+  // verifyRole(ROLES_LIST.Admin, ROLES_LIST.Super_User),
+  UsersController.addUser);
 //Update
 router
   .route("/update/:id")

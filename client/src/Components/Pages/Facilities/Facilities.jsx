@@ -8,6 +8,7 @@ import ReactHTMLTableToExcel from 'react-html-table-to-excel';
 import * as AiIcons from "react-icons/ai";
 import UseAuth from "../../context/UseAuth";
 import jwt_decode from "jwt-decode";
+import usePrivateAxios from "../../hooks/usePrivateAxios";
 
 const Facilities = () => {
 
@@ -15,6 +16,7 @@ const Facilities = () => {
   const navigate = useNavigate();
   let [searchFacilities, setSearchFacilities] = useState("");
   const id = useParams();
+  const privateAxios = usePrivateAxios();
 
   const { auth } = UseAuth();
 
@@ -63,7 +65,7 @@ const Facilities = () => {
 
   //Get All Facilities
   const getAllFacilities = () =>{
-    axios.get("http://localhost:4000/facilities")
+    privateAxios.get("/facilities")
     .then((response)=>{
         console.log(response.data)
         setFacilities(response.data);
@@ -74,7 +76,7 @@ const Facilities = () => {
 
   //Get HomaBay Facilities
   const getHomaBayFacilities = () =>{
-    axios.get("http://localhost:4000/facilities/homabayfacilities")
+    privateAxios.get("/facilities/homabayfacilities")
     .then((response)=>{
         console.log(response.data)
         setFacilities(response.data);
@@ -85,7 +87,7 @@ const Facilities = () => {
 
   //Get Kiambu Facilities
   const getKiambuFacilities = () =>{
-    axios.get("http://localhost:4000/facilities/kiambufacilities")
+    privateAxios.get("/facilities/kiambufacilities")
     .then((response)=>{
         console.log(response.data)
         setFacilities(response.data);
@@ -96,7 +98,7 @@ const Facilities = () => {
 
   //Get Kisii Facilities
   const getKisiiFacilities = () =>{
-    axios.get("http://localhost:4000/facilities/kisiifacilities")
+    privateAxios.get("/facilities/kisiifacilities")
     .then((response)=>{
         console.log(response.data)
         setFacilities(response.data);
@@ -108,7 +110,7 @@ const Facilities = () => {
     //delete facility
     const deleteFacility = (id) =>{
       if(window.confirm("Are you sure you want to delete this facility?")){
-          axios.delete(`http://localhost:4000/facilities/delete/${id}`)
+          privateAxios.delete(`/facilities/delete/${id}`)
       .then((response)=>{
           setFacilities(facilities.filter((facility)=>{
               return facility.id !== id;

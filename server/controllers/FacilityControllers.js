@@ -170,7 +170,7 @@ const EMRImplementation = async (req, res) => {
 //ADTImplementation Status
 const ADTImplementation = async (req, res) => {
   db.query(
-    " select round ((select count (*) from facilities where WebAdt=1) / (select count (*) from facilities) * 100,0) as ADTImplementationPercentage",
+    " select round ((select count (*) from facilities where WebAdt='version 4.0.1' or  WebAdt='version 4.0.0' or  WebAdt='version 3.4.2') / (select count (*) from facilities) * 100,0) as ADTImplementationPercentage",
     (error, result) => {
       if (error) {
         console.log(error);
@@ -184,7 +184,7 @@ const ADTImplementation = async (req, res) => {
 //Implementation Summary
 const SummaryImplementation = async (req, res) => {
   db.query(
-    " SELECT round ((SELECT (SELECT SUM(Implementation) Implementation FROM (select (select count(*) from facilities where status='running') / (select count(*) from facilities) as Implementation UNION ALL select (select count(*) from facilities where WebAdt=1) / (select count(*) from facilities) as Implementation UNION ALL select (select count(*) from facilities where ushauri=1) / (select count(*) from facilities) as Implementation) as ImplementationSummary) / 3 )* 100,0) as ImplementationSummary",
+    " SELECT round ((SELECT (SELECT SUM(Implementation) Implementation FROM (select (select count(*) from facilities where status='running') / (select count(*) from facilities) as Implementation UNION ALL select (select count(*) from facilities where WebAdt='version 4.0.1' or  WebAdt='version 4.0.0' or  WebAdt='version 3.4.2') / (select count(*) from facilities) as Implementation UNION ALL select (select count(*) from facilities where ushauri='version 4.0.1' or  ushauri='version 4.0.0' or  ushauri='version 3.4.2') / (select count(*) from facilities) as Implementation) as ImplementationSummary) / 3 )* 100,0) as ImplementationSummary",
     (error, result) => {
       if (error) {
         console.log(error);
