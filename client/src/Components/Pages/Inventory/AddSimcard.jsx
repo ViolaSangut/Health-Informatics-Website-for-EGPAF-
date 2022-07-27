@@ -11,7 +11,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import usePrivateAxios from '../../hooks/usePrivateAxios';
 import { getDatasetAtEvent } from 'react-chartjs-2';
-import "./AddInventory.css"
+// import "./AddInventory.css"
 
 
 
@@ -67,21 +67,21 @@ const from = location.state?.from?.pathname || "/Inventory";
 //validating phone number
 useEffect(() => { 
   const result = PHONE_REGEX.test(PhoneNumber)
-  console.log(result); 
+//   console.log(result); 
   setValidPhone(result);
 },[PhoneNumber]);
 
 //validating IMEI
 useEffect(() => { 
   const result = IMEI_REGEX.test(IMEI)
-  console.log(result); 
+//   console.log(result); 
   setValidIMEI(result);
 },[IMEI]);
 
 //validating puk
 useEffect(() => { 
   const result = PUK_REGEX.test(PUK)
-  console.log(result); 
+//   console.log(result); 
   setValidPUK(result);
 },[PUK]);
 
@@ -89,14 +89,14 @@ useEffect(() => {
 //validating pin
 useEffect(() => { 
   const result = PIN_REGEX.test(PIN)
-  console.log(result); 
+//   console.log(result); 
   setValidPIN(result);
 },[PIN]);
 
 //validating phone imei
 useEffect(() => { 
   const result = PHONEIMEI_REGEX.test(PhoneAssigned)
-  console.log(result); 
+//   console.log(result); 
   setValidPhoneImei(result);
 },[PhoneAssigned]);
 
@@ -127,7 +127,7 @@ useEffect(() => {
             PhoneNumber: PhoneNumber, IMEI:IMEI, PUK: PUK, PIN: PIN, 
             Facility: Facility, PhoneAssigned:PhoneAssigned,
         }).then((response)=>{
-        console.log(response.data)
+        // console.log(response.data)
         toast.success("Card Saved Successfully")
         navigate('/simcards');
     })      
@@ -142,7 +142,7 @@ useEffect(() => {
         const getAllCards = () =>{
             private_axios.get("/simcards")
             .then((response)=>{
-                console.log(response.data)
+                // console.log(response.data)
                 setCards(response.data);
             })
             .catch((error)=>{
@@ -162,8 +162,8 @@ useEffect(() => {
          Facility: Facility, 
       });
       
-      console.log(response.data);
-      console.log(JSON.stringify(response));
+    //   console.log(response.data);
+    //   console.log(JSON.stringify(response));
       toast.success("Card Updated Succesfully");
       navigate('/Simcards')
       //clear input fields
@@ -195,7 +195,7 @@ useEffect(() => {
   const getAllFacilities = () =>{
     axios.get("http://localhost:4000/facilities")
     .then((response)=>{
-        console.log(response.data)
+        // console.log(response.data)
         setFacilities(response.data);
     })
     .catch((error)=>{
@@ -209,45 +209,47 @@ useEffect(() => {
 
 
 return(
-    <div align ="middle">
-            <button className="button" onClick={onClickBack}>Back to Inventory</button>
-
-        <section>
+    <div class="container mb-5">
+            <button className="btn btn-outline-success mt-3" onClick={onClickBack}>Back to Inventory</button>
+                <h3 class="text-center mb-3 mt-2">Simcard Detail Form</h3>
             <form>
-                <h1>Simcard Details</h1>
-                <label>Phone Number
-                    <span className={validPhone ? "valid" : "hide"}>
-                <FontAwesomeIcon icon={faCheck} />
-              </span>
-              <span className={validPhone || !PhoneNumber ? "hide" : "invalid"}>
-                <FontAwesomeIcon icon={faTimes} />
-              </span>
-                </label>
-                <input 
-                placeholder='Phone Number'
-                type='text' 
-                value={PhoneNumber} 
-                onChange={(e)=>setPhoneNumber(e.target.value)}
-                required
-                aria-invalid={validPhone ? "false" : "true"}
-                aria-describedby="phoneid"
-                onFocus={() => setPhoneFocus(true)}
-                onBlur={() => setPhoneFocus(false)}/>
-                <p
-                    id="phoneid"
-                    className={
-                        phoneFocus && PhoneNumber && !validPhone
-                        ? "instructions"
-                        : "offscreen"
-                    }
-                    >
-                    <FontAwesomeIcon icon={faInfoCircle} />
-                    <br />
-                    Must be 10 digits long
-                    </p>
-
-               
-                <label>IMEI
+                <div class="form-group row mt-2">
+                    <label class="col-sm-3 col-form-label" >Phone Number
+                        <span className={validPhone ? "valid" : "hide"}>
+                            <FontAwesomeIcon icon={faCheck} />
+                        </span>
+                        <span className={validPhone || !PhoneNumber ? "hide" : "invalid"}>
+                            <FontAwesomeIcon icon={faTimes} />
+                        </span>
+                    </label>
+                <div class="col-md-6">
+                    <input 
+                    class="form-control"
+                    placeholder='Phone Number'
+                    type='text' 
+                    value={PhoneNumber} 
+                    onChange={(e)=>setPhoneNumber(e.target.value)}
+                    required
+                    aria-invalid={validPhone ? "false" : "true"}
+                    aria-describedby="phoneid"
+                    onFocus={() => setPhoneFocus(true)}
+                    onBlur={() => setPhoneFocus(false)}></input>
+                    <p
+                        id="phoneid"
+                        className={
+                            phoneFocus && PhoneNumber && !validPhone
+                            ? "instructions"
+                            : "offscreen"
+                        }
+                        >
+                        <FontAwesomeIcon icon={faInfoCircle} />
+                        <br />
+                        Must be 10 digits long
+                        </p>
+                    </div>
+                    </div>
+               <div class="form-group row mt-2">
+                <label class="col-sm-3 col-form-label">IMEI
                         <span className={validIMEI ? "valid" : "hide"}>
                             <FontAwesomeIcon icon={faCheck} />
                         </span>
@@ -255,7 +257,9 @@ return(
                             <FontAwesomeIcon icon={faTimes} />
                         </span>
                 </label>
+                <div class="col-md-6">
                 < input
+                class="form-control"
                 placeholder='IMEI' 
                 type='text' 
                 value={IMEI} 
@@ -264,7 +268,7 @@ return(
                 aria-invalid={validIMEI ? "false" : "true"}
                 aria-describedby="imeiid"
                 onFocus={() => setIMEIFocus(true)}
-                onBlur={() => setIMEIFocus(false)}/>
+                onBlur={() => setIMEIFocus(false)}></input>
                 <p
                     id="imeiid"
                     className={
@@ -277,15 +281,21 @@ return(
                     <br />
                     Must be 20 digits with no spaces.
                     </p>
-                <label>PUK
+                    </div>
+                    </div>
+                <div class="form-group row mt-2">
+                <label class="col-sm-3 col-form-label">PUK
                     <span className={validPUK ? "valid" : "hide"}>
                         <FontAwesomeIcon icon={faCheck} />
                     </span>
                     <span className={validPUK || !PUK ? "hide" : "invalid"}>
                         <FontAwesomeIcon icon={faTimes} />
                     </span>
+                    
                 </label>
+                <div class="col-md-6">
                 < input
+                class="form-control"
                 placeholder='PUK' 
                 type='text'
                 value={PUK} 
@@ -307,7 +317,10 @@ return(
                     <br />
                     Must be 8 digits with no spaces.
                     </p>
-                <label>PIN
+                    </div>
+                    </div>
+                    <div class="form-group row mt-2">
+                <label class="col-sm-3 col-form-label">PIN
                     <span className={validPIN ? "valid" : "hide"}>
                         <FontAwesomeIcon icon={faCheck} />
                     </span>
@@ -315,7 +328,9 @@ return(
                         <FontAwesomeIcon icon={faTimes} />
                     </span>
                 </label>
+                <div class="col-md-6">
                 <input 
+                class="form-control"
                 placeholder='PIN' 
                 type='text'
                 value={PIN} 
@@ -337,16 +352,23 @@ return(
                     <br />
                     Must be 4 digits with no spaces.
                     </p>
-                <label>
+                    </div>
+                    </div>
+                    <div class="form-group row mt-2">
+                <label class="col-sm-3 col-form-label">
                     Select Assigned Facility
                 </label>
-                <select  onChange ={(e) => setFacility(e.target.value)}>
-                    <option selected disabled ="true">--Select Assigned Facility--</option>
+                <div class="col-md-6">
+                <select className=' form-select' onChange ={(e) => setFacility(e.target.value)}>
+                    <option value="DEFAULT" disabled ={true}>--Select Assigned Facility--</option>
                     {
                         facilities.map((facility)=>(<option key={facility.id}text={facility.mflcode}>{facility.facilityname}</option>))
                     }
                 </select>
-                <label>IMEI of Assigned Phone
+                </div>
+                </div>
+                <div class="form-group row mt-2">
+                <label class="col-sm-3 col-form-label">IMEI of Assigned Phone
                     <span className={validPhoneImei ? "valid" : "hide"}>
                         <FontAwesomeIcon icon={faCheck} />
                     </span>
@@ -357,8 +379,9 @@ return(
 
 
 
-                
+                <div class="col-md-6">
                 <input 
+                class="form-control"
                 placeholder='Phone IMEI' 
                 type='text'
                 value={PhoneAssigned} 
@@ -380,15 +403,20 @@ return(
                     <br />
                     Has to be more than 15 digits long
                     </p>
+                 </div>
+                    </div>
                 <br/>
-                <button onClick={handleSubmit} disabled={
+                <div class="row">
+                    <div class="col-sm-9 offset-sm-3">
+                <button class="btn btn-success col-sm-3" onClick={handleSubmit} disabled={
                     !validIMEI || !validPhoneImei || !validPUK || !validPIN || !validPhone ? true : false
                     }
                 >{id 
                  ? <> Update </>
                  : <> Add </>}</button>
+                 </div>
+                 </div>
             </form>
-        </section>
 
     </div>
     

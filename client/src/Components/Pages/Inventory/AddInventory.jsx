@@ -1,7 +1,7 @@
 import React, {useState, useRef, useEffect} from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { toast  } from 'react-toastify';
-import './AddInventory.css'
+// import './AddInventory.css'
 import Facilities from './Facilities.json'
 import DeviceStatus from './DeviceStatus.json';
 import axios from "axios";
@@ -211,17 +211,32 @@ useEffect(() => {
         
   }
 
+//get facilities
+useEffect(() => {   
+    getAllFacilities();
+  }, [])
+
+  const getAllFacilities = () =>{
+    axios.get("http://localhost:4000/facilities")
+    .then((response)=>{
+        // console.log(response.data)
+        setFacilities(response.data);
+    })
+    .catch((error)=>{
+        console.log(error);
+    })}
+
 
   
 //render form on screen
     return  (
-        <div align ="middle">
-            <button className="button" onClick={onClickBack}>Back to Inventory</button>
-        <section className="section">
-            
-        <form className= "">
-            <h1>Device Details</h1>
-            <label>
+        <div class="container mb-5">
+            <button  class="btn btn-outline-success mt-3"onClick={onClickBack}>Back to Inventory</button> 
+            <h3 class="text-center mb-3 mt-2">Device Details</h3>
+
+        <form >
+          <div class="form-group row mt-2">
+            <label class="col-sm-3 col-form-label">
                 <span className={validName ? "valid" : "hide"}>
                 <FontAwesomeIcon icon={faCheck} />
               </span>
@@ -230,7 +245,9 @@ useEffect(() => {
                     </span>
                 Brand Name
             </label>
+            <div class="col-md-6">
             <input 
+            class="form-control"
             value={AssetName} 
             onChange ={(e) => setAssetName(e.target.value)} 
             placeholder='Asset Name' 
@@ -253,7 +270,10 @@ useEffect(() => {
               <br />
               Brand Name cannot contain numbers!
             </p>
-            <label>
+            </div>
+            </div>
+            <div class="form-group row mt-2">
+            <label class="col-sm-3 col-form-label">
                 <span className={validNumber ? "valid" : "hide"}>
                 <FontAwesomeIcon icon={faCheck} />
               </span>
@@ -262,7 +282,9 @@ useEffect(() => {
                     </span>
                 Asset Number
             </label>
+            <div class="col-md-6">
             <input 
+            class="form-control"
             value={AssetNumber} 
             onChange ={(e) => setAssetNumber(e.target.value)} 
             placeholder='Asset Number' 
@@ -286,7 +308,10 @@ useEffect(() => {
               <br />
               Must have be a valid Asset Number containing numbers only!
             </p>
-            <label>
+            </div>
+            </div>
+            <div class="form-group row mt-2">
+            <label class="col-sm-3 col-form-label">
                 <span className={validSerial ? "valid" : "hide"}>
                 <FontAwesomeIcon icon={faCheck} />
               </span>
@@ -295,11 +320,12 @@ useEffect(() => {
                     </span>
                 Serial Number
             </label>
-            
-            <input 
+            <div class="col-md-6">
+            <input
+            class="form-control"
             value={serialNumber} 
             onChange ={(e) => setSerialNumber(e.target.value)} 
-            placeholder='Asset Number' 
+            placeholder='Serial Number' 
             type='text'
             required
                 aria-invalid={validSerial ? "false" : "true"}
@@ -321,7 +347,10 @@ useEffect(() => {
               <br />
               Must have be a valid serial Number containing numbers only!
             </p>
-            <label>
+            </div>
+            </div>
+            <div class="form-group row mt-2">
+            <label class="col-sm-3 col-form-label">
                 <span className={validStatus ? "valid" : "hide"}>
                 <FontAwesomeIcon icon={faCheck} />
               </span>
@@ -330,8 +359,9 @@ useEffect(() => {
                     </span>
                 Status
             </label>
-           
+           <div class="col-md-6">
             <select 
+            class="form-select"
             value={AssetStatus} 
             onChange ={(e) => setAssetStatus(e.target.value)}
             required
@@ -342,7 +372,7 @@ useEffect(() => {
             >
                   <option value="DEFAULT" disabled={true}>--Select Device Status--</option>
                 {
-                    DeviceStatus.DeviceStatus.map((result)=>( <option text={result.no}>{result.status}</option>))
+                    DeviceStatus.DeviceStatus.map((result)=>( <option key={result.no} text={result.no}>{result.status}</option>))
                 }
                  
             </select>
@@ -358,7 +388,10 @@ useEffect(() => {
               <br />
               Please select the current device status!
             </p>
-            <label>
+            </div>
+            </div>
+            <div class="form-group row mt-2" >
+            <label class="col-sm-3 col-form-label">
                 <span className={validFacility ? "valid" : "hide"}>
                 <FontAwesomeIcon icon={faCheck} />
               </span>
@@ -367,19 +400,21 @@ useEffect(() => {
                     </span>
                 Facility Assigned
             </label>
-            
-             <select 
+            <div class="col-md-6">
+            <select 
+            class="form-select"
              value={facility} 
              onChange ={(e) => setFacility(e.target.value)}
              required
-                aria-invalid={validFacility ? "false" : "true"}
+                aria-invalid={validFacility ? "true" : "false"}
                 aria-describedby="facilityid"
                 onFocus={() => setFacilityFocus(true)}
               onBlur={() => setFacilityFocus(false)}
              >
                   <option value="DEFAULT" disabled={true}>--Select Facility Assigned--</option>
                 {
-                     facilities.map((facility)=>(<option key={facility.id}text={facility.mflcode}>{facility.facilityname}</option>))
+                        facilities.map((facility)=>(<option key={facility.id}text={facility.mflcode}>{facility.facilityname}</option>))
+                    //  Facilities.Facilitynames.map((result)=>(<option text={result.no} key={result.no}>{result.facility}</option>))
                 }
             </select>
             <p
@@ -394,7 +429,10 @@ useEffect(() => {
               <br />
               Please select the facility assigned to this device!
             </p>
-             <label>
+            </div>
+            </div>
+            <div class="form-group row mt-2">
+             <label class="col-sm-3 col-form-label">
                  <span className={validPasscode ? "valid" : "hide"}>
                 <FontAwesomeIcon icon={faCheck} />
               </span>
@@ -403,7 +441,9 @@ useEffect(() => {
                     </span>
                 Passcode
             </label>
+            <div class="col-md-6" >
             <input 
+            class="form-control"
             value={Passcode} 
             onChange ={(e) => setPassCode(e.target.value)} 
             placeholder='Passcode' 
@@ -427,7 +467,10 @@ useEffect(() => {
               <br />
               Passcode can only be 4 digits!
             </p>
-            <label>
+            </div>
+            </div>
+            <div class="form-group row mt-2">
+            <label class="col-sm-3 col-form-label">
                  <span className={validEmail ? "valid" : "hide"}>
                 <FontAwesomeIcon icon={faCheck} />
               </span>
@@ -436,7 +479,9 @@ useEffect(() => {
                     </span>
                 Email
             </label>
+            <div class="col-md-6">
             <input 
+            class= "form-control"
             value={Email} 
             onChange ={(e) => setEmail(e.target.value)} 
             placeholder='Email' 
@@ -460,7 +505,10 @@ useEffect(() => {
               <br />
               Has to be a valid Email!
             </p>
-            <label>
+            </div>
+            </div>
+            <div class="form-group row mt-2">
+            <label class="col-sm-3 control-label">
                 <span className={validPassword ? "valid" : "hide"}>
                 <FontAwesomeIcon icon={faCheck} />
               </span>
@@ -469,7 +517,9 @@ useEffect(() => {
                     </span>
                 Email Password
             </label>
+            <div class="col-md-6">
             <input 
+            class="form-control"
             value={EmailPassword} 
             onChange ={(e) => setEmailPassword(e.target.value)} 
             placeholder='Email Password' 
@@ -494,19 +544,23 @@ useEffect(() => {
               Password has to have, one special character, uppercase and 
               lowercase letters and a number. Special characters are also allowed.
             </p>
+            </div></div>
             <label>
              
             </label>
-            <button onClick={handleSubmit} align="middle" 
+            <div class="row">
+                    <div class="col-sm-9 offset-sm-3">
+            <button class= "btn btn-success col-sm-3"onClick={handleSubmit} align="middle" 
             disabled={(!validFacility|| !validEmail || !validPassword || !validPasscode || !validSerial || !validStatus || !validName || !validNumber) ? true : false}
             >
                 {id 
                  ? <> Update </>
                  : <> Add </>}
             </button>
+            </div>
+            </div>
 
         </form>
-        </section>
         </div>
     )
 

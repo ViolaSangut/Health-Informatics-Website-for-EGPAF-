@@ -1,5 +1,5 @@
 
- .table {
+ /* .tabled {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -16,21 +16,21 @@
   
   .table h {
     align-items: center;
-  }
-  .table_content {
-    border-collapse: collapse;
+  } */
+  /* .table_content {
+    border-collapse: collapse; */
     /* margin: 25px 0; */
-    margin-top: 0%;
-    font-size: 100%;
+    /* margin-top: 0%;
+    font-size: 100%; */
     /* min-width: 400px; */
-    border-radius: 5px 5px 0 0;
+    /* border-radius: 5px 5px 0 0;
     overflow: hidden;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15); 
    
-  }
+  } */
 
   
-  
+/*   
   .table_content thead {
     
     text-align: left;
@@ -91,4 +91,4 @@
   
   }
 
-   
+    */

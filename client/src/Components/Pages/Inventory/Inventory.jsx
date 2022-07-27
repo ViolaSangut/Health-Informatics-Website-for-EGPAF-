@@ -67,38 +67,41 @@ const Inventory = () => {
     
 
     return (
-    <div className="">
-    <div >
+    <div className="container">
+    
       <div >
-      <h1 className="header">Tablets Inventory</h1>
+      <h3 class="text-center mb-3 mt-5">Tablets Inventory</h3>
       </div>
-      
-      </div>
-      <div  className='searchbox'>
+
+      <div  class="form-outline mb-4">
         <input
-          type="text"
-         
-          placeholder='Search for Item'
+          type="search"
+          class="form-control"
+          id="search-inventory"
+          placeholder='Start typing here to search...'
                 value={searchInventory}
                 onChange={(e)=> setSearchInventory(e.target.value)}
-        ></input>
+        />
       </div>
       
-
-      <button onClick={handleClick}
-       className= "addnewinventorybtn">
-            Add Tablet to Inventory
-        </button>
-        <ReactHTMLTableToExcel
-                    id="tablets-download-button"
-                    className="addnewinventorybtn"
-                    table="table-to-xls"
-                    filename = "Tablet-List"
-                    sheet="tablexls"
-                    buttonText="Export Data to Excel Sheet"/>
-<div className="table">
-   <table className="table_content" id="table-to-xls" >
-    <thead className='thead'>
+        <div class="form-group row mt-2 mb-1">
+                <button onClick={handleClick}
+                class=" col-sm-6 btn btn-outline-success">
+                        Add Tablet to Inventory
+                    </button>
+                    <div class="col-md-6">
+                    <ReactHTMLTableToExcel
+                                id="tablets-download-button"
+                                table="table-to-xls"
+                                className="btn btn-outline-warning"
+                                filename = "Tablet-List"
+                                sheet="tablexls"
+                                buttonText="Export Data to Excel Sheet"/>
+        </div>
+        </div>
+<div class="table-responsive">
+   <table class="table  table-striped table-hover table-sm mt-5 table-light" id="table-to-xls" >
+    <thead className='theader'>
         <tr>
         <th>Serial</th>
         <th>IMEI</th>
@@ -114,7 +117,7 @@ const Inventory = () => {
         </tr>             
     </thead>
 
-    <tbody className="tbody">
+    <tbody >
      {
         items.filter((item) => {
                         if(searchInventory === ""){

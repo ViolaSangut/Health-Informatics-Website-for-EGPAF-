@@ -21,7 +21,8 @@
 }
 
 .inventorySum:hover {
-    background-color: rgb(81, 215, 206);
+    background-color:#00C851;
+    color: white;
 }
 
 .homaBay {

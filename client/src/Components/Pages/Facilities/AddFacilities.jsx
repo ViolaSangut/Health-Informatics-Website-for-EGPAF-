@@ -1,13 +1,10 @@
 import React, { useState, useEffect } from "react" ;
-import {useForm} from "react-hook-form";
-import "./addFacilities.css";
-import validate from "./validateFacility";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import {useNavigate } from "react-router-dom";
 import { toast } from 'react-toastify' ;
-import { Container, Form, Button } from 'react-bootstrap';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { privateAxios } from "../../api/axios";
 
 const FACILITY_REGEX = /^[A-Za-z0-9 ]+$/
 const SUBCOUNTY_REGEX = /^[A-Za-z0-9 ]+$/
@@ -93,12 +90,12 @@ const AddFacilityComponent = () => {
     const saveFacility = () =>{
     
   
-        axios.post("http://localhost:4000/facilities/addfacility", {
+        privateAxios.post("/facilities/addfacility", {
           facilityname:facilityname, mflcode:mflcode, subcounty: subcounty,
             status:status, ipaddress:ipaddress, county:county, ushauri:ushauri, WebADT:WebADT, elasticipaddress:elasticipaddress
         }).then((response)=>{
-        console.log(response.data)
-        console.log("Facility inserted!");
+        // console.log(response.data)
+        // console.log("Facility inserted!");
         toast.success("Facility inserted successfully")
         navigate('/facilities');
     })
@@ -110,12 +107,12 @@ const AddFacilityComponent = () => {
     
       //Update facility
     const updateFacility = () =>{
-        axios.put(`http://localhost:4000/facilities/${id}`, {
+        privateAxios.put(`/facilities/${id}`, {
           facilityname:facilityname, mflcode:mflcode, subcounty: subcounty,
             status:status, ipaddress:ipaddress, county:county, ushauri:ushauri, WebADT:WebADT, elasticipaddress:elasticipaddress
         }).then((response)=>{
-        console.log(response.data)
-        console.log("facility updated!");
+        // console.log(response.data)
+        // console.log("facility updated!");
         toast.success("facility updated successfully")
         navigate('/facilities');
     })
@@ -147,9 +144,9 @@ useEffect(() => {
 }, [])
 
 const getAllFacilities = () =>{
-    axios.get("http://localhost:4000/facilities")
+    privateAxios.get("/facilities")
     .then((response)=>{
-        console.log(response.data)
+        // console.log(response.data)
         setFacilities(response.data);
     })
     .catch((error)=>{
@@ -159,26 +156,34 @@ const getAllFacilities = () =>{
     const pageTitle = () =>{
 
         if(id){
-            return <h3 className="text-center">Update Facility</h3>
+            return <h3 className="text-center mb-4 mt-3">Update Facility</h3>
         } 
         else {
-            return <h3 className="text-center">Add Facility</h3>
+            return <h3 className="text-center mb-4 mt-3">Add Facility</h3>
 
         }
         
     }
 
+    //handling click on the back to facilities button
+    const onClickBack=() =>{
+      navigate('/facilities');	
+    }
+
 return (
-  <div className="app-container" >
-    <Container className='mt-5 p-2'>
+    <div className="container">
+            <button  class="btn btn-outline-success mt-3"onClick={onClickBack}>Back to Facilities</button> 
+
     {
                         pageTitle()
                       }
-      <Form  className="input" onSubmit={(e) =>saveorUpdateFacility(e)} >
-      <Form.Group controlId="mflcode" className="mb-3" >
-                    <Form.Label>MFL CODE</Form.Label>
-                    <Form.Control
-                        type="number"
+      <div   onSubmit={(e) =>saveorUpdateFacility(e)} >
+      <div  className="form-group row mt-2"> 
+                    <label className="col-sm-3 col-form-label">MFL CODE</label>
+                    <div className="col-sm-6">
+                    <input
+                    className="form-control"
+                        type="text"
                         name='mflcode'
                         value=  {mflcode}
                         required
@@ -186,8 +191,8 @@ return (
                         aria-describedby="mflcodeid"
                         onChange={(e) => setMFLcode(e.target.value)}
                          />
-                </Form.Group>
-      
+                </div>
+                </div>
                 <p
                   id="mflcodeid"
                   className={
@@ -198,9 +203,11 @@ return (
                   mflcode must contain only upto 5 numbers!
                  </p>
         
-        <Form.Group controlId="facilityname" className="mb-3" >
-                    <Form.Label>FACILITY NAME</Form.Label>
-                    <Form.Control
+        <div  className="form-group row mt-2" >
+                    <label className="col-sm-3 col-form-label">Facility Name</label>
+                    <div className="col-sm-6">
+                    <input
+                    className="form-control"
                         type="text"
                         name='facilityname'
                         value=  {facilityname}
@@ -209,8 +216,8 @@ return (
                         aria-describedby="facilitynameid"
                         onChange={(e) => setFacilityName(e.target.value)}
                          />
-                </Form.Group>
-
+                </div>
+                </div>
                 <p
                   id="facilitynameid"
                   className={
@@ -221,27 +228,30 @@ return (
                   facility name cannot contain symbols. only numbers and letters!
                  </p>    
         
-        <br></br>
-        <Form.Group controlId="county" className="mb-3">
-        <Form.Label>COUNTY</Form.Label>
-        <Form.Control
-          as="select"
-          value={county}
-          onChange={(e)=>setCounty(e.target.value)}
-        >
-          
-          <option value="selects">select county..</option>
-          <option value="Kisii">Kisii</option>
-          <option value="kiambu">Kiambu </option>
-          <option value="homabay">Homabay </option>
-        </Form.Control>
-      </Form.Group>
+        <div  className="form-group row mt-2">
+        <label className="col-sm-3 col-form-label">County</label>
+        <div className="col-sm-6">
+              <select
+                className="form-select"
+                value={county}
+                onChange={(e)=>setCounty(e.target.value)}
+              >
+                
+                <option value="selects">select county..</option>
+                <option value="Kisii">Kisii</option>
+                <option value="kiambu">Kiambu </option>
+                <option value="homabay">Homabay </option>
+              </select>
+      </div>
+      </div>
         
         
         
-        <Form.Group controlId="subcounty" className="mb-3" >
-                    <Form.Label>SUBCOUNTY</Form.Label>
-                    <Form.Control
+        <div  className="form-group row mt-2"> 
+                    <label className="col-sm-3 col-form-label">Sub-County</label>
+                    <div className="col-sm-6">
+                    <input
+                    className="form-control"
                         type="text"
                         name='subcounty'
                         value=  {subcounty}
@@ -249,7 +259,8 @@ return (
                         aria-describedby="subcountyid"
                         onChange={(e) => setSubcounty(e.target.value)}
                          />
-                </Form.Group>
+                </div>
+                </div>
         
                 <p
                   id="subcountyid"
@@ -260,39 +271,43 @@ return (
                   <br />
                   subcounty name can only contain letters and numbers
                  </p>
-        <br></br>
-        
-        <Form.Control
-          as="select"
+        <div className="form-group row mt-2">
+          <div className="col-sm-3">
+            <label>WebADT & Ushauri</label>
+          </div>
+          <div className="col-md-4">
+        <select
+        className="form-select"
           value={ushauri}
           onChange={(e)=>setUshauri(e.target.value)}
         >
-          <option value="selects">select Ushauri version installed...</option>
+          <option value="selects">Please Select Ushauri version installed...</option>
           <option value="v1">version 4.0.1</option>
           <option value="v2">version 3.4.2</option>
           <option value="v3">version 4.0.0</option>
                               
-        </Form.Control>
-       
-        <br></br>
-        
-        <Form.Control
-          as="select"
+        </select>
+        <div >  
+        <select
+        className="form-select mt-2"
           value={WebADT}
           onChange={(e)=>setWebADT(e.target.value)}
         >
-          <option value="selects">select WebADT version installed...</option>
+          <option value="selects">Please Select WebADT version installed...</option>
           <option value="v1">version 4.0.1</option>
           <option value="v2">version 3.4.2</option>
           <option value="v3">version 4.0.0</option>
                               
-        </Form.Control>
-        
-        <br></br>
-        <Form.Group controlId="status" className="mb-3">
-        <Form.Label>STATUS</Form.Label>
-        <Form.Control
-          as="select"
+        </select>
+        </div>
+        </div>
+        </div>
+
+        <div  className="form-group row mt-2">
+        <label className="col-sm-3 col-sm-label">KenyaEMR Status</label>
+        <div className="col-md-6">
+        <select
+        className="form-select"
           value={status}
           onChange={(e)=>setStatus(e.target.value)}
         >
@@ -300,14 +315,15 @@ return (
           <option value="RUNNING">RUNNING</option>
           <option value="DOWN">DOWN</option>
                               
-        </Form.Control>
-      </Form.Group>
+        </select>
+      </div>
+      </div>
         
-        
-        <br></br>
-        <Form.Group controlId="ipaddress" className="mb-3">
-                    <Form.Label>PRIVATE IP ADDRESS </Form.Label>
-                    <Form.Control
+          <div  className="form-group row mt-2">
+                    <label className="col-sm-3 col-form-label">Private IP Address </label>
+                    <div className="col-sm-6">
+                    <input
+                    className="form-control"
                         type="text"
                         name='ipaddress'
                         value=  {ipaddress}
@@ -315,7 +331,8 @@ return (
                         aria-describedby="ipaddressid"
                         onChange={(e) => setIpaddress(e.target.value)}
                          />
-                </Form.Group>
+                </div>
+                </div>
                 <p
                   id="ipaddressid"
                   placeholder="for example 192.168.1.45"
@@ -327,9 +344,11 @@ return (
                   invalid private ip address. ip address should look 
                  </p>
         <br></br>
-        <Form.Group controlId="elasticipaddress" className="mb-3">
-                    <Form.Label>ELASTIC IP ADDRESS</Form.Label>
-                    <Form.Control
+        <div className="form-group row mt-2">
+                    <label className="col-sm-3 col-sm-label">Elastic IP Adress</label>
+                    <div className="col-md-6">
+                    <input
+                        className="form-control"
                         type="text"
                         name='elasticipaddress'
                         placeholder="for example 10.201.30.45"
@@ -338,7 +357,8 @@ return (
                         aria-describedby="elasticid"
                         onChange={(e) => setElasticipaddress(e.target.value)}
                          />
-                </Form.Group>
+                </div>
+                </div>
                  <p
                   id="elasticid"
                   placeholder="for example 192.168.1.45"
@@ -349,18 +369,17 @@ return (
                   <br />
                   invalid private ip address.  
                  </p>
-          
-        <Button variant="primary" type='submit'
+          <div className="mt-3 offset-sm-3">
+        <button  onClick={saveorUpdateFacility} className="btn btn-success col-md-3 " type='submit'
         disabled={( !validMflcode|| !validFacilityname || !validIpaddress || !validElasticIpaddress || !validSubcounty) ? true : false}>
           
                 {id 
                  ? <> Update Facility</>
                  : <> Add Facility</>}
-        </Button>
-        
-      </Form>
-      </Container>
-</div>
+        </button>
+        </div>
+      </div>
+      </div>
 
     
   )

@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from "react" ;
-import "./Facilities.css";
+// import "./Facilities.css";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import { toast } from 'react-toastify' ;
@@ -8,6 +8,7 @@ import ReactHTMLTableToExcel from 'react-html-table-to-excel';
 import * as AiIcons from "react-icons/ai";
 import UseAuth from "../../context/UseAuth";
 import jwt_decode from "jwt-decode";
+import usePrivateAxios from "../../hooks/usePrivateAxios";
 
 const Facilities = () => {
 
@@ -15,6 +16,7 @@ const Facilities = () => {
   const navigate = useNavigate();
   let [searchFacilities, setSearchFacilities] = useState("");
   const id = useParams();
+  const privateAxios = usePrivateAxios();
 
   const { auth } = UseAuth();
 
@@ -44,13 +46,13 @@ const Facilities = () => {
   //Changing Facilities List Title Dynamically 
   const facilityListPageTitle = () =>{
     if (window.location.pathname === "/facilities" || window.location.pathname === "/facilities/") {
-      return <h2 className='text-center'>All Facilities</h2>  
+      return <h3 className='text-center mb-3 mt-5'>All Facilities</h3>  
     } else if(window.location.pathname === "/facilities/1" || window.location.pathname === "/facilities/1/"){
-      return <h2 className='text-center'>Homa Bay Facilities</h2>
+      return <h3 className='text-center mb-3 mt-5'>Homa Bay Facilities</h3>
     } else if(window.location.pathname === "/facilities/2" || window.location.pathname === "/facilities/2/") {
-      return <h2 className='text-center'>Kiambu Facilities</h2>
+      return <h3 className='text-center mb-3 mt-5'>Kiambu Facilities</h3>
     } else if(window.location.pathname === "/facilities/3" || window.location.pathname === "/facilities/3/"){
-      return <h2 className='text-center'>Kisii Facilities</h2>
+      return <h3 className='text-center mb-3 mt-5'>Kisii Facilities</h3>
     }
 
   }
@@ -108,7 +110,7 @@ const Facilities = () => {
     //delete facility
     const deleteFacility = (id) =>{
       if(window.confirm("Are you sure you want to delete this facility?")){
-          axios.delete(`http://localhost:4000/facilities/delete/${id}`)
+          privateAxios.delete(`/facilities/delete/${id}`)
       .then((response)=>{
           setFacilities(facilities.filter((facility)=>{
               return facility.id !== id;
@@ -118,6 +120,7 @@ const Facilities = () => {
       })
       .catch((error)=>{
           console.log(error);
+          toast.error("Action Failed")
       });
       }
       
@@ -136,47 +139,51 @@ const Facilities = () => {
 
 return (
   
-  <div style={{textAlign: "center"}} >
+  <div className="container" >
   {
     facilityListPageTitle()
   } 
   {/* Enabling admins & Supers_Users only to add Facility */}
-  {  
-  loggedinUserRoles === "3" || loggedinUserRoles === "4" ?
-     <button onClick={handleClick} className='addnewfacilitybtn'>Add Facility</button>
-     :<></>
-  }
-
-            
-  <div className="searchbox">
+  <div className="form-outline mb-4">
           <input 
+            className="form-control"
             type="text" 
             value={searchFacilities}
-            placeholder = "Type to search"
+            placeholder = "Start Typing here to search..."
             onChange={(e)=> setSearchFacilities(e.target.value)
             }
           />
           </div>
+  <div className="form-group row mt-2 mb-2">
+  {  
+  loggedinUserRoles === "3" || loggedinUserRoles === "4" ?
+     <button onClick={handleClick} className='btn btn-outline-success col-sm-6'>Add Facility</button>
+     :<></>
+  }       
+  <div className="col-md-6">
     <ReactHTMLTableToExcel
                     id="test-table-xls-button"
-                    className="addnewinventorybtn"
+                    className="btn btn-outline-warning"
                     table="table-to-xls"
                     filename="Facilities"
                     sheet="Facilities"
                     buttonText="Export Data to Excel Sheet"/>
-  <div className="table" >
+  </div>
+  </div>
+
+  <div className="table-responsive" >
     
-        <table className="table_content" id="table-to-xls">
-          <thead className="thead">
+        <table className="table  table-striped table-hover table-sm mt-3" id="table-to-xls">
+          <thead >
             <tr>
               <th>MFL CODE</th>
-              <th>FACILITY NAME</th>
-              <th>COUNTY</th>
-              <th>SUBCOUNTY</th>
-              <th>PRIVATE IP ADDRESS</th>
-              <th> ELASTIC IP ADDRESS</th>
-              <th>STATUS</th>
-              <th>USHARI </th>
+              <th>Facility Name</th>
+              <th>County</th>
+              <th>Sub-County</th>
+              <th>Private IP Address</th>
+              <th> Elastic IP Address</th>
+              <th> KenyaEMR STATUS</th>
+              <th>Ushauri </th>
               <th>WebADT </th>
               
              { loggedinUserRoles === "3" || loggedinUserRoles === "4" &&

@@ -14,7 +14,6 @@ section {
   border-radius: 20px;
   vertical-align: middle;
 }
-
 form {
   display: flex;
   flex-direction: column;
@@ -28,6 +27,7 @@ a:visited {
   color: #fff;
 }
 
+
 input[type="text"],
 input[type="password"],
 button,
@@ -38,6 +38,7 @@ textarea, select {
   border-radius: 0.5rem;
   width: 100%;
 }
+
 
 label,
 button {
@@ -52,11 +53,9 @@ button {
   background-color: teal;
   color: white;
 }
-select{
-  /* width: 80%; */
-}
 
-.instructions {
+
+instructions {
   font-size: 0.75rem;
   border-radius: 0.5rem;
   background: rgb(238, 127, 127);
@@ -99,4 +98,16 @@ select{
 
 .line {
   display: inline-block;
+} 
+.bg {
+  /* The image used */
+  background-image: url("./egpaf_big_logo.jpg");
+
+  /* Full height */
+  height: 100%;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }

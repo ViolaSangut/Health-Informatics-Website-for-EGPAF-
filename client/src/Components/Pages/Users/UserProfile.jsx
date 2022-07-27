@@ -82,7 +82,7 @@ const UserProfile = () => {
 
 
   return (
-    <div className='profile'>
+    <div className='container'>
       <div className="profileContent">
       <div className="title">
       <CgIcons.CgProfile className="profileIcon"/>
@@ -92,7 +92,7 @@ const UserProfile = () => {
       <div className="form">
         <div className="inputfield">
             <label>First Name</label>
-            <input type="text" className="input"  
+            <input type="text" className="form-control"  
             value={firstName} 
             onChange={(e) =>setFirstName(e.target.value)}
             />
@@ -100,7 +100,7 @@ const UserProfile = () => {
 
         <div className="inputfield">
             <label>Last Name</label>
-            <input type="text" className="input"  
+            <input type="text" className="form-control"  
             value={lastName} 
             onChange={(e) =>setLastName(e.target.value)}
             />
@@ -108,7 +108,7 @@ const UserProfile = () => {
 
         <div className="inputfield">
             <label>Email</label>
-            <input type="text" className="input"  
+            <input type="email" className="form-control"  
             value={email} 
             onChange={(e) =>setEmail(e.target.value)}
             />
@@ -117,7 +117,7 @@ const UserProfile = () => {
         { UserRoles !== null &&
            <div className="inputfield">
            <label>Role</label>
-           <input type="text" className="input" 
+           <input type="text" className="form-control" 
            disabled={true} 
            value={UserRoleId === "1" ? "User" : UserRoleId === "2" ? "Manager": UserRoleId === "3" ? "Admin" : UserRoleId === "4" ? "Super-User" : ""} 
            />
@@ -144,9 +144,9 @@ const UserProfile = () => {
         <div className="inputfield">
 
     
-          <Link to="" className="btn btn-info" style={{width: "50%", marginLeft: "20%", marginBottom: "2%"}} onClick={(e) => updateUser(e)}> Update</Link>
+          <Link to="" className="btn btn-success " style={{width: "50%", marginLeft: "20%", marginBottom: "2%"}} onClick={(e) => updateUser(e)}> Update</Link>
                   
-          <Link to="/tickets-list" className="btn btn-dark" style={{width: "50%", marginLeft: "20%", marginBottom: "0%"}}>Back</Link>
+          <Link to="/tickets-list" className="btn btn-warning" style={{width: "50%", marginLeft: "20%", marginBottom: "0%"}}>Back</Link>
           </div>
       </div>
      </div>	

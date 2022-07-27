@@ -29,16 +29,14 @@ useEffect(() => {
 
 //render table on screen
   return (
-    <div className='body'>
-     
-        <select  className= "inventory-selector" value={display} onChange={handleChange}>
+    <div class="container" >
+        <div class="text-right">
+        <select  className=' form-select mt-3' value={display} onChange={handleChange}>
                  <option value="DEFAULT" disabled ={true}>--Select Item Type--</option>
                 <option value="Simcards">Simcards</option>
                 <option value="Tablets">Tablets</option>
-
-              
         </select>
-        
+        </div>
 
     {tabletsVisible && <Inventory/>}
     {simcardsVisible && <Simcards/>}

@@ -2,7 +2,6 @@ import React,{useState, useEffect, useContext} from 'react'
 import axios from 'axios';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { toast  } from 'react-toastify';
-import './Tickets.css';
 import moment from 'moment';
 import usePrivateAxios from '../../hooks/usePrivateAxios';
 import UseAuth from "../../context/UseAuth";
@@ -218,64 +217,88 @@ const getRecentTickets = () =>{
         :console.log("")
     }, [filterTickets])
 
+//handle click on add ticket button
+const handleAddTicketClick = () => {
+    navigate('/addticket')
+}
+const handleToDashboardClick = () => {
+    navigate('/tickets')
+}
+
+
+
+
+
   return (
-    <div >
+    <div className='container'>
     
-        <div style={{textAlign: "center"}}>
+        <div>
            {
             ticketsListPageTitle()
            }
-
-            <Link to = '/addticket' className='btn btn-primary mb-2'>Add Ticket</Link>
-            <Link to = '/tickets' className='btn btn-primary mb-2' style={{marginLeft: "3%"}}>Tickets DashBoard</Link>
-            
+            <div className='form-group row mt-2 mb-2'>
+                <div className="offset-sm-2 col-sm-4">
+            <button onClick={handleAddTicketClick} className='btn btn-outline-success mb-2'>Add Ticket</button>
+                </div>
+                <div className="col-md-4">
+            <button onClick={handleToDashboardClick} className='btn btn-outline-warning mb-2'>Tickets DashBoard</button>
+                </div>
+            </div>
         </div>
     
         {/* Filter */}
-        <div className='tickets_filter'>
-            <select name="isAvailable" value={filterTickets}
+        <div className='form-group row mt-2'>
+            <label>Filter By...</label>
+            <div className='col-md-3'>
+            <select 
+            className="form-select"
+            name="isAvailable" value={filterTickets}
                 onChange={(e)=>setFilterTickets(e.target.value)}
               
                 >
-                <option value="recent">Select</option>
+                <option value="recent">Ticket Status</option>
                 <option value="pending">Pending</option>
                 <option value="unassigned">Unassigned</option>
                 <option value="recent">Recent</option>
                 <option value="all">All Tickets</option>
           
             </select>      
-
-            <select className='tickets_date_filter' style={{margingLeft: "px"}} name="isAvailable" value={searchTickets}
+           </div>
+           <div className='col-md-3'>
+            <select className='form-select' style={{margingLeft: "px"}} name="isAvailable" value={searchTickets}
                 onChange={(e)=> setSearchTickets(e.target.value)}>
-                <option value="">Select</option>
+                <option value="">Day ticket was issued</option>
                 <option value={myTodaysDate}>Todays Tickets</option>
                 <option value={myYesterdaysDate}>Yesterdays Tickets</option>
             </select> 
         </div>
+        </div>
     
         {/* Search */}
-        <div className='tickets_search_bar'>
-            <label style = {{marginLeft:"10px"}}>Search</label>
+        <div className='form-outline mb-2 mt-2'>
+            {/* <label className="col-sm-2 col-form-label"> Search</label> */}
             <input 
+            className='form-control mb-2'
                 type="text" 
                 value={searchTickets}
+                placeholder="Start typing to search ticket..."
                 onChange={(e)=> setSearchTickets(e.target.value)}
             />     
         </div>
 
         {tickets?.length
         ? (
-           <>
+           <div>
              <ReactHTMLTableToExcel
              id="test-table-xls-button"
-             className="addnewinventorybtn"
+             className="btn btn-success mb-2 col-sm-3 offset-9"
              table="TicketsTable"
              filename="Tickets"
              sheet="Tickets"
              buttonText="Download Excel"
              />
-           <div className='ticketsTable' >
-            <table className='tickets_table_content' id="TicketsTable">
+           <div className='table-responsive' >
+            <table className='table  table-striped table-hover table-sm' id="TicketsTable">
                 <thead  >
                 <tr >
                 <th >Title </th>
@@ -360,7 +383,7 @@ const getRecentTickets = () =>{
             </table>
         
            </div>
-           </>
+           </div>
            )
         : <h3 className='table' >No Tickets to display</h3>
         }

@@ -1,6 +1,6 @@
 import React,{useState, useEffect, useContext} from 'react'
 import { Link, useNavigate, useLocation} from 'react-router-dom';
-import './Users.css';
+// import './Users.css';
 import { toast  } from 'react-toastify';
 import usePrivateAxios from '../../hooks/usePrivateAxios';
 import UseAuth from "../../context/UseAuth";
@@ -68,24 +68,26 @@ const Users = () => {
 
   return (
     <div className='container'> 
-    <div className='users-title'>
-        <h2 className='text-center'>Users</h2>  
-        <Link to = '/add-user' className='btn btn-success'   style = {{marginLeft:"10%"}}>New user</Link>
+    <div className=''>
+        <h2 className='text-center mb-3 mt-5'>Users</h2> 
+
+        <Link to = '/add-user' className='btn btn-outline-success mb-2 mt-2 col-sm-3'   >Add New user</Link>
 
     </div>
 
     {/* Search */}
     <div className='search_bar'>
-            <label style={{margin: "1%"}}>Search</label>
             <input 
+            className="form-control mb-2"
                 type="text" 
                 value={searchUser}
+                placeholder="Start typing here to search..."
                 onChange={(e)=> setSearchUser(e.target.value)}
             />     
         </div>
     
-    <div className='table'>
-    <table className='table_content'>
+    <div className='responsive-table'>
+    <table className="table table-striped table-hover table-sm">
     <thead>
      <tr>
         <th>First Name</th>

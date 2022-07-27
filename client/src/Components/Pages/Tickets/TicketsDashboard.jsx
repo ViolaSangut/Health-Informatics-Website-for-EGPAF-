@@ -10,14 +10,28 @@ const TicketsDashboard = () => {
   const navigate = useNavigate();
 
 
+
+  const goToTicketList = () => {
+    navigate(`/tickets-list`)
+  }
+
+  const goAddTicket = () => {
+    navigate(`/addticket`)
+  }
+
   return (
-    <div>
-      <div >
-      <Link to = '/tickets-list' className='btn btn-info' style={{marginLeft:"10%", marginTop:"1%"}}>Tickets</Link>
-      <Link to = '/addticket' className='btn btn-info' style={{marginLeft:"2%", marginTop:"1%"}}>Add Ticket</Link>
-      
-      <h4 className='pageTitle'>Tickets Dashboard</h4>
+    <div className='container'>
+      <div className='form-group row mt-2 mb-2'>
+        <div className='col-sm-4 offset-1'>
+      <button onClick={goToTicketList} className='btn btn-outline-success mt-2'>List of Tickets</button>
       </div>
+      <div className='col-md-4 offset-2'>
+      <button onClick={goAddTicket} className='btn btn-outline-warning mt-2' >Add New Ticket</button>
+      </div>
+      </div>
+      
+      <h3 className='pageTitle'>Tickets Dashboard</h3>
+
       <div className='summary1'>
         <Summary type = "Unassigned"/>
         <Summary type = "Pending"/>

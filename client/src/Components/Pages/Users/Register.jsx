@@ -1,7 +1,6 @@
 import React,{ useEffect, useState, useRef} from 'react'
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
-import './Register.css';
 import { toast } from 'react-toastify';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -245,10 +244,10 @@ const saveUser = async () => {
      const pageTitle = () =>{
 
       if(id){
-          return <h3 className="text-center">Update User</h3>
+          return <h3 className="text-center mt-5 mb-2">Update User</h3>
       } 
       else {
-          return <h3 className="text-center">Registration</h3>
+          return <h3 className="text-center mt-5 mb-3">Register A New User</h3>
 
       }
       
@@ -275,7 +274,8 @@ useEffect(()=>{
 let addUpdateEmailPassword = 
     <>
       {/* Email input */}
-      <label>Email
+      <div className="form-group row mt-2">
+      <label className='col-sm-2 col-form-label'>Email
         <span className={validEmail ? "valid" : "hide"}>
             <FontAwesomeIcon icon={faCheck} />
           </span>
@@ -283,8 +283,9 @@ let addUpdateEmailPassword =
             <FontAwesomeIcon icon={faTimes} />
           </span>
       </label>
-
+      <div className='col-md-6'>
       <input
+      className='form-control'
         autoComplete="off"
         id="email"
         placeholder="Email"
@@ -310,9 +311,11 @@ let addUpdateEmailPassword =
           <br />
           Must be a Valid email address!
         </p>
-
+          </div>
+          </div>
         {/* password input */}
-        <label>Password 
+        <div className='form-group row mt-2'>
+        <label className='col-sm-2 col-form-label'>Password 
             <span className={validPassword ? "valid" : "hide"}>
                 <FontAwesomeIcon icon={faCheck} />
               </span>
@@ -320,7 +323,9 @@ let addUpdateEmailPassword =
                 <FontAwesomeIcon icon={faTimes} />
               </span>
           </label>
+          <div className='col-md-6'>
           <input
+          className='form-control'
             autoComplete="off"
             type="password"
             id="pwdnote"
@@ -350,8 +355,11 @@ let addUpdateEmailPassword =
               <span aria-label="dollar sign">$</span>
               <span aria-label="percent">%</span>
             </p>
+            </div>
+            </div>
           {/* Confirm password */}
-          <label>Confirm Password 
+          <div className='form-group row mt-2'>
+          <label className='col-sm-2 col-form-label'>Confirm Password 
             <span className={validMatch ? "valid" : "hide"}>
             <FontAwesomeIcon
                 icon={faCheck}
@@ -363,8 +371,9 @@ let addUpdateEmailPassword =
               />
               </span>
               </label>.
-            
+            <div className='col-md-6'>
           <input
+            className='form-control'
             autoComplete="off"
             type="password"
             id="confpwdid"
@@ -388,13 +397,16 @@ let addUpdateEmailPassword =
               <FontAwesomeIcon icon={faInfoCircle} />
               Must match the first password input field.
             </p>
+            </div>
+            </div>
     </>
     
     
   return (
-    <div  align="middle" >
-         <section>        
-        <form className="" onSubmit={submitUser}>
+    <div className=' container align-items-center' >
+            
+          
+        <form onSubmit={submitUser}>
           <p 
           ref={errRef}
           className={errMsg?"errmsg":"offscreen"}
@@ -407,8 +419,8 @@ let addUpdateEmailPassword =
           pageTitle()
         }
         {/* First name input */}
-
-          <label>First Name 
+          <div className="form-group row mt-2">
+          <label className="col-sm-2 col-form-label">First Name 
             <span className={validFName?"valid":"hide"}>
               <FontAwesomeIcon icon={faCheck} 
             />
@@ -418,8 +430,10 @@ let addUpdateEmailPassword =
             />
             </span>
           </label>
+          <div className="col-md-6">
 
           <input
+          className='form-control'
             autoComplete="off"
             id="firstnameid"
             type="text"
@@ -446,8 +460,11 @@ let addUpdateEmailPassword =
               <br />
               Only letters allowed.
             </p>
+            </div>
+            </div>
          {/* Lastname Input */}
-          <label>Last Name 
+         <div className="form-group row mt-2">
+          <label className='col-sm-2 col-form-label'>Last Name 
             <span className={validLName?"valid":"hide"}>
             <FontAwesomeIcon icon={faCheck} />
             </span>
@@ -455,7 +472,9 @@ let addUpdateEmailPassword =
                   <FontAwesomeIcon icon={faTimes} />
             </span>
           </label>
+          <div className="col-md-6">
           <input
+          className='form-control'
             autoComplete="off"
             id="lastnameid"
             type="text"
@@ -481,6 +500,8 @@ let addUpdateEmailPassword =
               <br />
               Only letters allowed.
             </p>
+            </div>
+            </div>
 
             {/* Roles */}
             { id ?
@@ -540,24 +561,27 @@ let addUpdateEmailPassword =
         }
         
          {/* Submit Button */}
+         <div className='form-group row mt-2 ml-2 mr-2'>
           {
            !id ?
-           <button className='buttons'
+           <button className='btn btn-success col-sm-3 mt-2 ml-2'
              disabled={!validFName || !validLName || !validPassword || !validEmail || !validMatch ? true : false}> Submit
            </button>
            :id ?
-           <button className='buttons'
-             disabled={!validFName || !validLName ? true : false}> Submit
+           <button className='btn btn-warning col-sm-3 mt-2'
+             disabled={!validFName || !validLName ? true : false}> Update
            </button>
            :<></>
            }
-        </form>
-        <p>
-            Already registered?
+        <p className="mt-2 mb-0 col-sm-3">
+          Already registered?   
+          <a className="col-md-1"href="http://localhost:4001/">   Sign In</a>
+            
             <span className="line">{/* Put the router Link here */}</span>
           </p>
-          <a href="http://localhost:4001/">Sign In</a>
-      </section>
+          </div>
+        </form>
+
     </div>
   )
 }

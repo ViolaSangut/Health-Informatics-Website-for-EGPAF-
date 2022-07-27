@@ -1,8 +1,8 @@
 import React from 'react'
 import axios from "axios";
 import { useState, useEffect, useRef, useContext } from 'react';
-import './Login.css';
-import egpaf_logo from '../../../Resources/Images/egpaf_logov2.JPG'
+// import './Login.css';
+import egpaf_big_logo from '../../../Resources/Images/egpaf_big_logo.jpg'
 import { Link, useLocation, useNavigate} from 'react-router-dom';
 import UseAuth from '../../context/UseAuth';
 import jwt_decode from "jwt-decode";
@@ -120,49 +120,71 @@ const Login = () => {
 
 
   return (
-    <>
-    <img  src={egpaf_logo} alt=''/>
-    <div align ="middle">
-          
-    <section >
+    
+    <div className ="vh-100" style={{"background-color":"#dbe9f4"}}>
+    
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col col-xl-8">
+    <div class="card" style={{"border-radius": "1rem"}}>
+      <div class="row g-0">
+        <div class="col-md-6 col-lg-5 d-none d-md-block">
+              <img src={egpaf_big_logo}
+                alt="login form" class="img-fluid" style={{"border-radius": "1rem 0 0 1rem"}} />
+            </div>
+    <div class="col-md-6 col-lg- d-flex align-items-center">
+    <div class="card-body p-4 p-lg-4 text-black">
     <p ref={errorRef} className={errorMessage ? "errmsg" :  "offscreen"} aria-live="assertive">{errorMessage}</p>
       <form >
-        <h5>HEALTH INFORMATION SYSTEM</h5>
-        <label>
-          Username or Email
-        </label>
-        <input className='text'
+        <h4 class="fw-normal mb-3 pb-3" >Health Information Management System</h4>
+        <div class="form-floating mb-4 ">
+        
+        <input 
+        id="floatingInput"
+          className='form-control'
           placeholder='Username'
-          type="text"
+          type="email"
           onChange={(event) => {
             setEmail(event.target.value);
           }}
           autoComplete='off'
           ref={emailRef}
         />
-        <label>
-          Password
+        <label  for="floatingInput">
+          Username or Email
         </label>
+        </div>
+        <div class="form-floating mb-4">
+        
         <input 
+        id="floatingPass"
+        className='form-control'
            placeholder='Password'
           type="password"
           onChange={(event) => {
             setPassword(event.target.value);
           }}
         />
-       <div>
-          <button className="buttonlogin" onClick={login}> Sign in </button>
-          <p>
+        <label for="floatingPass">
+          Password
+        </label>
+        </div>
+       <div class="pt-1 mb-4">
+          <button className="btn btn-outline-success" type="button"onClick={login}> Sign in </button>
+          <p className="mt-2 mb-5 pb-lg-2" >
              Do Not have an account? 
-            <Link to = '/add-user'   style = {{marginLeft:"30px"}}> Register</Link>
+            <Link to = '/add-user'   style = {{marginLeft:"30px"}}>Register</Link>
           </p>
           
        </div>
         
         </form>
-    </section>
     </div>
-    </>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
   
   )
 }

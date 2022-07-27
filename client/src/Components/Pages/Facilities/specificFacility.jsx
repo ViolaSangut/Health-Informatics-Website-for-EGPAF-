@@ -23,6 +23,7 @@ const SpecificFacilityComponent = () => {
   const [ushauri, setUshauri] = useState("");
   const [WebADT, setWebADT] = useState("");
   const [elasticipaddress,setElasticipaddress] = useState("");
+  const navigate = useNavigate();
 
 
   const [tickets, setTickets] = useState([]);
@@ -74,19 +75,47 @@ const getAllFacilities = () =>{
     
 
 return (
-    <div>
-  <h2>Facility name:{facilityname}</h2>
-  <p>County:{county}</p>
-  <p>subcounty:{subcounty}</p>
-  <p>IP Address: {ipaddress}</p>
-  <p>Elastic IP Address:{elasticipaddress}</p>
-  <h2>IMPLEMENTATIONS </h2>
-  <p>WebADT:{WebADT}</p>
-  <p>Ushauri:{ushauri}</p>
-  <h2>TICKETS</h2>
+    <div className="container ">
 
-  
-  <Tickets/>
+
+<h2 className="mt-2 mb-3 text-center">{facilityname}</h2>
+          
+<div class="list-group">
+  <ul>
+            <li  class="list-group-item">
+                  <p>County:{county}</p>
+
+            </li>
+            <li class="list-group-item">
+                 <p>Sub-County:{subcounty}</p>
+            </li>
+            <li class="list-group-item list-group-item-action ">
+                  <p>IP Address: {ipaddress}</p>
+            </li>
+            <li class="list-group-item list-group-item-action">
+                  <p>Elastic IP Address:{elasticipaddress}</p>
+                
+            </li>
+            <li class="list-group-item  text-center">
+                    <h4>HIS System Implementations </h4>                
+            </li>
+            <li class="list-group-item ">
+                    <p>WebADT:{WebADT}</p>
+                
+            </li>
+             <li class="list-group-item ">
+                    <p>Ushauri:{ushauri}</p>
+
+            </li>
+             <li class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                 <p> Tickets and Issues</p>
+                <span class="badge bg-danger">10</span>
+            </li>
+            </ul>
+        </div> 
+
+
+
         
   </div>
 )

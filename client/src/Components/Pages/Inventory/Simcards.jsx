@@ -1,7 +1,7 @@
 import React,{useState, useEffect, } from 'react'
 import { useNavigate, Link } from 'react-router-dom';
 import { toast  } from 'react-toastify';
-import "./Inventory.css";
+// import "./Inventory.css";
 import usePrivateAxios from '../../hooks/usePrivateAxios';
 import * as AiIcons from "react-icons/ai";
 import ReactHTMLTableToExcel from 'react-html-table-to-excel';
@@ -67,27 +67,30 @@ const Simcards = () => {
     return(
          <div>
             <div>
-      <h1 className="header">Simcards Inventory</h1>
+      <h3 className="text-center mb-3 mt-5">Simcards Inventory</h3>
       </div>
-                <input className="searchbox"
+      <div className='form-outline mb-4'>
+                <input className="form-control mb-3 "
                 placeholder='Search for Simcard'
                 value={searchCard}
                 onChange={(e)=> setSearchCard(e.target.value)}
                 ></input>
-
-                <button onClick={handleClick} className="addnewinventorybtn">Add New Simcard</button>
-            <div>
+            <div className='form-group row mt-2 mb-1'>
+                <button onClick={handleClick} className="col-sm-6 btn btn-outline-success">Add New Simcard</button>
+            <div className='col-md-6'>
         <ReactHTMLTableToExcel
                     id="tablets-download-button"
-                    className="addnewinventorybtn"
+                    className="btn btn-outline-warning"
                     table="table-to-xls"
                     filename = "Simcard-List"
                     sheet="tablexls"
                     buttonText="Export Data to Excel Sheet"/>
         </div>
-        <div className='table'>
-            <table className="table_content" id="table-to-xls">
-                <thead className="thead">
+        </div>
+        </div>
+        <div >
+            <table className="table mt-3 table-striped table-hover table-sm" id="table-to-xls">
+                <thead >
                     <tr>
                     <th>Serial</th>
                     <th>Phone Number</th>
@@ -99,7 +102,7 @@ const Simcards = () => {
                     <th>Action</th>
                     </tr>
                 </thead>
-    <tbody className="tbody">
+    <tbody >
      {
         
           cards.filter((card)=> {
