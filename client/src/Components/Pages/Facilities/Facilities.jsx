@@ -65,7 +65,7 @@ const Facilities = () => {
 
   //Get All Facilities
   const getAllFacilities = () =>{
-    axios.get("http://localhost:4000/facilities")
+    privateAxios.get("/facilities")
     .then((response)=>{
         console.log(response.data)
         setFacilities(response.data);
@@ -76,7 +76,7 @@ const Facilities = () => {
 
   //Get HomaBay Facilities
   const getHomaBayFacilities = () =>{
-    axios.get("http://localhost:4000/facilities/homabayfacilities")
+    privateAxios.get("/facilities/homabayfacilities")
     .then((response)=>{
         console.log(response.data)
         setFacilities(response.data);
@@ -87,7 +87,7 @@ const Facilities = () => {
 
   //Get Kiambu Facilities
   const getKiambuFacilities = () =>{
-    axios.get("http://localhost:4000/facilities/kiambufacilities")
+    privateAxios.get("/facilities/kiambufacilities")
     .then((response)=>{
         console.log(response.data)
         setFacilities(response.data);
@@ -98,7 +98,7 @@ const Facilities = () => {
 
   //Get Kisii Facilities
   const getKisiiFacilities = () =>{
-    axios.get("http://localhost:4000/facilities/kisiifacilities")
+    privateAxios.get("/facilities/kisiifacilities")
     .then((response)=>{
         console.log(response.data)
         setFacilities(response.data);

@@ -4,7 +4,7 @@ import axios from "axios";
 import {useNavigate } from "react-router-dom";
 import { toast } from 'react-toastify' ;
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { privateAxios } from "../../api/axios";
+import usePrivateAxios from "../../hooks/usePrivateAxios";
 
 const FACILITY_REGEX = /^[A-Za-z0-9 ]+$/
 const SUBCOUNTY_REGEX = /^[A-Za-z0-9 ]+$/
@@ -31,6 +31,8 @@ const AddFacilityComponent = () => {
   const [WebADT, setWebADT] = useState("");
   const [elasticipaddress,setElasticipaddress] = useState("");
   const [validElasticIpaddress, setValidElasticIpaddress]= useState(false);
+
+  const privateAxios = usePrivateAxios();
 
   //FORM validation
   useEffect(() => {
@@ -76,34 +78,27 @@ const AddFacilityComponent = () => {
                 updateFacility();
             } else{
                 saveFacility();
-            }
-        
+            }      
         }
-
-
-        
-        
     }
-    
 
-    
-    const saveFacility = () =>{
-    
-  
+    //Add Facility  
+    const saveFacility = async () =>{
+
+
         privateAxios.post("/facilities/addfacility", {
           facilityname:facilityname, mflcode:mflcode, subcounty: subcounty,
             status:status, ipaddress:ipaddress, county:county, ushauri:ushauri, WebADT:WebADT, elasticipaddress:elasticipaddress
         }).then((response)=>{
-        // console.log(response.data)
-        // console.log("Facility inserted!");
+          navigate("/facilities");
+        console.log("Facility inserted!");
         toast.success("Facility inserted successfully")
-        navigate('/facilities');
-    })
-    .catch((error)=>{
-      console.log(error)
-    });
+       
+        })
+        .catch((error)=>{
+          console.log(error)
+        });
     }
-    
     
       //Update facility
     const updateFacility = () =>{
@@ -122,10 +117,6 @@ const AddFacilityComponent = () => {
         });
       };
        
-
-  
-
-
 useEffect(() => {
     if (facility) {
         setFacilityName(facility.facilityname);
@@ -281,10 +272,11 @@ return (
           value={ushauri}
           onChange={(e)=>setUshauri(e.target.value)}
         >
-          <option value="selects">Please Select Ushauri version installed...</option>
-          <option value="v1">version 4.0.1</option>
-          <option value="v2">version 3.4.2</option>
-          <option value="v3">version 4.0.0</option>
+          <option value="selects">select Ushauri version installed...</option>
+          <option value="0">None</option>
+          <option value="version 4.0.1">version 4.0.1</option>
+          <option value="version 3.4.2">version 3.4.2</option>
+          <option value="version 4.0.0">version 4.0.0</option>
                               
         </select>
         <div >  
@@ -293,10 +285,11 @@ return (
           value={WebADT}
           onChange={(e)=>setWebADT(e.target.value)}
         >
-          <option value="selects">Please Select WebADT version installed...</option>
-          <option value="v1">version 4.0.1</option>
-          <option value="v2">version 3.4.2</option>
-          <option value="v3">version 4.0.0</option>
+          <option value="selects">select WebADT version installed...</option>
+          <option value="0">None</option>
+          <option value="version 4.0.1">version 4.0.1</option>
+          <option value="version 3.4.2">version 3.4.2</option>
+          <option value="version 4.0.0">version 4.0.0</option>
                               
         </select>
         </div>
