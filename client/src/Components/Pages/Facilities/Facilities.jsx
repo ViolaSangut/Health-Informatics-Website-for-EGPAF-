@@ -146,8 +146,8 @@ return (
   {
     facilityListPageTitle()
   } 
-  {/* Enabling admins & Supers_Users only to add Facility */}
-  <div className="form-outline mb-4 col-sm-3">
+  {/* Search */}
+  <div className="form-outline mb-4 col-sm-2">
           <input 
             className="form-control"
             type="text" 
@@ -157,13 +157,14 @@ return (
             }
           />
           </div>
+  {/* Enabling admins & Supers_Users only to add Facility */}
   <div className="form-group row mt-2 mb-2">
   {  
   loggedinUserRoles === "3" || loggedinUserRoles === "4" ?
      <button onClick={handleClick} className='addbtn btn-outline-warning col-sm-1'>< BIIcons.BiPlusMedical /></button>
      :<></>
   }       
-  <div className="col-md-6">
+  <div className="col-md-5">
     <ReactHTMLTableToExcel
                     id="test-table-xls-button"
                     className="btn btn-outline-success"
@@ -233,8 +234,9 @@ return (
                           <td><a  href={`http://${facility.ipaddress}:8080/openmrs`}>http://{facility.ipaddress}:8080/openmrs </a> </td>
                           <td><a className="link-dark" href={`http://${facility.elasticipaddress}:8080/openmrs`}>http://{facility.elasticipaddress}:8080/openmrs </a> </td>  
                           <td>{facility.status}</td>
-                          <td>{ facility.ushauri ===1 ? "In use" : "Not in Use"}</td>
-                          <td>{facility.WebADT ===1 ? "In use" : "Not in Use" }</td>
+                          <td>{ facility.ushauri === "version 4.0.1" || facility.ushauri === "version 4.0.0" || facility.ushauri === "version 3.4.2"? "In use" : "Not in Use"}</td>
+
+                          <td>{ facility.WebADT === "version 4.0.1" || facility.WebADT === "version 4.0.0" || facility.WebADT === "version 3.4.2"? "In use" : "Not in Use"}</td>
 
                            {/* Enabling admins & Supers_Users only to delete Facility */}
                            { loggedinUserRoles === "3" || loggedinUserRoles === "4" &&

@@ -12,9 +12,12 @@ const CheckAuth = ({ allowedRoles }) => {
           ? jwt_decode(auth.accessToken)
           : undefined
           const roles = decodedAccessToken?.roles || [];
+          // const loggedinUserRoles = roles?.toString();
 
   return (
     //Checking user's role(s) and auth status
+    // loggedinUserRoles === "5" 
+    // ? <Navigate to="/unauthorized"/>
     roles.find(role => allowedRoles?.includes(role))
     ? <Outlet/>
     : auth?.email

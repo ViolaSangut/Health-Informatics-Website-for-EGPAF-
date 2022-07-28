@@ -20,12 +20,6 @@ export const sidebarItems = [
     className: "nav-text",
   },
   {
-    title: "Inventory",
-    path: "/inventory",
-    icon: <MdIcons.MdOutlineInventory2 />,
-    className: "nav-text",
-  },
-  {
     title: "Tickets",
     path: "/tickets",
     icon: <IoIcons.IoIosPaper />,

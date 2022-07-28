@@ -1,7 +1,6 @@
 import React, {useState, useRef, useEffect} from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { toast  } from 'react-toastify';
-// import './AddInventory.css'
 import Facilities from './Facilities.json'
 import DeviceStatus from './DeviceStatus.json';
 import axios from "axios";

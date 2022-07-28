@@ -93,6 +93,7 @@ const Login = () => {
       setAuth({email, accessToken });
       setEmail('');
       setPassword('');
+      
 
       navigate(from, { replace: true });
   } 

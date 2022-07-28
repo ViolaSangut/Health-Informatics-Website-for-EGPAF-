@@ -21,7 +21,6 @@ import RegisterComponent from "./Components/Pages/Users/Register";
 import AddTicketComponent from "./Components/Pages/Tickets/AddTicket";
 import AddFacilityComponent from "./Components/Pages/Facilities/AddFacilities";
 import SpecificFacilityComponent from "./Components/Pages/Facilities/specificFacility";
-import Test from "./Components/Pages/Tickets/Test";
 import AddInventory from "./Components/Pages/Inventory/AddInventory";
 import AddSimcards from "./Components/Pages/Inventory/AddSimcard";
 import Simcards from "./Components/Pages/Inventory/Simcards";
@@ -80,8 +79,8 @@ function App() {
               <Route path="/tickets-list/:id" element={<Tickets />} />
             </Route>
 
-            {/* Inventory */}
-            <Route element={<CheckAuth allowedRoles={[1, 2, 3, 4]} />}>
+            {/* Inventory - accessed by only Admin and Super_User*/}
+            <Route element={<CheckAuth allowedRoles={[3, 4]} />}>
               <Route path="/inventory" element={<InventoryMain />} />
               <Route path="/AddInventory" element={<AddInventory />} />
               <Route path="/UpdateInventory/:id" element={<AddInventory />} />

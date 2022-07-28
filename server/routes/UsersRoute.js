@@ -45,7 +45,7 @@ router.route("/:id").get(UsersController.findUserById);
 
 // Login
 router.route("/login").post(AuthController.login);
-// Login
+// Delete
 router.route("/logout").delete(AuthController.logout);
 
 //Refresh Token - This end point will receive cookies containing refresh token to issue new accessToken

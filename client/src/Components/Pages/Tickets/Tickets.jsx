@@ -228,10 +228,6 @@ const handleToDashboardClick = () => {
     navigate('/tickets')
 }
 
-
-
-
-
   return (
     <div className='container'>
     
@@ -276,7 +272,8 @@ const handleToDashboardClick = () => {
           
             </select>      
            </div>
-           <div className='col-md-3'>
+        
+           <div className='col-md-2'>
             <select className='form-select' style={{margingLeft: "px"}} name="isAvailable" value={searchTickets}
                 onChange={(e)=> setSearchTickets(e.target.value)}>
                 <option value="">Day ticket was issued</option>
