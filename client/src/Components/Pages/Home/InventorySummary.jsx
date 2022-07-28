@@ -51,9 +51,11 @@ function InventorySummary() {
   return (
     <div>
     <div className="inventorySum" onClick={tabClicked}>
-      <h3>Tablets: <b>{ `${tabletCount}`}</b></h3></div>
+      <h3>Tablets: <b>{ `${tabletCount}`}</b></h3>
+    </div>
     <div className="inventorySum" onClick={tabClicked}>
-      <h3>Simcards: <b>{`${simCount}`}</b></h3></div>
+      <h3>Simcards: <b>{`${simCount}`}</b></h3>
+    </div>
     </div>
   )
 }

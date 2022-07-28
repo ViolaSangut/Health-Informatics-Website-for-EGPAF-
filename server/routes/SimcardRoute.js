@@ -10,7 +10,7 @@ router
   .route("/")
   .get(
     verifyToken,
-    verifyRole(ROLES_LIST.Admin, ROLES_LIST.Super_User),
+    // verifyRole(ROLES_LIST.Admin, ROLES_LIST.Super_User),
     SimcardController.getSimcard
   );
 

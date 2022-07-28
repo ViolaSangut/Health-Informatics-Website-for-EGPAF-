@@ -39,7 +39,12 @@ const Home = () => {
           </div>
        
         </div>
-        <InventorySummary/>
+        <div className='facilities_summary'>
+        <InventorySummary/> 
+        
+        
+        </div>
+        {/* <InventorySummary/> */}
         
         
       </div>

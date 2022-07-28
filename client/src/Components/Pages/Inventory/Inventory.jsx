@@ -73,7 +73,7 @@ const Inventory = () => {
       <h3 class="text-center mb-3 mt-5">Tablets Inventory</h3>
       </div>
 
-      <div  class="form-outline mb-4">
+      <div  class="form-outline mb-4 col-sm-3">
         <input
           type="search"
           class="form-control"

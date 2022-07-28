@@ -6,7 +6,7 @@ import { toast } from 'react-toastify' ;
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import usePrivateAxios from "../../hooks/usePrivateAxios";
 
-const FACILITY_REGEX = /^[A-Za-z0-9 ]+$/
+const FACILITY_REGEX = /^[A-Za-z0-9 ]/
 const SUBCOUNTY_REGEX = /^[A-Za-z0-9 ]+$/
 const ELASTIC_REGEX = /^(?:25[0-5]|2[0-4]\d|1\d\d|[1-9]\d|\d)(?:\.(?:25[0-5]|2[0-4]\d|1\d\d|[1-9]\d|\d)){3}$/
 const IPADDRESS_REGEX =/^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/
@@ -163,11 +163,11 @@ const getAllFacilities = () =>{
 
 return (
     <div className="container">
-            <button  class="btn btn-outline-success mt-3"onClick={onClickBack}>Back to Facilities</button> 
-
-    {
-                        pageTitle()
-                      }
+      {/* Back to Facilities */}
+        <button  class="btn btn-outline-success mt-3"onClick={onClickBack}>Back to Facilities</button> 
+        {
+           pageTitle()
+        }
       <div   onSubmit={(e) =>saveorUpdateFacility(e)} >
       <div  className="form-group row mt-2"> 
                     <label className="col-sm-3 col-form-label">MFL CODE</label>

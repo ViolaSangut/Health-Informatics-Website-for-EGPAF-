@@ -106,14 +106,23 @@ const SidebarComponent = ({ items }) => {
                
                 {/* Admin Panel */}
                 {  loggedinUserRoles === "3" || loggedinUserRoles === "4" &&
-                    <>
-                   <li className='nav-text'>
+          
+                <>
+                {/* Inventory */}
+                <li className='nav-text'>
+                   <Link to="/inventory">
+                    <MdIcons.MdOutlineInventory2 />
+                    <span>Inventory</span> 
+                    </Link>
+                 </li>
+                 {/* Users */}
+                 <li className='nav-text'>
                    <Link to="/list-user">
-                  < MdIcons.MdAdminPanelSettings/>
+                   < MdIcons.MdAdminPanelSettings/>
                     <span>Admin</span> 
                     </Link>
-                   </li>
-                   </>
+                 </li>
+                </>
                     
                }
            </ul>
