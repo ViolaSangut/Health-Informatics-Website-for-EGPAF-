@@ -147,7 +147,7 @@ return (
     facilityListPageTitle()
   } 
   {/* Search */}
-  <div className="form-outline mb-4 col-sm-2">
+  <div className="form-outline mb-4 col-sm-3">
           <input 
             className="form-control"
             type="text" 

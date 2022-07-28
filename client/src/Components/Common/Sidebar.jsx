@@ -5,7 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { sidebarItems } from './SidebarItems';
 import './Sidebar.css';
 import { IconContext } from 'react-icons';
-import egpaf_logo from '../../Resources/Images/egpaf_logov2.JPG'
+import egpaf_logo from '../../Resources/Images/logonew2.png'
 import * as MdIcons from 'react-icons/md';
 import axios from 'axios';
 import UseAuth from '../context/UseAuth';
@@ -61,11 +61,13 @@ const SidebarComponent = ({ items }) => {
                <FaIcons.FaBars onClick={showSideBar}/>
            </Link>
        </div>
-       <h2 className='mainTitle'>Health Information System</h2>       
        {/* Logo */}
        <div >
           <img className='logo1' src={egpaf_logo} alt=''/>
        </div>
+
+       <h2 className='mainTitle fw-bold'>Health Information System</h2>       
+
      
        {/* Account */}
         <NavDropdown 
