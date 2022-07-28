@@ -1,10 +1,13 @@
 import React,{useState, useEffect, } from 'react'
 import { useNavigate, Link } from 'react-router-dom';
 import { toast  } from 'react-toastify';
-// import "./Inventory.css";
+import "./Inventory.css";
 import usePrivateAxios from '../../hooks/usePrivateAxios';
 import * as AiIcons from "react-icons/ai";
 import ReactHTMLTableToExcel from 'react-html-table-to-excel';
+import * as BIIcons from 'react-icons/bi'
+import * as RIIcons from 'react-icons/ri';
+
 
 
 
@@ -67,24 +70,26 @@ const Simcards = () => {
     return(
          <div>
             <div>
-      <h3 className="text-center mb-3 mt-5">Simcards Inventory</h3>
+      <h3 className="text-center mb-3 mt-5 fw-bold">Simcards Inventory</h3>
       </div>
-      <div className='form-outline mb-4'>
+      <div className='form-outline mb-4 col-sm-3'>
                 <input className="form-control mb-3 "
                 placeholder='Search for Simcard'
                 value={searchCard}
                 onChange={(e)=> setSearchCard(e.target.value)}
                 ></input>
+                </div>
+                <div>
             <div className='form-group row mt-2 mb-1'>
-                <button onClick={handleClick} className="col-sm-6 btn btn-outline-success">Add New Simcard</button>
+                <button onClick={handleClick} className="addbtn col-sm-1 btn-outline-warning">< BIIcons.BiPlusMedical /></button>
             <div className='col-md-6'>
         <ReactHTMLTableToExcel
                     id="tablets-download-button"
-                    className="btn btn-outline-warning"
+                    className="btn btn-outline-success"
                     table="table-to-xls"
                     filename = "Simcard-List"
                     sheet="tablexls"
-                    buttonText="Export Data to Excel Sheet"/>
+                    buttonText={<RIIcons.RiFileExcel2Fill/>}/>
         </div>
         </div>
         </div>

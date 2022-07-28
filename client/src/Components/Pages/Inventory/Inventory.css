@@ -35,8 +35,8 @@
 }
 
 .errmsg {
-    background-color: rgb(230, 89, 110);
-    color: firebrick;
+    background-color: red;
+    color: white;
     font-weight: bold;
     padding: 0.5rem;
     margin-bottom: 0.5rem;
@@ -45,3 +45,25 @@
 .line {
     display: inline-block;
 }
+.addbtn{
+    background-color: white;
+    color: #ffbb33;
+    /* padding: 0.5rem; */
+    margin-top: 1rem;
+    border-radius:0.5rem;
+    border-color: #ffbb33;
+    border-width: thin;
+    width: 1em;
+    margin-left: 1em;
+}
+
+.addbtn:hover  {
+    background-color: #ffbb33;
+    color: white;
+    display:block;
+}
+.ticketsbtn{
+    margin-left: 2em;
+}
+
+

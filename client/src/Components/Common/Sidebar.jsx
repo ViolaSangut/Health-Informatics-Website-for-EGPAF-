@@ -53,7 +53,7 @@ const SidebarComponent = ({ items }) => {
       };
 
   return (
-      <>
+      <div > 
       <IconContext.Provider value={{color: 'white'}}>
       <div className='sidebar'>
        <div>
@@ -121,7 +121,7 @@ const SidebarComponent = ({ items }) => {
        </nav>
       </div>
       </IconContext.Provider>
-      </>
+      </div>
     
   )
 }

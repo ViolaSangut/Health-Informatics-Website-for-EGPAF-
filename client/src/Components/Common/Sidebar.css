@@ -4,6 +4,8 @@
   display: flex;
   justify-content: start;
   align-items: center;
+  color: white;
+  
 }
 
 .logo1 {
@@ -55,8 +57,8 @@
 }
 
 .nav-menu {
-  background-color: green;
-  width: 250px;
+  background-color: grey;
+  width: 15%;
   height: 100vh;
   display: flex;
   justify-content: center;
@@ -64,6 +66,7 @@
   top: 0;
   left: -100%;
   transition: 850ms;
+  z-index: 1;
 }
 
 .nav-menu.active {
@@ -93,7 +96,8 @@
 }
 
 .nav-text a:hover {
-  background-color: #1774df;
+  background-color: green;
+  color: white;
 }
 
 .nav-menu-items {
@@ -116,7 +120,7 @@ span {
 /**/
 
 .dropDownLink {
-  background: #414757;
+  background: #574141;
   height: 60px;
   padding-left: 3rem;
   display: flex;

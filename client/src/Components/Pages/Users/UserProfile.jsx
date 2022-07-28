@@ -83,7 +83,7 @@ const UserProfile = () => {
 
   return (
     <div className='container'>
-      <div className="profileContent">
+      <div className="profileContent mt-5">
       <div className="title">
       <CgIcons.CgProfile className="profileIcon"/>
       <h3 style={{color:"black"}} className="text-center">Profile</h3>

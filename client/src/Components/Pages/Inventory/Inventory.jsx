@@ -6,6 +6,16 @@ import moment from 'moment';
 import usePrivateAxios from '../../hooks/usePrivateAxios';
 import * as AiIcons from "react-icons/ai";
 import ReactHTMLTableToExcel from 'react-html-table-to-excel';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faCheck,
+  faTimes,
+  faInfoCircle, faPlus
+} from "@fortawesome/free-solid-svg-icons";
+
+import * as BSIcons from 'react-icons/bs';
+import * as RIIcons from 'react-icons/ri';
+import * as BIIcons from 'react-icons/bi'
 
 
 
@@ -62,6 +72,8 @@ const Inventory = () => {
     const handleClick =()=>{
       navigate("/addinventory");
     }
+
+    const ItemOnHover = <h2 className='ItemOnHover'>Add new Item</h2>
     
    
     
@@ -70,10 +82,10 @@ const Inventory = () => {
     <div className="container">
     
       <div >
-      <h3 class="text-center mb-3 mt-5">Tablets Inventory</h3>
+      <h3 class="text-center mb-3 mt-5 fw-bold">Tablets Inventory</h3>
       </div>
 
-      <div  class="form-outline mb-4">
+      <div  class="form-outline mb-4 col-sm-3">
         <input
           type="search"
           class="form-control"
@@ -85,18 +97,18 @@ const Inventory = () => {
       </div>
       
         <div class="form-group row mt-2 mb-1">
-                <button onClick={handleClick}
-                class=" col-sm-6 btn btn-outline-success">
-                        Add Tablet to Inventory
+                <button onClick={handleClick} className="addbtn col-sm-1 ">
+                        < BIIcons.BiPlusMedical />
                     </button>
+
                     <div class="col-md-6">
                     <ReactHTMLTableToExcel
                                 id="tablets-download-button"
                                 table="table-to-xls"
-                                className="btn btn-outline-warning"
+                                className="btn btn-outline-success"
                                 filename = "Tablet-List"
                                 sheet="tablexls"
-                                buttonText="Export Data to Excel Sheet"/>
+                                buttonText={<RIIcons.RiFileExcel2Fill/>}/>
         </div>
         </div>
 <div class="table-responsive">

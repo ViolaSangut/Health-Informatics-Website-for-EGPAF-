@@ -11,6 +11,8 @@ import {
 import usePrivateAxios from '../../hooks/usePrivateAxios';
 import UseAuth from "../../context/UseAuth";
 import jwt_decode from "jwt-decode";
+import egpaf_big_logo from '../../../Resources/Images/egpaf_big_logo.jpg'
+
 
 //regex definitions
 const USER_REGEX = /^[a-zA-Z][a-zA-Z0-9-_]{3,23}$/;
@@ -244,10 +246,10 @@ const saveUser = async () => {
      const pageTitle = () =>{
 
       if(id){
-          return <h3 className="text-center mt-5 mb-2">Update User</h3>
+          return <h3 className="text-center mt-5 mb-2 ">Update User</h3>
       } 
       else {
-          return <h3 className="text-center mt-5 mb-3">Register A New User</h3>
+          return <h3 className="text-center mt-5 mb-3 ">Register A New User</h3>
 
       }
       
@@ -275,7 +277,7 @@ let addUpdateEmailPassword =
     <>
       {/* Email input */}
       <div className="form-group row mt-2">
-      <label className='col-sm-2 col-form-label'>Email
+      <label className=' col-form-label'>Email
         <span className={validEmail ? "valid" : "hide"}>
             <FontAwesomeIcon icon={faCheck} />
           </span>
@@ -283,7 +285,7 @@ let addUpdateEmailPassword =
             <FontAwesomeIcon icon={faTimes} />
           </span>
       </label>
-      <div className='col-md-6'>
+      <div className=''>
       <input
       className='form-control'
         autoComplete="off"
@@ -315,7 +317,7 @@ let addUpdateEmailPassword =
           </div>
         {/* password input */}
         <div className='form-group row mt-2'>
-        <label className='col-sm-2 col-form-label'>Password 
+        <label className='col-form-label'>Password 
             <span className={validPassword ? "valid" : "hide"}>
                 <FontAwesomeIcon icon={faCheck} />
               </span>
@@ -323,7 +325,7 @@ let addUpdateEmailPassword =
                 <FontAwesomeIcon icon={faTimes} />
               </span>
           </label>
-          <div className='col-md-6'>
+          <div className=''>
           <input
           className='form-control'
             autoComplete="off"
@@ -359,7 +361,7 @@ let addUpdateEmailPassword =
             </div>
           {/* Confirm password */}
           <div className='form-group row mt-2'>
-          <label className='col-sm-2 col-form-label'>Confirm Password 
+          <label className='col-form-label mb-0'>Confirm Password 
             <span className={validMatch ? "valid" : "hide"}>
             <FontAwesomeIcon
                 icon={faCheck}
@@ -371,7 +373,7 @@ let addUpdateEmailPassword =
               />
               </span>
               </label>.
-            <div className='col-md-6'>
+            <div className='mt-0'>
           <input
             className='form-control'
             autoComplete="off"
@@ -403,10 +405,19 @@ let addUpdateEmailPassword =
     
     
   return (
-    <div className=' container align-items-center' >
+    <div className=' vh-100' style={{"background-color":"#dbe9f4"}} >
             
-          
-        <form onSubmit={submitUser}>
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col col-xl-8">
+        <div class="card" style={{"border-radius": "1rem"}}>
+      <div class="row g-0">
+        <div class="col-md-6 col-lg-5 d-none d-md-block">
+              <img src={egpaf_big_logo}
+                alt="login form" class="img-fluid" style={{"border-radius": "1rem 0 0 1rem"}} />
+            </div>
+    <div class="col-md-6 col-lg-6 d-flex align-items-center">
+    <div class="card-body p-4 p-lg-3 text-black"></div>
+        <form onSubmit={submitUser} >
           <p 
           ref={errRef}
           className={errMsg?"errmsg":"offscreen"}
@@ -420,7 +431,7 @@ let addUpdateEmailPassword =
         }
         {/* First name input */}
           <div className="form-group row mt-2">
-          <label className="col-sm-2 col-form-label">First Name 
+          <label className=" col-form-label">First Name 
             <span className={validFName?"valid":"hide"}>
               <FontAwesomeIcon icon={faCheck} 
             />
@@ -430,7 +441,7 @@ let addUpdateEmailPassword =
             />
             </span>
           </label>
-          <div className="col-md-6">
+          <div className="">
 
           <input
           className='form-control'
@@ -464,7 +475,7 @@ let addUpdateEmailPassword =
             </div>
          {/* Lastname Input */}
          <div className="form-group row mt-2">
-          <label className='col-sm-2 col-form-label'>Last Name 
+          <label className=' col-form-label'>Last Name 
             <span className={validLName?"valid":"hide"}>
             <FontAwesomeIcon icon={faCheck} />
             </span>
@@ -472,7 +483,7 @@ let addUpdateEmailPassword =
                   <FontAwesomeIcon icon={faTimes} />
             </span>
           </label>
-          <div className="col-md-6">
+          <div className="">
           <input
           className='form-control'
             autoComplete="off"
@@ -522,8 +533,8 @@ let addUpdateEmailPassword =
                 //Enabling Admin to update all users roles except for Super user and his / hers
                 :(loggedinUserEmail !== email) && ((loggedinUserRoles === "3" && singleUserRole !== "Super_User") || singleUserRole === "Manager" || singleUserRole === "User") ?
                 <>
-                  <label>Roles</label>
-                          <select  onChange ={(e) => setRoleId(e.target.value)}>
+                  <label className="col-form-label">Roles</label>
+                          <select  className="form-select"onChange ={(e) => setRoleId(e.target.value)}>
                               <option selected disabled="true" >{userRoles}</option>
                               {
                                   roles.map((role)=>(<option key={role.id}value={role.id}>
@@ -561,19 +572,19 @@ let addUpdateEmailPassword =
         }
         
          {/* Submit Button */}
-         <div className='form-group row mt-2 ml-2 mr-2'>
+         <div className='pt-1 mb-4'>
           {
            !id ?
-           <button className='btn btn-success col-sm-3 mt-2 ml-2'
+           <button className='btn btn-success mt-2 ml-2'
              disabled={!validFName || !validLName || !validPassword || !validEmail || !validMatch ? true : false}> Submit
            </button>
            :id ?
-           <button className='btn btn-warning col-sm-3 mt-2'
+           <button className='btn btn-warning mt-2 m-3'
              disabled={!validFName || !validLName ? true : false}> Update
            </button>
            :<></>
            }
-        <p className="mt-2 mb-0 col-sm-3">
+        <p className="mt-2 mb-0">
           Already registered?   
           <a className="col-md-1"href="http://localhost:4001/">   Sign In</a>
             
@@ -582,6 +593,11 @@ let addUpdateEmailPassword =
           </div>
         </form>
 
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
     </div>
   )
 }

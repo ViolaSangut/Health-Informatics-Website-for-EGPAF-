@@ -9,6 +9,9 @@ import * as AiIcons from "react-icons/ai";
 import UseAuth from "../../context/UseAuth";
 import jwt_decode from "jwt-decode";
 import usePrivateAxios from "../../hooks/usePrivateAxios";
+import * as BIIcons from 'react-icons/bi'
+import * as RIIcons from 'react-icons/ri';
+
 
 const Facilities = () => {
 
@@ -46,13 +49,13 @@ const Facilities = () => {
   //Changing Facilities List Title Dynamically 
   const facilityListPageTitle = () =>{
     if (window.location.pathname === "/facilities" || window.location.pathname === "/facilities/") {
-      return <h3 className='text-center mb-3 mt-5'>All Facilities</h3>  
+      return <h3 className='text-center mb-3 mt-5 fw-bold'>All Facilities</h3>  
     } else if(window.location.pathname === "/facilities/1" || window.location.pathname === "/facilities/1/"){
-      return <h3 className='text-center mb-3 mt-5'>Homa Bay Facilities</h3>
+      return <h3 className='text-center mb-3 mt-5 fw-bold'>Homa Bay Facilities</h3>
     } else if(window.location.pathname === "/facilities/2" || window.location.pathname === "/facilities/2/") {
-      return <h3 className='text-center mb-3 mt-5'>Kiambu Facilities</h3>
+      return <h3 className='text-center mb-3 mt-5 fw-bold'>Kiambu Facilities</h3>
     } else if(window.location.pathname === "/facilities/3" || window.location.pathname === "/facilities/3/"){
-      return <h3 className='text-center mb-3 mt-5'>Kisii Facilities</h3>
+      return <h3 className='text-center mb-3 mt-5 fw-bold'>Kisii Facilities</h3>
     }
 
   }
@@ -144,7 +147,7 @@ return (
     facilityListPageTitle()
   } 
   {/* Enabling admins & Supers_Users only to add Facility */}
-  <div className="form-outline mb-4">
+  <div className="form-outline mb-4 col-sm-3">
           <input 
             className="form-control"
             type="text" 
@@ -157,17 +160,17 @@ return (
   <div className="form-group row mt-2 mb-2">
   {  
   loggedinUserRoles === "3" || loggedinUserRoles === "4" ?
-     <button onClick={handleClick} className='btn btn-outline-success col-sm-6'>Add Facility</button>
+     <button onClick={handleClick} className='addbtn btn-outline-warning col-sm-1'>< BIIcons.BiPlusMedical /></button>
      :<></>
   }       
   <div className="col-md-6">
     <ReactHTMLTableToExcel
                     id="test-table-xls-button"
-                    className="btn btn-outline-warning"
+                    className="btn btn-outline-success"
                     table="table-to-xls"
                     filename="Facilities"
                     sheet="Facilities"
-                    buttonText="Export Data to Excel Sheet"/>
+                    buttonText={<RIIcons.RiFileExcel2Fill/>}/>
   </div>
   </div>
 
@@ -227,8 +230,8 @@ return (
                           <td><Link to = {`/specificfacility/${facility.id}`}  >{facility.facilityname}</Link></td>
                           <td>{facility.county}</td>
                           <td>{facility.subcounty}</td>
-                          <td><a href={`http://${facility.ipaddress}:8080/openmrs`}>http://{facility.ipaddress}:8080/openmrs </a> </td>
-                          <td><a href={`http://${facility.elasticipaddress}:8080/openmrs`}>{facility.elasticipaddress} </a> </td>  
+                          <td><a  href={`http://${facility.ipaddress}:8080/openmrs`}>http://{facility.ipaddress}:8080/openmrs </a> </td>
+                          <td><a className="link-dark" href={`http://${facility.elasticipaddress}:8080/openmrs`}>http://{facility.elasticipaddress}:8080/openmrs </a> </td>  
                           <td>{facility.status}</td>
                           <td>{ facility.ushauri ===1 ? "In use" : "Not in Use"}</td>
                           <td>{facility.WebADT ===1 ? "In use" : "Not in Use" }</td>
