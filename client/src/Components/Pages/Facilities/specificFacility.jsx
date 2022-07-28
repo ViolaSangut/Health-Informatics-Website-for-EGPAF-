@@ -123,8 +123,9 @@ return (
 
 
 <h2 className="mt-2 mb-3 text-center">{facilityname}</h2>
+<div >
           
-<div class="list-group">
+<div class="list-group ">
   <ul>
             <li  class="list-group-item">
                   <p>County:{county}</p>
@@ -323,7 +324,7 @@ return (
         </div> 
 
 
-
+</div>
         
   </div>
 )

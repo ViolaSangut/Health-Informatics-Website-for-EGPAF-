@@ -5,7 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { sidebarItems } from './SidebarItems';
 import './Sidebar.css';
 import { IconContext } from 'react-icons';
-import egpaf_logo from '../../Resources/Images/egpaf_logov2.JPG'
+import egpaf_logo from '../../Resources/Images/logonew2.png'
 import * as MdIcons from 'react-icons/md';
 import axios from 'axios';
 import UseAuth from '../context/UseAuth';
@@ -53,7 +53,7 @@ const SidebarComponent = ({ items }) => {
       };
 
   return (
-      <>
+      <div > 
       <IconContext.Provider value={{color: 'white'}}>
       <div className='sidebar'>
        <div>
@@ -61,11 +61,13 @@ const SidebarComponent = ({ items }) => {
                <FaIcons.FaBars onClick={showSideBar}/>
            </Link>
        </div>
-       <h2 className='mainTitle'>Health Information System</h2>       
        {/* Logo */}
        <div >
           <img className='logo1' src={egpaf_logo} alt=''/>
        </div>
+
+       <h2 className='mainTitle fw-bold'>Health Information System</h2>       
+
      
        {/* Account */}
         <NavDropdown 
@@ -106,14 +108,23 @@ const SidebarComponent = ({ items }) => {
                
                 {/* Admin Panel */}
                 {  loggedinUserRoles === "3" || loggedinUserRoles === "4" &&
-                    <>
-                   <li className='nav-text'>
+          
+                <>
+                {/* Inventory */}
+                <li className='nav-text'>
+                   <Link to="/inventory">
+                    <MdIcons.MdOutlineInventory2 />
+                    <span>Inventory</span> 
+                    </Link>
+                 </li>
+                 {/* Users */}
+                 <li className='nav-text'>
                    <Link to="/list-user">
-                  < MdIcons.MdAdminPanelSettings/>
+                   < MdIcons.MdAdminPanelSettings/>
                     <span>Admin</span> 
                     </Link>
-                   </li>
-                   </>
+                 </li>
+                </>
                     
                }
            </ul>
@@ -121,7 +132,7 @@ const SidebarComponent = ({ items }) => {
        </nav>
       </div>
       </IconContext.Provider>
-      </>
+      </div>
     
   )
 }

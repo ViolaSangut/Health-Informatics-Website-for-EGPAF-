@@ -1,4 +1,4 @@
-import React,{useState, useEffect, useContext} from 'react'
+import React,{useState, useEffect} from 'react'
 import { Link, useNavigate, useLocation} from 'react-router-dom';
 // import './Users.css';
 import { toast  } from 'react-toastify';
@@ -68,15 +68,12 @@ const Users = () => {
 
   return (
     <div className='container'> 
-    <div className=''>
         <h2 className='text-center mb-3 mt-5'>Users</h2> 
-
-        <Link to = '/add-user' className='btn btn-outline-success mb-2 mt-2 col-sm-3'   >Add New user</Link>
-
-    </div>
+    
 
     {/* Search */}
-    <div className='search_bar'>
+    <div className='form-group row mt-2'>
+    <div className='search_bar col-sm-3'>
             <input 
             className="form-control mb-2"
                 type="text" 
@@ -85,6 +82,13 @@ const Users = () => {
                 onChange={(e)=> setSearchUser(e.target.value)}
             />     
         </div>
+
+        <div className='col-md-3 offset-6'>
+
+        <Link to = '/add-user' className='btn btn-outline-success  col-sm-12'   >Add New user</Link>
+
+    </div>
+    </div>
     
     <div className='responsive-table'>
     <table className="table table-striped table-hover table-sm">

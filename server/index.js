@@ -68,6 +68,7 @@ var values = [
   [2, "Manager", todaysDate, todaysDate],
   [3, "Admin", todaysDate, todaysDate],
   [4, "Super_User", todaysDate, todaysDate],
+  [5, "Disabled", todaysDate, todaysDate],
 ];
 
 //Creating roles when server runs

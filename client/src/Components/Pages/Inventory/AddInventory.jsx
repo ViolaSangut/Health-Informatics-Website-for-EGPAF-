@@ -1,7 +1,6 @@
 import React, {useState, useRef, useEffect} from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { toast  } from 'react-toastify';
-// import './AddInventory.css'
 import Facilities from './Facilities.json'
 import DeviceStatus from './DeviceStatus.json';
 import axios from "axios";
@@ -13,7 +12,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const ASSET_REGEX = /^[A-Za-z0-9 ]+$/
+const ASSET_REGEX = /^[A-Za-z0-9 ]/
 const SERIAL_REGEX = /^[0-9]+$/
 const PIN_REGEX = /^[0-9]{4}$/;
 const EMAIL_REGEX = /^\S+@\S+\.\S+$/;
@@ -406,7 +405,7 @@ useEffect(() => {
              value={facility} 
              onChange ={(e) => setFacility(e.target.value)}
              required
-                aria-invalid={validFacility ? "true" : "false"}
+                aria-invalid={validFacility ? "false" : "true"}
                 aria-describedby="facilityid"
                 onFocus={() => setFacilityFocus(true)}
               onBlur={() => setFacilityFocus(false)}
@@ -449,7 +448,7 @@ useEffect(() => {
             placeholder='Passcode' 
             type='text'
             required
-                aria-invalid={validPasscode ? "false" : "true"}
+                aria-invalid={validPasscode ? "true" : "false"}
                 aria-describedby="passid"
                 onFocus={() => setPasscodeFocus(true)}
               onBlur={() => setPasscodeFocus(false)}

@@ -93,6 +93,7 @@ const Login = () => {
       setAuth({email, accessToken });
       setEmail('');
       setPassword('');
+      
 
       navigate(from, { replace: true });
   } 
@@ -123,7 +124,7 @@ const Login = () => {
     
     <div className ="vh-100" style={{"background-color":"#dbe9f4"}}>
     
-    <div class="row d-flex justify-content-center align-items-center h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100 m-3">
       <div class="col col-xl-8">
     <div class="card" style={{"border-radius": "1rem"}}>
       <div class="row g-0">
@@ -135,12 +136,12 @@ const Login = () => {
     <div class="card-body p-4 p-lg-4 text-black">
     <p ref={errorRef} className={errorMessage ? "errmsg" :  "offscreen"} aria-live="assertive">{errorMessage}</p>
       <form >
-        <h4 class="fw-normal mb-3 pb-3" >Health Information Management System</h4>
+        <h4 class="fw-normal mb-3 pb-3 font-weight-bold" style={{"color":"Green"}}>EGPAF Health Information System</h4>
         <div class="form-floating mb-4 ">
         
         <input 
         id="floatingInput"
-          className='form-control'
+          className='form-control form-control-sm'
           placeholder='Username'
           type="email"
           onChange={(event) => {
@@ -150,14 +151,14 @@ const Login = () => {
           ref={emailRef}
         />
         <label  for="floatingInput">
-          Username or Email
+          Email
         </label>
         </div>
         <div class="form-floating mb-4">
         
         <input 
         id="floatingPass"
-        className='form-control'
+        className='form-control form-control-sm'
            placeholder='Password'
           type="password"
           onChange={(event) => {
@@ -169,7 +170,7 @@ const Login = () => {
         </label>
         </div>
        <div class="pt-1 mb-4">
-          <button className="btn btn-outline-success" type="button"onClick={login}> Sign in </button>
+          <button className="btn btn-outline-success col-sm-6" type="button"onClick={login}> Sign in </button>
           <p className="mt-2 mb-5 pb-lg-2" >
              Do Not have an account? 
             <Link to = '/add-user'   style = {{marginLeft:"30px"}}>Register</Link>

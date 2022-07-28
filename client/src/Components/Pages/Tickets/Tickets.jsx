@@ -8,6 +8,9 @@ import UseAuth from "../../context/UseAuth";
 import jwt_decode from "jwt-decode";
 import * as AiIcons from "react-icons/ai";
 import ReactHTMLTableToExcel from 'react-html-table-to-excel';
+import * as BIIcons from 'react-icons/bi'
+import * as RIIcons from 'react-icons/ri';
+
 
 const Tickets = () => {
     const [tickets, setTickets] = useState([]);
@@ -59,15 +62,15 @@ const Tickets = () => {
   //Changing Facilities List Title Dynamically 
   const ticketsListPageTitle = () =>{
     if (window.location.pathname === "/tickets-list" || window.location.pathname === "/tickets-list/" || window.location.pathname === "/tickets-list/4" || window.location.pathname === "/tickets-list/4/") {
-        return <h2 className='text-center'>Recent Tickets</h2>;
+        return <h2 className='text-center fw-bold mt-2'>Recent Tickets</h2>;
       } else if(window.location.pathname === "/tickets-list/1" || window.location.pathname === "/tickets-list/1/"){
-        return <h2 className='text-center'>Unassigned Tickets</h2>;
+        return <h2 className='text-center fw-bold mt-2'>Unassigned Tickets</h2>;
       }  else if(window.location.pathname === "/tickets-list/2" || window.location.pathname === "/tickets-list/2/"){
-        return <h2 className='text-center'>Pending Tickets</h2>;
+        return <h2 className='text-center fw-bold mt-2'>Pending Tickets</h2>;
       }  else if(window.location.pathname === "/tickets-list/3" || window.location.pathname === "/tickets-list/3/"){
-        return <h2 className='text-center'>Resolved Tickets</h2>;
+        return <h2 className='text-center fw-bold mt-2'>Resolved Tickets</h2>;
       }else if(window.location.pathname === "/tickets-list/5" || window.location.pathname === "/tickets-list/5/"){
-        return <h2 className='text-center'>All Tickets</h2>;
+        return <h2 className='text-center fw-bold mt-2'>All Tickets</h2>;
     }
 
   }
@@ -225,10 +228,6 @@ const handleToDashboardClick = () => {
     navigate('/tickets')
 }
 
-
-
-
-
   return (
     <div className='container'>
     
@@ -236,19 +235,28 @@ const handleToDashboardClick = () => {
            {
             ticketsListPageTitle()
            }
-            <div className='form-group row mt-2 mb-2'>
-                <div className="offset-sm-2 col-sm-4">
-            <button onClick={handleAddTicketClick} className='btn btn-outline-success mb-2'>Add Ticket</button>
+                <div className=" col-sm-5">
+            <button onClick={handleAddTicketClick} className='btn btn-outline-success mb-2 col-sm-3'>< BIIcons.BiPlusMedical /></button>
                 </div>
-                <div className="col-md-4">
+                <div className="col-sm-4 offset-10">
             <button onClick={handleToDashboardClick} className='btn btn-outline-warning mb-2'>Tickets DashBoard</button>
                 </div>
-            </div>
+        </div>
+        {/* Search */}
+        <div className='form-outline mb-2 mt-2 col-sm-3'>
+            {/* <label className="col-sm-2 col-form-label"> Search</label> */}
+            <input 
+            className='form-control mb-2'
+                type="text" 
+                value={searchTickets}
+                placeholder="Start typing to search for ticket..."
+                onChange={(e)=> setSearchTickets(e.target.value)}
+            />     
         </div>
     
         {/* Filter */}
         <div className='form-group row mt-2'>
-            <label>Filter By...</label>
+            <label class="fw-bolder">Filter By...</label>
             <div className='col-md-3'>
             <select 
             className="form-select"
@@ -264,7 +272,8 @@ const handleToDashboardClick = () => {
           
             </select>      
            </div>
-           <div className='col-md-3'>
+        
+           <div className='col-md-2'>
             <select className='form-select' style={{margingLeft: "px"}} name="isAvailable" value={searchTickets}
                 onChange={(e)=> setSearchTickets(e.target.value)}>
                 <option value="">Day ticket was issued</option>
@@ -274,28 +283,18 @@ const handleToDashboardClick = () => {
         </div>
         </div>
     
-        {/* Search */}
-        <div className='form-outline mb-2 mt-2'>
-            {/* <label className="col-sm-2 col-form-label"> Search</label> */}
-            <input 
-            className='form-control mb-2'
-                type="text" 
-                value={searchTickets}
-                placeholder="Start typing to search ticket..."
-                onChange={(e)=> setSearchTickets(e.target.value)}
-            />     
-        </div>
+        
 
         {tickets?.length
         ? (
            <div>
              <ReactHTMLTableToExcel
              id="test-table-xls-button"
-             className="btn btn-success mb-2 col-sm-3 offset-9"
+             className="btn btn-outline-success mb-2 offset-11"
              table="TicketsTable"
              filename="Tickets"
              sheet="Tickets"
-             buttonText="Download Excel"
+             buttonText={<RIIcons.RiFileExcel2Fill/>}
              />
            <div className='table-responsive' >
             <table className='table  table-striped table-hover table-sm' id="TicketsTable">
