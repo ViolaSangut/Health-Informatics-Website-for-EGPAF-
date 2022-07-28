@@ -36,6 +36,19 @@ const getTickets = async (req, res) => {
   res.json(tickets);
 };
 
+const where = {
+  $or: [{
+      from: {
+          $lte: "2022-07-20 05:51:31",
+          $gte: "2022-07-25 05:51:31",
+      },
+      to: {
+          $lte: "2022-07-26 05:51:31",
+          $gte: "2022-07-28 05:51:31",
+      },
+  }],
+};
+
 //Adding a Ticket
 const addTicket = async (req, res) => {
   const {
