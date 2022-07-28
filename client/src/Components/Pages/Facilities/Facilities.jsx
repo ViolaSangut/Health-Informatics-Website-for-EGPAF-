@@ -230,8 +230,8 @@ return (
                           <td><a href={`http://${facility.ipaddress}:8080/openmrs`}>http://{facility.ipaddress}:8080/openmrs </a> </td>
                           <td><a href={`http://${facility.elasticipaddress}:8080/openmrs`}>{facility.elasticipaddress} </a> </td>  
                           <td>{facility.status}</td>
-                          <td>{ facility.ushauri ===1 ? "In use" : "Not in Use"}</td>
-                          <td>{facility.WebADT ===1 ? "In use" : "Not in Use" }</td>
+                          <td>{ facility.ushauri ==="1" ? "Not in Use" : `${facility.ushauri}`}</td>
+                          <td>{facility.WebADT ==="1" ? "Not in Use" : `${facility.WebADT}` }</td>
 
                            {/* Enabling admins & Supers_Users only to delete Facility */}
                            { loggedinUserRoles === "3" || loggedinUserRoles === "4" &&

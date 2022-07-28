@@ -1,17 +1,20 @@
 import React, { useState, useEffect } from "react" ;
 
+import { Link, useNavigate, useParams } from "react-router-dom";
 
-import { useParams } from "react-router-dom";
 import axios from "axios";
-import {useNavigate } from "react-router-dom";
+
 import { toast } from 'react-toastify' ;
 import Tickets from "../Tickets/Tickets";
 import moment from 'moment';
-import { privateAxios } from "../../api/axios";
+import usePrivateAxios from '../../hooks/usePrivateAxios';
+import Simcards from "../Inventory/Simcards";
 
-const SpecificFacilityComponent = () => {
-
+ 
+  
+  const SpecificFacilityComponent = () => {
   const [facilities, setFacilities] = useState([]);
+  const [cards, setCards] = useState([]);
   const { id } = useParams();
   const facility = facilities.find(facility => (facility.id).toString() === id);
   const [facilityname, setFacilityName] = useState("");
@@ -24,14 +27,23 @@ const SpecificFacilityComponent = () => {
   const [WebADT, setWebADT] = useState("");
   const [elasticipaddress,setElasticipaddress] = useState("");
   const navigate = useNavigate();
-
-
+  const [searchTickets, setSearchTickets] = useState("");
+  const[searchCard, setSearchCard] = useState("");
+  const private_axios = usePrivateAxios();
+  const [items, setItems] = useState([]);
   const [tickets, setTickets] = useState([]);
   
-  useEffect(() => {   
-    // getAllTickets();
-  }, [])
 
+  
+  useEffect(() => {   
+    getAllTickets();
+  }, [])
+ 
+  useEffect(() => {
+
+    getAllCards();
+  
+}, [])
   
   useEffect(() => {
     if (facility) {
@@ -51,6 +63,25 @@ const SpecificFacilityComponent = () => {
     getAllFacilities();
 }, [])
 
+useEffect(() => {
+ 
+    getAllItems()
+  
+}, [])
+
+//List all items in the inventory
+const getAllItems = () =>{
+    private_axios.get("/Inventory")
+    .then((response)=>{
+        // console.log(response.data)
+        setItems(response.data);
+    })
+    .catch((error)=>{
+        console.log(error);
+    })
+}
+
+//get all facilities from db
 const getAllFacilities = () =>{
     axios.get("http://localhost:4000/facilities")
     .then((response)=>{
@@ -61,7 +92,7 @@ const getAllFacilities = () =>{
         console.log(error);
     })}
 
-
+//list all tickets from db
     const getAllTickets = () =>{
         axios.get("http://localhost:4000/tickets")
         .then((response)=>{
@@ -72,7 +103,20 @@ const getAllFacilities = () =>{
             console.log(error);
         })}
     
-    
+ //List all cards in the inventory
+ const getAllCards = () =>{
+    private_axios.get("/simcards")
+    .then((response)=>{
+        // console.log(response.data)
+        setCards(response.data);
+    })
+    .catch((error)=>{
+        console.log(error);
+    })
+}
+
+
+
 
 return (
     <div className="container ">
@@ -100,17 +144,181 @@ return (
                     <h4>HIS System Implementations </h4>                
             </li>
             <li class="list-group-item ">
-                    <p>WebADT:{WebADT}</p>
+                    <p>WebADT:{WebADT==="1" ? "Not in Use" : `${WebADT}`}</p>
                 
             </li>
              <li class="list-group-item ">
-                    <p>Ushauri:{ushauri}</p>
+                    <p>Ushauri:{ushauri==="1" ? "Not in Use" : `${ushauri}`}</p>
 
             </li>
-             <li class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-                 <p> Tickets and Issues</p>
-                <span class="badge bg-danger">10</span>
+            <li class="list-group-item  text-center">
+                    <h4>Tablets</h4>                
             </li>
+            <li class="list-group-item ">
+            <div className='table-responsive' >
+            <table className='table  table-striped table-hover table-sm' >
+                <thead  >
+                <tr >
+                   <th>Serial</th>
+                   <th>IMEI</th>
+                   <th>Brand Name</th>
+                   <th>Status</th> 
+                   <th>Serial Number</th>
+                   <th>Date Registered</th>
+        
+                   <th>Passcode</th> 
+                   <th>Email</th>
+                    
+        
+                    
+                </tr>
+                </thead>
+                <tbody className='ticketsRow'>
+                 {
+                        items.filter((item)=>{
+                            if (item.facility !== null && item.facility.toLowerCase().includes(facilityname.toLowerCase())) {
+                                return item;
+                            }
+                            
+                        }
+                        
+                        ).map (
+                             
+                            item => 
+                            <tr 
+                            >
+                                <td > {item.id} </td>
+                                <td> {item.AssetNumber} </td>
+                                <td> {item.AssetName} </td>
+                                <td> {item.AssetStatus} </td>
+                                <td> {item.serialNumber} </td>
+                                <td> {(moment(item.createdAt).format('DD-MM-YYYY | HH:MM'))} </td>
+                                
+                                <td> {item.Passcode} </td>
+                                <td> {item.Email} </td>
+                                
+                            </tr>
+                        
+                        )    
+
+                       
+                            
+                    }</tbody>
+                    </table></div>
+            
+            </li>
+            <li class="list-group-item  text-center">
+                    <h4>Simcards </h4>                
+            </li>
+            <li class="list-group-item ">
+            <div className='table-responsive' >
+            <table className='table  table-striped table-hover table-sm' >
+                <thead  >
+                <tr >
+                   <th>Serial</th>
+                    <th>Phone Number</th>
+                    <th>IMEI</th>
+                    <th>PUK</th>
+                    <th>PIN</th>
+                    
+                    <th>Tablet IMEI</th>
+                    
+                </tr>
+                </thead>
+                <tbody className='ticketsRow'>
+                 {
+                        cards.filter((card)=>{
+                            if (card.Facility !== null && card.Facility.toLowerCase().includes(facilityname.toLowerCase())) {
+                                return card;
+                            }
+                            
+                        }
+                        
+                        ).map (
+                            card => 
+                            <tr key = {card.id}
+                                  
+                                >
+                                   
+                                   <td> {card.id} </td>
+                                   <td> {card.PhoneNumber} </td>
+                                   <td> {card.IMEI} </td>
+                                    <td> {card.PUK} </td>
+                                   <td> {card.PIN} </td>
+                                   <td> {card.PhoneAssigned} </td>
+
+                                 
+                                   
+                                    
+                        </tr>
+                        
+                        )    
+
+                       
+                            
+                    }</tbody>
+                    </table></div>
+            
+            </li>
+            <li class="list-group-item  text-center">
+                 <h4> Tickets and Issues  </h4></li>
+            <li class="list-group-item ">
+            <div className='table-responsive' >
+            <table className='table  table-striped table-hover table-sm' id="TicketsTable">
+                <thead  >
+                <tr >
+                <th >Title </th> 
+                <th>Creator</th> 
+                <th>Creator's Email</th> 
+                <th>Status</th> 
+                <th>Assignee</th> 
+                <th>Priority</th> 
+                <th>Due Date</th> 
+                <th>Date Created</th> 
+                
+                    
+                </tr>
+                </thead>
+                <tbody className='ticketsRow'>
+                 {
+                        tickets.filter((ticket)=>{
+                            if (ticket.facility !== null && ticket.facility.toLowerCase().includes(facilityname.toLowerCase())) {
+                                
+                                return ticket;
+                                
+                            }
+                            
+                        }
+                        
+                        ).map (
+                            ticket => 
+                                <tr 
+                                >
+                                   
+                                    <td> {ticket.title} </td>
+                                    
+                                    <td> {ticket.creatorsFirstName} {ticket.creatorsLastName} </td>
+                                    <td>{ticket.creatorsEmail}</td>
+                                    <td>{ticket.ticket_status}</td>
+                                    <td>{ticket.assignee}</td>
+                                    <td>{ticket.priority}</td>
+                                    <td>{(moment(ticket.due_date).format('DD-MM-YYYY'))}</td>
+                                    <td>{(moment(ticket.created_date).format('DD-MM-YYYY'))}</td>
+                                 
+                                   
+                                    
+                        </tr>
+                        
+                        )    
+
+                       
+                            
+                    }</tbody>
+                    </table></div>
+            
+            </li>
+            
+            
             </ul>
         </div> 
 

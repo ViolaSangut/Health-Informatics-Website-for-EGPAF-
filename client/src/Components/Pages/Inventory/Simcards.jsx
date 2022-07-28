@@ -16,7 +16,7 @@ const Simcards = () => {
 
     //declaring state for the inventory list upon loading the page
   const [cards, setCards] = useState([]);
-  const[searchCard, setSearchCard] = useState("")
+  const[searchCard, setSearchCard] = useState ("")
   const private_axios = usePrivateAxios();
 
     useEffect(() => {
@@ -142,7 +142,7 @@ const Simcards = () => {
                     <td> {card.PhoneAssigned} </td>
 
                             <td> <Link to = '' className = "btn btn-danger" onClick = {() => deleteCard(card.id)}
-                                    style = {{marginLeft:"10px"}}> <AiIcons.AiFillDelete/> </Link>
+                                    style = {{marginLeft:"10px"}}> <AiIcons.AiFillDelete/>   </Link>
                     </td>
               </tr>
             

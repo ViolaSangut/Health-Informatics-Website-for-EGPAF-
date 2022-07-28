@@ -158,6 +158,8 @@ const updateTicket = async (req, res, next) => {
   }
 };
 
+
+
 //Count of Tickets within a week
 const getNoOfWeeklyTickets = async (req, res) => {
   db.query(

@@ -13,6 +13,8 @@ const db = mysql.createConnection({
   multipleStatements: true,
 });
 
+
+
 //update a facility
 const updateFacility = async (req, res, next) => {
   try {

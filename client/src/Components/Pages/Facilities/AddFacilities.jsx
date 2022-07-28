@@ -286,7 +286,7 @@ return (
           onChange={(e)=>setWebADT(e.target.value)}
         >
           <option value="selects">select WebADT version installed...</option>
-          <option value="0">None</option>
+          <option value="1">None</option>
           <option value="version 4.0.1">version 4.0.1</option>
           <option value="version 3.4.2">version 3.4.2</option>
           <option value="version 4.0.0">version 4.0.0</option>

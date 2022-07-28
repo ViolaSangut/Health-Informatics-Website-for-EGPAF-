@@ -21,6 +21,7 @@ import RegisterComponent from "./Components/Pages/Users/Register";
 import AddTicketComponent from "./Components/Pages/Tickets/AddTicket";
 import AddFacilityComponent from "./Components/Pages/Facilities/AddFacilities";
 import SpecificFacilityComponent from "./Components/Pages/Facilities/specificFacility";
+import SpecificFacilityTicketsComponent from "./Components/Pages/Facilities/TicketsIssues";
 import Test from "./Components/Pages/Tickets/Test";
 import AddInventory from "./Components/Pages/Inventory/AddInventory";
 import AddSimcards from "./Components/Pages/Inventory/AddSimcard";
@@ -65,6 +66,11 @@ function App() {
                 path="/specificfacility/:id"
                 element={<SpecificFacilityComponent />}
               />
+              <Route
+                path="/ticketsIssues/:facilityname"
+                element={<SpecificFacilityTicketsComponent />}
+              />
+              
               <Route
                 path="/edit-facility/:id"
                 element={<AddFacilityComponent />}
