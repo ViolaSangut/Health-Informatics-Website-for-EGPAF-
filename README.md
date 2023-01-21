@@ -15,3 +15,4 @@ Install the following dependencies after syncing with the latest version:
       npm install react-circular-progressbar --legacy-peer-deps
       
       npm install react-html-table-to-excel
+# Health-Informatics-Website-for-EGPAF-
